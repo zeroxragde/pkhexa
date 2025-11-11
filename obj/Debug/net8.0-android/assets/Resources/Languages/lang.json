@@ -1,0 +1,22 @@
+{
+  "es": {
+    "btnNew": "Nuevo",
+    "btnOpen": "Abrir",
+    "btnSettings": "Configuración",
+    "alertNewTitle": "Nuevo archivo",
+    "alertNewMessage": "Aquí podrías crear un nuevo archivo de guardado Pokémon.",
+    "alertOk": "Aceptar",
+    "alertCancel": "Cancelar",
+    "creatorText": "Desarrollado por ZeroXRagde"
+  },
+  "en": {
+    "btnNew": "New",
+    "btnOpen": "Open",
+    "btnSettings": "Settings",
+    "alertNewTitle": "New Save File",
+    "alertNewMessage": "Here you could create a new Pokémon save file.",
+    "alertOk": "OK",
+    "alertCancel": "Cancel",
+    "creatorText": "Developed by ZeroXRagde"
+  }
+}

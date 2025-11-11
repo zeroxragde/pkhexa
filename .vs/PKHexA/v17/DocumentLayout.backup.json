@@ -1,0 +1,121 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\pkmhex\\PKHexA\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AD3AB61B-69E2-480F-B787-B904B09ACFBC}|PKHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\pkmhex\\pkhexa\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD3AB61B-69E2-480F-B787-B904B09ACFBC}|PKHexA.csproj|solutionrelative:mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AD3AB61B-69E2-480F-B787-B904B09ACFBC}|PKHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\pkmhex\\pkhexa\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{AD3AB61B-69E2-480F-B787-B904B09ACFBC}|PKHexA.csproj|solutionrelative:mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AD3AB61B-69E2-480F-B787-B904B09ACFBC}|PKHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\pkmhex\\pkhexa\\services\\languageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD3AB61B-69E2-480F-B787-B904B09ACFBC}|PKHexA.csproj|solutionrelative:services\\languageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AD3AB61B-69E2-480F-B787-B904B09ACFBC}|PKHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\pkmhex\\pkhexa\\resources\\languages\\lang.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{AD3AB61B-69E2-480F-B787-B904B09ACFBC}|PKHexA.csproj|solutionrelative:resources\\languages\\lang.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AD3AB61B-69E2-480F-B787-B904B09ACFBC}|PKHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\pkmhex\\pkhexa\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD3AB61B-69E2-480F-B787-B904B09ACFBC}|PKHexA.csproj|solutionrelative:mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "lang.json",
+              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\pkmhex\\PKHexA\\Resources\\Languages\\lang.json",
+              "RelativeDocumentMoniker": "Resources\\Languages\\lang.json",
+              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\pkmhex\\PKHexA\\Resources\\Languages\\lang.json",
+              "RelativeToolTip": "Resources\\Languages\\lang.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-11T20:06:06.386Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LanguageService.cs",
+              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\pkmhex\\PKHexA\\Services\\LanguageService.cs",
+              "RelativeDocumentMoniker": "Services\\LanguageService.cs",
+              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\pkmhex\\PKHexA\\Services\\LanguageService.cs",
+              "RelativeToolTip": "Services\\LanguageService.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAAwFAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T20:05:17.683Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\pkmhex\\PKHexA\\MainPage.xaml.cs",
+              "RelativeDocumentMoniker": "MainPage.xaml.cs",
+              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\pkmhex\\PKHexA\\MainPage.xaml.cs*",
+              "RelativeToolTip": "MainPage.xaml.cs*",
+              "ViewState": "AgIAAAQAAAAAAAAAAAA9wAwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T19:07:06.461Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\pkmhex\\PKHexA\\MainPage.xaml",
+              "RelativeDocumentMoniker": "MainPage.xaml",
+              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\pkmhex\\PKHexA\\MainPage.xaml",
+              "RelativeToolTip": "MainPage.xaml",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAADwAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-11T18:23:57.673Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MauiProgram.cs",
+              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\pkmhex\\PKHexA\\MauiProgram.cs",
+              "RelativeDocumentMoniker": "MauiProgram.cs",
+              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\pkmhex\\PKHexA\\MauiProgram.cs",
+              "RelativeToolTip": "MauiProgram.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T17:54:49.071Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
