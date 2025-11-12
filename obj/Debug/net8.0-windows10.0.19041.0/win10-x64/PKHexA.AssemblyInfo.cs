@@ -18,7 +18,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PKHexA")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+aa5e3999a7f833d83f591ea42930c8f45019b323")]
 [assembly: System.Reflection.AssemblyProductAttribute("PKHexA")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PKHexA")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

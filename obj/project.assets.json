@@ -33202,11 +33202,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\pkmhex\\PKHexA\\PKHexA.csproj",
+      "projectUniqueName": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\PKHexA.csproj",
       "projectName": "PKHexA",
-      "projectPath": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\pkmhex\\PKHexA\\PKHexA.csproj",
+      "projectPath": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\PKHexA.csproj",
       "packagesPath": "C:\\Users\\ecarrizales\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\pkmhex\\PKHexA\\obj\\",
+      "outputPath": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [

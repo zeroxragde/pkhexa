@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SKfQKXKbYeQ=",
+  "dgSpecHash": "9NOvL67ELmQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\pkmhex\\PKHexA\\PKHexA.csproj",
+  "projectFilePath": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\PKHexA.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ecarrizales\\.nuget\\packages\\googlegson\\2.10.1.4\\googlegson.2.10.1.4.nupkg.sha512",
     "C:\\Users\\ecarrizales\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",

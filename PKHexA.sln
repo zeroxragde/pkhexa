@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PKHexA", "PKHexA.csproj", "{AD3AB61B-69E2-480F-B787-B904B09ACFBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PKHeX.Core", "PKHeX.Core\PKHeX.Core.csproj", "{FFCBF994-6A4A-70A4-1A71-BC9A50B165CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +19,10 @@ Global
 		{AD3AB61B-69E2-480F-B787-B904B09ACFBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD3AB61B-69E2-480F-B787-B904B09ACFBC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AD3AB61B-69E2-480F-B787-B904B09ACFBC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{FFCBF994-6A4A-70A4-1A71-BC9A50B165CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFCBF994-6A4A-70A4-1A71-BC9A50B165CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFCBF994-6A4A-70A4-1A71-BC9A50B165CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFCBF994-6A4A-70A4-1A71-BC9A50B165CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
