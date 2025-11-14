@@ -1,33 +1,33 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\20216\\PkHexA\\",
+  "WorkspaceRootPath": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\20216\\pkhexa\\views\\editor.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|e:\\desarrollo\\git\\otros\\pkhexa\\views\\editor.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:views\\editor.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\20216\\pkhexa\\views\\editor.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|e:\\desarrollo\\git\\otros\\pkhexa\\views\\editor.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:views\\editor.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\20216\\pkhexa\\services\\skbitmapextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|e:\\desarrollo\\git\\otros\\pkhexa\\services\\skbitmapextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:services\\skbitmapextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\20216\\pkhexa\\services\\languageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|e:\\desarrollo\\git\\otros\\pkhexa\\services\\languageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:services\\languageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\20216\\pkhexa\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|e:\\desarrollo\\git\\otros\\pkhexa\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\20216\\pkhexa\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|e:\\desarrollo\\git\\otros\\pkhexa\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\20216\\pkhexa\\resources\\languages\\lang.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|e:\\desarrollo\\git\\otros\\pkhexa\\resources\\languages\\lang.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:resources\\languages\\lang.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
@@ -44,51 +44,48 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Editor.xaml",
-              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\20216\\PkHexA\\Views\\Editor.xaml",
+              "DocumentMoniker": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\Editor.xaml",
               "RelativeDocumentMoniker": "Views\\Editor.xaml",
-              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\20216\\PkHexA\\Views\\Editor.xaml",
+              "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\Editor.xaml",
               "RelativeToolTip": "Views\\Editor.xaml",
               "ViewState": "AgIAABUAAAAAAAAAAAAAABwAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-11-12T19:09:55.023Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "SKBitmapExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\20216\\PkHexA\\Services\\SKBitmapExtensions.cs",
+              "DocumentMoniker": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Services\\SKBitmapExtensions.cs",
               "RelativeDocumentMoniker": "Services\\SKBitmapExtensions.cs",
-              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\20216\\PkHexA\\Services\\SKBitmapExtensions.cs",
+              "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Services\\SKBitmapExtensions.cs",
               "RelativeToolTip": "Services\\SKBitmapExtensions.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T23:29:11.222Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-13T23:29:11.222Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "LanguageService.cs",
-              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\20216\\PkHexA\\Services\\LanguageService.cs",
+              "DocumentMoniker": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Services\\LanguageService.cs",
               "RelativeDocumentMoniker": "Services\\LanguageService.cs",
-              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\20216\\PkHexA\\Services\\LanguageService.cs",
+              "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Services\\LanguageService.cs",
               "RelativeToolTip": "Services\\LanguageService.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAQwCoAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T00:13:40.975Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-13T00:13:40.975Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Editor.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\20216\\PkHexA\\Views\\Editor.xaml.cs",
+              "DocumentMoniker": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\Editor.xaml.cs",
               "RelativeDocumentMoniker": "Views\\Editor.xaml.cs",
-              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\20216\\PkHexA\\Views\\Editor.xaml.cs",
+              "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\Editor.xaml.cs",
               "RelativeToolTip": "Views\\Editor.xaml.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAAACMAAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-12T19:54:45.938Z",
               "EditorCaption": ""
@@ -97,40 +94,37 @@
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "lang.json",
-              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\20216\\PkHexA\\Resources\\Languages\\lang.json",
+              "DocumentMoniker": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Resources\\Languages\\lang.json",
               "RelativeDocumentMoniker": "Resources\\Languages\\lang.json",
-              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\20216\\PkHexA\\Resources\\Languages\\lang.json",
+              "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Resources\\Languages\\lang.json",
               "RelativeToolTip": "Resources\\Languages\\lang.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-12T16:32:57.787Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-12T16:32:57.787Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "MainPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\20216\\PkHexA\\MainPage.xaml.cs",
+              "DocumentMoniker": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\MainPage.xaml.cs",
               "RelativeDocumentMoniker": "MainPage.xaml.cs",
-              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\20216\\PkHexA\\MainPage.xaml.cs",
+              "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\MainPage.xaml.cs",
               "RelativeToolTip": "MainPage.xaml.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAswBEAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T05:39:42.376Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-12T05:39:42.376Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "MainPage.xaml",
-              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\20216\\PkHexA\\MainPage.xaml",
+              "DocumentMoniker": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\MainPage.xaml",
               "RelativeDocumentMoniker": "MainPage.xaml",
-              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\20216\\PkHexA\\MainPage.xaml",
+              "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\MainPage.xaml",
               "RelativeToolTip": "MainPage.xaml",
               "ViewState": "AgIAAFAAAAAAAAAAAADwv1oAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-12T23:54:25.266Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-12T23:54:25.266Z"
             }
           ]
         }

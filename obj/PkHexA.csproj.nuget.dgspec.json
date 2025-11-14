@@ -1,28 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\20216\\PkHexA\\PkHexA.csproj": {}
+    "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\PkHexA.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\20216\\PkHexA\\PkHexA.csproj": {
+    "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\PkHexA.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\20216\\PkHexA\\PkHexA.csproj",
+        "projectUniqueName": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\PkHexA.csproj",
         "projectName": "PkHexA",
-        "projectPath": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\20216\\PkHexA\\PkHexA.csproj",
-        "packagesPath": "C:\\Users\\ecarrizales\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\20216\\PkHexA\\obj\\",
+        "projectPath": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\PkHexA.csproj",
+        "packagesPath": "C:\\Users\\zeroxragde\\.nuget\\packages\\",
+        "outputPath": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ecarrizales\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\zeroxragde\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net10.0-android",
