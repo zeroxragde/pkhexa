@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PkHexA.Views.Editor"
+             BackgroundColor="#101010"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="20">
+
+        <!-- 🔹 TÍTULO -->
+        <Label Text="Editor de Pokémon"
+           FontSize="26"
+           FontAttributes="Bold"
+           TextColor="White"
+           HorizontalOptions="Center"
+           Margin="0,10,0,20" />
+
+        <!-- 🔹 SPRITE -->
+        <Frame Grid.Row="1"
+           HeightRequest="180"
+           WidthRequest="180"
+           BackgroundColor="#202020"
+           CornerRadius="15"
+           HorizontalOptions="Center"
+           VerticalOptions="Start">
+            <Image x:Name="imgPokemon"
+               Aspect="AspectFit"
+               Source="pk_placeholder.png" />
+        </Frame>
+
+        <!-- 🔹 BOTONES PRINCIPALES -->
+        <HorizontalStackLayout Grid.Row="2"
+                           Spacing="20"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           Margin="0,20,0,20">
+
+            <!-- Botón Editar PKM -->
+            <VerticalStackLayout HorizontalOptions="Center">
+                <ImageButton Source="edit_pkm.png"
+                         WidthRequest="70"
+                         HeightRequest="70"
+                         BackgroundColor="#202020"
+                         CornerRadius="35"
+                         Clicked="OnEditPkmClicked" />
+                <Label Text="Editar PKM"
+                   FontSize="14"
+                   TextColor="White"
+                   HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+            <!-- Botón Editar Usuario -->
+            <VerticalStackLayout HorizontalOptions="Center">
+                <ImageButton Source="edit_user.png"
+                         WidthRequest="70"
+                         HeightRequest="70"
+                         BackgroundColor="#202020"
+                         CornerRadius="35"
+                         Clicked="OnEditUserClicked" />
+                <Label Text="Editar User"
+                   FontSize="14"
+                   TextColor="White"
+                   HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+            <!-- Botón Agregar Pokémon -->
+            <VerticalStackLayout HorizontalOptions="Center">
+                <ImageButton Source="add_box.png"
+                         WidthRequest="70"
+                         HeightRequest="70"
+                         BackgroundColor="#202020"
+                         CornerRadius="35"
+                         Clicked="OnAddPokemonClicked" />
+                <Label Text="Agregar"
+                   FontSize="14"
+                   TextColor="White"
+                   HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+        </HorizontalStackLayout>
+
+        <!-- 🔹 GRID DE 5x6 -->
+        <Grid Grid.Row="3"
+          RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+          ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
+          HorizontalOptions="Center"
+          VerticalOptions="Start"
+          Margin="0,10,0,20"
+          ColumnSpacing="10"
+          RowSpacing="10">
+
+            <!-- Ejemplo de celdas vacías -->
+            <Frame Grid.Row="0" Grid.Column="0"
+               BackgroundColor="#303030"
+               CornerRadius="8"
+               HeightRequest="60"
+               WidthRequest="60"
+               HasShadow="False" />
+
+            <Frame Grid.Row="0" Grid.Column="1"
+               BackgroundColor="#303030"
+               CornerRadius="8"
+               HeightRequest="60"
+               WidthRequest="60"
+               HasShadow="False" />
+
+            <!-- puedes duplicar este patrón hasta llenar las 30 celdas (5 filas x 6 columnas) -->
+        </Grid>
+
+        <!-- 🔹 BOTÓN SALIR -->
+        <Button Grid.Row="4"
+            Text="Volver al inicio"
+            BackgroundColor="#303030"
+            TextColor="White"
+            CornerRadius="10"
+            Margin="0,10,0,0"
+            Clicked="OnExitClicked" />
+    </Grid>
+
+</ContentPage>
