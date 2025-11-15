@@ -21,6 +21,7 @@ public class MonoPackageManager_Resources {
 		"Microsoft.Maui.dll",
 		"Microsoft.Maui.Essentials.dll",
 		"Microsoft.Maui.Graphics.dll",
+		"SixLabors.ImageSharp.dll",
 		"SkiaSharp.dll",
 		"Xamarin.Android.Glide.dll",
 		"Xamarin.Android.Glide.Annotations.dll",
@@ -153,9 +154,6 @@ public class MonoPackageManager_Resources {
 		"Microsoft.VisualStudio.DesignTools.TapContract.dll",
 		"Microsoft.VisualStudio.DesignTools.XamlTapContract.dll",
 		"PKHeX.Core.dll",
-		"PKHeX.Drawing.dll",
-		"PKHeX.Drawing.Misc.dll",
-		"PKHeX.Drawing.PokeSprite.dll",
 		"_Microsoft.Android.Resource.Designer.dll",
 	};
 	public static String[] Dependencies = new String[]{

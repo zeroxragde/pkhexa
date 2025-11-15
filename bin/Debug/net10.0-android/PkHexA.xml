@@ -10,5 +10,35 @@
             Exposes the Android Resource designer assembly into the project Namespace.
             </summary>
         </member>
+        <member name="T:PKHeX.Drawing.ColorUtil">
+            <summary>
+            Utility class for manipulating <see cref="T:SkiaSharp.SKColor"/> values.
+            </summary>
+        </member>
+        <member name="M:PKHeX.Drawing.ColorUtil.ColorBaseStat(System.Int32)">
+            <summary>
+            Gets the <see cref="T:SkiaSharp.SKColor"/> for a single stat value.
+            </summary>
+        </member>
+        <member name="M:PKHeX.Drawing.ColorUtil.ColorBaseStatTotal(System.Int32)">
+            <summary>
+            Gets the <see cref="T:SkiaSharp.SKColor"/> for a BST (Base Stat Total).
+            </summary>
+        </member>
+        <member name="M:PKHeX.Drawing.ColorUtil.GetPastelRYG(System.Single)">
+            <summary>
+            Gets a pastel color from Red → Yellow → Green blended with white.
+            </summary>
+        </member>
+        <member name="M:PKHeX.Drawing.ColorUtil.Blend(SkiaSharp.SKColor,SkiaSharp.SKColor,System.Double)">
+            <summary>
+            Blends two <see cref="T:SkiaSharp.SKColor"/> values.
+            </summary>
+        </member>
+        <member name="M:PKHeX.Drawing.ColorUtil.MixComponent(System.Byte,System.Byte,System.Double)">
+            <summary>
+            Mixes two byte components with weight.
+            </summary>
+        </member>
     </members>
 </doc>

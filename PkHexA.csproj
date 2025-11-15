@@ -73,6 +73,7 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Essentials" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
+		<PackageReference Include="SixLabors.ImageSharp" Version="3.1.12" />
 		<PackageReference Include="SkiaSharp" Version="3.119.1" />
 	</ItemGroup>
 
@@ -80,21 +81,16 @@
 	  <Reference Include="PKHeX.Core">
 	    <HintPath>DLL\PKHeX.Core.dll</HintPath>
 	  </Reference>
-	  <Reference Include="PKHeX.Drawing">
-	    <HintPath>DLL\PKHeX.Drawing.dll</HintPath>
-	  </Reference>
-	  <Reference Include="PKHeX.Drawing.Misc">
-	    <HintPath>DLL\PKHeX.Drawing.Misc.dll</HintPath>
-	  </Reference>
-	  <Reference Include="PKHeX.Drawing.PokeSprite">
-	    <HintPath>DLL\PKHeX.Drawing.PokeSprite.dll</HintPath>
-	  </Reference>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\Editor.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Resources\Images\pokehex\" />
 	</ItemGroup>
 
 </Project>
