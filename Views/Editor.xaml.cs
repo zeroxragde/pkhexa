@@ -1,19 +1,22 @@
 using PKHeX.Core;
+using PkHexA.Helper;
+using PkHexA.Helper;
+using PkHexA.LibSprites.Util;
 using PkHexA.Services;
+using SkiaSharp;
 
 namespace PkHexA.Views;
 
 public partial class Editor : ContentPage
 {
-	public Editor()
-	{
-		InitializeComponent();
+    public Editor()
+    {
+        InitializeComponent();
         MostrarSpriteDePrueba();
-
     }
+
     private void MostrarSpriteDePrueba()
     {
-        // Pokémon básico (Pikachu como ejemplo)
         var pk = new PK8
         {
             Species = 25,
@@ -22,12 +25,20 @@ public partial class Editor : ContentPage
             HeldItem = 0,
             CurrentLevel = 50
         };
+        //PKHeX.Core.CommonEdits.SetShiny(pk,Shiny.Never);
+        pk.SetShiny();
 
-      
+        SKBitmap bmp = pk.Sprite();  // Tu loader ya funciona
 
- 
+        Task.Run(() =>
+        {
+            // CONVERSIÓN SEGURA
+            var safeSource = SpriteHelper.SafeImageSourceFromSKBitmap(bmp);
 
-        // Convertir y aplicar a tu Image
-      //  imgPokemon.Source = bmp.ToImageSource();
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                imgPokemon.Source = safeSource;
+            });
+        });
     }
 }

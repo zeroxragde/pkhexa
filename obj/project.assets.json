@@ -554,6 +554,58 @@
           }
         }
       },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/osx/native/libSkiaSharp.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win-arm64/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        }
+      },
       "Xamarin.Android.Glide/4.16.0.14": {
         "type": "package",
         "dependencies": {
@@ -3082,6 +3134,38 @@
         },
         "build": {
           "buildTransitive/net8.0-android34.0/SkiaSharp.NativeAssets.Android.targets": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
         }
       },
       "Xamarin.Android.Glide/4.16.0.14": {
@@ -5614,6 +5698,38 @@
           "buildTransitive/net8.0-android34.0/SkiaSharp.NativeAssets.Android.targets": {}
         }
       },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        }
+      },
       "Xamarin.Android.Glide/4.16.0.14": {
         "type": "package",
         "dependencies": {
@@ -8139,6 +8255,38 @@
         },
         "build": {
           "buildTransitive/net8.0-android34.0/SkiaSharp.NativeAssets.Android.targets": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
         }
       },
       "Xamarin.Android.Glide/4.16.0.14": {
@@ -10668,6 +10816,38 @@
           "buildTransitive/net8.0-android34.0/SkiaSharp.NativeAssets.Android.targets": {}
         }
       },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        }
+      },
       "Xamarin.Android.Glide/4.16.0.14": {
         "type": "package",
         "dependencies": {
@@ -13195,6 +13375,41 @@
           "buildTransitive/net8.0-android34.0/SkiaSharp.NativeAssets.Android.targets": {}
         }
       },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        },
+        "native": {
+          "runtimes/win-x64/native/libSkiaSharp.dll": {}
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        }
+      },
       "Xamarin.Android.Glide/4.16.0.14": {
         "type": "package",
         "dependencies": {
@@ -15718,6 +15933,58 @@
             "rid": "iossimulator"
           }
         }
+      },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/osx/native/libSkiaSharp.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win-arm64/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        }
       }
     },
     "net10.0-ios26.0/android-arm64": {
@@ -16225,6 +16492,38 @@
         "build": {
           "buildTransitive/net8.0-ios17.0/SkiaSharp.NativeAssets.iOS.targets": {}
         }
+      },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        }
       }
     },
     "net10.0-ios26.0/android-x64": {
@@ -16731,6 +17030,38 @@
         },
         "build": {
           "buildTransitive/net8.0-ios17.0/SkiaSharp.NativeAssets.iOS.targets": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
         }
       }
     },
@@ -17244,6 +17575,38 @@
         "build": {
           "buildTransitive/net8.0-ios17.0/SkiaSharp.NativeAssets.iOS.targets": {}
         }
+      },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        }
       }
     },
     "net10.0-ios26.0/maccatalyst-x64": {
@@ -17756,6 +18119,38 @@
         "build": {
           "buildTransitive/net8.0-ios17.0/SkiaSharp.NativeAssets.iOS.targets": {}
         }
+      },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        }
       }
     },
     "net10.0-ios26.0/win-x64": {
@@ -18262,6 +18657,41 @@
         },
         "build": {
           "buildTransitive/net8.0-ios17.0/SkiaSharp.NativeAssets.iOS.targets": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        },
+        "native": {
+          "runtimes/win-x64/native/libSkiaSharp.dll": {}
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
         }
       }
     },
@@ -18776,6 +19206,58 @@
             "rid": "maccatalyst"
           }
         }
+      },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/osx/native/libSkiaSharp.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win-arm64/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        }
       }
     },
     "net10.0-maccatalyst26.0/android-arm64": {
@@ -19282,6 +19764,38 @@
         },
         "build": {
           "buildTransitive/net8.0-maccatalyst17.0/SkiaSharp.NativeAssets.MacCatalyst.targets": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
         }
       }
     },
@@ -19790,6 +20304,38 @@
         "build": {
           "buildTransitive/net8.0-maccatalyst17.0/SkiaSharp.NativeAssets.MacCatalyst.targets": {}
         }
+      },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        }
       }
     },
     "net10.0-maccatalyst26.0/iossimulator-x64": {
@@ -20296,6 +20842,38 @@
         },
         "build": {
           "buildTransitive/net8.0-maccatalyst17.0/SkiaSharp.NativeAssets.MacCatalyst.targets": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
         }
       }
     },
@@ -20807,6 +21385,38 @@
         "build": {
           "buildTransitive/net8.0-maccatalyst17.0/SkiaSharp.NativeAssets.MacCatalyst.targets": {}
         }
+      },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        }
       }
     },
     "net10.0-maccatalyst26.0/win-x64": {
@@ -21313,6 +21923,41 @@
         },
         "build": {
           "buildTransitive/net8.0-maccatalyst17.0/SkiaSharp.NativeAssets.MacCatalyst.targets": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        },
+        "native": {
+          "runtimes/win-x64/native/libSkiaSharp.dll": {}
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
         }
       }
     },
@@ -22061,6 +22706,21 @@
           }
         }
       },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/osx/native/libSkiaSharp.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          }
+        }
+      },
       "SkiaSharp.NativeAssets.Win32/3.119.1": {
         "type": "package",
         "compile": {
@@ -22082,6 +22742,20 @@
             "assetType": "native",
             "rid": "win-x86"
           }
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
         }
       }
     },
@@ -22768,6 +23442,15 @@
           }
         }
       },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
       "SkiaSharp.NativeAssets.Win32/3.119.1": {
         "type": "package",
         "compile": {
@@ -22775,6 +23458,20 @@
         },
         "runtime": {
           "lib/net8.0-windows10.0.19041/_._": {}
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
         }
       }
     },
@@ -23461,6 +24158,15 @@
           }
         }
       },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
       "SkiaSharp.NativeAssets.Win32/3.119.1": {
         "type": "package",
         "compile": {
@@ -23468,6 +24174,20 @@
         },
         "runtime": {
           "lib/net8.0-windows10.0.19041/_._": {}
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
         }
       }
     },
@@ -24154,6 +24874,15 @@
           }
         }
       },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
       "SkiaSharp.NativeAssets.Win32/3.119.1": {
         "type": "package",
         "compile": {
@@ -24161,6 +24890,20 @@
         },
         "runtime": {
           "lib/net8.0-windows10.0.19041/_._": {}
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
         }
       }
     },
@@ -24847,6 +25590,15 @@
           }
         }
       },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
       "SkiaSharp.NativeAssets.Win32/3.119.1": {
         "type": "package",
         "compile": {
@@ -24854,6 +25606,20 @@
         },
         "runtime": {
           "lib/net8.0-windows10.0.19041/_._": {}
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
         }
       }
     },
@@ -25550,6 +26316,15 @@
           }
         }
       },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
       "SkiaSharp.NativeAssets.Win32/3.119.1": {
         "type": "package",
         "compile": {
@@ -25560,6 +26335,20 @@
         },
         "native": {
           "runtimes/win-x64/native/libSkiaSharp.dll": {}
+        }
+      },
+      "SkiaSharp.QrCode/0.10.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "compile": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/SkiaSharp.QrCode.dll": {}
         }
       }
     }
@@ -27794,6 +28583,31 @@
         "skiasharp.nativeassets.maccatalyst.nuspec"
       ]
     },
+    "SkiaSharp.NativeAssets.macOS/3.119.1": {
+      "sha512": "6hR3BdLhApjDxR1bFrJ7/lMydPfI01s3K+3WjIXFUlfC0MFCFCwRzv+JtzIkW9bDXs7XUVQS+6EVf0uzCasnGQ==",
+      "type": "package",
+      "path": "skiasharp.nativeassets.macos/3.119.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/net462/SkiaSharp.NativeAssets.macOS.targets",
+        "buildTransitive/net462/SkiaSharp.NativeAssets.macOS.targets",
+        "buildTransitive/net8.0-macos14.0/SkiaSharp.NativeAssets.macOS.targets",
+        "icon.png",
+        "lib/net462/_._",
+        "lib/net6.0/_._",
+        "lib/net8.0-macos14.0/_._",
+        "lib/net8.0/_._",
+        "lib/netstandard2.0/_._",
+        "lib/netstandard2.1/_._",
+        "runtimes/osx/native/libSkiaSharp.dylib",
+        "skiasharp.nativeassets.macos.3.119.1.nupkg.sha512",
+        "skiasharp.nativeassets.macos.nuspec"
+      ]
+    },
     "SkiaSharp.NativeAssets.Win32/3.119.1": {
       "sha512": "8C4GSXVJqSr0y3Tyyv5jz6MJSTVUyYkMjeKrzK+VyZPGLo89MNoUEclVuYahzOCDdtbfXrd2HtxXfDuvoSXrUw==",
       "type": "package",
@@ -27819,6 +28633,22 @@
         "runtimes/win-x86/native/libSkiaSharp.dll",
         "skiasharp.nativeassets.win32.3.119.1.nupkg.sha512",
         "skiasharp.nativeassets.win32.nuspec"
+      ]
+    },
+    "SkiaSharp.QrCode/0.10.0": {
+      "sha512": "fppbf2PmmL5f1758amq+T+XptJ4wXZ9oge2363/9mTSLzDf0qWfQPE4RXCrBMWANiGpUiNMAbc4WgoCz89Y1SA==",
+      "type": "package",
+      "path": "skiasharp.qrcode/0.10.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net10.0/SkiaSharp.QrCode.dll",
+        "lib/net8.0/SkiaSharp.QrCode.dll",
+        "lib/netstandard2.0/SkiaSharp.QrCode.dll",
+        "lib/netstandard2.1/SkiaSharp.QrCode.dll",
+        "skiasharp.qrcode.0.10.0.nupkg.sha512",
+        "skiasharp.qrcode.nuspec"
       ]
     },
     "Xamarin.Android.Glide/4.16.0.14": {
@@ -30207,7 +31037,8 @@
       "Microsoft.Maui.Essentials >= 10.0.0",
       "Microsoft.NET.ILLink.Tasks >= 10.0.0",
       "SixLabors.ImageSharp >= 3.1.12",
-      "SkiaSharp >= 3.119.1"
+      "SkiaSharp >= 3.119.1",
+      "SkiaSharp.QrCode >= 0.10.0"
     ],
     "net10.0-ios26.0": [
       "Microsoft.Extensions.Logging.Debug >= 10.0.0",
@@ -30215,7 +31046,8 @@
       "Microsoft.Maui.Essentials >= 10.0.0",
       "Microsoft.NET.ILLink.Tasks >= 10.0.0",
       "SixLabors.ImageSharp >= 3.1.12",
-      "SkiaSharp >= 3.119.1"
+      "SkiaSharp >= 3.119.1",
+      "SkiaSharp.QrCode >= 0.10.0"
     ],
     "net10.0-maccatalyst26.0": [
       "Microsoft.Extensions.Logging.Debug >= 10.0.0",
@@ -30223,40 +31055,39 @@
       "Microsoft.Maui.Essentials >= 10.0.0",
       "Microsoft.NET.ILLink.Tasks >= 10.0.0",
       "SixLabors.ImageSharp >= 3.1.12",
-      "SkiaSharp >= 3.119.1"
+      "SkiaSharp >= 3.119.1",
+      "SkiaSharp.QrCode >= 0.10.0"
     ],
     "net10.0-windows10.0.19041": [
       "Microsoft.Extensions.Logging.Debug >= 10.0.0",
       "Microsoft.Maui.Controls >= 10.0.0",
       "Microsoft.Maui.Essentials >= 10.0.0",
       "SixLabors.ImageSharp >= 3.1.12",
-      "SkiaSharp >= 3.119.1"
+      "SkiaSharp >= 3.119.1",
+      "SkiaSharp.QrCode >= 0.10.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ecarrizales\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\zeroxragde\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\PkHexA.csproj",
+      "projectUniqueName": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\PkHexA.csproj",
       "projectName": "PkHexA",
-      "projectPath": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\PkHexA.csproj",
-      "packagesPath": "C:\\Users\\ecarrizales\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\obj\\",
+      "projectPath": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\PkHexA.csproj",
+      "packagesPath": "C:\\Users\\zeroxragde\\.nuget\\packages\\",
+      "outputPath": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\ecarrizales\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\zeroxragde\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net10.0-android",
@@ -30328,6 +31159,10 @@
           "SkiaSharp": {
             "target": "Package",
             "version": "[3.119.1, )"
+          },
+          "SkiaSharp.QrCode": {
+            "target": "Package",
+            "version": "[0.10.0, )"
           }
         },
         "imports": [
@@ -30656,6 +31491,10 @@
           "SkiaSharp": {
             "target": "Package",
             "version": "[3.119.1, )"
+          },
+          "SkiaSharp.QrCode": {
+            "target": "Package",
+            "version": "[0.10.0, )"
           }
         },
         "imports": [
@@ -30984,6 +31823,10 @@
           "SkiaSharp": {
             "target": "Package",
             "version": "[3.119.1, )"
+          },
+          "SkiaSharp.QrCode": {
+            "target": "Package",
+            "version": "[0.10.0, )"
           }
         },
         "imports": [
@@ -31307,6 +32150,10 @@
           "SkiaSharp": {
             "target": "Package",
             "version": "[3.119.1, )"
+          },
+          "SkiaSharp.QrCode": {
+            "target": "Package",
+            "version": "[0.10.0, )"
           }
         },
         "imports": [

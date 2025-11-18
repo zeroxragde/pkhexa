@@ -23,6 +23,7 @@ public class MonoPackageManager_Resources {
 		"Microsoft.Maui.Graphics.dll",
 		"SixLabors.ImageSharp.dll",
 		"SkiaSharp.dll",
+		"SkiaSharp.QrCode.dll",
 		"Xamarin.Android.Glide.dll",
 		"Xamarin.Android.Glide.Annotations.dll",
 		"Xamarin.Android.Glide.DiskLruCache.dll",

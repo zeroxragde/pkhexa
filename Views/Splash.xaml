@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PkHexA.Views.Splash" 
+             BackgroundColor="#111"
+             Title="Splash">
+
+
+
+
+
+
+
+    <Grid RowDefinitions="*,Auto,*">
+
+        <!-- Logo centrado -->
+        <Image 
+            Grid.Row="1"
+            Source="splash_logo.png"
+            HeightRequest="160"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+
+        <!-- Barra de progreso abajo -->
+        <StackLayout 
+            Grid.Row="2"
+            Padding="20"
+            Spacing="10"
+            HorizontalOptions="Fill"
+            VerticalOptions="End">
+
+            <Label 
+                Text="Preparando recursos..."
+                HorizontalOptions="Center"
+                TextColor="White"
+                FontSize="16"
+                Margin="0,0,0,8"/>
+
+            <ProgressBar 
+                x:Name="LoadingBar"
+                Progress="0"
+                HeightRequest="6"
+                HorizontalOptions="FillAndExpand"/>
+
+        </StackLayout>
+
+    </Grid>
+
+
+
+
+
+
+
+
+
+</ContentPage>
