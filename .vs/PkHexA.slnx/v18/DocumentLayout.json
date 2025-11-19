@@ -1,17 +1,17 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\",
+  "WorkspaceRootPath": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|e:\\desarrollo\\git\\otros\\pkhexa\\views\\pkmeditor.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\hex\\pkhexa\\views\\pkmeditor.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:views\\pkmeditor.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|e:\\desarrollo\\git\\otros\\pkhexa\\views\\editor.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\hex\\pkhexa\\views\\editor.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:views\\editor.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|e:\\desarrollo\\git\\otros\\pkhexa\\views\\editor.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\hex\\pkhexa\\views\\editor.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:views\\editor.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
@@ -28,11 +28,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "PkmEditor.xaml",
-              "DocumentMoniker": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\PkmEditor.xaml",
+              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\Views\\PkmEditor.xaml",
               "RelativeDocumentMoniker": "Views\\PkmEditor.xaml",
-              "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\PkmEditor.xaml",
+              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\Views\\PkmEditor.xaml",
               "RelativeToolTip": "Views\\PkmEditor.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAQAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-11-18T06:01:20.357Z",
               "EditorCaption": ""
@@ -41,11 +41,11 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Editor.xaml",
-              "DocumentMoniker": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\Editor.xaml",
+              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\Views\\Editor.xaml",
               "RelativeDocumentMoniker": "Views\\Editor.xaml",
-              "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\Editor.xaml",
+              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\Views\\Editor.xaml",
               "RelativeToolTip": "Views\\Editor.xaml",
-              "ViewState": "AgIAAD8AAAAAAAAAAADgv7EAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAADgvykAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-11-17T17:04:49.192Z",
               "EditorCaption": ""
@@ -54,11 +54,11 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Editor.xaml.cs",
-              "DocumentMoniker": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\Editor.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\Views\\Editor.xaml.cs",
               "RelativeDocumentMoniker": "Views\\Editor.xaml.cs",
-              "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\Editor.xaml.cs",
+              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\Views\\Editor.xaml.cs",
               "RelativeToolTip": "Views\\Editor.xaml.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAABwAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAACUAAAAAAAAAAAAqwDQAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-17T15:12:05.007Z",
               "EditorCaption": ""

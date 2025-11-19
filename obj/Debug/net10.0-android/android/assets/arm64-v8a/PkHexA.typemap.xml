@@ -1,0 +1,10 @@
+<api type="debug" assembly-name="PkHexA" mvid="26f39b52332348dfb3422953cd0f4977">
+  <java-to-managed>
+    <entry java-name="crc64eb7b767bd83dd265/MainActivity" managed-name="PkHexA.MainActivity, PkHexA" managed-type-token-id="33554444" />
+    <entry java-name="crc64eb7b767bd83dd265/MainApplication" managed-name="PkHexA.MainApplication, PkHexA" managed-type-token-id="33554445" />
+  </java-to-managed>
+  <managed-to-java>
+    <entry java-name="crc64eb7b767bd83dd265/MainActivity" managed-name="PkHexA.MainActivity, PkHexA" managed-type-token-id="33554444" />
+    <entry java-name="crc64eb7b767bd83dd265/MainApplication" managed-name="PkHexA.MainApplication, PkHexA" managed-type-token-id="33554445" />
+  </managed-to-java>
+</api>

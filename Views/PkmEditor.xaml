@@ -3,10 +3,215 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PkHexA.Views.PkmEditor"
              Title="PkmEditor">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+
+
+
+    <Grid RowDefinitions="Auto,Auto,*" Padding="15">
+
+        <!-- 🔵 TABS ARRIBA -->
+        <ScrollView Orientation="Horizontal"
+                    Grid.Row="0"
+                    HorizontalScrollBarVisibility="Never">
+
+            <HorizontalStackLayout Spacing="10" Padding="0,5">
+
+                <Button Text="Inicio"
+                        Style="{StaticResource TabButtonSelectedStyle}"
+                        Clicked="OnTabClicked"/>
+
+                <Button Text="Encuentro"
+                        Style="{StaticResource TabButtonStyle}"
+                        Clicked="OnTabClicked"/>
+
+                <Button Text="Estad."
+                        Style="{StaticResource TabButtonStyle}"
+                        Clicked="OnTabClicked"/>
+
+                <Button Text="Movimiento"
+                        Style="{StaticResource TabButtonStyle}"
+                        Clicked="OnTabClicked"/>
+
+                <Button Text="Cosmética"
+                        Style="{StaticResource TabButtonStyle}"
+                        Clicked="OnTabClicked"/>
+
+                <Button Text="EO/Misc"
+                        Style="{StaticResource TabButtonStyle}"
+                        Clicked="OnTabClicked"/>
+
+            </HorizontalStackLayout>
+        </ScrollView>
+
+        <!-- 🔵 TÍTULO -->
+        <Label Grid.Row="1"
+               Text="Editor de Pokémon"
+               HorizontalOptions="Center"
+               FontSize="26"
+               FontAttributes="Bold"
+               Margin="0,15"
+               TextColor="White"/>
+
+        <!-- 🔵 CONTENIDO VARIABLE -->
+        <ScrollView Grid.Row="2">
+            <ContentView x:Name="TabContent">
+
+                <!-- TAB INICIO -->
+                <VerticalStackLayout x:Name="TabInicio"
+                                     Spacing="12"
+                                     Padding="10">
+
+                    <HorizontalStackLayout Spacing="8">
+
+                            <Label Text="PID"
+                            TextColor="White"
+                            VerticalOptions="Center"
+                            WidthRequest="40" />
+
+                            <Entry x:Name="txtPID"
+                            WidthRequest="140"
+                            BackgroundColor="#202020"
+                            TextColor="White"
+                            FontSize="14" />
+
+                            <Button Text="Generar"
+                            WidthRequest="90"
+                            HeightRequest="40"
+                            CornerRadius="8"
+                            BackgroundColor="#4040FF"
+                            TextColor="White"
+                            Clicked="OnGeneratePID" />
+
+                        <ImageButton Source="shiny_btn.png"
+                            WidthRequest="40"
+                            HeightRequest="40"
+                            BackgroundColor="#202020"
+                            CornerRadius="20"
+                            Padding="4"
+                            Clicked="OnGenerateShinyPID" />
+
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Género:" TextColor="White" WidthRequest="60"/>
+                        <Picker x:Name="GenderPicker"
+                                TextColor="White"
+                                BackgroundColor="#303030">
+                            <Picker.Items>
+                                <x:String>♂ Macho</x:String>
+                                <x:String>♀ Hembra</x:String>
+                                <x:String>Sin género</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Especie:" TextColor="White" WidthRequest="60"/>
+                        <Picker x:Name="SpeciesPicker"
+                                TextColor="White"
+                                BackgroundColor="#303030"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Mote:" TextColor="White" WidthRequest="60"/>
+                        <Entry x:Name="NicknameEntry"
+                               TextColor="White"
+                               BackgroundColor="#303030"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="EXP:" TextColor="White" WidthRequest="60"/>
+                        <Entry x:Name="ExpEntry"
+                               Keyboard="Numeric"
+                               WidthRequest="80"
+                               TextColor="White"
+                               BackgroundColor="#303030"/>
+                        <Label Text="Nivel:" TextColor="White"/>
+                        <Entry x:Name="LevelEntry"
+                               Keyboard="Numeric"
+                               WidthRequest="60"
+                               TextColor="White"
+                               BackgroundColor="#303030"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Naturaleza:" TextColor="White" WidthRequest="100"/>
+                        <Picker x:Name="NaturePicker"
+                                TextColor="White"
+                                BackgroundColor="#303030"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Estado Nat.:" TextColor="White" WidthRequest="100"/>
+                        <Picker x:Name="StatNaturePicker"
+                                TextColor="White"
+                                BackgroundColor="#303030"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Forma:" TextColor="White" WidthRequest="60"/>
+                        <Picker x:Name="FormPicker"
+                                TextColor="White"
+                                BackgroundColor="#303030"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Habilidad:" TextColor="White" WidthRequest="80"/>
+                        <Picker x:Name="AbilityPicker"
+                                TextColor="White"
+                                BackgroundColor="#303030"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Felicidad:" TextColor="White" WidthRequest="80"/>
+                        <Entry x:Name="FriendshipEntry"
+                               Keyboard="Numeric"
+                               WidthRequest="60"
+                               TextColor="White"
+                               BackgroundColor="#303030"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Idioma:" TextColor="White" WidthRequest="80"/>
+                        <Picker x:Name="LanguagePicker"
+                                TextColor="White"
+                                BackgroundColor="#303030">
+                            <Picker.Items>
+                                <x:String>ENG</x:String>
+                                <x:String>SPA</x:String>
+                                <x:String>FRE</x:String>
+                                <x:String>GER</x:String>
+                                <x:String>JPN</x:String>
+                                <x:String>KOR</x:String>
+                                <x:String>CHN</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="20">
+                        <CheckBox x:Name="EggCheck" Color="White"/>
+                        <Label Text="Huevo" TextColor="White"/>
+
+                        <CheckBox x:Name="InfectedCheck" Color="White"/>
+                        <Label Text="Infectado" TextColor="White"/>
+
+                        <CheckBox x:Name="CuredCheck" Color="White"/>
+                        <Label Text="Curado" TextColor="White"/>
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+
+            </ContentView>
+        </ScrollView>
+
+    </Grid>
+
+
+
+
+
+
+
+
+
 </ContentPage>

@@ -3191,11 +3191,12 @@ int drawable notification_tile_bg 0x7f0700e6
 int drawable notify_panel_notification_icon_bg 0x7f0700e7
 int drawable nuevo_sav 0x7f0700e8
 int drawable open_file 0x7f0700e9
-int drawable splash 0x7f0700ea
-int drawable splash_logo 0x7f0700eb
-int drawable test_level_drawable 0x7f0700ec
-int drawable tooltip_frame_dark 0x7f0700ed
-int drawable tooltip_frame_light 0x7f0700ee
+int drawable shiny_btn 0x7f0700ea
+int drawable splash 0x7f0700eb
+int drawable splash_logo 0x7f0700ec
+int drawable test_level_drawable 0x7f0700ed
+int drawable tooltip_frame_dark 0x7f0700ee
+int drawable tooltip_frame_light 0x7f0700ef
 int id ALT 0x7f080000
 int id BOTTOM_END 0x7f080001
 int id BOTTOM_START 0x7f080002

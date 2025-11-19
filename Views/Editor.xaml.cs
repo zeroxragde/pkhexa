@@ -41,4 +41,19 @@ public partial class Editor : ContentPage
             });
         });
     }
+
+    private void OnExitClicked(object sender, EventArgs e)
+    {
+
+    }
+
+    private async void OnEditPkmClicked(object sender, EventArgs e)
+    {
+        await Application.Current.MainPage.Navigation.PushModalAsync(
+                new NavigationPage(new Views.PkmEditor())
+                {
+                    BarBackgroundColor = Colors.Transparent,
+                    BarTextColor = Colors.White
+                });
+    }
 }
