@@ -63,7 +63,7 @@
                              BackgroundColor="Transparent"
                              Clicked="OnSettingsClicked" />
 
-                <Label Text="Configuración"
+                <Label Text="Configuración2"
                        FontSize="18"
                        FontAttributes="Bold"
                        HorizontalOptions="Center"
