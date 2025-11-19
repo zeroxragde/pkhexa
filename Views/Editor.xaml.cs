@@ -13,6 +13,7 @@ public partial class Editor : ContentPage
     {
         InitializeComponent();
         MostrarSpriteDePrueba();
+
     }
 
     private void MostrarSpriteDePrueba()
@@ -26,7 +27,7 @@ public partial class Editor : ContentPage
             CurrentLevel = 50
         };
         //PKHeX.Core.CommonEdits.SetShiny(pk,Shiny.Never);
-        pk.SetShiny();
+       
 
         SKBitmap bmp = pk.Sprite();  // Tu loader ya funciona
 

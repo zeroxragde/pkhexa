@@ -9,6 +9,7 @@
     <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" Padding="20">
 
         <Label Text="Editor de Pokémon"
+               x:Name="lblTitlePkm"
                FontSize="28"
                FontAttributes="Bold"
                TextColor="White"

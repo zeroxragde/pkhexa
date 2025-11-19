@@ -1,34 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\",
+  "WorkspaceRootPath": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|e:\\desarrollo\\git\\otros\\pkhexa\\views\\splash.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\hex\\pkhexa\\libsprites\\util\\spritebuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:libsprites\\util\\spritebuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\hex\\pkhexa\\libsprites\\util\\spriteimgloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:libsprites\\util\\spriteimgloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\hex\\pkhexa\\services\\spritedatainitializerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:services\\spritedatainitializerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\hex\\pkhexa\\views\\splash.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:views\\splash.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|e:\\desarrollo\\git\\otros\\pkhexa\\views\\editor.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:views\\editor.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|e:\\desarrollo\\git\\otros\\pkhexa\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|e:\\desarrollo\\git\\otros\\pkhexa\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|e:\\desarrollo\\git\\otros\\pkhexa\\views\\editor.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:views\\editor.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|e:\\desarrollo\\git\\otros\\pkhexa\\services\\globalservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:services\\globalservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|e:\\desarrollo\\git\\otros\\pkhexa\\views\\pkmeditor.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:views\\pkmeditor.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\hex\\pkhexa\\views\\splash.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:views\\splash.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,97 +30,72 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Splash.xaml",
-              "DocumentMoniker": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\Splash.xaml",
-              "RelativeDocumentMoniker": "Views\\Splash.xaml",
-              "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\Splash.xaml",
-              "RelativeToolTip": "Views\\Splash.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-19T05:41:49.282Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GlobalService.cs",
-              "DocumentMoniker": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Services\\GlobalService.cs",
-              "RelativeDocumentMoniker": "Services\\GlobalService.cs",
-              "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Services\\GlobalService.cs",
-              "RelativeToolTip": "Services\\GlobalService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T05:17:45.82Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MainPage.xaml.cs",
-              "DocumentMoniker": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\MainPage.xaml.cs",
-              "RelativeDocumentMoniker": "MainPage.xaml.cs",
-              "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\MainPage.xaml.cs",
-              "RelativeToolTip": "MainPage.xaml.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T05:04:46.889Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainPage.xaml",
-              "DocumentMoniker": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\MainPage.xaml",
-              "RelativeDocumentMoniker": "MainPage.xaml",
-              "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\MainPage.xaml",
-              "RelativeToolTip": "MainPage.xaml",
-              "ViewState": "AgIAADMAAAAAAAAAAAAUwEoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-19T05:00:29.958Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PkmEditor.xaml",
-              "DocumentMoniker": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\PkmEditor.xaml",
-              "RelativeDocumentMoniker": "Views\\PkmEditor.xaml",
-              "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\PkmEditor.xaml",
-              "RelativeToolTip": "Views\\PkmEditor.xaml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAQAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-18T06:01:20.357Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Editor.xaml",
-              "DocumentMoniker": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\Editor.xaml",
-              "RelativeDocumentMoniker": "Views\\Editor.xaml",
-              "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\Editor.xaml",
-              "RelativeToolTip": "Views\\Editor.xaml",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAowGoAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-17T17:04:49.192Z",
+              "Title": "SpriteImgLoader.cs",
+              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\LibSprites\\Util\\SpriteImgLoader.cs",
+              "RelativeDocumentMoniker": "LibSprites\\Util\\SpriteImgLoader.cs",
+              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\LibSprites\\Util\\SpriteImgLoader.cs",
+              "RelativeToolTip": "LibSprites\\Util\\SpriteImgLoader.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAIwD0AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T16:37:16.468Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SpriteBuilder.cs",
+              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\LibSprites\\Util\\SpriteBuilder.cs",
+              "RelativeDocumentMoniker": "LibSprites\\Util\\SpriteBuilder.cs",
+              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\LibSprites\\Util\\SpriteBuilder.cs",
+              "RelativeToolTip": "LibSprites\\Util\\SpriteBuilder.cs",
+              "ViewState": "AgIAAMwAAAAAAAAAAAAYwNcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T17:47:40.442Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Editor.xaml.cs",
-              "DocumentMoniker": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\Editor.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\Editor.xaml.cs",
-              "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\Editor.xaml.cs",
-              "RelativeToolTip": "Views\\Editor.xaml.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAqwDQAAAA2AAAAAAAAAA==",
+              "Title": "Splash.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\Views\\Splash.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\Splash.xaml.cs",
+              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\Views\\Splash.xaml.cs",
+              "RelativeToolTip": "Views\\Splash.xaml.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T15:12:05.007Z",
+              "WhenOpened": "2025-11-19T17:42:14.357Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Splash.xaml",
+              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\Views\\Splash.xaml",
+              "RelativeDocumentMoniker": "Views\\Splash.xaml",
+              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\Views\\Splash.xaml",
+              "RelativeToolTip": "Views\\Splash.xaml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACYAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-19T17:42:12.64Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SpriteDataInitializerService.cs",
+              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\Services\\SpriteDataInitializerService.cs",
+              "RelativeDocumentMoniker": "Services\\SpriteDataInitializerService.cs",
+              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\Services\\SpriteDataInitializerService.cs",
+              "RelativeToolTip": "Services\\SpriteDataInitializerService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAowD0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T17:34:21.721Z",
               "EditorCaption": ""
             }
           ]

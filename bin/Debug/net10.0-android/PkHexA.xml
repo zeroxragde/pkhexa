@@ -421,16 +421,6 @@
             <param name="shiny">Is it shiny</param>
             <param name="context">Context the sprite is for</param>
         </member>
-        <member name="M:PkHexA.LibSprites.Util.SpriteImgLoader.LoadSprite(System.String)">
-            <summary>
-            Busca filename.png en todas las subcarpetas del ZIP descomprimido.
-            </summary>
-        </member>
-        <member name="M:PkHexA.LibSprites.Util.SpriteImgLoader.LoadBitmapFromResource(System.String)">
-            <summary>
-            Intenta primero en 'sprites/', luego usa LoadSprite.
-            </summary>
-        </member>
         <member name="T:PkHexA.LibSprites.Util.SpriteName">
             <summary>
             Logic for retrieving the resource names of Pokémon and related sprites.

@@ -16,7 +16,7 @@
         <!-- Logo centrado -->
         <Image 
             Grid.Row="1"
-            Source="splash_art.png.png"
+            Source="splash_art.png"
             HeightRequest="160"
             HorizontalOptions="Center"
             VerticalOptions="Center"/>
@@ -39,7 +39,7 @@
             <ProgressBar 
                 x:Name="LoadingBar"
                 Progress="0"
-                HeightRequest="6"
+                HeightRequest="4"
                 HorizontalOptions="FillAndExpand"/>
 
         </StackLayout>

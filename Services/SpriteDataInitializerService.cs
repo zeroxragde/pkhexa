@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO.Compression;
-using System.Text;
 
 namespace PkHexA.Services
 {
@@ -17,19 +15,30 @@ namespace PkHexA.Services
         {
             try
             {
-                if (Directory.Exists(LocalSpritesPath))
+                if (Directory.Exists(Path.Combine(LocalSpritesPath, "sprites")))
                     return;
 
                 Directory.CreateDirectory(LocalSpritesPath);
 
                 string tempZip = Path.Combine(FileSystem.CacheDirectory, "sprites.zip");
-
                 await DownloadZipAsync(ZipUrl, tempZip);
 
-                ZipFile.ExtractToDirectory(tempZip, LocalSpritesPath, overwriteFiles: true);
+                using var zip = ZipFile.OpenRead(tempZip);
 
-                if (File.Exists(tempZip))
-                    File.Delete(tempZip);
+                foreach (var entry in zip.Entries)
+                {
+                    if (string.IsNullOrWhiteSpace(entry.Name))
+                        continue;
+
+                    string fixedPath = entry.FullName.Replace("pokehex/", "");
+
+                    string finalPath = Path.Combine(LocalSpritesPath, fixedPath);
+                    Directory.CreateDirectory(Path.GetDirectoryName(finalPath)!);
+
+                    entry.ExtractToFile(finalPath, overwrite: true);
+                }
+
+                File.Delete(tempZip);
             }
             catch (Exception ex)
             {
