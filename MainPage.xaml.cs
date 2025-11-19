@@ -14,11 +14,13 @@ namespace PkHexA
         }
         private void UpdateLanguageUI()
         {
-            LblNew.Text = LanguageService.Get("btnNew");
+            //LblNew.Text = LanguageService.Get("btnNew");
             LblOpen.Text = LanguageService.Get("btnOpen");
             //  lblCreator.Text = LanguageService.Get("creatorText");
         }
-        private async void OnNewFileClicked(object sender, EventArgs e)
+
+
+       /* private async void OnNewFileClicked(object sender, EventArgs e)
         {
             //await DisplayAlert("Nuevo", "Aquí podrías crear un nuevo archivo de guardado.", "OK");
             // Abre la página fuera del Shell
@@ -28,7 +30,7 @@ namespace PkHexA
                     BarBackgroundColor = Colors.Transparent,
                     BarTextColor = Colors.White
                 });
-        }
+        }*/
 
         private async void OnOpenFileClicked(object sender, EventArgs e)
         {
@@ -69,6 +71,12 @@ namespace PkHexA
                         var gen = saveFile.Generation;
                         var game = saveFile.GetType().Name.Replace("SAV", "");
                         res = $"Detectado: Generación {gen} - {game}";
+                        await Application.Current.MainPage.Navigation.PushModalAsync(
+                                new NavigationPage(new Views.Editor())
+                                {
+                                    BarBackgroundColor = Colors.Transparent,
+                                    BarTextColor = Colors.White
+                                });
                     }
                 }
 
@@ -76,8 +84,7 @@ namespace PkHexA
             }
             catch (Exception ex)
             {
-                await GlobalService.ShowAlertAsync("","");
-                await DisplayAlert("Error", ex.Message, "Cerrar");
+                await GlobalService.ShowAlertAsync(ex.Message);
             }
             // await DisplayAlert("Open", "Abrir pantalla de opciones o ajustes", "OK");
         }

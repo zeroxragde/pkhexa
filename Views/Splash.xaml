@@ -16,7 +16,7 @@
         <!-- Logo centrado -->
         <Image 
             Grid.Row="1"
-            Source="splash_logo.png"
+            Source="splash_art.png.png"
             HeightRequest="160"
             HorizontalOptions="Center"
             VerticalOptions="Center"/>

@@ -4917,3 +4917,6 @@ C:\Users\ecarrizales\edgar\app\GIT\Hex\pkhexa\obj\Debug\net10.0-android\android\
 C:\Users\ecarrizales\edgar\app\GIT\Hex\pkhexa\obj\Debug\net10.0-android\android\assets\arm64-v8a\SkiaSharp.QrCode.typemap.xml
 C:\Users\ecarrizales\edgar\app\GIT\Hex\pkhexa\obj\Debug\net10.0-android\android\src\com\zerox\pkhexa\R.java
 C:\Users\ecarrizales\edgar\app\GIT\Hex\pkhexa\obj\Debug\net10.0-android\resizetizer\r\drawable\shiny_btn.png
+E:\DESARROLLO\GIT\otros\pkhexa\obj\Debug\net10.0-android\resizetizer\r\drawable\shiny_btn.png
+E:\DESARROLLO\GIT\otros\pkhexa\obj\Debug\net10.0-android\resizetizer\r\drawable\btn_config.png
+E:\DESARROLLO\GIT\otros\pkhexa\obj\Debug\net10.0-android\resizetizer\r\drawable\splash_art.png

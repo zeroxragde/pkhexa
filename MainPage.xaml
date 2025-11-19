@@ -1,12 +1,13 @@
-﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PkHexA.MainPage"
              BackgroundColor="#101010">
 
-    <!-- Reparto: logo arriba, menú al centro-alto, footer abajo -->
-    <Grid RowDefinitions="Auto,*,Auto" Padding="0,24,0,20">
+    <Grid RowDefinitions="Auto,*,Auto"
+          Padding="0,24,0,20">
 
-        <!-- Logo -->
+        <!-- LOGO -->
         <Image Grid.Row="0"
                Source="logo_final.png"
                WidthRequest="220"
@@ -15,75 +16,64 @@
                HorizontalOptions="Center"
                VerticalOptions="Center" />
 
-        <!-- Menú (Grid 2 columnas; agrega más y solo crece en filas) -->
-        <Grid Grid.Row="1"
-              HorizontalOptions="Center"
-              VerticalOptions="Start"
-              Margin="0,10,0,0"
-              ColumnDefinitions="Auto,40,Auto"
-              RowDefinitions="Auto,24,Auto">
+        <!-- MENÚ CENTRADO -->
+        <VerticalStackLayout Grid.Row="1"
+                             Spacing="40"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center">
 
-            <!-- Abrir -->
-            <VerticalStackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="Center">
-                <ImageButton Source="open_file.png"
-                             WidthRequest="120" HeightRequest="120"
+            <!-- BOTÓN ABRIR -->
+            <VerticalStackLayout Spacing="6"
+                                 HorizontalOptions="Center">
+
+                <ImageButton x:Name="BtnOpen"
+                             Source="open_file.png"
+                             WidthRequest="120"
+                             HeightRequest="120"
                              BackgroundColor="Transparent"
                              Clicked="OnOpenFileClicked">
                     <ImageButton.Triggers>
-                        <Trigger TargetType="ImageButton" Property="IsPressed" Value="True">
-                            <Setter Property="Opacity" Value="0.7"/>
-                            <Setter Property="Scale" Value="0.92"/>
+                        <Trigger TargetType="ImageButton"
+                                 Property="IsPressed"
+                                 Value="True">
+                            <Setter Property="Opacity"
+                                    Value="0.7" />
+                            <Setter Property="Scale"
+                                    Value="0.92" />
                         </Trigger>
                     </ImageButton.Triggers>
                 </ImageButton>
+
                 <Label x:Name="LblOpen"
                        Text="Abrir"
-                       FontSize="16"
+                       FontSize="18"
                        FontAttributes="Bold"
-                       TextColor="White"
                        HorizontalOptions="Center"
-                       Margin="0,8,0,0"/>
+                       TextColor="White" />
             </VerticalStackLayout>
 
-            <!-- Nuevo -->
-            <VerticalStackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="Center">
-                <ImageButton Source="nuevo_sav.png"
-                             WidthRequest="120" HeightRequest="120"
-                             BackgroundColor="Transparent"
-                             Clicked="OnNewFileClicked">
-                    <ImageButton.Triggers>
-                        <Trigger TargetType="ImageButton" Property="IsPressed" Value="True">
-                            <Setter Property="Opacity" Value="0.7"/>
-                            <Setter Property="Scale" Value="0.92"/>
-                        </Trigger>
-                    </ImageButton.Triggers>
-                </ImageButton>
-                <Label x:Name="LblNew"
-                       Text="Nuevo"
-                       FontSize="16"
-                       FontAttributes="Bold"
-                       TextColor="White"
-                       HorizontalOptions="Center"
-                       Margin="0,8,0,0"/>
-            </VerticalStackLayout>
+            <!-- BOTÓN CONFIGURACIÓN -->
+            <VerticalStackLayout Spacing="6"
+                                 HorizontalOptions="Center">
 
-            <!-- EJEMPLO: para un tercer botón, descomenta y coloca en Row=2 Column=0/2
-            <VerticalStackLayout Grid.Row="2" Grid.Column="0" HorizontalOptions="Center">
-                <ImageButton Source="settings.png"
-                             WidthRequest="120" HeightRequest="120"
+                <ImageButton x:Name="BtnSettings"
+                             Source="btn_config.png"
+                             WidthRequest="120"
+                             HeightRequest="120"
                              BackgroundColor="Transparent"
-                             Clicked="OnSettingsClicked"/>
+                             Clicked="OnSettingsClicked" />
+
                 <Label Text="Configuración"
-                       FontSize="16"
+                       FontSize="18"
                        FontAttributes="Bold"
-                       TextColor="White"
                        HorizontalOptions="Center"
-                       Margin="0,8,0,0"/>
+                       TextColor="White" />
             </VerticalStackLayout>
-            -->
-        </Grid>
 
-        <!-- Footer -->
+        </VerticalStackLayout>
+
+
+        <!-- FOOTER -->
         <Label Grid.Row="2"
                x:Name="LblCreator"
                Text="Desarrollado por ZeroXRagde"
@@ -91,6 +81,7 @@
                TextColor="Gray"
                HorizontalOptions="Center"
                VerticalOptions="End"
-               Margin="0,40,0,0"/>
+               Margin="0,20,0,0" />
+
     </Grid>
 </ContentPage>
