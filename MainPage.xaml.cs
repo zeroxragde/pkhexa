@@ -16,6 +16,7 @@ namespace PkHexA
         {
             //LblNew.Text = LanguageService.Get("btnNew");
             LblOpen.Text = LanguageService.Get("btnOpen");
+          
             //  lblCreator.Text = LanguageService.Get("creatorText");
         }
 
@@ -68,9 +69,11 @@ namespace PkHexA
                     else {
 
                         GlobalService.ACTUAL_FILE = saveFile;
+                        
                         var gen = saveFile.Generation;
                         var game = saveFile.GetType().Name.Replace("SAV", "");
-                        res = $"Detectado: Generación {gen} - {game}";
+                        res = $"{gen} | {game}";
+                        GlobalService.tokenHelper.AddOrUpdateToken("VERSION", res);
                         await Application.Current.MainPage.Navigation.PushModalAsync(
                                 new NavigationPage(new Views.Editor())
                                 {

@@ -2,6 +2,10 @@
   "es": {
     "btnNew": "Nuevo",
     "btnOpen": "Abrir",
+    "winPkmEditor": "Editor Pokemon",
+    "winEditorTitle": "Editor de PokeSav",
+    "titleEditor": "Editando PokeSav {VERSION}",
+    "tabPkmEditInicio": "Inicio",
     "btnSettings": "Configuración",
     "alertNewTitle": "Nuevo archivo",
     "alertNewMessage": "Aquí podrías crear un nuevo archivo de guardado Pokémon.",

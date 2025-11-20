@@ -104,12 +104,12 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <Grid.Background>
-                    <ImageBrush ImageSource="pkhex_background_tile.png"
-                        Stretch="UniformToFill"
-                        AlignmentX="Center"
-                        AlignmentY="Center" />
-                </Grid.Background>
+                <Grid>
+                    <Image Source="pkhex_background_tile.png"
+                           Aspect="AspectFill"
+                           Opacity="0.2"
+                           IsHitTestVisible="False"/>
+                </Grid>
 
                 <Grid.Resources>
                     <Style TargetType="Frame">
