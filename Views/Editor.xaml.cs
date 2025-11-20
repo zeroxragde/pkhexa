@@ -4,6 +4,8 @@ using PkHexA.Helper;
 using PkHexA.LibSprites.Util;
 using PkHexA.Services;
 using SkiaSharp;
+using static System.Net.Mime.MediaTypeNames;
+using Application = Microsoft.Maui.Controls.Application;
 
 namespace PkHexA.Views;
 
@@ -13,6 +15,9 @@ public partial class Editor : ContentPage
     {
         InitializeComponent();
         MostrarSpriteDePrueba();
+        this.Title = LanguageService.Get("winEditorTitle");
+
+        lblTitlePkm.Text = GlobalService.tokenHelper.ReplaceTokens(LanguageService.Get("titleEditor"));
 
     }
 
