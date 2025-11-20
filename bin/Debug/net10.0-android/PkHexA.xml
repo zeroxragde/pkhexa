@@ -4,6 +4,25 @@
         <name>PkHexA</name>
     </assembly>
     <members>
+        <member name="T:PkHexA.Helper.TokenReplacer">
+            <summary>
+            Permite registrar tokens en formato {TOKEN} y reemplazarlos dentro de un texto.
+            </summary>
+        </member>
+        <member name="M:PkHexA.Helper.TokenReplacer.AddOrUpdateToken(System.String,System.String)">
+            <summary>
+            Agrega o actualiza el valor de un token.
+            </summary>
+            <param name="key">Nombre del token sin llaves.</param>
+            <param name="value">Valor a inyectar cuando se encuentre el token.</param>
+        </member>
+        <member name="M:PkHexA.Helper.TokenReplacer.ReplaceTokens(System.String)">
+            <summary>
+            Reemplaza todos los tokens registrados dentro del texto recibido.
+            </summary>
+            <param name="text">Cadena que contiene tokens en formato {TOKEN}.</param>
+            <returns>Texto con todos los tokens sustituidos por sus valores actuales.</returns>
+        </member>
         <member name="T:PkHexA.LibSprites.Enums.SpriteBackgroundType">
             <summary>
             Specifies the type of background to render behind a Pokémon sprite.
