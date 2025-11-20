@@ -20,7 +20,7 @@ public partial class PkmEditor : ContentPage
 
         PickerSpecies.ItemsSource = speciesList;
 
-        // Seleccionar por defecto Pikachu (especie = 25)
+        // Seleccionar por defecto Pikachu (especie = 25) pok
         var pikachuItem = speciesList.FirstOrDefault(s => s.Value == 25);
         if (pikachuItem != null)
             PickerSpecies.SelectedItem = pikachuItem;

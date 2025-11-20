@@ -10,7 +10,7 @@
 
     <Grid RowDefinitions="Auto,Auto,*" Padding="15">
 
-        <!-- 🔵 TABS ARRIBA -->
+        <!-- 🔵 TABS ARRIBA2 -->
         <ScrollView Orientation="Horizontal"
                     Grid.Row="0"
                     HorizontalScrollBarVisibility="Never">
