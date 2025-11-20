@@ -40,10 +40,11 @@
               "RelativeDocumentMoniker": "LibSprites\\Util\\SpriteImgLoader.cs",
               "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\LibSprites\\Util\\SpriteImgLoader.cs",
               "RelativeToolTip": "LibSprites\\Util\\SpriteImgLoader.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAIwD0AAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAADQAAAAAAAAAAAAmwD8AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-19T16:37:16.468Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -53,7 +54,7 @@
               "RelativeDocumentMoniker": "LibSprites\\Util\\SpriteBuilder.cs",
               "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\LibSprites\\Util\\SpriteBuilder.cs",
               "RelativeToolTip": "LibSprites\\Util\\SpriteBuilder.cs",
-              "ViewState": "AgIAAMwAAAAAAAAAAAAYwNcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAMwAAAAAAAAAAAAYwNMAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-19T17:47:40.442Z",
               "EditorCaption": ""

@@ -15402,7 +15402,7 @@
         }
       }
     },
-    "net10.0-ios26.0": {
+    "net10.0-ios26.1": {
       "Microsoft.Extensions.Configuration/10.0.0": {
         "type": "package",
         "dependencies": {
@@ -15987,7 +15987,7 @@
         }
       }
     },
-    "net10.0-ios26.0/android-arm64": {
+    "net10.0-ios26.1/android-arm64": {
       "Microsoft.Extensions.Configuration/10.0.0": {
         "type": "package",
         "dependencies": {
@@ -16526,7 +16526,7 @@
         }
       }
     },
-    "net10.0-ios26.0/android-x64": {
+    "net10.0-ios26.1/android-x64": {
       "Microsoft.Extensions.Configuration/10.0.0": {
         "type": "package",
         "dependencies": {
@@ -17065,7 +17065,7 @@
         }
       }
     },
-    "net10.0-ios26.0/iossimulator-x64": {
+    "net10.0-ios26.1/iossimulator-x64": {
       "Microsoft.Extensions.Configuration/10.0.0": {
         "type": "package",
         "dependencies": {
@@ -17609,7 +17609,7 @@
         }
       }
     },
-    "net10.0-ios26.0/maccatalyst-x64": {
+    "net10.0-ios26.1/maccatalyst-x64": {
       "Microsoft.Extensions.Configuration/10.0.0": {
         "type": "package",
         "dependencies": {
@@ -18153,7 +18153,7 @@
         }
       }
     },
-    "net10.0-ios26.0/win-x64": {
+    "net10.0-ios26.1/win-x64": {
       "Microsoft.Extensions.Configuration/10.0.0": {
         "type": "package",
         "dependencies": {
@@ -18695,7 +18695,7 @@
         }
       }
     },
-    "net10.0-maccatalyst26.0": {
+    "net10.0-maccatalyst26.1": {
       "Microsoft.Extensions.Configuration/10.0.0": {
         "type": "package",
         "dependencies": {
@@ -19260,7 +19260,7 @@
         }
       }
     },
-    "net10.0-maccatalyst26.0/android-arm64": {
+    "net10.0-maccatalyst26.1/android-arm64": {
       "Microsoft.Extensions.Configuration/10.0.0": {
         "type": "package",
         "dependencies": {
@@ -19799,7 +19799,7 @@
         }
       }
     },
-    "net10.0-maccatalyst26.0/android-x64": {
+    "net10.0-maccatalyst26.1/android-x64": {
       "Microsoft.Extensions.Configuration/10.0.0": {
         "type": "package",
         "dependencies": {
@@ -20338,7 +20338,7 @@
         }
       }
     },
-    "net10.0-maccatalyst26.0/iossimulator-x64": {
+    "net10.0-maccatalyst26.1/iossimulator-x64": {
       "Microsoft.Extensions.Configuration/10.0.0": {
         "type": "package",
         "dependencies": {
@@ -20877,7 +20877,7 @@
         }
       }
     },
-    "net10.0-maccatalyst26.0/maccatalyst-x64": {
+    "net10.0-maccatalyst26.1/maccatalyst-x64": {
       "Microsoft.Extensions.Configuration/10.0.0": {
         "type": "package",
         "dependencies": {
@@ -21419,7 +21419,7 @@
         }
       }
     },
-    "net10.0-maccatalyst26.0/win-x64": {
+    "net10.0-maccatalyst26.1/win-x64": {
       "Microsoft.Extensions.Configuration/10.0.0": {
         "type": "package",
         "dependencies": {
@@ -31040,7 +31040,7 @@
       "SkiaSharp >= 3.119.1",
       "SkiaSharp.QrCode >= 0.10.0"
     ],
-    "net10.0-ios26.0": [
+    "net10.0-ios26.1": [
       "Microsoft.Extensions.Logging.Debug >= 10.0.0",
       "Microsoft.Maui.Controls >= 10.0.0",
       "Microsoft.Maui.Essentials >= 10.0.0",
@@ -31049,7 +31049,7 @@
       "SkiaSharp >= 3.119.1",
       "SkiaSharp.QrCode >= 0.10.0"
     ],
-    "net10.0-maccatalyst26.0": [
+    "net10.0-maccatalyst26.1": [
       "Microsoft.Extensions.Logging.Debug >= 10.0.0",
       "Microsoft.Maui.Controls >= 10.0.0",
       "Microsoft.Maui.Essentials >= 10.0.0",
@@ -31068,26 +31068,29 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\zeroxragde\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\ecarrizales\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\PkHexA.csproj",
+      "projectUniqueName": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\PkHexA.csproj",
       "projectName": "PkHexA",
-      "projectPath": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\PkHexA.csproj",
-      "packagesPath": "C:\\Users\\zeroxragde\\.nuget\\packages\\",
-      "outputPath": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\obj\\",
+      "projectPath": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\PkHexA.csproj",
+      "packagesPath": "C:\\Users\\ecarrizales\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\zeroxragde\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ecarrizales\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net10.0-android",
@@ -31105,11 +31108,11 @@
           "targetAlias": "net10.0-android",
           "projectReferences": {}
         },
-        "net10.0-ios26.0": {
+        "net10.0-ios26.1": {
           "targetAlias": "net10.0-ios",
           "projectReferences": {}
         },
-        "net10.0-maccatalyst26.0": {
+        "net10.0-maccatalyst26.1": {
           "targetAlias": "net10.0-maccatalyst",
           "projectReferences": {}
         },
@@ -31463,7 +31466,7 @@
           "System.Xml.XPath.XDocument": "(,5.0.32767]"
         }
       },
-      "net10.0-ios26.0": {
+      "net10.0-ios26.1": {
         "targetAlias": "net10.0-ios",
         "dependencies": {
           "Microsoft.Extensions.Logging.Debug": {
@@ -31795,7 +31798,7 @@
           "System.Xml.XPath.XDocument": "(,5.0.32767]"
         }
       },
-      "net10.0-maccatalyst26.0": {
+      "net10.0-maccatalyst26.1": {
         "targetAlias": "net10.0-maccatalyst",
         "dependencies": {
           "Microsoft.Extensions.Logging.Debug": {

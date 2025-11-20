@@ -4,6 +4,10 @@ SETLOCAL
 REM Asegúrate de que el script se ejecuta en el directorio del repositorio
 cd /d "%~dp0"
 
+git fetch
+
+git pull
+
 REM Agregar todos los cambios al staging area
 git add .
 
