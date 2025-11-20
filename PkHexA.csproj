@@ -88,7 +88,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Platforms\Android\Resources\values\styles.xml" />
     <None Remove="Resources\Languages\lang.json" />
   </ItemGroup>
 

@@ -1,8 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using PkHexA.Controls;
-#if ANDROID
-using PkHexA.Platforms.Android;
-#endif
 using PkHexA.Services;
 
 namespace PkHexA
@@ -18,13 +14,6 @@ namespace PkHexA
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                })
-                .ConfigureMauiHandlers(handlers =>
-                {
-#if ANDROID
-                    // AQUÍ ESTÁ LA MAGIA:
-                    handlers.AddHandler(typeof(CustomPicker), typeof(CustomPickerHandler));
-#endif
                 });
             Task.Run(async () => await LanguageService.InitializeAsync()).Wait();
 
