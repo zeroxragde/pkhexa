@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cc="clr-namespace:PkHexA.Controls"
              x:Class="PkHexA.Views.PkmEditor"
              Title="PkmEditor">
 
@@ -46,6 +47,7 @@
         <!-- 🔵 TÍTULO -->
         <Label Grid.Row="1"
                Text="Editor de Pokémon"
+               x:Name="tabInicioEditPkm"
                HorizontalOptions="Center"
                FontSize="26"
                FontAttributes="Bold"
@@ -107,8 +109,9 @@
 
                     <HorizontalStackLayout Spacing="10">
                         <Label Text="Especie:" TextColor="White" WidthRequest="60"/>
-                        <Picker x:Name="SpeciesPicker"
+                        <cc:CustomPicker x:Name="PickerSpecies"
                                 TextColor="White"
+                                 ItemDisplayBinding="{Binding Text}"
                                 BackgroundColor="#303030"/>
                     </HorizontalStackLayout>
 
