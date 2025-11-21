@@ -65,7 +65,7 @@
 
     <!-- Icons y splash normales -->
     <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
-    <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+    <MauiSplashScreen Include="Resources\Splash\zerox.svg" Color="#000000" BaseSize="128,128" />
 
     <!-- Imágenes NORMALES (NO POKÉHEX) -->
     <MauiImage Include="Resources\Images\*" />
