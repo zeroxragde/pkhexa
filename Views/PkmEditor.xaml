@@ -109,10 +109,26 @@
 
                     <HorizontalStackLayout Spacing="10">
                         <Label Text="Especie:" TextColor="White" WidthRequest="60"/>
-                        <cc:CustomPicker x:Name="PickerSpecies"
+                        <!--cc:CustomPicker x:Name="PickerSpecies"
                                 TextColor="White"
                                  ItemDisplayBinding="{Binding Text}"
-                                BackgroundColor="#303030"/>
+                                BackgroundColor="#303030"/-->
+                        <Border Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5"
+                                BackgroundColor="Black" Padding="15,10">
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="AbrirBuscador_Tapped"/>
+                            </Border.GestureRecognizers>
+
+                            <Grid ColumnDefinitions="*, Auto">
+                                <Label x:Name="lblPokemonSeleccionado" 
+                                       Text="Selecciona un Pokémon..." 
+                                       TextColor="White"
+                                       VerticalOptions="Center"/>               
+
+                                <Label Grid.Column="1" Text="▼" TextColor="Gray"/>
+                            </Grid>
+                        </Border>
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout Spacing="10">

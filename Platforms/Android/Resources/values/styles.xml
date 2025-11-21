@@ -16,17 +16,14 @@
 	<!-- TEMA DEL POPUP (AQUA Y ROJO) -->
 	<style name="MiPickerEstilo" parent="Theme.AppCompat.Dialog.Alert">
 
-		<!-- FONDO AQUA (#00FFFF) -->
-		<item name="android:windowBackground">#00FFFF</item>
-		<item name="android:background">#00FFFF</item>
+		<item name="android:windowBackground">@drawable/fondo_redondo_aqua</item>
 
-		<!-- TEXTO ROJO (#FF0000) -->
+		<item name="android:background">@drawable/fondo_redondo_aqua</item>
+
 		<item name="android:textColorPrimary">#FF0000</item>
 		<item name="android:textColorAlertDialogListItem">#FF0000</item>
 		<item name="android:textColor">#FF0000</item>
 
-		<!-- Opcional: Quitar bordes redondeados si molestan en el Aqua -->
-		<item name="android:windowSubDirectory">@null</item> 
 	</style>
 
 </resources>
