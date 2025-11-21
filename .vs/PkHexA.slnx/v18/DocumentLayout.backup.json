@@ -1,21 +1,25 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\",
+  "WorkspaceRootPath": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\hex\\pkhexa\\views\\pkmeditor.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|e:\\desarrollo\\git\\otros\\pkhexa\\resources\\languages\\lang.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:resources\\languages\\lang.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|e:\\desarrollo\\git\\otros\\pkhexa\\views\\pkmeditor.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:views\\pkmeditor.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\hex\\pkhexa\\views\\pokemonsearchpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|e:\\desarrollo\\git\\otros\\pkhexa\\views\\pokemonsearchpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:views\\pokemonsearchpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\hex\\pkhexa\\views\\pokemonsearchpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|e:\\desarrollo\\git\\otros\\pkhexa\\views\\pokemonsearchpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:views\\pokemonsearchpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|c:\\users\\ecarrizales\\edgar\\app\\git\\hex\\pkhexa\\views\\pkmeditor.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|e:\\desarrollo\\git\\otros\\pkhexa\\views\\pkmeditor.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{CE33F55F-4345-451A-646B-97A515BD5FA8}|PkHexA.csproj|solutionrelative:views\\pkmeditor.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
@@ -26,59 +30,68 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PokemonSearchPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\Views\\PokemonSearchPage.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\PokemonSearchPage.xaml.cs",
-              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\Views\\PokemonSearchPage.xaml.cs*",
-              "RelativeToolTip": "Views\\PokemonSearchPage.xaml.cs*",
-              "ViewState": "AgIAABoAAAAAAAAAAAAAwCsAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T23:31:42.275Z",
+              "DocumentIndex": 0,
+              "Title": "lang.json",
+              "DocumentMoniker": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Resources\\Languages\\lang.json",
+              "RelativeDocumentMoniker": "Resources\\Languages\\lang.json",
+              "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Resources\\Languages\\lang.json",
+              "RelativeToolTip": "Resources\\Languages\\lang.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-21T00:30:25.295Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "PokemonSearchPage.xaml",
-              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\Views\\PokemonSearchPage.xaml",
-              "RelativeDocumentMoniker": "Views\\PokemonSearchPage.xaml",
-              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\Views\\PokemonSearchPage.xaml",
-              "RelativeToolTip": "Views\\PokemonSearchPage.xaml",
-              "ViewState": "AgIAABkAAAAAAAAAAAAjwCIAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-20T23:28:34.468Z",
-              "EditorCaption": ""
+              "Title": "PokemonSearchPage.xaml.cs",
+              "DocumentMoniker": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\PokemonSearchPage.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\PokemonSearchPage.xaml.cs",
+              "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\PokemonSearchPage.xaml.cs",
+              "RelativeToolTip": "Views\\PokemonSearchPage.xaml.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAAwCsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T23:31:42.275Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "PkmEditor.xaml",
-              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\Views\\PkmEditor.xaml",
-              "RelativeDocumentMoniker": "Views\\PkmEditor.xaml",
-              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\Views\\PkmEditor.xaml",
-              "RelativeToolTip": "Views\\PkmEditor.xaml",
-              "ViewState": "AgIAAGsAAAAAAAAAAAAjwHcAAABSAAAAAAAAAA==",
+              "Title": "PokemonSearchPage.xaml",
+              "DocumentMoniker": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\PokemonSearchPage.xaml",
+              "RelativeDocumentMoniker": "Views\\PokemonSearchPage.xaml",
+              "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\PokemonSearchPage.xaml",
+              "RelativeToolTip": "Views\\PokemonSearchPage.xaml",
+              "ViewState": "AgIAABkAAAAAAAAAAAAjwCIAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-20T17:02:28.86Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-20T23:28:34.468Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
+              "Title": "PkmEditor.xaml",
+              "DocumentMoniker": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\PkmEditor.xaml",
+              "RelativeDocumentMoniker": "Views\\PkmEditor.xaml",
+              "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\PkmEditor.xaml",
+              "RelativeToolTip": "Views\\PkmEditor.xaml",
+              "ViewState": "AgIAAGsAAAAAAAAAAAAjwHcAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-20T17:02:28.86Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "PkmEditor.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\Views\\PkmEditor.xaml.cs",
+              "DocumentMoniker": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\PkmEditor.xaml.cs",
               "RelativeDocumentMoniker": "Views\\PkmEditor.xaml.cs",
-              "ToolTip": "C:\\Users\\ecarrizales\\edgar\\app\\GIT\\Hex\\pkhexa\\Views\\PkmEditor.xaml.cs*",
-              "RelativeToolTip": "Views\\PkmEditor.xaml.cs*",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAIwA8AAAAXAAAAAAAAAA==",
+              "ToolTip": "E:\\DESARROLLO\\GIT\\otros\\pkhexa\\Views\\PkmEditor.xaml.cs",
+              "RelativeToolTip": "Views\\PkmEditor.xaml.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAcwA0AAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T17:02:20.056Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-20T17:02:20.056Z"
             }
           ]
         }

@@ -3275,7 +3275,6 @@ E:\DESARROLLO\GIT\otros\pkhexa\bin\Debug\net10.0-android\com.zerox.pkhexa.aab
 E:\DESARROLLO\GIT\otros\pkhexa\bin\Debug\net10.0-android\com.zerox.pkhexa-Signed.aab
 E:\DESARROLLO\GIT\otros\pkhexa\bin\Debug\net10.0-android\com.zerox.pkhexa-Signed.apk
 E:\DESARROLLO\GIT\otros\pkhexa\bin\Debug\net10.0-android\com.zerox.pkhexa-Signed.apk.idsig
-E:\DESARROLLO\GIT\otros\pkhexa\obj\Debug\net10.0-android\resizetizer\r\drawable\splash_logo.jpg
 E:\DESARROLLO\GIT\otros\pkhexa\obj\Debug\net10.0-android\android\bin\com.zerox.pkhexa.apk
 E:\DESARROLLO\GIT\otros\pkhexa\obj\Debug\net10.0-android\android\bin\com.zerox.pkhexa.aab
 E:\DESARROLLO\GIT\otros\pkhexa\obj\Debug\net10.0-android\android\bin\com.zerox.pkhexa.apks
@@ -4923,3 +4922,5 @@ C:\Users\ecarrizales\edgar\app\GIT\Hex\pkhexa\obj\Debug\net10.0-android\stamp\_C
 C:\Users\ecarrizales\edgar\app\GIT\Hex\pkhexa\obj\Debug\net10.0-android\stamp\_GenerateJavaStubs.stamp
 C:\Users\ecarrizales\edgar\app\GIT\Hex\pkhexa\obj\Debug\net10.0-android\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\ecarrizales\edgar\app\GIT\Hex\pkhexa\obj\Debug\net10.0-android\stamp\_ResolveLibraryProjectImports.stamp
+E:\DESARROLLO\GIT\otros\pkhexa\obj\Debug\net10.0-android\res\drawable\fondo_redondo_aqua.xml
+E:\DESARROLLO\GIT\otros\pkhexa\obj\Debug\net10.0-android\res\values\styles.xml
