@@ -4909,7 +4909,6 @@ C:\Users\ecarrizales\edgar\app\GIT\Hex\pkhexa\obj\Debug\net10.0-android\assets\O
 C:\Users\ecarrizales\edgar\app\GIT\Hex\pkhexa\obj\Debug\net10.0-android\assets\OpenSans-Semibold.ttf
 C:\Users\ecarrizales\edgar\app\GIT\Hex\pkhexa\obj\Debug\net10.0-android\android\bin\packaged_resources
 C:\Users\ecarrizales\edgar\app\GIT\Hex\pkhexa\obj\Debug\net10.0-android\android\src\com\zerox\pkhexa\R.java
-<<<<<<< HEAD
 C:\Users\ecarrizales\edgar\app\GIT\Hex\pkhexa\obj\Debug\net10.0-android\_CompileJava.FileList.txt
 C:\Users\ecarrizales\edgar\app\GIT\Hex\pkhexa\obj\Debug\net10.0-android\android\compressed_assemblies.arm64-v8a.ll
 C:\Users\ecarrizales\edgar\app\GIT\Hex\pkhexa\obj\Debug\net10.0-android\android\typemaps.arm64-v8a.o
@@ -4928,11 +4927,3 @@ C:\Users\ecarrizales\edgar\app\GIT\Hex\pkhexa\obj\Debug\net10.0-android\stamp\_C
 C:\Users\ecarrizales\edgar\app\GIT\Hex\pkhexa\obj\Debug\net10.0-android\stamp\_GenerateJavaStubs.stamp
 C:\Users\ecarrizales\edgar\app\GIT\Hex\pkhexa\obj\Debug\net10.0-android\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\ecarrizales\edgar\app\GIT\Hex\pkhexa\obj\Debug\net10.0-android\stamp\_ResolveLibraryProjectImports.stamp
-=======
-C:\Users\ecarrizales\edgar\app\GIT\Hex\pkhexa\obj\Debug\net10.0-android\resizetizer\r\drawable\shiny_btn.png
-E:\DESARROLLO\GIT\otros\pkhexa\obj\Debug\net10.0-android\resizetizer\r\drawable\shiny_btn.png
-E:\DESARROLLO\GIT\otros\pkhexa\obj\Debug\net10.0-android\resizetizer\r\drawable\btn_config.png
-E:\DESARROLLO\GIT\otros\pkhexa\obj\Debug\net10.0-android\resizetizer\r\drawable\splash_art.png
-C:\Users\ecarrizales\edgar\app\GIT\Hex\pkhexa\obj\Debug\net10.0-android\resizetizer\r\drawable\btn_config.png
-C:\Users\ecarrizales\edgar\app\GIT\Hex\pkhexa\obj\Debug\net10.0-android\resizetizer\r\drawable\splash_art.png
->>>>>>> edffd98c6ca7704428a5eea87382513e68762ab1

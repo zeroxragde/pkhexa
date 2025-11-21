@@ -7,12 +7,15 @@
     "alertNewMessage": "Aquí podrías crear un nuevo archivo de guardado Pokémon.",
     "alertOk": "Aceptar",
     "alertCancel": "Cancelar",
+    "alertArchivoNoEncontrado": "Archivo no encontrado",
+    "alertArchivoNoReconocido": "Archivo no reconocido",
     "creatorText": "Desarrollado por ZeroXRagde",
     "titleSelectSave": "Selecciona tu archivo de guardado Pokémon",
     "txtEditor": "Editor de Archivo",
-    "menuHome": "Inicio",
-    "alertArchivoNoEncontrado": "Archivo no encontrado",
-    "alertArchivoNoReconocido": "Archivo no reconocido"
+    "winPkmEditor": "Editor Pokemon",
+    "tabPkmEditInicio": "Inicio",
+    "menuHome": "Inicio"
+
   },
   "en": {
     "btnNew": "New",

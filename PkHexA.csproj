@@ -88,11 +88,8 @@
   </ItemGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
     <None Remove="Platforms\Android\Resources\values\fondo_redondo_aqua.xml" />
     <None Remove="Platforms\Android\Resources\values\styles.xml" />
-=======
->>>>>>> edffd98c6ca7704428a5eea87382513e68762ab1
     <None Remove="Resources\Languages\lang.json" />
   </ItemGroup>
 

@@ -17,6 +17,7 @@
             <HorizontalStackLayout Spacing="10" Padding="0,5">
 
                 <Button Text="Inicio"
+                        x:Name="tabInicioEditPkm"
                         Style="{StaticResource TabButtonSelectedStyle}"
                         Clicked="OnTabClicked"/>
 
