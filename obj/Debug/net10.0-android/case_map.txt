@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 animation\enterfromleft;animation\enterfromleft
 animation\enterfromright;animation\enterfromright
 animation\exittoleft;animation\exittoleft
@@ -17,7 +18,6 @@ layout\fragment_backstack;layout\fragment_backstack
 layout\navigationlayout;layout\navigationlayout
 layout\shellcontent;compatibility\Android\Resources\layout\shellcontent
 values\attr;values\attr
+=======
+>>>>>>> edffd98c6ca7704428a5eea87382513e68762ab1
 values\colors;values\colors
-values\strings;values\strings
-values\styles;values\styles
-xml\microsoft_maui_essentials_fileprovider_file_paths;resources\xml\microsoft_maui_essentials_fileprovider_file_paths

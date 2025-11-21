@@ -1,0 +1,15 @@
+<api>
+  <jcw-types>
+    <type name="MainActivity" package="crc64eb7b767bd83dd265" application_java_class="android.app.Application" mono_runtime_initialization="mono.MonoPackageManager.LoadApplication (context);" extends_type="crc6488302ad6e9e4df1a.MauiAppCompatActivity" partial_assembly_qualified_name="PkHexA.MainActivity, PkHexA">
+      <constructors>
+        <constructor name="MainActivity" method="n_.ctor:()V:" jni_signature="()V" managed_parameters="" retval="void" is_dynamically_registered="True" />
+        <constructor name="MainActivity" method="n_.ctor:(I)V:" jni_signature="(I)V" managed_parameters="System.Int32, System.Private.CoreLib" params="int p0" retval="void" is_dynamically_registered="True" super_call="p0" activate_call="p0" />
+      </constructors>
+    </type>
+    <type name="MainApplication" package="crc64eb7b767bd83dd265" application_java_class="android.app.Application" mono_runtime_initialization="mono.MonoPackageManager.LoadApplication (context);" extends_type="crc6488302ad6e9e4df1a.MauiApplication" is_application="True" partial_assembly_qualified_name="PkHexA.MainApplication, PkHexA" application_constructor="MainApplication" />
+  </jcw-types>
+  <acw-types partial-assembly-name="PkHexA" module-name="PkHexA.dll">
+    <type assembly-qualified-name="PkHexA.MainActivity, PkHexA, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="pkhexa.MainActivity" java-key="crc64eb7b767bd83dd265.MainActivity" managed-key="PkHexA.MainActivity" partial-assembly-qualified-name="PkHexA.MainActivity, PkHexA" />
+    <type assembly-qualified-name="PkHexA.MainApplication, PkHexA, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="pkhexa.MainApplication" java-key="crc64eb7b767bd83dd265.MainApplication" managed-key="PkHexA.MainApplication" partial-assembly-qualified-name="PkHexA.MainApplication, PkHexA" />
+  </acw-types>
+</api>
