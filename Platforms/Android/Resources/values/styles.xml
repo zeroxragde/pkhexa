@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+
+	<!-- TEMA PRINCIPAL -->
+	<style name="Maui.MainTheme" parent="Theme.MaterialComponents.DayNight">
+		<item name="colorPrimary">#512BD4</item>
+		<item name="colorPrimaryDark">#2B0B98</item>
+		<item name="colorAccent">#2B0B98</item>
+
+		<!-- CONFIGURACIÓN DEL PICKER -->
+		<!-- Ponemos las dos para asegurar que Android lo detecte sí o sí -->
+		<item name="android:alertDialogTheme">@style/MiPickerEstilo</item>
+		<item name="materialAlertDialogTheme">@style/MiPickerEstilo</item>
+	</style>
+
+	<!-- TEMA DEL POPUP (AQUA Y ROJO) -->
+	<style name="MiPickerEstilo" parent="Theme.AppCompat.Dialog.Alert">
+
+		<item name="android:windowBackground">@drawable/fondo_redondo_aqua</item>
+
+		<item name="android:background">@drawable/fondo_redondo_aqua</item>
+
+		<item name="android:textColorPrimary">#FF0000</item>
+		<item name="android:textColorAlertDialogListItem">#FF0000</item>
+		<item name="android:textColor">#FF0000</item>
+
+	</style>
+
+</resources>
