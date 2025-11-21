@@ -107,7 +107,6 @@
 
                     <HorizontalStackLayout Spacing="10">
                         <Label Text="Especie:" TextColor="White" WidthRequest="60"/>
-<<<<<<< HEAD
                         <!--cc:CustomPicker x:Name="PickerSpecies"
                                 TextColor="White"
                                  ItemDisplayBinding="{Binding Text}"
@@ -128,11 +127,6 @@
                                 <Label Grid.Column="1" Text="▼" TextColor="Gray"/>
                             </Grid>
                         </Border>
-=======
-                        <Picker x:Name="SpeciesPicker"
-                                TextColor="White"
-                                BackgroundColor="#303030"/>
->>>>>>> edffd98c6ca7704428a5eea87382513e68762ab1
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout Spacing="10">
