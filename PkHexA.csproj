@@ -65,7 +65,7 @@
 
     <!-- Icons y splash normales -->
     <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
-    <MauiSplashScreen Include="Resources\Splash\zerox.svg" Color="#000000" BaseSize="128,128" />
+    <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#000000" BaseSize="128,128" />
 
     <!-- Imágenes NORMALES (NO POKÉHEX) -->
     <MauiImage Include="Resources\Images\*" />
@@ -116,10 +116,13 @@
     <MauiXaml Update="Views\Editor.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
+    <MauiXaml Update="Views\Pickers\NaturalezaSearchPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
     <MauiXaml Update="Views\PkmEditor.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
-    <MauiXaml Update="Views\PokemonSearchPage.xaml">
+    <MauiXaml Update="Views\Pickers\PokemonSearchPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
     <MauiXaml Update="Views\Splash.xaml">

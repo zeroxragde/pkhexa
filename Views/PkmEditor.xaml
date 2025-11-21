@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:cc="clr-namespace:PkHexA.Controls"
              x:Class="PkHexA.Views.PkmEditor"
+             BackgroundColor="Black"
              Title="PkmEditor">
 
 
@@ -108,11 +108,7 @@
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout Spacing="10">
-                        <Label Text="Especie:" TextColor="White" WidthRequest="60"/>
-                        <!--cc:CustomPicker x:Name="PickerSpecies"
-                                TextColor="White"
-                                 ItemDisplayBinding="{Binding Text}"
-                                BackgroundColor="#303030"/-->
+                        <Label x:Name="lblEspecie" Text="Especie:" TextColor="White" WidthRequest="60"/>
                         <Border Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5"
                                 BackgroundColor="Black" Padding="15,10">
 
@@ -135,6 +131,7 @@
                         <Label Text="Mote:" TextColor="White" WidthRequest="60"/>
                         <Entry x:Name="NicknameEntry"
                                TextColor="White"
+                               WidthRequest="150"
                                BackgroundColor="#303030"/>
                     </HorizontalStackLayout>
 
@@ -161,10 +158,27 @@
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout Spacing="10">
-                        <Label Text="Estado Nat.:" TextColor="White" WidthRequest="100"/>
-                        <Picker x:Name="StatNaturePicker"
-                                TextColor="White"
-                                BackgroundColor="#303030"/>
+                        <Label x:Name="lblEstadoNat" Text="Estado Nat.:" TextColor="White" WidthRequest="100"/>
+
+
+                        <Border Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5"
+                                BackgroundColor="Black" Padding="15,10">
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="AbrirBuscador_Tapped"/>
+                            </Border.GestureRecognizers>
+
+                            <Grid ColumnDefinitions="*, Auto">
+                                <Label x:Name="lblNaturalezaSeleccionado" 
+                                       Text="Selecciona un Pokémon..." 
+                                       TextColor="White"
+                                       VerticalOptions="Center"/>
+
+                                <Label Grid.Column="1" Text="▼" TextColor="Gray"/>
+                            </Grid>
+                        </Border>
+
+
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout Spacing="10">

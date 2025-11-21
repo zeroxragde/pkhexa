@@ -1,47 +1,47 @@
 using PKHeX.Core;
+using PkHexA.Services;
 
-namespace PkHexA.Views;
+namespace PkHexA.Views.Pickers;
 
-public partial class PokemonSearchPage : ContentPage
+public partial class NaturalezaSearchPage : ContentPage
 {
-
-
     // Variable para guardar la lista completa original
-    private List<dynamic>? _todosLosPokemon;
-    public Action<dynamic>? AlSeleccionarPokemon;
+    private List<dynamic>? _todasLasNaturalezas;
+    public Action<dynamic>? AlSeleccionarNatura;
+    public NaturalezaSearchPage()
+	{
+		InitializeComponent();
+        BarraBusqueda.Placeholder = LanguageService.Get("txtSearchBoxPlaceholde");
 
-    public PokemonSearchPage()
-    {
-        InitializeComponent();
-        // Al iniciar, mostramos todos
         CargarDatos();
+
     }
-
-
     private void CargarDatos()
     {
         // 2. AQUÍ METEMOS TU LÍNEA DE DATOS REALES
         // Convertimos a List<dynamic> para manipularlo fácil aquí
-        var rawList = GameInfo.Sources.SpeciesDataSource.ToList();
+        var rawList = GameInfo.Sources.NatureDataSource.ToList();
 
         // Guardamos la copia completa en memoria
-        _todosLosPokemon = rawList.Cast<dynamic>().ToList();
+        _todasLasNaturalezas = rawList.Cast<dynamic>().ToList();
 
         // Mostramos todo al inicio
-        ListaPokemon.ItemsSource = _todosLosPokemon;
+        ListaNaturalezaPokemon.ItemsSource = _todasLasNaturalezas = rawList.Cast<dynamic>().ToList();
+        
     }
     // ? NUEVO MÉTODO ESTÁTICO (Accesible desde cualquier parte de la app)
     // Le das un ID (6) y te devuelve el Objeto (Charizard)
-    public static dynamic? ObtenerInfoPokemon(int idEspecie)
+    public static dynamic? ObtenerNaturaleza(int idNatura)
     {
         // Usamos la misma fuente de datos que usa la lista visual
         var lista = GameInfo.Sources.SpeciesDataSource;
 
         // Buscamos el que coincida
-        var pokemon = lista.FirstOrDefault(p => p.Value == idEspecie);
+        var pokemon = lista.FirstOrDefault(p => p.Value == idNatura);
 
         return pokemon; // Devuelve el objeto o null si no existe
     }
+
     // 3. FILTRADO (Ajustado para objetos)
     private void OnBusquedaChanged(object sender, TextChangedEventArgs e)
     {
@@ -50,17 +50,17 @@ public partial class PokemonSearchPage : ContentPage
         if (string.IsNullOrWhiteSpace(textoBusqueda))
         {
             // Si borran el texto, regresamos a la lista completa
-            ListaPokemon.ItemsSource = _todosLosPokemon;
+            ListaNaturalezaPokemon.ItemsSource = _todasLasNaturalezas;
         }
         else
         {
             // FILTRAMOS BUSCANDO EN LA PROPIEDAD '.Text'
             // (Asumiendo que tu objeto tiene una propiedad 'Text')
-            var filtrados = _todosLosPokemon
+            var filtrados = _todasLasNaturalezas
                 .Where(p => p.Text.ToLower().Contains(textoBusqueda))
                 .ToList();
 
-            ListaPokemon.ItemsSource = filtrados;
+            ListaNaturalezaPokemon.ItemsSource = filtrados;
         }
     }
 
@@ -72,13 +72,11 @@ public partial class PokemonSearchPage : ContentPage
         if (itemSeleccionado != null)
         {
             // Disparamos la acción devolviendo TODO el objeto (Texto y Valor)
-            AlSeleccionarPokemon?.Invoke(itemSeleccionado);
+            AlSeleccionarNatura?.Invoke(itemSeleccionado);
 
             await Navigation.PopModalAsync();
         }
     }
-
-
 
 
 

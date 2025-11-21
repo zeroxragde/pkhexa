@@ -8,7 +8,14 @@ namespace PkHexA
         public AppShell()
         {
             InitializeComponent();
-            shellHome.Title = LanguageService.Get("menuHome");
+     
+        }
+        protected override void OnAppearing() // <--- AGREGAR ESTO
+        {
+            base.OnAppearing();
+
+            // Usamos el método nuevo específico para Shell
+            AutoTraductor.TraducirShell(this);
         }
         private async void OnBackClicked(object sender, EventArgs e)
         {

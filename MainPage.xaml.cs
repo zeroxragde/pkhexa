@@ -11,26 +11,16 @@ namespace PkHexA
         {
             InitializeComponent();    // Cargar traducciones después de renderizar
             Loaded += (s, e) => UpdateLanguageUI();
+        
         }
         private void UpdateLanguageUI()
         {
             //LblNew.Text = LanguageService.Get("btnNew");
-            LblOpen.Text = LanguageService.Get("btnOpen");
-            //  lblCreator.Text = LanguageService.Get("creatorText");
+            //  LblOpen.Text = LanguageService.Get("btnOpen");
+            //  lblConfiguracion.Text = LanguageService.Get("btnSettings");
+            AutoTraductor.Traducir(this);
         }
 
-
-       /* private async void OnNewFileClicked(object sender, EventArgs e)
-        {
-            //await DisplayAlert("Nuevo", "Aquí podrías crear un nuevo archivo de guardado.", "OK");
-            // Abre la página fuera del Shell
-            await Application.Current.MainPage.Navigation.PushModalAsync(
-                new NavigationPage(new Views.Editor())
-                {
-                    BarBackgroundColor = Colors.Transparent,
-                    BarTextColor = Colors.White
-                });
-        }*/
 
         private async void OnOpenFileClicked(object sender, EventArgs e)
         {
@@ -71,12 +61,11 @@ namespace PkHexA
                         var gen = saveFile.Generation;
                         var game = saveFile.GetType().Name.Replace("SAV", "");
                         res = $"Detectado: Generación {gen} - {game}";
-                        await Application.Current.MainPage.Navigation.PushModalAsync(
-                                new NavigationPage(new Views.Editor())
-                                {
-                                    BarBackgroundColor = Colors.Transparent,
-                                    BarTextColor = Colors.White
-                                });
+                        await Navigation.PushModalAsync(new NavigationPage(new Views.Editor())
+                        {
+                            BarBackgroundColor = Colors.Transparent,
+                            BarTextColor = Colors.White
+                        });
                     }
                 }
 
@@ -91,7 +80,7 @@ namespace PkHexA
 
         private async void OnSettingsClicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Configuración", "Abrir pantalla de opciones o ajustes", "OK");
+            await GlobalService.ShowAlertAsync("Abrir pantalla de opciones o ajustes");
         }
 
 

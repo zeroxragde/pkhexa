@@ -1,6 +1,5 @@
 using PKHeX.Core;
 using PkHexA.Helper;
-using PkHexA.Helper;
 using PkHexA.LibSprites.Util;
 using PkHexA.Services;
 using SkiaSharp;
@@ -13,7 +12,8 @@ public partial class Editor : ContentPage
     {
         InitializeComponent();
         MostrarSpriteDePrueba();
-
+        Title = LanguageService.Get("winEditorMain");
+        lblTitlePkm.Text = LanguageService.Get("titleEditor");
     }
 
     private void MostrarSpriteDePrueba()

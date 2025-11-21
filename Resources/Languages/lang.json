@@ -1,18 +1,41 @@
 {
   "es": {
-    "btnNew": "Nuevo",
-    "btnOpen": "Abrir",
-    "btnSettings": "Configuración",
+    "LblNew": "Nuevo",
+    "LblOpen": "Abrir",
+    "lblConfiguracion": "Configuración",
+
     "alertNewTitle": "Nuevo archivo",
     "alertNewMessage": "Aquí podrías crear un nuevo archivo de guardado Pokémon.",
     "alertOk": "Aceptar",
     "alertCancel": "Cancelar",
+    "alertArchivoNoEncontrado": "Archivo no encontrado",
+    "alertArchivoNoReconocido": "Archivo no reconocido",
+
     "creatorText": "Desarrollado por ZeroXRagde",
+
+
+    "titleEditor": "Editor Principal",
     "titleSelectSave": "Selecciona tu archivo de guardado Pokémon",
     "txtEditor": "Editor de Archivo",
-    "menuHome": "Inicio",
-    "alertArchivoNoEncontrado": "Archivo no encontrado",
-    "alertArchivoNoReconocido": "Archivo no reconocido"
+    "txtSearchBoxPlaceholde": "Escribe el nombre...",
+
+    "lblEspecie": "Especie",
+    "lblNaturalezaSeleccionado": "Seleccionar Naturaleza",
+    "lblPokemonSeleccionado": "Seleccionar Pokemon",
+    "lblEstadoNat": "Estado Nat.",
+
+
+
+    "shellHome": "Principal",
+    "tabPkmEditInicio": "Inicio",
+
+    "winEMain": "Pokemon Editor Android",
+    "winAppShell": "PokeHex Android",
+    "winEditorMain": "Editar PokeSav",
+    "winPkmEditor": "Editar Pokemon",
+    "winPkBuscador": "Seleccionar Pokemon"
+
+
   },
   "en": {
     "btnNew": "New",

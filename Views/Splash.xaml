@@ -24,24 +24,28 @@
         <!-- Barra de progreso abajo -->
         <StackLayout 
             Grid.Row="2"
-            Padding="20"
-            Spacing="10"
+            Padding="40" 
+            Spacing="15"
             HorizontalOptions="Fill"
             VerticalOptions="End">
-
             <Label 
-                Text="Preparando recursos..."
+                Text="Cargando..."
                 HorizontalOptions="Center"
                 TextColor="White"
-                FontSize="16"
-                Margin="0,0,0,8"/>
+                FontSize="14"
+                Opacity="0.8"/>
 
             <ProgressBar 
                 x:Name="LoadingBar"
                 Progress="0"
-                HeightRequest="4"
-                HorizontalOptions="FillAndExpand"/>
-
+                HeightRequest="10" 
+                
+                ProgressColor="#00FFFF"  
+                
+                BackgroundColor="#333333"
+                
+                HorizontalOptions="FillAndExpand"
+                Margin="0,0,0,50"/>
         </StackLayout>
 
     </Grid>
