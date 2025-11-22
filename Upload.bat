@@ -19,3 +19,5 @@ REM Empujar los cambios al repositorio remoto
 git push
 
 ENDLOCAL
+
+pause
