@@ -42,7 +42,7 @@ public partial class Splash : ContentPage
         }
         catch (Exception ex)
         {
-            await DisplayAlert("ERROR", $"Falló la carga de los datos:\n{ex.Message}", "OK");
+            await GlobalService.ShowAlertAsync($"Falló la carga de los datos:\n{ex.Message}", "OK");
         }
     }
 

@@ -10,9 +10,9 @@ public partial class PkmEditor : ContentPage
     public PkmEditor()
 	{
 		InitializeComponent();
-		Title = LanguageService.Get("winPkmEditor");
-        tabInicioEditPkm.Text = LanguageService.Get("tabPkmEditInicio");
-        lblPokemonSeleccionado.Text = LanguageService.Get("lblPokemonSeleccionado");
+		//Title = LanguageService.Get("winPkmEditor");
+       // tabInicioEditPkm.Text = LanguageService.Get("tabPkmEditInicio");
+       // lblPokemonSeleccionado.Text = LanguageService.Get("lblPokemonSeleccionado");
 
         var speciesList = GameInfo.Sources.SpeciesDataSource.ToList();
         FijarPokemon(25);

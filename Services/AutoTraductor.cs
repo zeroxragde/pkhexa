@@ -106,6 +106,11 @@ namespace PkHexA.Services
                 {
                     item.Title = traduccion;
                 }
+                // Dentro del foreach de TraducirShell...
+                if (control is Label lbl)
+                {
+                    lbl.Text = traduccion;
+                }
                 // MenuItem son los botones extra que a veces se ponen en el menú
                 else if (control is MenuItem menuItem)
                 {

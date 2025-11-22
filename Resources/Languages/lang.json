@@ -14,20 +14,21 @@
     "creatorText": "Desarrollado por ZeroXRagde",
 
 
-    "titleEditor": "Editor Principal",
+
     "titleSelectSave": "Selecciona tu archivo de guardado Pokémon",
     "txtEditor": "Editor de Archivo",
     "txtSearchBoxPlaceholde": "Escribe el nombre...",
 
-    "lblEspecie": "Especie",
+    "lblEspecie": "Especie:",
     "lblNaturalezaSeleccionado": "Seleccionar Naturaleza",
     "lblPokemonSeleccionado": "Seleccionar Pokemon",
     "lblEstadoNat": "Estado Nat.",
-
+    "lblCargando": "Cargando...",
+    "lblTitlePkm": "Editor Principal",
 
 
     "shellHome": "Principal",
-    "tabPkmEditInicio": "Inicio",
+    "tabInicioEditPkm": "Inicio",
 
     "winEMain": "Pokemon Editor Android",
     "winAppShell": "PokeHex Android",

@@ -12,8 +12,7 @@ public partial class Editor : ContentPage
     {
         InitializeComponent();
         MostrarSpriteDePrueba();
-        Title = LanguageService.Get("winEditorMain");
-        lblTitlePkm.Text = LanguageService.Get("titleEditor");
+        AutoTraductor.Traducir(this);
     }
 
     private void MostrarSpriteDePrueba()
@@ -50,11 +49,10 @@ public partial class Editor : ContentPage
 
     private async void OnEditPkmClicked(object sender, EventArgs e)
     {
-        await Application.Current.MainPage.Navigation.PushModalAsync(
-                new NavigationPage(new Views.PkmEditor())
-                {
-                    BarBackgroundColor = Colors.Transparent,
-                    BarTextColor = Colors.White
-                });
+        await Navigation.PushModalAsync(new NavigationPage(new Views.PkmEditor())
+        {
+            BarBackgroundColor = Colors.Transparent,
+            BarTextColor = Colors.White
+        });
     }
 }

@@ -30,6 +30,7 @@
             VerticalOptions="End">
             <Label 
                 Text="Cargando..."
+                x:Name="lblCargando"
                 HorizontalOptions="Center"
                 TextColor="White"
                 FontSize="14"
