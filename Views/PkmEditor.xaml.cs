@@ -1,4 +1,4 @@
-using PKHeX.Core;
+ï»¿using PKHeX.Core;
 using PkHexA.Services;
 using PkHexA.Views.Pickers;
 
@@ -9,9 +9,13 @@ public partial class PkmEditor : ContentPage
     // Variable para guardar el ID actual (para cuando guardes el archivo .pkm)
     private int _currentSpeciesId;
     private PKM _pkmActual;
-    // Variable para guardar las formas disponibles del Pokémon actual
+    // Variable para guardar las formas disponibles del PokÃ©mon actual
     private string[] _formasDisponibles = Array.Empty<string>();
-
+    // Colores para las pestaÃ±as
+    private readonly Color ColorTabActivo = Color.FromArgb("#512BD4"); // Tu Morado
+    private readonly Color ColorTabInactivo = Colors.Transparent;
+    private readonly Color TextoActivo = Colors.White;
+    private readonly Color TextoInactivo = Colors.Gray;
     public PkmEditor()
 	{
 		InitializeComponent();
@@ -29,7 +33,7 @@ public partial class PkmEditor : ContentPage
         btnTabInicio.Style = (Style)Resources["TabButtonStyle"];
         btnTabEncuentro.Style = (Style)Resources["TabButtonStyle"];
 
-        // Si tienes más botones (Estadísticas, Movimientos), agrégalos aquí:
+        // Si tienes mÃ¡s botones (EstadÃ­sticas, Movimientos), agrÃ©galos aquÃ­:
         // btnTabEstadisticas.Style = (Style)Resources["TabButtonStyle"];
 
         // 2. Ocultar todos los contenidos
@@ -43,13 +47,27 @@ public partial class PkmEditor : ContentPage
         var botonPresionado = sender as Button;
         if (botonPresionado == null) return;
 
-        // 1. Apagamos todo primero
-        RestaurarTabs();
+        // 1. APAGAR TODOS LOS BOTONES (Manual, sin estilos)
+        // Inicio
+        btnTabInicio.BackgroundColor = ColorTabInactivo;
+        btnTabInicio.TextColor = TextoInactivo;
 
-        // 2. Encendemos visualmente el botón que se tocó (Azul/Brillante)
-        botonPresionado.Style = (Style)Resources["TabButtonSelectedStyle"];
+        // Encuentro
+        btnTabEncuentro.BackgroundColor = ColorTabInactivo;
+        btnTabEncuentro.TextColor = TextoInactivo;
 
-        // 3. Mostramos el contenido correspondiente según el botón
+        // ... (Repite para EstadÃ­sticas, Movimientos, etc. si los tienes) ...
+
+        // 2. OCULTAR TODOS LOS PANELES
+        TabInicio.IsVisible = false;
+        TabEncuentro.IsVisible = false;
+        // TabEstadisticas.IsVisible = false;
+
+        // 3. ENCENDER EL BOTÃ“N PRESIONADO
+        botonPresionado.BackgroundColor = ColorTabActivo;
+        botonPresionado.TextColor = TextoActivo;
+
+        // 4. MOSTRAR EL PANEL CORRESPONDIENTE
         if (botonPresionado == btnTabInicio)
         {
             TabInicio.IsVisible = true;
@@ -58,10 +76,6 @@ public partial class PkmEditor : ContentPage
         {
             TabEncuentro.IsVisible = true;
         }
-        // else if (botonPresionado == btnTabEstadisticas)
-        // {
-        //     TabEstadisticas.IsVisible = true;
-        // }
     }
     public void CargarDatos(PKM pkm)
     {
@@ -71,7 +85,7 @@ public partial class PkmEditor : ContentPage
         // 2. DETECTAR SI ES NUEVO O EXISTENTE
         if (pkm.Species == 0)
         {
-            // CASO A: Es un espacio vacío o Nuevo
+            // CASO A: Es un espacio vacÃ­o o Nuevo
             // Le ponemos valores por defecto para empezar a editar
             FijarPokemon(1); // Empezamos con Bulbasaur (ID 1)
 
@@ -83,7 +97,7 @@ public partial class PkmEditor : ContentPage
         }
         else
         {
-            // CASO B: Es un Pokémon existente
+            // CASO B: Es un PokÃ©mon existente
             // 1. Cargamos la especie y formas (esto actualiza la imagen y labels)
             FijarPokemon(pkm.Species);
 
@@ -94,14 +108,14 @@ public partial class PkmEditor : ContentPage
             FriendshipEntry.Text = pkm.CurrentFriendship.ToString();
 
             // 3. Cargamos valores de los Pickers
-            // (Asumiendo que los índices coinciden)
+            // (Asumiendo que los Ã­ndices coinciden)
             GenderPicker.SelectedIndex = pkm.Gender;
 
-            // Nota: Para Naturaleza e Idioma, necesitas buscar el índice en tu lista
+            // Nota: Para Naturaleza e Idioma, necesitas buscar el Ã­ndice en tu lista
             // NaturePicker.SelectedIndex = pkm.Nature;
         }
 
-        // 4. Forzar actualización visual de forma y habilidad
+        // 4. Forzar actualizaciÃ³n visual de forma y habilidad
         ActualizarFormas();
         //FijarHabilidad(pkm.Ability);
     }
@@ -120,9 +134,9 @@ public partial class PkmEditor : ContentPage
             // 1. Poner el nombre en el Label visual
             lblPokemonSeleccionado.Text = item.Text;
             FijarPokemon(item.Value);
-            // 2. (Opcional) Usar el ID para lógica interna
+            // 2. (Opcional) Usar el ID para lÃ³gica interna
             // int idPokemon = item.Value; 
-            // Console.WriteLine($"Seleccionó ID: {idPokemon}");
+            // Console.WriteLine($"SeleccionÃ³ ID: {idPokemon}");
         };
 
         await Navigation.PushModalAsync(searchPage);
@@ -134,13 +148,13 @@ public partial class PkmEditor : ContentPage
         _pkmActual.Species = (ushort)speciesId; 
         _pkmActual.Form = 0; // SIEMPRE resetear forma al cambiar de bicho
 
-        // 1. Le preguntamos al experto (PokemonSearchPage) quién es este ID
+        // 1. Le preguntamos al experto (PokemonSearchPage) quiÃ©n es este ID
         var info = PokemonSearchPage.ObtenerInfoPokemon(speciesId);
 
         if (info != null)
         {
             // 2. Actualizamos la pantalla
-            // Usamos (dynamic) para acceder a .Text sin líos
+            // Usamos (dynamic) para acceder a .Text sin lÃ­os
             lblPokemonSeleccionado.Text = ((dynamic)info).Text;
             NicknameEntry.Text = "";  // Limpiamos el nickname al cambiar de especie
             // 3. Guardamos el ID internamente
@@ -192,18 +206,18 @@ public partial class PkmEditor : ContentPage
     }
 
     /// <summary>
-    /// Calcula si el Pokémon actual tiene formas y actualiza la UI.
+    /// Calcula si el PokÃ©mon actual tiene formas y actualiza la UI.
     /// </summary>
     private void ActualizarFormas()
     {
         if (_pkmActual == null) return;
 
-        // 1. PREGUNTAMOS AL EXPERTO (Tu método estático en FormSearchPage)
-        // Esto usa PKHeX internamente para saber si hay formas válidas
+        // 1. PREGUNTAMOS AL EXPERTO (Tu mÃ©todo estÃ¡tico en FormSearchPage)
+        // Esto usa PKHeX internamente para saber si hay formas vÃ¡lidas
         _formasDisponibles = FormaSearchPage.ObtenerFormasDelPokemon(_pkmActual);
 
         // 2. DECIDIR VISIBILIDAD
-        // Si la lista tiene más de 1 elemento (ej: Normal, Attack, Defense...), mostramos el botón.
+        // Si la lista tiene mÃ¡s de 1 elemento (ej: Normal, Attack, Defense...), mostramos el botÃ³n.
         bool tieneFormas = _formasDisponibles.Length > 1;
 
         LayoutForma.IsVisible = tieneFormas;
@@ -211,14 +225,14 @@ public partial class PkmEditor : ContentPage
         // 3. ACTUALIZAR TEXTO
         if (tieneFormas)
         {
-            // Verificamos que el índice de forma actual sea válido
+            // Verificamos que el Ã­ndice de forma actual sea vÃ¡lido
             if (_pkmActual.Form < _formasDisponibles.Length)
             {
                 lblFormaSeleccionada.Text = _formasDisponibles[_pkmActual.Form];
             }
             else
             {
-                // Si el archivo trae una forma inválida, forzamos la 0
+                // Si el archivo trae una forma invÃ¡lida, forzamos la 0
                 _pkmActual.Form = 0;
                 lblFormaSeleccionada.Text = _formasDisponibles[0];
             }
@@ -249,13 +263,13 @@ public partial class PkmEditor : ContentPage
             // A. Actualizar UI
             lblFormaSeleccionada.Text = nombreForma;
 
-            // B. Actualizar Pokémon
+            // B. Actualizar PokÃ©mon
             if (_pkmActual != null)
             {
                 _pkmActual.Form = (byte)idForma;
 
                 // Ojo: Cambiar de forma a veces cambia stats base o tipos (ej: Rotom)
-                // Aquí podrías llamar a un método para refrescar la imagen del sprite si la tuvieras
+                // AquÃ­ podrÃ­as llamar a un mÃ©todo para refrescar la imagen del sprite si la tuvieras
             }
         };
 
@@ -286,4 +300,179 @@ public partial class PkmEditor : ContentPage
     {
 
     }
+
+    // Checkbox "Como Huevo"
+    private void OnEggCheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        LayoutHuevo.IsVisible = e.Value;
+        if (_pkmActual != null)
+        {
+            _pkmActual.IsEgg = e.Value;
+        }
+    }
+
+    // Checkbox "FatÃ­dico"
+    private void OnFatefulCheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        if (_pkmActual != null) _pkmActual.FatefulEncounter = e.Value;
+    }
+
+    // Cambio de Nivel de Encuentro
+    private void OnMetLevelChanged(object sender, TextChangedEventArgs e)
+    {
+        // Error CS0266: Convertir int a byte
+        if (_pkmActual != null && int.TryParse(e.NewTextValue, out int val))
+        {
+            // Validamos que no pase de 100 para evitar crash por desbordamiento
+            val = Math.Clamp(val, 1, 100);
+            _pkmActual.MetLevel = (byte)val; // ðŸ‘ˆ EL CASTEO IMPORTANTE
+        }
+    }
+
+    private void OnMetDateSelected(object sender, DateChangedEventArgs e)
+    {
+        if (_pkmActual != null)
+        {
+            // CORRECCIÃ“N AQUÃ:
+            // 1. Extraemos la fecha asegurando que no sea nula (si es nula, usa Hoy)
+            DateTime fechaSegura = e.NewDate ?? DateTime.Now;
+
+            // 2. Usamos esa variable segura para asignar los valores
+            // Agregamos los (casteos) para evitar errores de tipo int/byte
+            _pkmActual.MetYear = (byte)fechaSegura.Year;
+            _pkmActual.MetMonth = (byte)fechaSegura.Month;
+            _pkmActual.MetDay = (byte)fechaSegura.Day;
+        }
+    }
+    // ========================================================================
+    // LÃ“GICA PESTAÃ‘A ENCUENTRO
+    // ========================================================================
+
+
+    private void CargarDatosEncuentro()
+    {
+        if (_pkmActual == null) return;
+
+        // 1. JUEGO DE ORIGEN
+        // Error CS1061: Si GameList no existe, probamos 'gamelist' (minÃºscula)
+        string[] juegos = GameInfo.Strings.gamelist;
+
+        // Error CS0019: Comparar GameVersion con int
+        // SoluciÃ³n: Convertimos el Enum a (int)
+        if ((int)_pkmActual.Version < juegos.Length)
+            lblJuegoOrigen.Text = juegos[(int)_pkmActual.Version];
+        else
+            lblJuegoOrigen.Text = $"ID {_pkmActual.Version}";
+
+        // 2. LUGAR
+        lblLugarEncuentro.Text = GetLocationName(_pkmActual.MetLocation, false);
+
+        // 3. POKÃ‰ BALL
+        // Error CS1061: Probamos 'balllist' (minÃºscula)
+        string[] balls = GameInfo.Strings.balllist;
+
+        if (_pkmActual.Ball < balls.Length)
+            lblPokeBall.Text = balls[_pkmActual.Ball];
+        else
+            lblPokeBall.Text = $"Ball {_pkmActual.Ball}";
+
+        // 4. NIVEL
+        txtMetLevel.Text = _pkmActual.MetLevel.ToString();
+
+        // 5. FECHA
+        // Error CS0121 (AmbigÃ¼edad): Convertimos todo a (int) dentro del Clamp
+        try
+        {
+            int year = Math.Clamp((int)_pkmActual.MetYear, 2000, 2099);
+            int month = Math.Clamp((int)_pkmActual.MetMonth, 1, 12);
+            int day = Math.Clamp((int)_pkmActual.MetDay, 1, DateTime.DaysInMonth(year, month));
+
+            dateEncuentro.Date = new DateTime(year, month, day);
+        }
+        catch { dateEncuentro.Date = DateTime.Now; }
+
+        chkFateful.IsChecked = _pkmActual.FatefulEncounter;
+
+        // 6. HUEVO
+        chkIsEgg.IsChecked = _pkmActual.IsEgg;
+        if (LayoutHuevo != null) LayoutHuevo.IsVisible = _pkmActual.IsEgg;
+
+        if (_pkmActual.IsEgg)
+        {
+            lblLugarHuevo.Text = GetLocationName(_pkmActual.EggLocation, true);
+            try
+            {
+                int year = Math.Clamp((int)_pkmActual.EggYear, 2000, 2099);
+                int month = Math.Clamp((int)_pkmActual.EggMonth, 1, 12);
+                int day = Math.Clamp((int)_pkmActual.EggDay, 1, DateTime.DaysInMonth(year, month));
+
+                dateHuevo.Date = new DateTime(year, month, day);
+            }
+            catch { dateHuevo.Date = DateTime.Now; }
+        }
+    }
+
+
+
+
+    // MÃ©todo auxiliar para obtener nombre del lugar
+    // MÃ©todo auxiliar corregido para PKHeX.Core Reciente
+    private string GetLocationName(int locationId, bool isEgg)
+    {
+        // 1. Obtenemos los datos necesarios del PokÃ©mon actual
+        var formato = (byte)_pkmActual.Format;
+        var generacion = (byte)_pkmActual.Generation;
+        var versionJuego = (GameVersion)_pkmActual.Version; // Convertimos int a Enum
+        var locId = (ushort)locationId; // Convertimos int a ushort
+
+        // 2. Llamamos al mÃ©todo con los 5 parÃ¡metros que pide la foto
+        return GameInfo.GetLocationName(
+            isEgg,          // bool isEggLocation
+            locId,          // ushort location
+            formato,        // byte format
+            generacion,     // byte generation
+            versionJuego    // GameVersion version
+        );
+    }
+    // ========================================================================
+    // EVENTOS DE GENERACIÃ“N DE PID (Botones de arriba)
+    // ========================================================================
+
+    private void OnGeneratePID(object sender, EventArgs e)
+    {
+        if (_pkmActual == null) return;
+
+        // Generamos un nÃºmero aleatorio de 32 bits (uint)
+        // Util.Rand32() es de PKHeX.Core, si no, usa Random de C#
+        _pkmActual.PID = PKHeX.Core.Util.Rand32();
+
+        // Actualizamos el campo de texto (Lo mostramos en Hexadecimal "X" o Decimal)
+        txtPID.Text = _pkmActual.PID.ToString("X8"); // Formato Hexadecimal (ej: A1B2C3D4)
+
+        // Al cambiar el PID, a veces cambian caracterÃ­sticas (Habilidad, Naturaleza, Shininess)
+        // Refrescamos la UI por si acaso
+        ActualizarFormas();
+        // ActualizarShinyVisual(); // Si tuvieras un indicador visual
+    }
+
+    private void OnGenerateShinyPID(object sender, EventArgs e)
+    {
+        if (_pkmActual == null) return;
+
+        // PKHeX tiene un mÃ©todo mÃ¡gico para hacerlo Shiny
+        // Esto recalcula el PID para que coincida con el TID/SID y sea Shiny
+        _pkmActual.SetShiny();
+
+        // Actualizamos el texto del PID nuevo
+        txtPID.Text = _pkmActual.PID.ToString("X8");
+
+        // Opcional: Avisar al usuario
+        // GlobalService.ShowAlertAsync("Â¡PokÃ©mon ahora es Shiny!");
+    }
+
+
+
+
+
+
 }
