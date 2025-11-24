@@ -18,11 +18,13 @@
 
             <HorizontalStackLayout Spacing="10" Padding="0,5">
 
-                <Button Text="Inicio"
+                <Button Text=""
+                        x:Name="btnTabInicio"
                         Style="{StaticResource TabButtonSelectedStyle}"
                         Clicked="OnTabClicked"/>
 
-                <Button Text="Encuentro"
+                <Button Text=""
+                        x:Name="btnTabEncuentro"
                         Style="{StaticResource TabButtonStyle}"
                         Clicked="OnTabClicked"/>
 
@@ -58,13 +60,14 @@
         <!-- 🔵 CONTENIDO VARIABLE -->
         <ScrollView Grid.Row="2">
             <ContentView x:Name="TabContent">
+                <Grid>
 
-                <!-- TAB INICIO -->
-                <VerticalStackLayout x:Name="TabInicio"
+                    <!-- TAB INICIO -->
+                    <VerticalStackLayout x:Name="TabInicio"
                                      Spacing="12"
                                      Padding="10">
 
-                    <HorizontalStackLayout Spacing="8">
+                        <HorizontalStackLayout Spacing="8">
 
                             <Label Text="PID"
                             TextColor="White"
@@ -85,7 +88,7 @@
                             TextColor="White"
                             Clicked="OnGeneratePID" />
 
-                        <ImageButton Source="shiny_btn.png"
+                            <ImageButton Source="shiny_btn.png"
                             WidthRequest="40"
                             HeightRequest="40"
                             BackgroundColor="#202020"
@@ -93,148 +96,324 @@
                             Padding="4"
                             Clicked="OnGenerateShinyPID" />
 
-                    </HorizontalStackLayout>
+                        </HorizontalStackLayout>
 
-                    <HorizontalStackLayout Spacing="10">
-                        <Label Text="Género:" TextColor="White" WidthRequest="60"/>
-                        <Picker x:Name="GenderPicker"
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="Género:" TextColor="White" WidthRequest="60"/>
+                            <Picker x:Name="GenderPicker"
                                 TextColor="White"
                                 BackgroundColor="#303030">
-                            <Picker.Items>
-                                <x:String>♂ Macho</x:String>
-                                <x:String>♀ Hembra</x:String>
-                                <x:String>Sin género</x:String>
-                            </Picker.Items>
-                        </Picker>
-                    </HorizontalStackLayout>
+                                <Picker.Items>
+                                    <x:String>♂ Macho</x:String>
+                                    <x:String>♀ Hembra</x:String>
+                                    <x:String>Sin género</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </HorizontalStackLayout>
 
-                    <HorizontalStackLayout Spacing="10">
-                        <Label x:Name="lblEspecie" Text="Especie:" TextColor="White" WidthRequest="60"/>
-                        <Border Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5"
+                        <HorizontalStackLayout Spacing="10">
+                            <Label x:Name="lblEspecie" Text="Especie:" TextColor="White" WidthRequest="60"/>
+                            <Border Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5"
                                 BackgroundColor="Black" Padding="15,10">
 
-                            <Border.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="AbrirBuscador_Tapped"/>
-                            </Border.GestureRecognizers>
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AbrirBuscador_Tapped"/>
+                                </Border.GestureRecognizers>
 
-                            <Grid ColumnDefinitions="*, Auto">
-                                <Label x:Name="lblPokemonSeleccionado" 
-                                       Text="Selecciona un Pokémon..." 
-                                       TextColor="White"
-                                       VerticalOptions="Center"/>               
-
-                                <Label Grid.Column="1" Text="▼" TextColor="Gray"/>
-                            </Grid>
-                        </Border>
-                    </HorizontalStackLayout>
-
-                    <HorizontalStackLayout Spacing="10">
-                        <Label Text="Mote:" TextColor="White" WidthRequest="60"/>
-                        <Entry x:Name="NicknameEntry"
-                               TextColor="White"
-                               WidthRequest="150"
-                               BackgroundColor="#303030"/>
-                    </HorizontalStackLayout>
-
-                    <HorizontalStackLayout Spacing="10">
-                        <Label Text="EXP:" TextColor="White" WidthRequest="60"/>
-                        <Entry x:Name="ExpEntry"
-                               Keyboard="Numeric"
-                               WidthRequest="80"
-                               TextColor="White"
-                               BackgroundColor="#303030"/>
-                        <Label Text="Nivel:" TextColor="White"/>
-                        <Entry x:Name="LevelEntry"
-                               Keyboard="Numeric"
-                               WidthRequest="60"
-                               TextColor="White"
-                               BackgroundColor="#303030"/>
-                    </HorizontalStackLayout>
-
-                    <HorizontalStackLayout Spacing="10">
-                        <Label Text="Naturaleza:" TextColor="White" WidthRequest="100"/>
-                        <Picker x:Name="NaturePicker"
-                                TextColor="White"
-                                BackgroundColor="#303030"/>
-                    </HorizontalStackLayout>
-
-                    <HorizontalStackLayout Spacing="10">
-                        <Label x:Name="lblEstadoNat" Text="Estado Nat.:" TextColor="White" WidthRequest="100"/>
-
-
-                        <Border Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5"
-                                BackgroundColor="Black" Padding="15,10">
-
-                            <Border.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="AbrirBuscador_Tapped"/>
-                            </Border.GestureRecognizers>
-
-                            <Grid ColumnDefinitions="*, Auto">
-                                <Label x:Name="lblNaturalezaSeleccionado" 
+                                <Grid ColumnDefinitions="*, Auto">
+                                    <Label x:Name="lblPokemonSeleccionado" 
                                        Text="Selecciona un Pokémon..." 
                                        TextColor="White"
                                        VerticalOptions="Center"/>
 
-                                <Label Grid.Column="1" Text="▼" TextColor="Gray"/>
-                            </Grid>
-                        </Border>
+                                    <Label Grid.Column="1" Text="▼" TextColor="Gray"/>
+                                </Grid>
+                            </Border>
+                        </HorizontalStackLayout>
 
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="Mote:" TextColor="White" WidthRequest="60"/>
+                            <Entry x:Name="NicknameEntry"
+                               TextColor="White"
+                               WidthRequest="150"
+                               BackgroundColor="#303030"/>
+                        </HorizontalStackLayout>
 
-                    </HorizontalStackLayout>
-
-                    <HorizontalStackLayout Spacing="10">
-                        <Label Text="Forma:" TextColor="White" WidthRequest="60"/>
-                        <Picker x:Name="FormPicker"
-                                TextColor="White"
-                                BackgroundColor="#303030"/>
-                    </HorizontalStackLayout>
-
-                    <HorizontalStackLayout Spacing="10">
-                        <Label Text="Habilidad:" TextColor="White" WidthRequest="80"/>
-                        <Picker x:Name="AbilityPicker"
-                                TextColor="White"
-                                BackgroundColor="#303030"/>
-                    </HorizontalStackLayout>
-
-                    <HorizontalStackLayout Spacing="10">
-                        <Label Text="Felicidad:" TextColor="White" WidthRequest="80"/>
-                        <Entry x:Name="FriendshipEntry"
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="EXP:" TextColor="White" WidthRequest="60"/>
+                            <Entry x:Name="ExpEntry"
+                               Keyboard="Numeric"
+                               WidthRequest="80"
+                               TextColor="White"
+                               BackgroundColor="#303030"/>
+                            <Label Text="Nivel:" TextColor="White"/>
+                            <Entry x:Name="LevelEntry"
                                Keyboard="Numeric"
                                WidthRequest="60"
                                TextColor="White"
                                BackgroundColor="#303030"/>
-                    </HorizontalStackLayout>
+                        </HorizontalStackLayout>
 
-                    <HorizontalStackLayout Spacing="10">
-                        <Label Text="Idioma:" TextColor="White" WidthRequest="80"/>
-                        <Picker x:Name="LanguagePicker"
+                        <HorizontalStackLayout Spacing="10">
+                            <Label x:Name="lblNaturaleza" Text="" TextColor="White" WidthRequest="100"/>
+
+                            <Border Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5"
+                                BackgroundColor="Black" Padding="15,10">
+
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AbrirBuscadorNaturaleza_Tapped"/>
+                                </Border.GestureRecognizers>
+
+                                <Grid ColumnDefinitions="*, Auto">
+                                    <Label x:Name="lblNaturalezaSeleccionado" 
+                                       Text="Selecciona un Pokémon..." 
+                                       TextColor="White"
+                                       VerticalOptions="Center"/>
+
+                                    <Label Grid.Column="1" Text="▼" TextColor="Gray"/>
+                                </Grid>
+                            </Border>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout Spacing="10">
+                            <Label x:Name="lblEstadoNat" Text=":" TextColor="White" WidthRequest="100"/>
+
+
+                            <Border Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5"
+                                BackgroundColor="Black" Padding="15,10">
+
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AbrirBuscadorEstadoNaturaleza_Tapped"/>
+                                </Border.GestureRecognizers>
+
+                                <Grid ColumnDefinitions="*, Auto">
+                                    <Label x:Name="lblNaturalezaEstadoSeleccionado" 
+                                       Text="Selecciona un Pokémon..." 
+                                       TextColor="White"
+                                       VerticalOptions="Center"/>
+
+                                    <Label Grid.Column="1" Text="▼" TextColor="Gray"/>
+                                </Grid>
+                            </Border>
+
+
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout x:Name="LayoutForma" Spacing="10" IsVisible="False">
+                            <Label Text="Forma:" TextColor="White" WidthRequest="60" VerticalOptions="Center"/>
+
+                            <Border Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5"
+                                BackgroundColor="Black" Padding="15,10">
+
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AbrirBuscadorForma_Tapped"/>
+                                </Border.GestureRecognizers>
+
+                                <Grid ColumnDefinitions="*, Auto">
+                                    <Label x:Name="lblFormaSeleccionada" 
+                                       Text="Normal" 
+                                       TextColor="White"
+                                       VerticalOptions="Center"/>
+
+                                    <Label Grid.Column="1" Text="▼" TextColor="Gray" Margin="5,0,0,0"/>
+                                </Grid>
+                            </Border>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout Spacing="10">
+                            <Label x:Name="lblHabilidad" Text="Habilidad:" TextColor="White" WidthRequest="80"/>
+
+                            <Border Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5"
+                                BackgroundColor="Black" Padding="15,10">
+
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AbrirBuscadorHabilidad_Tapped"/>
+                                </Border.GestureRecognizers>
+
+                                <Grid ColumnDefinitions="*, Auto">
+                                    <Label x:Name="lblHabilidadSeleccionado" 
+                                       Text="Selecciona un Pokémon..." 
+                                       TextColor="White"
+                                       VerticalOptions="Center"/>
+
+                                    <Label Grid.Column="1" Text="▼" TextColor="Gray"/>
+                                </Grid>
+                            </Border>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="Felicidad:" TextColor="White" WidthRequest="80"/>
+                            <Entry x:Name="FriendshipEntry"
+                               Keyboard="Numeric"
+                               WidthRequest="60"
+                               TextColor="White"
+                               BackgroundColor="#303030"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="Idioma:" TextColor="White" WidthRequest="80"/>
+                            <Picker x:Name="LanguagePicker"
                                 TextColor="White"
                                 BackgroundColor="#303030">
-                            <Picker.Items>
-                                <x:String>ENG</x:String>
-                                <x:String>SPA</x:String>
-                                <x:String>FRE</x:String>
-                                <x:String>GER</x:String>
-                                <x:String>JPN</x:String>
-                                <x:String>KOR</x:String>
-                                <x:String>CHN</x:String>
-                            </Picker.Items>
-                        </Picker>
-                    </HorizontalStackLayout>
+                                <Picker.Items>
+                                    <x:String>ENG</x:String>
+                                    <x:String>SPA</x:String>
+                                    <x:String>FRE</x:String>
+                                    <x:String>GER</x:String>
+                                    <x:String>JPN</x:String>
+                                    <x:String>KOR</x:String>
+                                    <x:String>CHN</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </HorizontalStackLayout>
 
-                    <HorizontalStackLayout Spacing="20">
-                        <CheckBox x:Name="EggCheck" Color="White"/>
-                        <Label Text="Huevo" TextColor="White"/>
+                        <HorizontalStackLayout Spacing="20">
+                            <CheckBox x:Name="EggCheck" Color="White"/>
+                            <Label Text="Huevo" TextColor="White"/>
 
-                        <CheckBox x:Name="InfectedCheck" Color="White"/>
-                        <Label Text="Infectado" TextColor="White"/>
+                            <CheckBox x:Name="InfectedCheck" Color="White"/>
+                            <Label Text="Infectado" TextColor="White"/>
 
-                        <CheckBox x:Name="CuredCheck" Color="White"/>
-                        <Label Text="Curado" TextColor="White"/>
-                    </HorizontalStackLayout>
+                            <CheckBox x:Name="CuredCheck" Color="White"/>
+                            <Label Text="Curado" TextColor="White"/>
+                        </HorizontalStackLayout>
 
-                </VerticalStackLayout>
+                    </VerticalStackLayout>
 
+                    <!-- TAB ENCUENTRO -->
+                    <VerticalStackLayout x:Name="TabEncuentro"
+                     Spacing="15"
+                     Padding="10"
+                     IsVisible="False">
+                        <Border Stroke="#333" StrokeThickness="1" BackgroundColor="#151515" Padding="10" StrokeShape="RoundRectangle 10">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Origen" FontAttributes="Bold" TextColor="#AAAAAA" FontSize="12"/>
+
+                                <Grid ColumnDefinitions="100, *">
+                                    <Label Text="Juego:" TextColor="White" VerticalOptions="Center"/>
+
+                                    <Border Grid.Column="1" Stroke="Gray" StrokeThickness="1" BackgroundColor="Black" Padding="10,8" StrokeShape="RoundRectangle 5">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="AbrirBuscadorJuego_Tapped"/>
+                                        </Border.GestureRecognizers>
+                                        <Grid ColumnDefinitions="*, Auto">
+                                            <Label x:Name="lblJuegoOrigen" Text="Seleccionar..." TextColor="White" LineBreakMode="TailTruncation"/>
+                                            <Label Grid.Column="1" Text="▼" TextColor="Gray"/>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+
+                                <Grid ColumnDefinitions="100, *">
+                                    <Label Text="Batalla:" TextColor="White" VerticalOptions="Center"/>
+
+                                    <Border Grid.Column="1" Stroke="Gray" StrokeThickness="1" BackgroundColor="Black" Padding="10,8" StrokeShape="RoundRectangle 5">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="AbrirBuscadorBatalla_Tapped"/>
+                                        </Border.GestureRecognizers>
+                                        <Grid ColumnDefinitions="*, Auto">
+                                            <Label x:Name="lblVersionBatalla" Text="(Ninguno)" TextColor="White" LineBreakMode="TailTruncation"/>
+                                            <Label Grid.Column="1" Text="▼" TextColor="Gray"/>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Stroke="#333" StrokeThickness="1" BackgroundColor="#151515" Padding="10" StrokeShape="RoundRectangle 10">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Datos de Encuentro" FontAttributes="Bold" TextColor="#AAAAAA" FontSize="12"/>
+
+                                <VerticalStackLayout Spacing="5">
+                                    <Label Text="Lugar:" TextColor="White"/>
+                                    <Border Stroke="Gray" StrokeThickness="1" BackgroundColor="Black" Padding="10,8" StrokeShape="RoundRectangle 5">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="AbrirBuscadorLugar_Tapped"/>
+                                        </Border.GestureRecognizers>
+                                        <Grid ColumnDefinitions="*, Auto">
+                                            <Label x:Name="lblLugarEncuentro" Text="-(00000)" TextColor="White" LineBreakMode="TailTruncation"/>
+                                            <Label Grid.Column="1" Text="▼" TextColor="Gray"/>
+                                        </Grid>
+                                    </Border>
+                                </VerticalStackLayout>
+
+                                <Grid ColumnDefinitions="*, *">
+                                    <Label Text="Ball:" TextColor="White" VerticalOptions="Center"/>
+
+                                    <Border Grid.Column="1" Stroke="Gray" StrokeThickness="1" BackgroundColor="Black" Padding="10,8" StrokeShape="RoundRectangle 5">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="AbrirBuscadorBall_Tapped"/>
+                                        </Border.GestureRecognizers>
+                                        <Grid ColumnDefinitions="*, Auto">
+                                            <Label x:Name="lblPokeBall" Text="Poké Ball" TextColor="White" LineBreakMode="TailTruncation"/>
+                                            <Label Grid.Column="1" Text="▼" TextColor="Gray"/>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+
+                                <Grid ColumnDefinitions="*, Auto, *" ColumnSpacing="10">
+                                    <VerticalStackLayout Grid.Column="0">
+                                        <Label Text="Nivel:" TextColor="White" FontSize="12"/>
+                                        <Entry x:Name="txtMetLevel" Text="1" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center"/>
+                                    </VerticalStackLayout>
+
+                                    <VerticalStackLayout Grid.Column="1">
+                                        <Label Text="Obed.:" TextColor="White" FontSize="12"/>
+                                        <Entry x:Name="txtObedienceLevel" Text="0" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" WidthRequest="50"/>
+                                    </VerticalStackLayout>
+
+                                    <VerticalStackLayout Grid.Column="2">
+                                        <Label Text="Fecha:" TextColor="White" FontSize="12"/>
+                                        <DatePicker x:Name="dateEncuentro" TextColor="White" BackgroundColor="#202020" Format="dd/MM/yyyy"/>
+                                    </VerticalStackLayout>
+                                </Grid>
+
+                                <HorizontalStackLayout Spacing="10">
+                                    <CheckBox x:Name="chkFateful" Color="White"/>
+                                    <Label Text="Encuentro Fatídico" TextColor="White" VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Stroke="#333" StrokeThickness="1" BackgroundColor="#151515" Padding="10" StrokeShape="RoundRectangle 10">
+                            <VerticalStackLayout Spacing="10">
+
+                                <HorizontalStackLayout Spacing="10">
+                                    <CheckBox x:Name="chkIsEgg" Color="White" CheckedChanged="OnEggCheckedChanged"/>
+                                    <Label Text="Como Huevo" TextColor="White" VerticalOptions="Center" FontAttributes="Bold"/>
+                                </HorizontalStackLayout>
+
+                                <VerticalStackLayout x:Name="LayoutHuevo" Spacing="10" IsVisible="False">
+
+                                    <VerticalStackLayout Spacing="5">
+                                        <Label Text="Lugar (Huevo):" TextColor="White" FontSize="12"/>
+                                        <Border Stroke="Gray" StrokeThickness="1" BackgroundColor="Black" Padding="10,8" StrokeShape="RoundRectangle 5">
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="AbrirBuscadorLugarHuevo_Tapped"/>
+                                            </Border.GestureRecognizers>
+                                            <Grid ColumnDefinitions="*, Auto">
+                                                <Label x:Name="lblLugarHuevo" Text="-(00000)" TextColor="White" LineBreakMode="TailTruncation"/>
+                                                <Label Grid.Column="1" Text="▼" TextColor="Gray"/>
+                                            </Grid>
+                                        </Border>
+                                    </VerticalStackLayout>
+
+                                    <Grid ColumnDefinitions="Auto, *">
+                                        <Label Text="Fecha:" TextColor="White" VerticalOptions="Center" WidthRequest="60"/>
+                                        <DatePicker x:Name="dateHuevo" Grid.Column="1" TextColor="White" BackgroundColor="#202020" Format="dd/MM/yyyy"/>
+                                    </Grid>
+
+                                </VerticalStackLayout>
+
+                            </VerticalStackLayout>
+                        </Border>
+
+                    </VerticalStackLayout>
+
+
+                </Grid>
+
+            
             </ContentView>
         </ScrollView>
 

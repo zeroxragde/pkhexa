@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using PKHeX.Core;
 using PkHexA.Controls;
 #if ANDROID
 using PkHexA.Platforms.Android;
@@ -31,7 +32,7 @@ namespace PkHexA
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
-
+            LanguageService.CambiarIdiomaPKHeX();
             return builder.Build();
         }
     }

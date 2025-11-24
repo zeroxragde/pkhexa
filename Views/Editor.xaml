@@ -4,174 +4,121 @@
              x:Class="PkHexA.Views.Editor"
              BackgroundColor="#101010"
              x:Name="winEditorMain"
-             Shell.NavBarIsVisible="False"
-             Shell.TabBarIsVisible="False">
+             NavigationPage.HasNavigationBar="False">
 
-    <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" Padding="20">
+    <Grid RowDefinitions="Auto,Auto,*,Auto,Auto,Auto,Auto" 
+          Padding="15" 
+          RowSpacing="10">
 
-        <Label Text="Editor de Pokémon"
-               x:Name="lblTitlePkm"
-               FontSize="28"
-               FontAttributes="Bold"
-               TextColor="White"
-               HorizontalOptions="Center"
-               Margin="0,10,0,15" />
+        <HorizontalStackLayout Grid.Row="0" Spacing="30" HorizontalOptions="Center" Margin="0,10,0,15">
 
-        <Frame Grid.Row="1"
-               HeightRequest="220"
-               WidthRequest="220"
-               BackgroundColor="#202020"
-               CornerRadius="25"
-               Padding="0"
-               HorizontalOptions="Center"
-               VerticalOptions="Start">
-            <Image x:Name="imgPokemon"
-                   Aspect="Fill"
-                   Margin="20" />
-        </Frame>
-
-        <HorizontalStackLayout Grid.Row="2"
-                               Spacing="35"
-                               HorizontalOptions="Center"
-                               Margin="0,25,0,15">
-
-            <VerticalStackLayout HorizontalOptions="Center" Spacing="5">
-                <ImageButton Source="edit_pkm.png"
-                             WidthRequest="70"
-                             HeightRequest="70"
-                             BackgroundColor="#202020"
-                             CornerRadius="35"
+            <VerticalStackLayout Spacing="5">
+                <ImageButton Source="edit_pkm.png" WidthRequest="60" HeightRequest="60"
+                             BackgroundColor="#202020" CornerRadius="30"
                              Clicked="OnEditPkmClicked" />
-                <Label Text="Editar PKM" TextColor="White" FontSize="14" />
+                <Label x:Name="lblBtnEditar" Text="Editar" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
             </VerticalStackLayout>
 
-            <VerticalStackLayout HorizontalOptions="Center" Spacing="5">
-                <ImageButton Source="edit_user.png"
-                             WidthRequest="70"
-                             HeightRequest="70"
-                             BackgroundColor="#202020"
-                             CornerRadius="35"
+            <VerticalStackLayout Spacing="5">
+                <ImageButton Source="edit_user.png" WidthRequest="60" HeightRequest="60"
+                             BackgroundColor="#202020" CornerRadius="30"
                              Clicked="OnEditUserClicked" />
-                <Label Text="Editar User" TextColor="White" FontSize="14" />
+                <Label x:Name="lblBtnTrainer" Text="Entrenador" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
             </VerticalStackLayout>
 
-            <VerticalStackLayout HorizontalOptions="Center" Spacing="5">
-                <ImageButton Source="add_box.png"
-                             WidthRequest="70"
-                             HeightRequest="70"
-                             BackgroundColor="#202020"
-                             CornerRadius="35"
+            <VerticalStackLayout Spacing="5">
+                <ImageButton Source="add_box.png" WidthRequest="60" HeightRequest="60"
+                             BackgroundColor="#202020" CornerRadius="30"
                              Clicked="OnAddPokemonClicked" />
-                <Label Text="Agregar" TextColor="White" FontSize="14" />
+                <Label x:Name="lblBtnNuevo" Text="Nuevo" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
             </VerticalStackLayout>
 
         </HorizontalStackLayout>
 
-    <Grid Grid.Row="3"
-      HorizontalOptions="Fill"
-      VerticalOptions="Center"
-      Margin="0,20,0,20">
+        <VerticalStackLayout Grid.Row="1" Spacing="5" HorizontalOptions="Center">
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+            <Label x:Name="lblEditorCajas"
+                   Text="Editor de Cajas"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"/>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+            <HorizontalStackLayout Spacing="10" Margin="0,5,0,0">
+                <Label x:Name="lblCajaActual"
+                       Text="Caja Actual:" 
+                       TextColor="#AAAAAA" 
+                       VerticalOptions="Center"/>
 
-            <!-- Contenedor para que el grid crezca -->
-            <Grid x:Name="BoxGrid"
-          HorizontalOptions="Fill"
-          VerticalOptions="Center"
-          ColumnSpacing="2"
-          RowSpacing="2"
-          Padding="10">
+                <Border Stroke="Gray" StrokeThickness="1" BackgroundColor="#202020" Padding="10,0" HeightRequest="40">
+                    <Picker x:Name="BoxPicker"
+                            TextColor="White"
+                            TitleColor="Gray"
+                            WidthRequest="150"
+                            SelectedIndexChanged="OnBoxChanged"/>
+                </Border>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+        <Grid Grid.Row="2" Margin="0,5">
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+            <Image Source="pkhex_background_tile.png" 
+                   Aspect="AspectFill" 
+                   Opacity="0.5"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Fill"/>
 
-                <Grid.Background>
-                    <ImageBrush ImageSource="pkhex_background_tile.png"
-                        Stretch="UniformToFill"
-                        AlignmentX="Center"
-                        AlignmentY="Center" />
-                </Grid.Background>
-
-                <Grid.Resources>
-                    <Style TargetType="Frame">
-                        <Setter Property="BackgroundColor" Value="#2A2A2A" />
-                        <Setter Property="BorderColor" Value="#5F5F5F" />
-                        <Setter Property="CornerRadius" Value="3" />
-                        <Setter Property="Padding" Value="0" />
-                        <Setter Property="HasShadow" Value="False" />
-                    </Style>
-                </Grid.Resources>
-
-                <!-- 30 celdas -->
-                <Frame Grid.Row="0" Grid.Column="0" />
-                <Frame Grid.Row="0" Grid.Column="1" />
-                <Frame Grid.Row="0" Grid.Column="2" />
-                <Frame Grid.Row="0" Grid.Column="3" />
-                <Frame Grid.Row="0" Grid.Column="4" />
-                <Frame Grid.Row="0" Grid.Column="5" />
-
-                <Frame Grid.Row="1" Grid.Column="0" />
-                <Frame Grid.Row="1" Grid.Column="1" />
-                <Frame Grid.Row="1" Grid.Column="2" />
-                <Frame Grid.Row="1" Grid.Column="3" />
-                <Frame Grid.Row="1" Grid.Column="4" />
-                <Frame Grid.Row="1" Grid.Column="5" />
-
-                <Frame Grid.Row="2" Grid.Column="0" />
-                <Frame Grid.Row="2" Grid.Column="1" />
-                <Frame Grid.Row="2" Grid.Column="2" />
-                <Frame Grid.Row="2" Grid.Column="3" />
-                <Frame Grid.Row="2" Grid.Column="4" />
-                <Frame Grid.Row="2" Grid.Column="5" />
-
-                <Frame Grid.Row="3" Grid.Column="0" />
-                <Frame Grid.Row="3" Grid.Column="1" />
-                <Frame Grid.Row="3" Grid.Column="2" />
-                <Frame Grid.Row="3" Grid.Column="3" />
-                <Frame Grid.Row="3" Grid.Column="4" />
-                <Frame Grid.Row="3" Grid.Column="5" />
-
-                <Frame Grid.Row="4" Grid.Column="0" />
-                <Frame Grid.Row="4" Grid.Column="1" />
-                <Frame Grid.Row="4" Grid.Column="2" />
-                <Frame Grid.Row="4" Grid.Column="3" />
-                <Frame Grid.Row="4" Grid.Column="4" />
-                <Frame Grid.Row="4" Grid.Column="5" />
-
+            <Grid x:Name="BoxGridContainer"
+                  RowDefinitions="*,*,*,*,*"
+                  ColumnDefinitions="*,*,*,*,*,*"
+                  ColumnSpacing="2" RowSpacing="2" Padding="4"
+                  BackgroundColor="Transparent">
             </Grid>
         </Grid>
 
+        <Label x:Name="lblEquipoParty" 
+               Grid.Row="3" 
+               Text="Equipo Pokémon (Party)" 
+               TextColor="#AAAAAA" FontSize="14" FontAttributes="Bold" Margin="5,5,0,0"/>
 
+        <Grid Grid.Row="4" HeightRequest="110">
+            <Grid x:Name="PartyGridContainer"
+                  RowDefinitions="*,*"
+                  ColumnDefinitions="*,*,*"
+                  ColumnSpacing="4" RowSpacing="4" Padding="4"
+                  BackgroundColor="#151515">
+            </Grid>
+        </Grid>
 
-        <Button Grid.Row="4"
-                Text="Volver al inicio"
-                BackgroundColor="#303030"
-                TextColor="White"
-                CornerRadius="10"
-                Margin="0,20,0,10"
-                HeightRequest="45"
+        <Grid Grid.Row="5" ColumnDefinitions="*,*" ColumnSpacing="10" Margin="0,10,0,0">
+
+            <Button x:Name="btnGuardar"
+                    Grid.Column="0"
+                    Text="Guardar Save"
+                    BackgroundColor="#303080" 
+                    TextColor="White"
+                    CornerRadius="8"
+                    HeightRequest="45"
+                    Clicked="OnSaveClicked"/>
+
+            <Button x:Name="btnExportarPkm"
+                    Grid.Column="1"
+                    Text="Exportar PKM"
+                    BackgroundColor="#008080" 
+                    TextColor="White"
+                    CornerRadius="8"
+                    HeightRequest="45"
+                    Clicked="OnExportPkmClicked"/>
+        </Grid>
+
+        <Button x:Name="btnVolver"
+                Grid.Row="6"
+                Text="Volver"
+                BackgroundColor="#252525"
+                TextColor="#AAAAAA"
+                CornerRadius="8"
+                HeightRequest="40"
                 Clicked="OnExitClicked" />
 
     </Grid>
-
 </ContentPage>

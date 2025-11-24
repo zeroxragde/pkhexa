@@ -11,13 +11,11 @@ public partial class NaturalezaSearchPage : ContentPage
     public NaturalezaSearchPage()
 	{
 		InitializeComponent();
-        BarraBusqueda.Placeholder = LanguageService.Get("txtSearchBoxPlaceholde");
-
         CargarDatos();
-
     }
     private void CargarDatos()
     {
+  
         // 2. AQUÍ METEMOS TU LÍNEA DE DATOS REALES
         // Convertimos a List<dynamic> para manipularlo fácil aquí
         var rawList = GameInfo.Sources.NatureDataSource.ToList();
@@ -34,7 +32,7 @@ public partial class NaturalezaSearchPage : ContentPage
     public static dynamic? ObtenerNaturaleza(int idNatura)
     {
         // Usamos la misma fuente de datos que usa la lista visual
-        var lista = GameInfo.Sources.SpeciesDataSource;
+        var lista = GameInfo.Sources.NatureDataSource;
 
         // Buscamos el que coincida
         var pokemon = lista.FirstOrDefault(p => p.Value == idNatura);
@@ -65,7 +63,7 @@ public partial class NaturalezaSearchPage : ContentPage
     }
 
     // 4. SELECCIÓN
-    private async void OnPokemonSeleccionado(object sender, SelectionChangedEventArgs e)
+    private async void OnNaturaSeleccionado(object sender, SelectionChangedEventArgs e)
     {
         var itemSeleccionado = e.CurrentSelection.FirstOrDefault();
 
@@ -77,11 +75,4 @@ public partial class NaturalezaSearchPage : ContentPage
             await Navigation.PopModalAsync();
         }
     }
-
-
-
-
-
-
-
 }

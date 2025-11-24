@@ -1,16 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
 
-	<style name="Maui.MainTheme" parent="Theme.MaterialComponents.DayNight">
-		<item name="colorPrimary">#512BD4</item>
-		<item name="colorPrimaryDark">#2B0B98</item>
-		<item name="colorAccent">#2B0B98</item>
+  <style name="Maui.MainTheme" parent="Theme.MaterialComponents.DayNight">
+    <item name="colorPrimary">#512BD4</item>
+    <item name="colorPrimaryDark">#2B0B98</item>
+    <item name="colorAccent">#00FFFF</item>
 
-		<item name="android:textColor">#FFFFFF</item>
-		<item name="android:textColorPrimary">#FFFFFF</item>
+    <item name="android:textColor">#FFFFFF</item>
+    <item name="android:textColorPrimary">#FFFFFF</item>
 
-		<item name="android:navigationBarColor">#512BD4</item>
-		<item name="android:windowLightNavigationBar">false</item>
-	</style>
+    <item name="android:navigationBarColor">#512BD4</item>
+    <item name="android:windowLightNavigationBar">false</item>
+
+    <item name="android:alertDialogTheme">@style/MiAlertaMaterial</item>
+    <item name="materialAlertDialogTheme">@style/MiAlertaMaterial</item>
+  </style>
+
+  <style name="MiAlertaMaterial" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+
+    <item name="colorSurface">#101010</item>
+
+    <item name="android:background">#101010</item>
+
+    <item name="android:textColor">#FFFFFF</item>
+    <item name="android:textColorPrimary">#FFFFFF</item>
+    <item name="colorOnSurface">#FFFFFF</item>
+    <item name="colorPrimary">#00FFFF</item>
+    <item name="colorAccent">#00FFFF</item>
+    <item name="android:borderlessButtonStyle">@style/MisBotonesAlerta</item>
+    <item name="buttonBarPositiveButtonStyle">@style/MisBotonesAlerta</item>
+    <item name="buttonBarNegativeButtonStyle">@style/MisBotonesAlerta</item>
+  </style>
+
+  <style name="MisBotonesAlerta" parent="Widget.MaterialComponents.Button.TextButton">
+    <item name="android:textColor">#00FFFF</item>
+  </style>
 
 </resources>

@@ -1,5 +1,8 @@
-﻿using System;
+﻿using PKHeX.Core;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Reflection;
 using System.Text;
 using System.Text.Json;
 
@@ -70,6 +73,8 @@ namespace PkHexA.Services
                     _currentLanguage = "es";
                     Preferences.Set("lang", "es");
                 }
+
+     
             }
             catch (Exception ex)
             {
@@ -78,11 +83,32 @@ namespace PkHexA.Services
         }
 
 
+
+
+
+        public static void CambiarIdiomaPKHeX() // idioma = "es", "en", etc.
+        {
+            // 3. PURGAR LA MEMORIA CACHÉ (CRUCIAL)
+            // Esto es lo que hace que las listas (Naturalezas, etc.) se regeneren
+            try
+            {
+                LocalizeUtil.InitializeStrings(_currentLanguage, GlobalService.ACTUAL_FILE, true);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ Error limpiando caché: {ex.Message}");
+            }
+        }
+
+
+
+
         public static void SetLanguage(string langCode)
         {
             if (_languages.ContainsKey(langCode))
             {
                 _currentLanguage = langCode;
+                CambiarIdiomaPKHeX();
                 Preferences.Set("lang", langCode); // 🔹 Guardar selección persistente
             }
         }

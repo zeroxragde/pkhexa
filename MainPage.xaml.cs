@@ -58,6 +58,7 @@ namespace PkHexA
                     else {
 
                         GlobalService.ACTUAL_FILE = saveFile;
+                        LanguageService.CambiarIdiomaPKHeX();
                         var gen = saveFile.Generation;
                         var game = saveFile.GetType().Name.Replace("SAV", "");
                         res = $"Detectado: Generación {gen} - {game}";

@@ -88,6 +88,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Platforms\Android\Resources\drawable\dialog_bg.xml" />
     <None Remove="Platforms\Android\Resources\values\fondo_redondo_aqua.xml" />
     <None Remove="Platforms\Android\Resources\values\styles.xml" />
     <None Remove="Resources\Languages\lang.json" />
@@ -113,7 +114,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <MauiXaml Update="Views\CustomAlert.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
     <MauiXaml Update="Views\Editor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Views\Pickers\FormaSearchPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Views\Pickers\HabilidadSearchPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
     <MauiXaml Update="Views\Pickers\NaturalezaSearchPage.xaml">

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PkHexA.Views.CustomAlert"
+             BackgroundImageSource="wallpaper2.png">
+    <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
+
+        <Image Source="wallpaper2.png"
+               Aspect="AspectFill"
+               HorizontalOptions="Fill"
+               VerticalOptions="Fill"/>
+
+ 
+
+        <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
+
+            <Border Stroke="#333333"
+                    StrokeThickness="1"
+                    BackgroundColor="#101010"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="300"
+                    Padding="20"
+                    StrokeShape="RoundRectangle 15">
+
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="10,10" Radius="20" Opacity="0.9"/>
+                </Border.Shadow>
+
+                <VerticalStackLayout Spacing="15">
+                    <Label x:Name="lblTitulo"
+                           Text="Titulo"
+                           TextColor="White"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"/>
+
+                    <Label x:Name="lblMensaje"
+                           Text="Mensaje..."
+                           TextColor="#DDDDDD"
+                           FontSize="14"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"/>
+
+                    <Button x:Name="btnOk"
+                            Text="OK"
+                            BackgroundColor="#512BD4"
+                            TextColor="White"
+                            CornerRadius="8"
+                            HeightRequest="40"
+                            Margin="0,10,0,0"
+                            Clicked="OnOkClicked"/>
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
+    </Grid>
+</ContentPage>
