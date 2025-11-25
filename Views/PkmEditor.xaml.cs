@@ -282,9 +282,32 @@ public partial class PkmEditor : ContentPage
         //page.CargarLugares(_pkmActual.Version, _pkmActual.Context, true);
     }
 
-    private void AbrirBuscadorBall_Tapped(object sender, TappedEventArgs e)
+    private async void AbrirBuscadorBall_Tapped(object sender, TappedEventArgs e)
     {
+        if (_pkmActual == null) return;
 
+        var page = new PkHexA.Views.Pickers.BallSearchPage();
+
+        // Preseleccionar la ball actual
+        page.Preseleccionar(_pkmActual.Ball);
+
+        // Recibir selección
+        page.AlSeleccionarBall = (item) =>
+        {
+            int idBall = item.Value; // ID (1 = Master, 4 = Poke, etc)
+            string nombreBall = item.Text;
+
+            lblPokeBall.Text = nombreBall;
+
+            // Guardar en el Pokémon
+            if (_pkmActual != null)
+            {
+                // Casteo a byte por seguridad, las balls son ID < 255
+                _pkmActual.Ball = (byte)idBall;
+            }
+        };
+
+        await Navigation.PushModalAsync(page);
     }
 
     private async void AbrirBuscadorLugar_Tapped(object sender, TappedEventArgs e)

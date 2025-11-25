@@ -17,7 +17,7 @@ public partial class BallSearchPage : ContentPage
     {
         // 1. Obtenemos la lista de nombres del Core (En Español)
         // Nota: En versiones nuevas es 'BallList' (Mayúscula)
-        string[] nombresBalls = GameInfo.Sources.BallDataSources.ToArray();
+        string[] nombresBalls = GameInfo.Sources.BallDataSource.ToList().Select(b => b.Text).ToArray();
 
         var listaProcesada = new List<dynamic>();
 
