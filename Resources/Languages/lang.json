@@ -23,6 +23,8 @@
     "txtCaja": "Caja",
     "BarraBusqueda": "Buscar...",
     "lblEspecie": "Especie:",
+    "lblJuegoOriginalForm": "Juego Original:",
+    "lblVersionBattleForm": "Versión de Batalla:",
     "lblNaturalezaSeleccionado": "Seleccionar Naturaleza",
     "lblNaturalezaEstadoSeleccionado": "Seleccionar Naturaleza",
     "lblPokemonSeleccionado": "Seleccionar Pokemon",

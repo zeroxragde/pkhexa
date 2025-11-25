@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PkHexA.Views.Pickers.LocationSearchPage"
+             BackgroundColor="Black"
+             Title="LocationSearchPage">
+    <Grid RowDefinitions="Auto, *" Padding="20" RowSpacing="10">
+
+        <SearchBar Grid.Row="0"
+                   x:Name="BarraBusqueda"
+                   Placeholder="Buscar lugar..."
+                   PlaceholderColor="Gray"
+                   TextColor="White"
+                   BackgroundColor="#202020"
+                   CancelButtonColor="Aqua"
+                   TextChanged="OnBusquedaChanged" />
+
+        <CollectionView Grid.Row="1"
+                        x:Name="ListaLugares"
+                        SelectionMode="Single"
+                        SelectionChanged="OnLugarSeleccionado">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Stroke="Transparent" Margin="0,5" Padding="10">
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Normal" />
+                                <VisualState Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="#303080" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Label Text="{Binding Text}" 
+                               TextColor="Aqua" 
+                               FontSize="16"/>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

@@ -24,7 +24,7 @@ public partial class PkmEditor : ContentPage
        // lblPokemonSeleccionado.Text = LanguageService.Get("lblPokemonSeleccionado");
         AutoTraductor.Traducir(this);
         var speciesList = GameInfo.Sources.SpeciesDataSource.ToList();
-
+  
     }
     private void RestaurarTabs()
     {
@@ -114,9 +114,10 @@ public partial class PkmEditor : ContentPage
             // Nota: Para Naturaleza e Idioma, necesitas buscar el índice en tu lista
             // NaturePicker.SelectedIndex = pkm.Nature;
         }
-
+     //   lblGameNameForm.Text = GlobalService.ACTUAL_FILE.
         // 4. Forzar actualización visual de forma y habilidad
         ActualizarFormas();
+
         //FijarHabilidad(pkm.Ability);
     }
     // AL HACER CLICK EN EL "PICKER FALSO"
@@ -278,7 +279,7 @@ public partial class PkmEditor : ContentPage
 
     private void AbrirBuscadorLugarHuevo_Tapped(object sender, TappedEventArgs e)
     {
-
+        //page.CargarLugares(_pkmActual.Version, _pkmActual.Context, true);
     }
 
     private void AbrirBuscadorBall_Tapped(object sender, TappedEventArgs e)
@@ -286,19 +287,77 @@ public partial class PkmEditor : ContentPage
 
     }
 
-    private void AbrirBuscadorLugar_Tapped(object sender, TappedEventArgs e)
+    private async void AbrirBuscadorLugar_Tapped(object sender, TappedEventArgs e)
     {
+        if (_pkmActual == null) return;
 
+        var page = new PkHexA.Views.Pickers.LocationSearchPage();
+
+        // Cargar lugares (esto está bien)
+        page.CargarLugares(_pkmActual.Version, _pkmActual.Context, false);
+        page.Preseleccionar(_pkmActual.MetLocation);
+
+        // 👇 ESTA ES LA PARTE QUE TIENES QUE CAMBIAR 👇
+        page.AlSeleccionarLugar = (item) =>
+        {
+            // 1. CORRECCIÓN: El valor es un número (int), NO un GameVersion
+            int idLugar = item.Value;
+
+            lblLugarEncuentro.Text = item.Text;
+
+            if (_pkmActual != null)
+            {
+                // 2. CORRECCIÓN: Convertimos el int a (ushort) para guardarlo
+                _pkmActual.MetLocation = (ushort)idLugar;
+            }
+        };
+        // 👆 HASTA AQUÍ EL CAMBIO 👆
+
+        await Navigation.PushModalAsync(page);
     }
 
-    private void AbrirBuscadorBatalla_Tapped(object sender, TappedEventArgs e)
+    private async void AbrirBuscadorBatalla_Tapped(object sender, TappedEventArgs e)
     {
-
+        var searchPage = new GamesSearchPage();
+        // CONECTAMOS EL CABLE
+        searchPage.AlSeleccionarJuego = (item) =>
+        {
+            // 1. Poner el nombre en el Label visual
+            lblVersionBatalla.Text = item.Text;
+        };
+        await Navigation.PushModalAsync(searchPage);
     }
 
-    private void AbrirBuscadorJuego_Tapped(object sender, TappedEventArgs e)
+    private async void AbrirBuscadorJuego_Tapped(object sender, TappedEventArgs e)
     {
+        var page = new PkHexA.Views.Pickers.GamesSearchPage();
 
+        // Preseleccionar
+        if (_pkmActual != null)
+        {
+            // Convertimos el Enum a int para enviarlo al buscador
+            page.Preseleccionar(_pkmActual.Version);
+        }
+
+        page.AlSeleccionarJuego = (item) =>
+        {
+            // item.Text es el Nombre ("Espada")
+            // item.Value es el ID numérico (44)
+
+            lblJuegoOrigen.Text = item.Text;
+
+            if (_pkmActual != null)
+            {
+                // 🔥 AQUÍ ESTABA EL ERROR: Convertimos int a GameVersion
+                _pkmActual.Version = (GameVersion)item.Value;
+
+                // Resetear lugar porque cambió el juego
+                _pkmActual.MetLocation = 0;
+                lblLugarEncuentro.Text = "- (0)";
+            }
+        };
+
+        await Navigation.PushModalAsync(page);
     }
 
     // Checkbox "Como Huevo"
@@ -333,13 +392,12 @@ public partial class PkmEditor : ContentPage
     {
         if (_pkmActual != null)
         {
-            // CORRECCIÓN AQUÍ:
-            // 1. Extraemos la fecha asegurando que no sea nula (si es nula, usa Hoy)
+            // 1. Obtenemos la fecha segura (si es nula, usa hoy)
             DateTime fechaSegura = e.NewDate ?? DateTime.Now;
 
-            // 2. Usamos esa variable segura para asignar los valores
-            // Agregamos los (casteos) para evitar errores de tipo int/byte
-            _pkmActual.MetYear = (byte)fechaSegura.Year;
+            // 2. CORRECCIÓN: Agregamos (byte) antes de cada valor
+            // Esto obliga al compilador a aceptar el número aunque sea int.
+            _pkmActual.MetYear = (byte)fechaSegura.Year;   // <--- AQUÍ ESTABA EL ERROR
             _pkmActual.MetMonth = (byte)fechaSegura.Month;
             _pkmActual.MetDay = (byte)fechaSegura.Day;
         }
@@ -409,6 +467,27 @@ public partial class PkmEditor : ContentPage
                 dateHuevo.Date = new DateTime(year, month, day);
             }
             catch { dateHuevo.Date = DateTime.Now; }
+        }
+
+
+        // Usamos la fuente de datos que tiene la relación { Valor, Texto }
+        var fuenteVersiones = GameInfo.Sources.VersionDataSource;
+
+        // El ID del juego que tiene el Pokémon (ej: 44 para Espada)
+        int idJuego = (int)_pkmActual.Version;
+
+        // Buscamos en la lista el objeto que tenga ese Value exacto
+        // NO usamos índice directo array[i], usamos BÚSQUEDA
+        var juegoEncontrado = fuenteVersiones.FirstOrDefault(x => x.Value == idJuego);
+
+        if (juegoEncontrado != null)
+        {
+            lblJuegoOrigen.Text = juegoEncontrado.Text;
+        }
+        else
+        {
+            // Si es una versión rara o homebrew
+            lblJuegoOrigen.Text = _pkmActual.Version.ToString();
         }
     }
 

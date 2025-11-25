@@ -33,6 +33,28 @@ public partial class PokemonSearchPage : ContentPage
         // Mostramos todo al inicio
         ListaPokemon.ItemsSource = _todosLosPokemon;
     }
+    // Recibe el ID (int) que tiene el Pokémon actualmente
+    public void Preseleccionar(int idActual)
+    {
+        if (_todosLosPokemon == null) return;
+
+        // 1. Buscamos el objeto en la lista que coincida con el ID
+        var itemASeleccionar = _todosLosPokemon.FirstOrDefault(x => x.Value == idActual);
+
+        if (itemASeleccionar != null)
+        {
+            // 2. Marcamos el ítem como seleccionado
+            ListaPokemon.SelectedItem = itemASeleccionar;
+
+            // 3. Hacemos Scroll automático para que aparezca en el centro de la pantalla
+            // Usamos un pequeño delay para asegurar que la lista ya se dibujó
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await Task.Delay(100);
+                ListaPokemon.ScrollTo(itemASeleccionar, -1, ScrollToPosition.Center, animate: false);
+            });
+        }
+    }
     // ? NUEVO MÉTODO ESTÁTICO (Accesible desde cualquier parte de la app)
     // Le das un ID (6) y te devuelve el Objeto (Charizard)
     public static dynamic? ObtenerInfoPokemon(int idEspecie)
