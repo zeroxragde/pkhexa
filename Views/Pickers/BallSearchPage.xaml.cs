@@ -1,5 +1,6 @@
 using PKHeX.Core;
 using PkHexA.LibSprites.Util;
+using PkHexA.Services;
 
 namespace PkHexA.Views.Pickers;
 
@@ -36,7 +37,7 @@ public partial class BallSearchPage : ContentPage
             var bitmap = SpriteUtil.GetBallSprite((byte)id);
 
             // Convertimos SKBitmap a ImageSource de MAUI
-            var imagenSource = bitmap.ToImageSource();
+            var imagenSource = GlobalService.SKBitmapToImageSource(bitmap);
 
             listaProcesada.Add(new
             {
@@ -49,64 +50,8 @@ public partial class BallSearchPage : ContentPage
         _todasLasBalls = listaProcesada;
         ListaBalls.ItemsSource = _todasLasBalls;
     }
-    private void CargarDatos()
-    {
-        // 1. Obtenemos la lista de nombres del Core (En Español)
-        // Nota: En versiones nuevas es 'BallList' (Mayúscula)
-        string[] nombresBalls = GameInfo.Sources.BallDataSource.ToList().Select(b => b.Text).ToArray();
 
-        var listaProcesada = new List<dynamic>();
 
-        for (int i = 0; i < nombresBalls.Length; i++)
-        {
-            // Filtramos nombres vacíos o inválidos
-            if (string.IsNullOrEmpty(nombresBalls[i]) || nombresBalls[i].Contains("???")) continue;
-
-            // 2. Generamos la URL del ícono
-            // Usamos Serebii o PokeAPI que tienen los sprites por ID
-            // Serebii usa nombres, así que usamos un repo de github confiable por ID
-            // O PokeAPI: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png
-            // Pero PokeAPI usa nombres en inglés.
-
-            // TRUCO: Usamos un repositorio de Sprites de Items genérico o local si tienes los assets.
-            // Si no tienes assets locales, usamos una URL de placeholder que funciona por ID si existe, 
-            // o simplemente mostramos el nombre si no queremos depender de internet.
-
-            // Para este ejemplo, supongamos que solo mostramos texto por ahora para que no falle,
-            // o usamos una URL genérica de Pokéball para todas si no tienes los IDs mapeados.
-
-            // Si quieres usar imágenes reales, necesitarías un mapeo ID -> NombreInglés para PokeAPI.
-            // Por simplicidad y robustez offline, usaremos una imagen local "ball.png" si tienes,
-            // o una URL externa de prueba.
-
-            string urlImagen = $"https://raw.githubusercontent.com/msikma/pokesprite/master/items/ball/{GetBallFileName(i)}.png";
-
-            listaProcesada.Add(new
-            {
-                Text = nombresBalls[i],
-                Value = i,
-                ImageUrl = urlImagen // Binding para la imagen
-            });
-        }
-
-        _todasLasBalls = listaProcesada;
-        ListaBalls.ItemsSource = _todasLasBalls;
-    }
-
-    // Helper simple para mapear IDs comunes a nombres de archivo (Opcional)
-    // Si no quieres complicarte con esto, usa una imagen fija por defecto.
-    private string GetBallFileName(int id)
-    {
-        // Esto es un ejemplo simplificado. Lo ideal sería tener los recursos locales.
-        return id switch
-        {
-            1 => "master",
-            2 => "ultra",
-            3 => "great",
-            4 => "poke",
-            _ => "poke" // Fallback a pokebola normal
-        };
-    }
 
     public void Preseleccionar(int ballId)
     {
