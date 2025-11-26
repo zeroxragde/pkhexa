@@ -1,5 +1,6 @@
 ﻿using PKHeX.Core;
 using PkHexA.Views;
+using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,6 +11,23 @@ namespace PkHexA.Services
     {
         public static SaveFile ACTUAL_FILE = FakeSaveFile.Default;
         public static string? CurrentFilePath;
+
+
+
+
+        public static ImageSource SKBitmapToImageSource(SKBitmap skBitmap)
+        {
+            if (skBitmap == null) return null;
+
+            // Creamos una imagen de Skia desde el mapa de bits
+            var image = SKImage.FromBitmap(skBitmap);
+            // Codificamos a PNG
+            var data = image.Encode(SKEncodedImageFormat.Png, 100);
+            // Convertimos a Stream para MAUI
+            var stream = data.AsStream();
+
+            return ImageSource.FromStream(() => stream);
+        }
         public static Task ShowAlertAsync(string? message, string? cancel = "OK")
         {
             string title = "PkHexA"; // Título por defecto

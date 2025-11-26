@@ -1,6 +1,8 @@
 ﻿using PKHeX.Core;
+using PkHexA.LibSprites.Util;
 using PkHexA.Services;
 using PkHexA.Views.Pickers;
+using SkiaSharp;
 
 namespace PkHexA.Views;
 
@@ -77,6 +79,7 @@ public partial class PkmEditor : ContentPage
             TabEncuentro.IsVisible = true;
         }
     }
+
     public void CargarDatos(PKM pkm)
     {
         // 1. Guardamos la referencia global
@@ -94,6 +97,8 @@ public partial class PkmEditor : ContentPage
             LevelEntry.Text = "1";
             ExpEntry.Text = "0";
             FriendshipEntry.Text = "70";
+            _pkmActual.Ball = 4;
+            imgPokeBall.Source =GlobalService.SKBitmapToImageSource(SpriteUtil.GetBallSprite((byte)_pkmActual.Ball));
         }
         else
         {

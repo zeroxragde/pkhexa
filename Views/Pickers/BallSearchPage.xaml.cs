@@ -1,4 +1,5 @@
 using PKHeX.Core;
+using PkHexA.LibSprites.Util;
 
 namespace PkHexA.Views.Pickers;
 
@@ -12,7 +13,42 @@ public partial class BallSearchPage : ContentPage
         InitializeComponent();
         CargarDatos();
     }
+    private void CargarDatos()
+    {
+        // 1. Obtenemos la lista de nombres del Core
+        var ballSource = GameInfo.Sources.BallDataSource;
+        // Convertimos a lista para acceder por índice o valor fácilmente
+        var listaBalls = ballSource.ToList();
 
+        var listaProcesada = new List<dynamic>();
+
+        // Iteramos sobre la fuente de datos real
+        foreach (var ballInfo in listaBalls)
+        {
+            int id = ballInfo.Value;
+            string nombre = ballInfo.Text;
+
+            // Filtros básicos (evitar nombres vacíos o placeholders de PKHeX)
+            if (string.IsNullOrEmpty(nombre) || nombre.Contains("???")) continue;
+
+            // 2. CORRECCIÓN: Usar el sistema de sprites local
+            // Obtenemos el SKBitmap desde tu utilidad
+            var bitmap = SpriteUtil.GetBallSprite((byte)id);
+
+            // Convertimos SKBitmap a ImageSource de MAUI
+            var imagenSource = bitmap.ToImageSource();
+
+            listaProcesada.Add(new
+            {
+                Text = nombre,
+                Value = id,
+                ImageUrl = imagenSource // El Binding en XAML acepta ImageSource directamente
+            });
+        }
+
+        _todasLasBalls = listaProcesada;
+        ListaBalls.ItemsSource = _todasLasBalls;
+    }
     private void CargarDatos()
     {
         // 1. Obtenemos la lista de nombres del Core (En Español)

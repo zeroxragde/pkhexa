@@ -211,13 +211,31 @@
 
                                 <Grid ColumnDefinitions="120, *">
                                     <Label Text="Ball:" TextColor="White" VerticalOptions="Center" FontSize="13"/>
-                                    <Border Grid.Column="1" Stroke="Gray" StrokeThickness="1" BackgroundColor="Black" Padding="10,8" StrokeShape="RoundRectangle 5">
+                                    <Border Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5" BackgroundColor="Black" Padding="10,8">
                                         <Border.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="AbrirBuscadorBall_Tapped"/>
                                         </Border.GestureRecognizers>
-                                        <Grid ColumnDefinitions="*, Auto">
-                                            <Label x:Name="lblPokeBall" Text="Poké Ball" TextColor="White" LineBreakMode="TailTruncation" VerticalOptions="Center"/>
-                                            <Label Grid.Column="1" Text="▼" TextColor="Gray" VerticalOptions="Center"/>
+
+                                        <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="10">
+
+                                            <Image x:Name="imgPokeBall" 
+                                               Grid.Column="0" 
+                                               WidthRequest="24" 
+                                               HeightRequest="24" 
+                                               VerticalOptions="Center" 
+                                               Aspect="AspectFit"/>
+
+                                            <Label x:Name="lblPokeBall" 
+                                               Grid.Column="1" 
+                                               Text="Poké Ball" 
+                                               TextColor="White" 
+                                               LineBreakMode="TailTruncation" 
+                                               VerticalOptions="Center"/>
+
+                                            <Label Grid.Column="2" 
+                                               Text="▼" 
+                                               TextColor="Gray" 
+                                               VerticalOptions="Center"/>                   
                                         </Grid>
                                     </Border>
                                 </Grid>
