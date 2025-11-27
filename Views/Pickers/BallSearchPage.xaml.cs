@@ -35,16 +35,26 @@ public partial class BallSearchPage : ContentPage
             // 2. CORRECCIÓN: Usar el sistema de sprites local
             // Obtenemos el SKBitmap desde tu utilidad
             var bitmap = SpriteUtil.GetBallSprite((byte)id);
-
-            // Convertimos SKBitmap a ImageSource de MAUI
-            var imagenSource = GlobalService.SKBitmapToImageSource(bitmap);
+            // Usamos el método de extensión directamente sobre el objeto 'bitmap'.
+            // Asegúrate de tener 'using PkHexA.Services;' arriba.
+            var imagenSource = bitmap.ToImageSource();
+            // -----------------------
 
             listaProcesada.Add(new
             {
                 Text = nombre,
                 Value = id,
-                ImageUrl = imagenSource // El Binding en XAML acepta ImageSource directamente
+                ImageUrl = imagenSource
             });
+            // Convertimos SKBitmap a ImageSource de MAUI
+            /* var imagenSource = GlobalService.SKBitmapToImageSource(bitmap);
+
+             listaProcesada.Add(new
+             {
+                 Text = nombre,
+                 Value = id,
+                 ImageUrl = imagenSource // El Binding en XAML acepta ImageSource directamente
+             });*/
         }
 
         _todasLasBalls = listaProcesada;

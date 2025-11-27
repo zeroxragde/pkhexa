@@ -39,6 +39,10 @@
     "lblBtnTrainer": "Entrenador",
     "lblBtnNuevo": "Nuevo",
     "lblEquipoParty": "Equipo Pokémon",
+    "lblPokeballForm": "Bola:",
+    "lblLevelForm": "NIvel:",
+    "lblObedienciaForm": "Niv. Obediencia",
+
     "NicknameEntry": "Mote:",
     "btnVolver": "Volver",
     "btnGuardar": "Guardar Save",

@@ -25,7 +25,7 @@
         <ScrollView Grid.Row="2">
             <ContentView x:Name="TabContent">
                 <Grid>
-
+                    <!--TAB INICIO -->
                     <VerticalStackLayout x:Name="TabInicio" Spacing="12" Padding="10">
 
                         <HorizontalStackLayout Spacing="8">
@@ -33,6 +33,11 @@
                             <Entry x:Name="txtPID" WidthRequest="140" BackgroundColor="#202020" TextColor="White" FontSize="14" />
                             <Button Text="Generar" WidthRequest="90" HeightRequest="40" CornerRadius="8" BackgroundColor="#4040FF" TextColor="White" Clicked="OnGeneratePID" />
                             <ImageButton Source="shiny_btn.png" WidthRequest="40" HeightRequest="40" BackgroundColor="#202020" CornerRadius="20" Padding="4" Clicked="OnGenerateShinyPID" />
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout x:Name="LayoutEC" Spacing="8" IsVisible="False" Padding="0,5">
+                            <Label Text="EC" TextColor="White" VerticalOptions="Center" WidthRequest="40" />
+                            <Entry x:Name="txtEC" WidthRequest="140" BackgroundColor="#202020" TextColor="White" FontSize="14" IsReadOnly="True" />
                         </HorizontalStackLayout>
 
                         <HorizontalStackLayout Spacing="10">
@@ -53,8 +58,8 @@
                                     <TapGestureRecognizer Tapped="AbrirBuscador_Tapped"/>
                                 </Border.GestureRecognizers>
                                 <Grid ColumnDefinitions="*, Auto">
-                                    <Label x:Name="lblPokemonSeleccionado" Text="Selecciona un Pokémon..." TextColor="White" VerticalOptions="Center"/>
-                                    <Label Grid.Column="1" Text="▼" TextColor="Gray"/>
+                                    <Label x:Name="lblPokemonSeleccionado" Text="Selecciona un Pokémon..." TextColor="White" VerticalOptions="Center" LineBreakMode="TailTruncation"/>
+                                    <Label Grid.Column="1" Text="▼" TextColor="Gray" VerticalOptions="Center"/>
                                 </Grid>
                             </Border>
                         </HorizontalStackLayout>
@@ -72,7 +77,7 @@
                         </HorizontalStackLayout>
 
                         <HorizontalStackLayout Spacing="10">
-                            <Label x:Name="lblNaturaleza" Text="" TextColor="White" WidthRequest="100"/>
+                            <Label x:Name="lblNaturaleza" Text="Naturaleza:" TextColor="White" WidthRequest="80"/>
                             <Border Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5" BackgroundColor="Black" Padding="15,10">
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="AbrirBuscadorNaturaleza_Tapped"/>
@@ -85,7 +90,7 @@
                         </HorizontalStackLayout>
 
                         <HorizontalStackLayout Spacing="10">
-                            <Label x:Name="lblEstadoNat" Text=":" TextColor="White" WidthRequest="100"/>
+                            <Label x:Name="lblEstadoNat" Text="Estado:" TextColor="White" WidthRequest="80"/>
                             <Border Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5" BackgroundColor="Black" Padding="15,10">
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="AbrirBuscadorEstadoNaturaleza_Tapped"/>
@@ -98,7 +103,7 @@
                         </HorizontalStackLayout>
 
                         <HorizontalStackLayout x:Name="LayoutForma" Spacing="10" IsVisible="False">
-                            <Label Text="Forma:" TextColor="White" WidthRequest="60" VerticalOptions="Center"/>
+                            <Label Text="Forma:" TextColor="White" WidthRequest="80" VerticalOptions="Center"/>
                             <Border Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5" BackgroundColor="Black" Padding="15,10">
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="AbrirBuscadorForma_Tapped"/>
@@ -106,6 +111,19 @@
                                 <Grid ColumnDefinitions="*, Auto">
                                     <Label x:Name="lblFormaSeleccionada" Text="Normal" TextColor="White" VerticalOptions="Center"/>
                                     <Label Grid.Column="1" Text="▼" TextColor="Gray" Margin="5,0,0,0"/>
+                                </Grid>
+                            </Border>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="Objeto:" TextColor="White" WidthRequest="80"/>
+                            <Border Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5" BackgroundColor="Black" Padding="15,10">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AbrirBuscadorObjeto_Tapped"/>
+                                </Border.GestureRecognizers>
+                                <Grid ColumnDefinitions="*, Auto">
+                                    <Label x:Name="lblObjetoSeleccionado" Grid.Column="0" Text="(Ninguno)" TextColor="White" VerticalOptions="Center" LineBreakMode="TailTruncation"/>
+                                    <Label Grid.Column="1" Text="▼" TextColor="Gray" VerticalOptions="Center"/>
                                 </Grid>
                             </Border>
                         </HorizontalStackLayout>
@@ -157,8 +175,61 @@
                                 <Label Text="Curado" TextColor="White" VerticalOptions="Center"/>
                             </HorizontalStackLayout>
                         </Grid>
+
+                        <Border x:Name="BorderExtra" IsVisible="False" Stroke="#333" StrokeThickness="1" BackgroundColor="#151515" StrokeShape="RoundRectangle 8" Padding="10" Margin="0,15,0,0">
+                            <VerticalStackLayout Spacing="10">
+
+                                <Grid x:Name="GridCatchRate" IsVisible="False" ColumnDefinitions="Auto, *, Auto, Auto" ColumnSpacing="8">
+                                    <VerticalStackLayout Grid.Column="0" Spacing="2" WidthRequest="70">
+                                        <Label Text="Catch Rate" TextColor="Gray" FontSize="11"/>
+                                        <Entry x:Name="txtCatchRate" Text="255" Keyboard="Numeric" TextColor="White" BackgroundColor="#202020" FontSize="13" TextChanged="OnCatchRateChanged"/>
+                                    </VerticalStackLayout>
+                                    <Button Grid.Column="2" Text="Clear" HeightRequest="35" Padding="10,0" FontSize="12" BackgroundColor="#404040" TextColor="White" Clicked="OnClearClicked" VerticalOptions="End"/>
+                                    <Button Grid.Column="3" Text="Reset" HeightRequest="35" Padding="10,0" FontSize="12" BackgroundColor="#404040" TextColor="White" Clicked="OnResetClicked" VerticalOptions="End"/>
+                                </Grid>
+
+                                <HorizontalStackLayout x:Name="LayoutNSparkle" Spacing="5" IsVisible="False">
+                                    <CheckBox x:Name="chkNSparkle" Color="Cyan" CheckedChanged="OnNSparkleChanged"/>
+                                    <Label Text="N's Sparkle (Gen 5)" TextColor="White" VerticalOptions="Center" FontSize="12"/>
+                                </HorizontalStackLayout>
+
+                                <VerticalStackLayout x:Name="LayoutShadowFields" Spacing="10" IsVisible="False">
+                                    <BoxView HeightRequest="1" Color="#333" Margin="0,5"/>
+
+                                    <Grid ColumnDefinitions="*, *">
+                                        <Label Grid.Column="0" Text="Datos Shadow" FontAttributes="Bold" TextColor="Cyan" FontSize="11" VerticalOptions="Center"/>
+                                        <HorizontalStackLayout x:Name="LayoutActive" Grid.Column="1" Spacing="5" HorizontalOptions="End">
+                                            <CheckBox x:Name="chkActive" Color="Cyan" IsChecked="True"/>
+                                            <Label Text="Active" TextColor="White" VerticalOptions="Center" FontSize="12"/>
+                                        </HorizontalStackLayout>
+                                    </Grid>
+
+                                    <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
+                                        <VerticalStackLayout Grid.Column="0" Spacing="2">
+                                            <Label Text="Shadow ID" TextColor="Gray" FontSize="11"/>
+                                            <Entry x:Name="txtShadowID" Text="0" Keyboard="Numeric" TextColor="White" BackgroundColor="#202020" FontSize="13" TextChanged="OnShadowIDChanged"/>
+                                        </VerticalStackLayout>
+                                        <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                            <Label Text="Heart Gauge" TextColor="Gray" FontSize="11"/>
+                                            <Entry x:Name="txtHeartGauge" Text="0" Keyboard="Numeric" TextColor="White" BackgroundColor="#202020" FontSize="13" TextChanged="OnHeartGaugeChanged"/>
+                                        </VerticalStackLayout>
+                                    </Grid>
+
+                                    <HorizontalStackLayout Spacing="5">
+                                        <CheckBox x:Name="chkIsShadow" Color="Cyan" CheckedChanged="OnShadowChanged"/>
+                                        <Label Text="Es Shadow" TextColor="White" VerticalOptions="Center" FontSize="12"/>
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+
+                            </VerticalStackLayout>
+                        </Border>
+
                     </VerticalStackLayout>
 
+
+
+
+                    <!--TAB ENCUENTRO -->
                     <VerticalStackLayout x:Name="TabEncuentro" Spacing="15" Padding="10" IsVisible="False">
 
                         <Border Stroke="#333" StrokeThickness="1" BackgroundColor="#151515" Padding="10" StrokeShape="RoundRectangle 10">
@@ -210,32 +281,18 @@
                                 </Grid>
 
                                 <Grid ColumnDefinitions="120, *">
-                                    <Label Text="Ball:" TextColor="White" VerticalOptions="Center" FontSize="13"/>
-                                    <Border Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5" BackgroundColor="Black" Padding="10,8">
+                                    <Label x:Name="lblPokeballForm" Text="Ball:" TextColor="White" VerticalOptions="Center" FontSize="13"/>
+
+                                    <Border Grid.Column="1" Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5" BackgroundColor="Black" Padding="10,8">
+
                                         <Border.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="AbrirBuscadorBall_Tapped"/>
                                         </Border.GestureRecognizers>
 
                                         <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="10">
-
-                                            <Image x:Name="imgPokeBall" 
-                                               Grid.Column="0" 
-                                               WidthRequest="24" 
-                                               HeightRequest="24" 
-                                               VerticalOptions="Center" 
-                                               Aspect="AspectFit"/>
-
-                                            <Label x:Name="lblPokeBall" 
-                                               Grid.Column="1" 
-                                               Text="Poké Ball" 
-                                               TextColor="White" 
-                                               LineBreakMode="TailTruncation" 
-                                               VerticalOptions="Center"/>
-
-                                            <Label Grid.Column="2" 
-                                               Text="▼" 
-                                               TextColor="Gray" 
-                                               VerticalOptions="Center"/>                   
+                                            <Image x:Name="imgPokeBall" Grid.Column="0" WidthRequest="24" HeightRequest="24" VerticalOptions="Center" Aspect="AspectFit"/>
+                                            <Label x:Name="lblPokeBall" Grid.Column="1" Text="Poké Ball" TextColor="White" LineBreakMode="TailTruncation" VerticalOptions="Center"/>
+                                            <Label Grid.Column="2" Text="▼" TextColor="Gray" VerticalOptions="Center"/>
                                         </Grid>
                                     </Border>
                                 </Grid>
@@ -247,11 +304,11 @@
 
                                 <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
                                     <HorizontalStackLayout Grid.Column="0" Spacing="5">
-                                        <Label Text="Nivel:" TextColor="White" VerticalOptions="Center" FontSize="13"/>
+                                        <Label x:Name="lblLevelForm" Text="Nivel:" TextColor="White" VerticalOptions="Center" FontSize="13"/>
                                         <Entry x:Name="txtMetLevel" Text="1" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" WidthRequest="50" HorizontalTextAlignment="Center" TextChanged="OnMetLevelChanged"/>
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Grid.Column="1" Spacing="5">
-                                        <Label Text="Obed.:" TextColor="White" VerticalOptions="Center" FontSize="13"/>
+                                        <Label x:Name="lblObedienciaForm" Text="Obed.:" TextColor="White" VerticalOptions="Center" FontSize="13"/>
                                         <Entry x:Name="txtObedienceLevel" Text="0" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" WidthRequest="50" HorizontalTextAlignment="Center"/>
                                     </HorizontalStackLayout>
                                 </Grid>

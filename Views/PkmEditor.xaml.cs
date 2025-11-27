@@ -123,9 +123,76 @@ public partial class PkmEditor : ContentPage
         // 4. Forzar actualización visual de forma y habilidad
         ActualizarFormas();
 
+        int itemID = _pkmActual.HeldItem;
+        // Obtener nombre del objeto
+        // GameInfo.Strings.itemlist tiene los nombres en el idioma cargado
+        var listaItems = GameInfo.Strings.itemlist;
+
+        if (itemID < listaItems.Length)
+            lblObjetoSeleccionado.Text = listaItems[itemID];
+        else
+            lblObjetoSeleccionado.Text = $"Item {itemID}";
         //FijarHabilidad(pkm.Ability);
     }
+
+    private void ActualizarVisibilidadPorGeneracion()
+    {
+        if (_pkmActual == null) return;
+
+        int format = _pkmActual.Format;
+        int gameVersion = (int)_pkmActual.Version;
+
+        // 1. EC (Encryption Constant): Solo Gen 6 en adelante
+        // Esto controla el layout que acabamos de restaurar
+        LayoutEC.IsVisible = format >= 6;
+        if (LayoutEC.IsVisible)
+        {
+            txtEC.Text = _pkmActual.EncryptionConstant.ToString("X8");
+        }
+
+        // --- Lógica Bloque Extra ---
+
+        bool esGen1 = (format == 1);
+        bool esGen5 = (format == 5);
+        bool esGameCube = (gameVersion == 15 || gameVersion == 24);
+
+        // Catch Rate (Gen 1 o GameCube)
+        bool mostrarCatchRate = esGen1 || esGameCube;
+        GridCatchRate.IsVisible = mostrarCatchRate;
+        if (mostrarCatchRate)
+        {
+            // CORRECCIÓN AQUÍ: Usamos 'dynamic' y 'CatchRate' (PascalCase)
+            try
+            {
+                dynamic pkm = _pkmActual;
+                txtCatchRate.Text = pkm.CatchRate.ToString();
+            }
+            catch
+            {
+                txtCatchRate.Text = "255"; // Fallback
+            }
+        }
+
+        // N's Sparkle (Gen 5)
+        LayoutNSparkle.IsVisible = esGen5;
+
+        // Shadow (GameCube)
+        LayoutShadowFields.IsVisible = esGameCube;
+
+        // Visibilidad del Marco Completo
+        BorderExtra.IsVisible = mostrarCatchRate || esGen5 || esGameCube;
+    }
+
+
+
+
+
+
+
+
     // AL HACER CLICK EN EL "PICKER FALSO"
+
+
 
     private async void AbrirBuscador_Tapped(object sender, TappedEventArgs e)
     {
@@ -309,7 +376,9 @@ public partial class PkmEditor : ContentPage
             {
                 // Casteo a byte por seguridad, las balls son ID < 255
                 _pkmActual.Ball = (byte)idBall;
+                imgPokeBall.Source = GlobalService.SKBitmapToImageSource(SpriteUtil.GetBallSprite((byte)_pkmActual.Ball));
             }
+         
         };
 
         await Navigation.PushModalAsync(page);
@@ -577,9 +646,27 @@ public partial class PkmEditor : ContentPage
         // GlobalService.ShowAlertAsync("¡Pokémon ahora es Shiny!");
     }
 
+    private async void AbrirBuscadorObjeto_Tapped(object sender, TappedEventArgs e)
+    {
+        if (_pkmActual == null) return;
 
+        // Ahora sí existe la clase
+        var page = new PkHexA.Views.Pickers.ItemSearchPage();
 
+        // Opcional: Preseleccionar el item actual
+        page.Preseleccionar(_pkmActual.HeldItem);
 
+        page.AlSeleccionarItem = (item) =>
+        {
+            int idItem = item.Value;
 
+            // Guardamos en el Pokémon
+            _pkmActual.HeldItem = idItem;
 
+            // Actualizamos solo el texto en la UI (como acordamos)
+            CargarDatos(_pkmActual);
+        };
+
+        await Navigation.PushModalAsync(page);
+    }
 }
