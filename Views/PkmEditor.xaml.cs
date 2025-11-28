@@ -28,6 +28,49 @@ public partial class PkmEditor : ContentPage
         var speciesList = GameInfo.Sources.SpeciesDataSource.ToList();
   
     }
+    private void OnTabClicked(object sender, EventArgs e)
+    {
+        var botonPresionado = sender as Button;
+        if (botonPresionado == null) return;
+
+        // ---------------------------------------------------------
+        // 1. APAGAR TODOS LOS BOTONES (Automático)
+        // ---------------------------------------------------------
+        // Recorremos los hijos del StackBotones definido en el XAML
+        if (StackBotones != null)
+        {
+            foreach (var hijo in StackBotones.Children)
+            {
+                if (hijo is Button btn)
+                {
+                    btn.BackgroundColor = ColorTabInactivo;
+                    btn.TextColor = TextoInactivo;
+                }
+            }
+        }
+
+        // 2. ENCENDER EL SELECCIONADO
+        botonPresionado.BackgroundColor = ColorTabActivo;
+        botonPresionado.TextColor = TextoActivo;
+
+        // ---------------------------------------------------------
+        // 3. MOSTRAR EL PANEL CORRECTO (Automático)
+        // ---------------------------------------------------------
+        // Obtenemos el panel desde el CommandParameter
+        var panelDestino = botonPresionado.CommandParameter as View;
+
+        if (panelDestino != null && GridPaneles != null)
+        {
+            // A. Ocultar TODOS los paneles del Grid
+            foreach (var hijo in GridPaneles.Children)
+            {
+                if (hijo is View v) v.IsVisible = false;
+            }
+
+            // B. Mostrar SOLO el destino
+            panelDestino.IsVisible = true;
+        }
+    }
     private void RestaurarTabs()
     {
         // 1. Poner todos los botones en estilo "Apagado/Gris"
@@ -42,9 +85,9 @@ public partial class PkmEditor : ContentPage
         TabInicio.IsVisible = false;
         TabEncuentro.IsVisible = false;
 
-        // TabEstadisticas.IsVisible = false;
+        //TabEstadisticas.IsVisible = false;
     }
-    private void OnTabClicked(object sender, EventArgs e)
+    /*private void OnTabClicked(object sender, EventArgs e)
     {
         var botonPresionado = sender as Button;
         if (botonPresionado == null) return;
@@ -71,7 +114,7 @@ public partial class PkmEditor : ContentPage
         if (botonPresionado == btnTabInicio) TabInicio.IsVisible = true;
         else if (botonPresionado == btnTabEncuentro) TabEncuentro.IsVisible = true;
 
-    }
+    }*/
     // Helper pequeño para limpiar el código de arriba
     private void ApagarBoton(Button btn)
     {
@@ -140,8 +183,195 @@ public partial class PkmEditor : ContentPage
 
         // 5. Ejecutar la lógica de visibilidad (EC, CatchRate, Shadow)
         ActualizarVisibilidadPorGeneracion();
+        CargarDatosStats();
     }
     // Versión SEGURA: No crashea si falta un botón en el XAML
+
+
+
+
+
+
+
+
+
+
+    private void CargarDatosStats()
+    {
+        if (_pkmActual == null) return;
+
+        // 1. CARGAR BASES
+        // Usamos el objeto PersonalInfo (sin corchetes)
+        var pi = _pkmActual.PersonalInfo;
+        lblBaseHP.Text = pi.HP.ToString();
+        lblBaseAtk.Text = pi.ATK.ToString();
+        lblBaseDef.Text = pi.DEF.ToString();
+        lblBaseSpe.Text = pi.SPE.ToString();
+        lblBaseSpa.Text = pi.SPA.ToString();
+        lblBaseSpd.Text = pi.SPD.ToString();
+
+        // 2. CARGAR IVs y EVs (Propiedades estándar)
+        txtIVHP.Text = _pkmActual.IV_HP.ToString();
+        txtIVAtk.Text = _pkmActual.IV_ATK.ToString();
+        txtIVDef.Text = _pkmActual.IV_DEF.ToString();
+        txtIVSpa.Text = _pkmActual.IV_SPA.ToString();
+        txtIVSpd.Text = _pkmActual.IV_SPD.ToString();
+        txtIVSpe.Text = _pkmActual.IV_SPE.ToString();
+
+        txtEVHP.Text = _pkmActual.EV_HP.ToString();
+        txtEVAtk.Text = _pkmActual.EV_ATK.ToString();
+        txtEVDef.Text = _pkmActual.EV_DEF.ToString();
+        txtEVSpa.Text = _pkmActual.EV_SPA.ToString();
+        txtEVSpd.Text = _pkmActual.EV_SPD.ToString();
+        txtEVSpe.Text = _pkmActual.EV_SPE.ToString();
+
+        // 3. EXTRAS (Usando 'dynamic' para evitar errores de compilación)
+        // El objeto real (PK8, PK9) tiene estas propiedades, pero la clase base PKM no.
+        dynamic pkm = _pkmActual;
+
+        // -- Dynamax (Gen 8) --
+        try
+        {
+            txtDynamaxLevel.Text = pkm.DynamaxLevel.ToString();
+            txtDynamaxLevel.IsEnabled = true;
+        }
+        catch
+        {
+            txtDynamaxLevel.Text = "0";
+            txtDynamaxLevel.IsEnabled = false;
+        }
+
+        // -- Gigantamax (Gen 8) --
+        try
+        {
+            chkGigantamax.IsChecked = pkm.CanGigantamax;
+            chkGigantamax.IsEnabled = true;
+        }
+        catch
+        {
+            chkGigantamax.IsChecked = false;
+            chkGigantamax.IsEnabled = false;
+        }
+
+        // -- Tera Type (Gen 9) --
+        if (TeraTypePicker.ItemsSource == null)
+            TeraTypePicker.ItemsSource = GameInfo.Strings.types;
+
+        try
+        {
+            // TeraType suele ser un byte o enum. Lo convertimos a int para el Picker.
+            int teraIndex = (int)pkm.TeraType;
+            TeraTypePicker.SelectedIndex = teraIndex;
+            TeraTypePicker.IsEnabled = true;
+        }
+        catch
+        {
+            TeraTypePicker.SelectedIndex = -1;
+            TeraTypePicker.IsEnabled = false;
+        }
+
+        // -- Concursos (Gen 3, 4, ORAS, BDSP) --
+        try
+        {
+            // Intentamos leer propiedades de concurso
+            txtContestCool.Text = pkm.ContestCool.ToString();
+            txtContestBeauty.Text = pkm.ContestBeauty.ToString();
+            txtContestCute.Text = pkm.ContestCute.ToString();
+            txtContestSmart.Text = pkm.ContestSmart.ToString();
+            txtContestTough.Text = pkm.ContestTough.ToString();
+            txtContestSheen.Text = pkm.ContestSheen.ToString();
+
+            HabilitarConcursos(true);
+        }
+        catch
+        {
+            HabilitarConcursos(false);
+        }
+
+        // 4. Calcular Totales
+        RecalcularStatsTotal();
+    }
+
+    private void HabilitarConcursos(bool habilitar)
+    {
+        txtContestCool.IsEnabled = habilitar;
+        txtContestBeauty.IsEnabled = habilitar;
+        txtContestCute.IsEnabled = habilitar;
+        txtContestSmart.IsEnabled = habilitar;
+        txtContestTough.IsEnabled = habilitar;
+        txtContestSheen.IsEnabled = habilitar;
+
+        if (!habilitar)
+        {
+            txtContestCool.Text = "0"; txtContestBeauty.Text = "0"; txtContestCute.Text = "0";
+            txtContestSmart.Text = "0"; txtContestTough.Text = "0"; txtContestSheen.Text = "0";
+        }
+    }
+    private void RecalcularStatsTotal()
+    {
+        if (_pkmActual == null) return;
+
+        // En PKHeX.Core, la propiedad .Stats devuelve el arreglo calculado:
+        // [0]=HP, [1]=ATK, [2]=DEF, [3]=SPE, [4]=SPA, [5]=SPD
+        // (Nota: Speed suele ser el índice 3 en el core interno, revisa si tus labels coinciden)
+
+        int[] stats = _pkmActual.Stats;
+
+        lblStatHP.Text = stats[0].ToString();
+        lblStatAtk.Text = stats[1].ToString();
+        lblStatDef.Text = stats[2].ToString();
+        lblStatSpe.Text = stats[3].ToString(); // Velocidad
+        lblStatSpa.Text = stats[4].ToString();
+        lblStatSpd.Text = stats[5].ToString();
+    }
+    private void OnDynamaxLevelChanged(object sender, TextChangedEventArgs e)
+    {
+        if (_pkmActual != null && int.TryParse(e.NewTextValue, out int val))
+        {
+            try { ((dynamic)_pkmActual).DynamaxLevel = val; } catch { }
+        }
+    }
+
+    private void OnGigantamaxChanged(object sender, CheckedChangedEventArgs e)
+    {
+        if (_pkmActual != null)
+        {
+            try { ((dynamic)_pkmActual).CanGigantamax = e.Value; } catch { }
+        }
+    }
+
+    private void OnTeraTypeChanged(object sender, EventArgs e)
+    {
+        if (_pkmActual != null && TeraTypePicker.SelectedIndex >= 0)
+        {
+            try
+            {
+                // CORRECCIÓN: Casteo explícito a (byte) para solucionar el error de tipos.
+                // Si tu versión usa MoveType, cámbialo a (MoveType).
+                ((dynamic)_pkmActual).TeraType = (byte)TeraTypePicker.SelectedIndex;
+            }
+            catch { }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     private void ActualizarVisibilidadPorGeneracion()
     {
         if (_pkmActual == null) return;
