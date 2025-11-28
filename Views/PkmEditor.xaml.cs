@@ -49,34 +49,36 @@ public partial class PkmEditor : ContentPage
         var botonPresionado = sender as Button;
         if (botonPresionado == null) return;
 
-        // 1. APAGAR TODOS LOS BOTONES (Manual, sin estilos)
-        // Inicio
-        btnTabInicio.BackgroundColor = ColorTabInactivo;
-        btnTabInicio.TextColor = TextoInactivo;
+        // 1. APAGAR TODOS (Asegúrate de que existan en el XAML con x:Name)
+        // Usamos una lista rápida o helper para no repetir código
+        ApagarBoton(btnTabInicio);
+        ApagarBoton(btnTabEncuentro);
+        ApagarBoton(btnTabStats);
+        ApagarBoton(btnTabMoves);
+        ApagarBoton(btnTabCosmetics);
+        ApagarBoton(btnTabOT);
 
-        // Encuentro
-        btnTabEncuentro.BackgroundColor = ColorTabInactivo;
-        btnTabEncuentro.TextColor = TextoInactivo;
+        // 2. OCULTAR PANELES
+        if (TabInicio != null) TabInicio.IsVisible = false;
+        if (TabEncuentro != null) TabEncuentro.IsVisible = false;
+        // Agrega aquí los demás paneles cuando los crees (TabStats, etc.)
 
-        // ... (Repite para Estadísticas, Movimientos, etc. si los tienes) ...
-
-        // 2. OCULTAR TODOS LOS PANELES
-        TabInicio.IsVisible = false;
-        TabEncuentro.IsVisible = false;
-        // TabEstadisticas.IsVisible = false;
-
-        // 3. ENCENDER EL BOTÓN PRESIONADO
+        // 3. ENCENDER SELECCIONADO
         botonPresionado.BackgroundColor = ColorTabActivo;
         botonPresionado.TextColor = TextoActivo;
 
-        // 4. MOSTRAR EL PANEL CORRESPONDIENTE
-        if (botonPresionado == btnTabInicio)
+        // 4. MOSTRAR PANEL
+        if (botonPresionado == btnTabInicio) TabInicio.IsVisible = true;
+        else if (botonPresionado == btnTabEncuentro) TabEncuentro.IsVisible = true;
+
+    }
+    // Helper pequeño para limpiar el código de arriba
+    private void ApagarBoton(Button btn)
+    {
+        if (btn != null)
         {
-            TabInicio.IsVisible = true;
-        }
-        else if (botonPresionado == btnTabEncuentro)
-        {
-            TabEncuentro.IsVisible = true;
+            btn.BackgroundColor = ColorTabInactivo;
+            btn.TextColor = TextoInactivo;
         }
     }
 
@@ -133,8 +135,13 @@ public partial class PkmEditor : ContentPage
         else
             lblObjetoSeleccionado.Text = $"Item {itemID}";
         //FijarHabilidad(pkm.Ability);
-    }
+        // 4. Cargar datos de la pestaña Encuentro (Ball, Lugar, etc.)
+        CargarDatosEncuentro();
 
+        // 5. Ejecutar la lógica de visibilidad (EC, CatchRate, Shadow)
+        ActualizarVisibilidadPorGeneracion();
+    }
+    // Versión SEGURA: No crashea si falta un botón en el XAML
     private void ActualizarVisibilidadPorGeneracion()
     {
         if (_pkmActual == null) return;
@@ -142,46 +149,101 @@ public partial class PkmEditor : ContentPage
         int format = _pkmActual.Format;
         int gameVersion = (int)_pkmActual.Version;
 
-        // 1. EC (Encryption Constant): Solo Gen 6 en adelante
-        // Esto controla el layout que acabamos de restaurar
-        LayoutEC.IsVisible = format >= 6;
-        if (LayoutEC.IsVisible)
+        // --- 1. PESTAÑAS (Con protección contra nulos) ---
+
+        // Si el botón no existe (es null), el signo '?' evita el crash
+        btnTabCosmetics?.SetValue(IsVisibleProperty, format >= 3);
+
+        // Ocultar Encuentro en Gen 1 (Opcional, si quieres)
+        btnTabEncuentro?.SetValue(IsVisibleProperty, format >= 2);
+
+
+        // --- 2. CAMPOS ESPECÍFICOS ---
+
+        // EC (Solo Gen 6+)
+        if (LayoutEC != null)
         {
-            txtEC.Text = _pkmActual.EncryptionConstant.ToString("X8");
+            LayoutEC.IsVisible = (format >= 6);
+            if (LayoutEC.IsVisible)
+                txtEC.Text = _pkmActual.EncryptionConstant.ToString("X8");
         }
 
-        // --- Lógica Bloque Extra ---
-
+        // --- 3. BLOQUE EXTRA (Catch Rate / Shadow) ---
         bool esGen1 = (format == 1);
         bool esGen5 = (format == 5);
         bool esGameCube = (gameVersion == 15 || gameVersion == 24);
 
-        // Catch Rate (Gen 1 o GameCube)
         bool mostrarCatchRate = esGen1 || esGameCube;
-        GridCatchRate.IsVisible = mostrarCatchRate;
-        if (mostrarCatchRate)
+
+        // Protección para el Grid de Catch Rate
+        if (GridCatchRate != null)
         {
-            // CORRECCIÓN AQUÍ: Usamos 'dynamic' y 'CatchRate' (PascalCase)
-            try
+            GridCatchRate.IsVisible = mostrarCatchRate;
+            if (mostrarCatchRate && txtCatchRate != null)
             {
-                dynamic pkm = _pkmActual;
-                txtCatchRate.Text = pkm.CatchRate.ToString();
-            }
-            catch
-            {
-                txtCatchRate.Text = "255"; // Fallback
+                try
+                {
+                    dynamic pkm = _pkmActual;
+                    txtCatchRate.Text = pkm.CatchRate.ToString();
+                }
+                catch { txtCatchRate.Text = "255"; }
             }
         }
 
-        // N's Sparkle (Gen 5)
-        LayoutNSparkle.IsVisible = esGen5;
-
-        // Shadow (GameCube)
-        LayoutShadowFields.IsVisible = esGameCube;
-
-        // Visibilidad del Marco Completo
-        BorderExtra.IsVisible = mostrarCatchRate || esGen5 || esGameCube;
+        // Protección para otros layouts
+        if (LayoutNSparkle != null) LayoutNSparkle.IsVisible = esGen5;
+        if (LayoutShadowFields != null) LayoutShadowFields.IsVisible = esGameCube;
+        if (BorderExtra != null)
+            BorderExtra.IsVisible = mostrarCatchRate || esGen5 || esGameCube;
     }
+ 
+    /*  private void ActualizarVisibilidadPorGeneracion()
+      {
+          if (_pkmActual == null) return;
+
+          int format = _pkmActual.Format;
+          int gameVersion = (int)_pkmActual.Version;
+
+          // 1. EC (Encryption Constant): Solo Gen 6 en adelante
+          // Esto controla el layout que acabamos de restaurar
+          LayoutEC.IsVisible = format >= 6;
+          if (LayoutEC.IsVisible)
+          {
+              txtEC.Text = _pkmActual.EncryptionConstant.ToString("X8");
+          }
+
+          // --- Lógica Bloque Extra ---
+
+          bool esGen1 = (format == 1);
+          bool esGen5 = (format == 5);
+          bool esGameCube = (gameVersion == 15 || gameVersion == 24);
+
+          // Catch Rate (Gen 1 o GameCube)
+          bool mostrarCatchRate = esGen1 || esGameCube;
+          GridCatchRate.IsVisible = mostrarCatchRate;
+          if (mostrarCatchRate)
+          {
+              // CORRECCIÓN AQUÍ: Usamos 'dynamic' y 'CatchRate' (PascalCase)
+              try
+              {
+                  dynamic pkm = _pkmActual;
+                  txtCatchRate.Text = pkm.CatchRate.ToString();
+              }
+              catch
+              {
+                  txtCatchRate.Text = "255"; // Fallback
+              }
+          }
+
+          // N's Sparkle (Gen 5)
+          LayoutNSparkle.IsVisible = esGen5;
+
+          // Shadow (GameCube)
+          LayoutShadowFields.IsVisible = esGameCube;
+
+          // Visibilidad del Marco Completo
+          BorderExtra.IsVisible = mostrarCatchRate || esGen5 || esGameCube;
+      }*/
 
 
 

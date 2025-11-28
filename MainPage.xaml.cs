@@ -30,7 +30,10 @@ namespace PkHexA
                 var customFileTypes = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
                 {
                     // Android usa MIME types genéricos (no extensiones)
-                    { DevicePlatform.Android, new[] { "application/octet-stream", "application/x-binary", "application/zip" } },
+                    { DevicePlatform.Android, new[] { "application/octet-stream",
+                        "application/x-binary", 
+                        "application/zip",
+                        "application/sav" } },
 
                     // Windows permite extensiones reales
                     { DevicePlatform.WinUI, new[] { ".sav", ".bin", ".pk", ".bak", ".main", ".zip" } },

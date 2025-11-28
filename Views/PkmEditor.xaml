@@ -10,12 +10,36 @@
 
         <ScrollView Orientation="Horizontal" Grid.Row="0" HorizontalScrollBarVisibility="Never">
             <HorizontalStackLayout Spacing="10" Padding="0,5">
-                <Button Text="" x:Name="btnTabInicio" Style="{StaticResource TabButtonSelectedStyle}" Clicked="OnTabClicked"/>
-                <Button Text="" x:Name="btnTabEncuentro" Style="{StaticResource TabButtonStyle}" Clicked="OnTabClicked"/>
-                <Button Text="Estad." Style="{StaticResource TabButtonStyle}" Clicked="OnTabClicked"/>
-                <Button Text="Movimiento" Style="{StaticResource TabButtonStyle}" Clicked="OnTabClicked"/>
-                <Button Text="Cosmética" Style="{StaticResource TabButtonStyle}" Clicked="OnTabClicked"/>
-                <Button Text="EO/Misc" Style="{StaticResource TabButtonStyle}" Clicked="OnTabClicked"/>
+     
+                <Button Text="Inicio" 
+                x:Name="btnTabInicio" 
+                Style="{StaticResource TabButtonSelectedStyle}" 
+                Clicked="OnTabClicked"/>
+
+                <Button Text="Encuentro" 
+                x:Name="btnTabEncuentro" 
+                Style="{StaticResource TabButtonStyle}" 
+                Clicked="OnTabClicked"/>
+
+                <Button Text="Estad." 
+                x:Name="btnTabStats" 
+                Style="{StaticResource TabButtonStyle}" 
+                Clicked="OnTabClicked"/>
+
+                <Button Text="Movimiento" 
+                x:Name="btnTabMoves" 
+                Style="{StaticResource TabButtonStyle}" 
+                Clicked="OnTabClicked"/>
+
+                <Button Text="Cosmética" 
+                x:Name="btnTabCosmetics" 
+                Style="{StaticResource TabButtonStyle}" 
+                Clicked="OnTabClicked"/>
+
+                <Button Text="EO/Misc" 
+                x:Name="btnTabOT" 
+                Style="{StaticResource TabButtonStyle}" 
+                Clicked="OnTabClicked"/>
             </HorizontalStackLayout>
         </ScrollView>
 
