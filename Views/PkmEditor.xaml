@@ -10,36 +10,37 @@
 
         <ScrollView Orientation="Horizontal" Grid.Row="0" HorizontalScrollBarVisibility="Never">
             <HorizontalStackLayout x:Name="StackBotones" Spacing="10" Padding="0,5">
-     
+
                 <Button Text="Inicio" 
-                x:Name="btnTabInicio" 
-                Style="{StaticResource TabButtonSelectedStyle}" 
-                Clicked="OnTabClicked"/>
-
+            x:Name="btnTabInicio" 
+            Style="{StaticResource TabButtonSelectedStyle}" 
+            Clicked="OnTabClicked"
+            CommandParameter="{x:Reference TabInicio}"/>
                 <Button Text="Encuentro" 
-                x:Name="btnTabEncuentro" 
-                Style="{StaticResource TabButtonStyle}" 
-                Clicked="OnTabClicked"/>
-
+            x:Name="btnTabEncuentro" 
+            Style="{StaticResource TabButtonStyle}" 
+            Clicked="OnTabClicked"
+            CommandParameter="{x:Reference TabEncuentro}"/>
                 <Button Text="Estad." 
-                x:Name="btnTabStats" 
-                Style="{StaticResource TabButtonStyle}" 
-                Clicked="OnTabClicked"/>
-
+            x:Name="btnTabStats" 
+            Style="{StaticResource TabButtonStyle}" 
+            Clicked="OnTabClicked"
+            CommandParameter="{x:Reference TabStats}"/>
                 <Button Text="Movimiento" 
-                x:Name="btnTabMoves" 
-                Style="{StaticResource TabButtonStyle}" 
-                Clicked="OnTabClicked"/>
-
+            x:Name="btnTabMoves" 
+            Style="{StaticResource TabButtonStyle}" 
+            Clicked="OnTabClicked"
+            CommandParameter="{x:Reference TabMoves}"/>
                 <Button Text="Cosmética" 
-                x:Name="btnTabCosmetics" 
-                Style="{StaticResource TabButtonStyle}" 
-                Clicked="OnTabClicked"/>
-
+            x:Name="btnTabCosmetics" 
+            Style="{StaticResource TabButtonStyle}" 
+            Clicked="OnTabClicked"
+            CommandParameter="{x:Reference TabCosmetics}"/>
                 <Button Text="EO/Misc" 
-                x:Name="btnTabOT" 
-                Style="{StaticResource TabButtonStyle}" 
-                Clicked="OnTabClicked"/>
+            x:Name="btnTabOT" 
+            Style="{StaticResource TabButtonStyle}" 
+            Clicked="OnTabClicked"
+            CommandParameter="{x:Reference TabOT}"/>
             </HorizontalStackLayout>
         </ScrollView>
 
@@ -382,112 +383,108 @@
                     <!--TAB ESTADISTICAS -->
                     <VerticalStackLayout x:Name="TabStats" Spacing="15" Padding="10" IsVisible="False">
 
-                        <Border Stroke="#333" StrokeThickness="1" BackgroundColor="#151515" StrokeShape="RoundRectangle 10" Padding="10">
-                            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="60, 40, *, *, 50" ColumnSpacing="5" RowSpacing="8">
+                        <Border Stroke="#333" StrokeThickness="1" BackgroundColor="#151515" StrokeShape="RoundRectangle 10" Padding="15">
+                            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" 
+              ColumnDefinitions="50, 40, *, *, 50" 
+              ColumnSpacing="10" 
+              RowSpacing="12">
 
-                                <Label Text="Stat" FontAttributes="Bold" TextColor="Gray" HorizontalOptions="Start"/>
-                                <Label Text="Base" FontAttributes="Bold" TextColor="Gray" HorizontalOptions="Center"/>
-                                <Label Text="IVs" FontAttributes="Bold" TextColor="Gray" HorizontalOptions="Center"/>
-                                <Label Text="EVs" FontAttributes="Bold" TextColor="Gray" HorizontalOptions="Center"/>
-                                <Label Text="Total" FontAttributes="Bold" TextColor="Gray" HorizontalOptions="Center"/>
+                                <Label Grid.Row="0" Grid.Column="0" Text="Stat" FontAttributes="Bold" TextColor="Gray" FontSize="12" HorizontalOptions="Start" VerticalOptions="End"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="Base" FontAttributes="Bold" TextColor="Gray" FontSize="12" HorizontalOptions="Center" VerticalOptions="End"/>
+                                <Label Grid.Row="0" Grid.Column="2" Text="IVs" FontAttributes="Bold" TextColor="Cyan" FontSize="12" HorizontalOptions="Center" VerticalOptions="End"/>
+                                <Label Grid.Row="0" Grid.Column="3" Text="EVs" FontAttributes="Bold" TextColor="Orange" FontSize="12" HorizontalOptions="Center" VerticalOptions="End"/>
+                                <Label Grid.Row="0" Grid.Column="4" Text="Total" FontAttributes="Bold" TextColor="White" FontSize="12" HorizontalOptions="Center" VerticalOptions="End"/>
 
-                                <Label Grid.Row="1" Text="HP" TextColor="White" VerticalOptions="Center"/>
+                                <Label Grid.Row="1" Text="HP" TextColor="White" FontAttributes="Bold" VerticalOptions="Center"/>
                                 <Label x:Name="lblBaseHP" Grid.Row="1" Grid.Column="1" Text="0" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <Entry x:Name="txtIVHP" Grid.Row="1" Grid.Column="2" Text="31" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
-                                <Entry x:Name="txtEVHP" Grid.Row="1" Grid.Column="3" Text="0" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
+                                <Entry x:Name="txtIVHP" Grid.Row="1" Grid.Column="2" Text="0" MaxLength="2" Keyboard="Numeric" HeightRequest="40" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
+                                <Entry x:Name="txtEVHP" Grid.Row="1" Grid.Column="3" Text="0" MaxLength="3" Keyboard="Numeric" HeightRequest="40" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
                                 <Label x:Name="lblStatHP" Grid.Row="1" Grid.Column="4" Text="0" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
 
-                                <Label x:Name="lblNameAtk" Grid.Row="2" Text="Atk" TextColor="White" VerticalOptions="Center"/>
+                                <Label Grid.Row="2" Text="Atk" TextColor="White" FontAttributes="Bold" VerticalOptions="Center"/>
                                 <Label x:Name="lblBaseAtk" Grid.Row="2" Grid.Column="1" Text="0" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <Entry x:Name="txtIVAtk" Grid.Row="2" Grid.Column="2" Text="31" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
-                                <Entry x:Name="txtEVAtk" Grid.Row="2" Grid.Column="3" Text="0" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
+                                <Entry x:Name="txtIVAtk" Grid.Row="2" Grid.Column="2" Text="0" MaxLength="2" Keyboard="Numeric" HeightRequest="40" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
+                                <Entry x:Name="txtEVAtk" Grid.Row="2" Grid.Column="3" Text="0" MaxLength="3" Keyboard="Numeric" HeightRequest="40" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
                                 <Label x:Name="lblStatAtk" Grid.Row="2" Grid.Column="4" Text="0" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
 
-                                <Label x:Name="lblNameDef" Grid.Row="3" Text="Def" TextColor="White" VerticalOptions="Center"/>
+                                <Label Grid.Row="3" Text="Def" TextColor="White" FontAttributes="Bold" VerticalOptions="Center"/>
                                 <Label x:Name="lblBaseDef" Grid.Row="3" Grid.Column="1" Text="0" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <Entry x:Name="txtIVDef" Grid.Row="3" Grid.Column="2" Text="31" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
-                                <Entry x:Name="txtEVDef" Grid.Row="3" Grid.Column="3" Text="0" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
+                                <Entry x:Name="txtIVDef" Grid.Row="3" Grid.Column="2" Text="0" MaxLength="2" Keyboard="Numeric" HeightRequest="40" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
+                                <Entry x:Name="txtEVDef" Grid.Row="3" Grid.Column="3" Text="0" MaxLength="3" Keyboard="Numeric" HeightRequest="40" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
                                 <Label x:Name="lblStatDef" Grid.Row="3" Grid.Column="4" Text="0" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
 
-                                <Label x:Name="lblNameSpa" Grid.Row="4" Text="SpA" TextColor="White" VerticalOptions="Center"/>
+                                <Label Grid.Row="4" Text="SpA" TextColor="White" FontAttributes="Bold" VerticalOptions="Center"/>
                                 <Label x:Name="lblBaseSpa" Grid.Row="4" Grid.Column="1" Text="0" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <Entry x:Name="txtIVSpa" Grid.Row="4" Grid.Column="2" Text="31" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
-                                <Entry x:Name="txtEVSpa" Grid.Row="4" Grid.Column="3" Text="0" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
+                                <Entry x:Name="txtIVSpa" Grid.Row="4" Grid.Column="2" Text="0" MaxLength="2" Keyboard="Numeric" HeightRequest="40" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
+                                <Entry x:Name="txtEVSpa" Grid.Row="4" Grid.Column="3" Text="0" MaxLength="3" Keyboard="Numeric" HeightRequest="40" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
                                 <Label x:Name="lblStatSpa" Grid.Row="4" Grid.Column="4" Text="0" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
 
-                                <Label x:Name="lblNameSpd" Grid.Row="5" Text="SpD" TextColor="White" VerticalOptions="Center"/>
+                                <Label Grid.Row="5" Text="SpD" TextColor="White" FontAttributes="Bold" VerticalOptions="Center"/>
                                 <Label x:Name="lblBaseSpd" Grid.Row="5" Grid.Column="1" Text="0" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <Entry x:Name="txtIVSpd" Grid.Row="5" Grid.Column="2" Text="31" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
-                                <Entry x:Name="txtEVSpd" Grid.Row="5" Grid.Column="3" Text="0" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
+                                <Entry x:Name="txtIVSpd" Grid.Row="5" Grid.Column="2" Text="0" MaxLength="2" Keyboard="Numeric" HeightRequest="40" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
+                                <Entry x:Name="txtEVSpd" Grid.Row="5" Grid.Column="3" Text="0" MaxLength="3" Keyboard="Numeric" HeightRequest="40" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
                                 <Label x:Name="lblStatSpd" Grid.Row="5" Grid.Column="4" Text="0" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
 
-                                <Label x:Name="lblNameSpe" Grid.Row="6" Text="Spe" TextColor="White" VerticalOptions="Center"/>
+                                <Label Grid.Row="6" Text="Spe" TextColor="White" FontAttributes="Bold" VerticalOptions="Center"/>
                                 <Label x:Name="lblBaseSpe" Grid.Row="6" Grid.Column="1" Text="0" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <Entry x:Name="txtIVSpe" Grid.Row="6" Grid.Column="2" Text="31" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
-                                <Entry x:Name="txtEVSpe" Grid.Row="6" Grid.Column="3" Text="0" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
+                                <Entry x:Name="txtIVSpe" Grid.Row="6" Grid.Column="2" Text="0" MaxLength="2" Keyboard="Numeric" HeightRequest="40" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
+                                <Entry x:Name="txtEVSpe" Grid.Row="6" Grid.Column="3" Text="0" MaxLength="3" Keyboard="Numeric" HeightRequest="40" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
                                 <Label x:Name="lblStatSpe" Grid.Row="6" Grid.Column="4" Text="0" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
 
-                                <Grid Grid.Row="7" Grid.ColumnSpan="5" ColumnDefinitions="*,*">
-                                    <Button Grid.Column="0" Text="Random IVs" HeightRequest="35" Margin="0,5,5,0" BackgroundColor="#303030" TextColor="White" Clicked="OnRandomizeIVs"/>
-                                    <Button Grid.Column="1" Text="Random EVs" HeightRequest="35" Margin="5,5,0,0" BackgroundColor="#303030" TextColor="White" Clicked="OnRandomizeEVs"/>
+                                <Grid Grid.Row="7" Grid.ColumnSpan="5" ColumnDefinitions="*,*" ColumnSpacing="10" Margin="0,15,0,0">
+                                    <Button Grid.Column="0" Text="Random IVs" HeightRequest="40" BackgroundColor="#303030" TextColor="White" CornerRadius="8" Clicked="OnRandomizeIVs"/>
+                                    <Button Grid.Column="1" Text="Random EVs" HeightRequest="40" BackgroundColor="#303030" TextColor="White" CornerRadius="8" Clicked="OnRandomizeEVs"/>
                                 </Grid>
                             </Grid>
                         </Border>
 
-                        <Border Stroke="#333" StrokeThickness="1" BackgroundColor="#151515" StrokeShape="RoundRectangle 10" Padding="10">
-                            <VerticalStackLayout Spacing="10">
+                        <HorizontalStackLayout Grid.Row="8" Grid.ColumnSpan="5" Spacing="15" HorizontalOptions="Center" Margin="0,5,0,0">
+                            <Label x:Name="lblTotalIVs" Text="IV Total: 0/186" TextColor="Cyan" FontSize="11"/>
+                            <Label x:Name="lblTotalEVs" Text="EV Total: 0/510" TextColor="Orange" FontSize="11"/>
+                            <Label x:Name="lblTotalContest" Text="Contest Total: 0" TextColor="Pink" FontSize="11" IsVisible="False"/>
+                        </HorizontalStackLayout>
 
-                                <HorizontalStackLayout Spacing="10">
-                                    <Label Text="Tera Type:" TextColor="White" WidthRequest="80" VerticalOptions="Center"/>
+                        <Border x:Name="BorderContests" Stroke="#333" StrokeThickness="1" BackgroundColor="#151515" StrokeShape="RoundRectangle 10" Padding="15" IsVisible="False">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Contest Stats (Concursos)" FontAttributes="Bold" TextColor="#AAAAAA" FontSize="13"/>
+                                <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="Auto,Auto,Auto,Auto" ColumnSpacing="10" RowSpacing="5">
+
+                                    <Label Grid.Row="0" Grid.Column="0" Text="Cool" TextColor="Gray" FontSize="11" HorizontalOptions="Center"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="Beauty" TextColor="Gray" FontSize="11" HorizontalOptions="Center"/>
+                                    <Label Grid.Row="0" Grid.Column="2" Text="Cute" TextColor="Gray" FontSize="11" HorizontalOptions="Center"/>
+                                    <Label Grid.Row="0" Grid.Column="3" Text="Sheen" TextColor="Gray" FontSize="11" HorizontalOptions="Center"/>
+
+                                    <Entry x:Name="txtContestCool" Grid.Row="1" Grid.Column="0" HeightRequest="35" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
+                                    <Entry x:Name="txtContestBeauty" Grid.Row="1" Grid.Column="1" HeightRequest="35" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
+                                    <Entry x:Name="txtContestCute" Grid.Row="1" Grid.Column="2" HeightRequest="35" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
+                                    <Entry x:Name="txtContestSheen" Grid.Row="1" Grid.Column="3" HeightRequest="35" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
+
+                                    <Label Grid.Row="2" Grid.Column="0" Text="Smart" TextColor="Gray" FontSize="11" HorizontalOptions="Center" Margin="0,10,0,0"/>
+                                    <Label Grid.Row="2" Grid.Column="1" Text="Tough" TextColor="Gray" FontSize="11" HorizontalOptions="Center" Margin="0,10,0,0"/>
+
+                                    <Entry x:Name="txtContestSmart" Grid.Row="3" Grid.Column="0" HeightRequest="35" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
+                                    <Entry x:Name="txtContestTough" Grid.Row="3" Grid.Column="1" HeightRequest="35" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnStatChanged"/>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border x:Name="BorderGimmicks" Stroke="#333" StrokeThickness="1" BackgroundColor="#151515" StrokeShape="RoundRectangle 10" Padding="15" IsVisible="False">
+                            <VerticalStackLayout Spacing="15">
+                                <HorizontalStackLayout x:Name="LayoutTera" Spacing="15" IsVisible="False">
+                                    <Label Text="Tera Type:" TextColor="White" WidthRequest="80" VerticalOptions="Center" FontAttributes="Bold"/>
                                     <Border Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5" BackgroundColor="#303030" Padding="0" HeightRequest="40" HorizontalOptions="FillAndExpand">
                                         <Picker x:Name="TeraTypePicker" TextColor="White" TitleColor="Gray" BackgroundColor="Transparent" SelectedIndexChanged="OnTeraTypeChanged"/>
                                     </Border>
                                 </HorizontalStackLayout>
-
-                                <Grid ColumnDefinitions="Auto, Auto, *">
-                                    <HorizontalStackLayout Grid.Column="0" Spacing="5" VerticalOptions="Center">
+                                <Grid x:Name="LayoutDynamax" ColumnDefinitions="Auto, Auto, *" IsVisible="False">
+                                    <HorizontalStackLayout Grid.Column="0" Spacing="10" VerticalOptions="Center">
                                         <Label Text="D-Level:" TextColor="White" VerticalOptions="Center"/>
-                                        <Entry x:Name="txtDynamaxLevel" Text="0" WidthRequest="40" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnDynamaxLevelChanged"/>
+                                        <Entry x:Name="txtDynamaxLevel" Text="0" WidthRequest="50" HeightRequest="35" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" HorizontalTextAlignment="Center" TextChanged="OnDynamaxLevelChanged"/>
                                     </HorizontalStackLayout>
-
-                                    <HorizontalStackLayout Grid.Column="1" Spacing="5" Margin="20,0,0,0" VerticalOptions="Center">
+                                    <HorizontalStackLayout Grid.Column="1" Spacing="10" Margin="25,0,0,0" VerticalOptions="Center">
                                         <CheckBox x:Name="chkGigantamax" Color="Cyan" CheckedChanged="OnGigantamaxChanged"/>
-                                        <Label Text="G-Max" TextColor="White" VerticalOptions="Center"/>
+                                        <Label Text="Gigantamax" TextColor="White" VerticalOptions="Center"/>
                                     </HorizontalStackLayout>
-                                </Grid>
-
-                            </VerticalStackLayout>
-                        </Border>
-
-                        <Border Stroke="#333" StrokeThickness="1" BackgroundColor="#151515" StrokeShape="RoundRectangle 10" Padding="10">
-                            <VerticalStackLayout Spacing="5">
-                                <Label Text="Concursos" FontAttributes="Bold" TextColor="#AAAAAA" FontSize="12"/>
-                                <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto" ColumnSpacing="5" RowSpacing="5">
-                                    <VerticalStackLayout>
-                                        <Label Text="Cool" TextColor="Gray" FontSize="11"/>
-                                        <Entry x:Name="txtContestCool" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White"/>
-                                    </VerticalStackLayout>
-                                    <VerticalStackLayout Grid.Column="1">
-                                        <Label Text="Beauty" TextColor="Gray" FontSize="11"/>
-                                        <Entry x:Name="txtContestBeauty" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White"/>
-                                    </VerticalStackLayout>
-                                    <VerticalStackLayout Grid.Column="2">
-                                        <Label Text="Cute" TextColor="Gray" FontSize="11"/>
-                                        <Entry x:Name="txtContestCute" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White"/>
-                                    </VerticalStackLayout>
-
-                                    <VerticalStackLayout Grid.Row="1">
-                                        <Label Text="Smart" TextColor="Gray" FontSize="11"/>
-                                        <Entry x:Name="txtContestSmart" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White"/>
-                                    </VerticalStackLayout>
-                                    <VerticalStackLayout Grid.Row="1" Grid.Column="1">
-                                        <Label Text="Tough" TextColor="Gray" FontSize="11"/>
-                                        <Entry x:Name="txtContestTough" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White"/>
-                                    </VerticalStackLayout>
-                                    <VerticalStackLayout Grid.Row="1" Grid.Column="2">
-                                        <Label Text="Sheen" TextColor="Gray" FontSize="11"/>
-                                        <Entry x:Name="txtContestSheen" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White"/>
-                                    </VerticalStackLayout>
                                 </Grid>
                             </VerticalStackLayout>
                         </Border>
