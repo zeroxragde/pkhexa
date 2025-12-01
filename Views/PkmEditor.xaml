@@ -487,8 +487,50 @@
                                     </HorizontalStackLayout>
                                 </Grid>
                             </VerticalStackLayout>
+                            <HorizontalStackLayout x:Name="LayoutHiddenPower" Spacing="10" Margin="0,10,0,0">
+                                <Label Text="Hidden Power:" TextColor="Gray" FontSize="12"/>
+                                <Label x:Name="lblHiddenPowerType" Text="-" TextColor="White" FontAttributes="Bold"/>
+                                <Label Text="(60)" TextColor="Gray" FontSize="12"/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout x:Name="LayoutCharacteristic" Spacing="10" Margin="0,5,0,0">
+                                <Label Text="Characteristic:" TextColor="Gray" FontSize="12"/>
+                                <Label x:Name="lblCharacteristic" Text="-" TextColor="White"/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout x:Name="LayoutTeraOriginal" Spacing="15" IsVisible="False">
+                                <Label Text="Tera OG:" TextColor="White" WidthRequest="80" VerticalOptions="Center"/>
+                                <Border Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5" BackgroundColor="#303030" Padding="0" HeightRequest="40" HorizontalOptions="FillAndExpand">
+                                    <Picker x:Name="TeraTypeOriginalPicker" TextColor="White" TitleColor="Gray" BackgroundColor="Transparent" IsEnabled="False"/>
+                                </Border>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout x:Name="LayoutAlphaNoble" Spacing="20" IsVisible="False" Margin="0,10,0,0">
+                                <HorizontalStackLayout Spacing="5">
+                                    <CheckBox x:Name="chkAlpha" Color="#FF4444"/>
+                                    <Label Text="Alpha" TextColor="White"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="5">
+                                    <CheckBox x:Name="chkNoble" Color="Gold"/>
+                                    <Label Text="Noble" TextColor="White"/>
+                                </HorizontalStackLayout>
+                            </HorizontalStackLayout>
                         </Border>
+                     
+      
+                        
 
+
+                    </VerticalStackLayout>
+
+                    <!--TAB MOV -->
+                    <VerticalStackLayout x:Name="TabMoves" Spacing="15" Padding="10" IsVisible="False">
+                        <Label Text="Aquí van los Movimientos" TextColor="Gray" HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                    <!--TAB COSMETICOS -->
+                    <VerticalStackLayout x:Name="TabCosmetics" Spacing="15" Padding="10" IsVisible="False">
+                        <Label Text="Próximamente: Cintas y Marcas" TextColor="Yellow" HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                    <!--TAB OT -->
+                    <VerticalStackLayout x:Name="TabOT" Spacing="15" Padding="10" IsVisible="False">
+                        <Label Text="Próximamente: Entrenador Original" TextColor="Yellow" HorizontalOptions="Center"/>
                     </VerticalStackLayout>
 
                 </Grid>

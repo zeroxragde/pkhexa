@@ -256,174 +256,368 @@ public partial class PkmEditor : ContentPage
 
     #region 5. Pestaña Estadísticas (NUEVO)
 
-    // Este método carga los datos en los campos que creaste en el XAML de Stats
+
+
+
+
+    // ===========================================
+    //   CARGA COMPLETA DE DATOS DEL PKM
+    // ===========================================
     private void CargarDatosStats()
     {
-        if (_pkmActual == null) return;
+        if (_pkmActual == null)
+            return;
 
-        // 1. CARGAR BASES (Info de la especie)
+        // -------------------------------------------------
+        // 1. BASE STATS
+        // -------------------------------------------------
         var pi = _pkmActual.PersonalInfo;
-        if (lblBaseHP != null) lblBaseHP.Text = pi.HP.ToString();
-        if (lblBaseAtk != null) lblBaseAtk.Text = pi.ATK.ToString();
-        if (lblBaseDef != null) lblBaseDef.Text = pi.DEF.ToString();
-        if (lblBaseSpe != null) lblBaseSpe.Text = pi.SPE.ToString();
-        if (lblBaseSpa != null) lblBaseSpa.Text = pi.SPA.ToString();
-        if (lblBaseSpd != null) lblBaseSpd.Text = pi.SPD.ToString();
 
-        // 2. CARGAR IVs y EVs (Propiedades estándar)
-        // Usamos protección nula por si el XAML no cargó bien
-        if (txtIVHP != null) txtIVHP.Text = _pkmActual.IV_HP.ToString();
-        if (txtIVAtk != null) txtIVAtk.Text = _pkmActual.IV_ATK.ToString();
-        if (txtIVDef != null) txtIVDef.Text = _pkmActual.IV_DEF.ToString();
-        if (txtIVSpa != null) txtIVSpa.Text = _pkmActual.IV_SPA.ToString();
-        if (txtIVSpd != null) txtIVSpd.Text = _pkmActual.IV_SPD.ToString();
-        if (txtIVSpe != null) txtIVSpe.Text = _pkmActual.IV_SPE.ToString();
+        lblBaseHP.Text = pi.HP.ToString();
+        lblBaseAtk.Text = pi.ATK.ToString();
+        lblBaseDef.Text = pi.DEF.ToString();
+        lblBaseSpa.Text = pi.SPA.ToString();
+        lblBaseSpd.Text = pi.SPD.ToString();
+        lblBaseSpe.Text = pi.SPE.ToString();
 
-        if (txtEVHP != null) txtEVHP.Text = _pkmActual.EV_HP.ToString();
-        if (txtEVAtk != null) txtEVAtk.Text = _pkmActual.EV_ATK.ToString();
-        if (txtEVDef != null) txtEVDef.Text = _pkmActual.EV_DEF.ToString();
-        if (txtEVSpa != null) txtEVSpa.Text = _pkmActual.EV_SPA.ToString();
-        if (txtEVSpd != null) txtEVSpd.Text = _pkmActual.EV_SPD.ToString();
-        if (txtEVSpe != null) txtEVSpe.Text = _pkmActual.EV_SPE.ToString();
+        // -------------------------------------------------
+        // 2. IVs
+        // -------------------------------------------------
+        txtIVHP.Text = _pkmActual.IV_HP.ToString();
+        txtIVAtk.Text = _pkmActual.IV_ATK.ToString();
+        txtIVDef.Text = _pkmActual.IV_DEF.ToString();
+        txtIVSpa.Text = _pkmActual.IV_SPA.ToString();
+        txtIVSpd.Text = _pkmActual.IV_SPD.ToString();
+        txtIVSpe.Text = _pkmActual.IV_SPE.ToString();
 
-        // 3. EXTRAS (Usando 'dynamic' como lo tenías tú)
+        // -------------------------------------------------
+        // 3. EVs
+        // -------------------------------------------------
+        txtEVHP.Text = _pkmActual.EV_HP.ToString();
+        txtEVAtk.Text = _pkmActual.EV_ATK.ToString();
+        txtEVDef.Text = _pkmActual.EV_DEF.ToString();
+        txtEVSpa.Text = _pkmActual.EV_SPA.ToString();
+        txtEVSpd.Text = _pkmActual.EV_SPD.ToString();
+        txtEVSpe.Text = _pkmActual.EV_SPE.ToString();
+
         dynamic pkm = _pkmActual;
 
-        // -- Dynamax (Gen 8) --
-        if (txtDynamaxLevel != null)
+        // =========================================================
+        // 4. ACTIVAR / DESACTIVAR SECCIONES SEGÚN EL SAVE FILE (JUEGO)
+        // =========================================================
+
+
+
+
+        // =========================================================
+        // 3. OBTENER SAVE PARA DECIDIR QUE SE MUESTRA
+        // =========================================================
+        var save = GlobalService.ACTUAL_FILE;
+
+        bool esLA = false;           // Legends Arceus
+        bool esZA = false;           // Leyendas ZA
+        bool esGen8_SW = false;      // Sw/Sh
+        bool esGen9 = false;         // Scarlet/Violet
+        bool usaConcursos = false;   // Concursos
+
+        if (save != null)
+        {
+            var game = save.Version;
+            int gen = save.Generation;
+
+            // Legends Arceus
+            esLA = (game == GameVersion.PLA);
+
+            // Leyendas ZA (nuevo en PKHeX)
+            esZA = (game == GameVersion.ZA);
+
+            // Dynamax (solo Sw/Sh)
+            esGen8_SW = (game == GameVersion.SW || game == GameVersion.SH);
+
+            // Scarlet / Violet
+            esGen9 = (gen == 9 && game != GameVersion.ZA);
+
+            // Concursos Gen3 / Gen4 / ORAS / BDSP
+            usaConcursos =
+                gen == 3 ||
+                gen == 4 ||
+                game == GameVersion.OR || game == GameVersion.AS ||
+                game == GameVersion.BD || game == GameVersion.SP;
+        }
+
+        // =========================================================
+        // 4. APLICAR VISIBILIDAD SEGÚN EL JUEGO
+        // =========================================================
+
+        // ● Concursos
+        BorderContests.IsVisible = usaConcursos;
+        lblTotalContest.IsVisible = usaConcursos;
+
+        // ● Tera Type
+        LayoutTera.IsVisible = esGen9;
+        LayoutTeraOriginal.IsVisible = esGen9;
+
+        // ● Dynamax (solo Sw/Sh)
+        LayoutDynamax.IsVisible = esGen8_SW;
+
+        // ● Alpha / Noble (solo PLA)
+        LayoutAlphaNoble.IsVisible = esLA;
+
+        // ● Gimmicks contenedor
+        BorderGimmicks.IsVisible = esGen8_SW || esGen9 || esLA;
+
+        // ● Hidden Power / Characteristic
+        // No existen en Leyendas (PLA) ni ZA
+        bool mostrarHidden = !(esLA || esZA);
+        LayoutHiddenPower.IsVisible = mostrarHidden;
+        LayoutCharacteristic.IsVisible = mostrarHidden;
+
+        // ● Leyendas ZA → no muestra NADA de gimmicks ni HP info
+        // ZA (Leyendas Z-A)
+        if (esZA)
+        {
+            // Ocultar completamente los gimmicks
+            LayoutTera.IsVisible = false;
+            LayoutTeraOriginal.IsVisible = false;
+            LayoutDynamax.IsVisible = false;
+
+            BorderGimmicks.IsVisible = false;
+
+            // Mostrar solo Alpha
+            LayoutAlphaNoble.IsVisible = true; // mostrar la fila
+            chkAlpha.IsVisible = true;         // SOLO Alpha
+            chkNoble.IsVisible = false;        // NO Noble
+
+            // Mostrar characteristic
+            LayoutCharacteristic.IsVisible = true;
+
+            // Ocultar hidden power
+            LayoutHiddenPower.IsVisible = false;
+
+            // NO concursos en ZA
+            BorderContests.IsVisible = false;
+            lblTotalContest.IsVisible = false;
+
+            
+        }
+
+
+
+
+        // =========================================================
+        // 5. DYNAMAX & GIGANTAMAX (GEN 8)
+        // =========================================================
+        if (LayoutDynamax.IsVisible)
         {
             try { txtDynamaxLevel.Text = pkm.DynamaxLevel.ToString(); }
             catch { txtDynamaxLevel.Text = "0"; }
-        }
-        if (chkGigantamax != null)
-        {
+
             try { chkGigantamax.IsChecked = pkm.CanGigantamax; }
             catch { chkGigantamax.IsChecked = false; }
         }
 
-        // -- Tera Type (Gen 9) --
-        if (TeraTypePicker != null)
+        // =========================================================
+        // 6. TERA TYPES (GEN 9)
+        // =========================================================
+        if (LayoutTera.IsVisible)
         {
             if (TeraTypePicker.ItemsSource == null)
+            {
                 TeraTypePicker.ItemsSource = GameInfo.Strings.types;
+                TeraTypeOriginalPicker.ItemsSource = GameInfo.Strings.types;
+            }
 
-            try { TeraTypePicker.SelectedIndex = (int)pkm.TeraType; }
-            catch { TeraTypePicker.SelectedIndex = -1; }
+            try
+            {
+                TeraTypePicker.SelectedIndex = (int)pkm.TeraType;
+                TeraTypeOriginalPicker.SelectedIndex = (int)pkm.OriginalTeraType;
+            }
+            catch
+            {
+                TeraTypePicker.SelectedIndex = -1;
+                TeraTypeOriginalPicker.SelectedIndex = -1;
+            }
         }
 
-        // -- Concursos (Gen 3, 4, ORAS, BDSP) --
-        try
+        // =========================================================
+        // 7. ALPHA / NOBLE (LA)
+        // =========================================================
+        if (LayoutAlphaNoble.IsVisible)
         {
-            if (txtContestCool != null) txtContestCool.Text = pkm.ContestCool.ToString();
-            if (txtContestBeauty != null) txtContestBeauty.Text = pkm.ContestBeauty.ToString();
-            if (txtContestCute != null) txtContestCute.Text = pkm.ContestCute.ToString();
-            if (txtContestSmart != null) txtContestSmart.Text = pkm.ContestSmart.ToString();
-            if (txtContestTough != null) txtContestTough.Text = pkm.ContestTough.ToString();
-            if (txtContestSheen != null) txtContestSheen.Text = pkm.ContestSheen.ToString();
+            try { chkAlpha.IsChecked = pkm.IsAlpha; } catch { chkAlpha.IsChecked = false; }
+            try { chkNoble.IsChecked = pkm.IsNoble; } catch { chkNoble.IsChecked = false; }
         }
-        catch { }
 
-        // 4. Calcular Totales
+        // =========================================================
+        // 8. CONCURSOS (GEN 3/4/6/8)
+        // =========================================================
+        if (BorderContests.IsVisible)
+        {
+            try
+            {
+                txtContestCool.Text = pkm.ContestCool.ToString();
+                txtContestBeauty.Text = pkm.ContestBeauty.ToString();
+                txtContestCute.Text = pkm.ContestCute.ToString();
+                txtContestSmart.Text = pkm.ContestSmart.ToString();
+                txtContestTough.Text = pkm.ContestTough.ToString();
+                txtContestSheen.Text = pkm.ContestSheen.ToString();
+            }
+            catch { }
+        }
+
+        // =========================================================
+        // 9. HIDDEN POWER & CHARACTERISTIC
+        // =========================================================
+        int hpType = _pkmActual.HPType;
+        var types = GameInfo.Strings.types;
+        lblHiddenPowerType.Text = (hpType >= 0 && hpType < types.Length) ? types[hpType] : "-";
+
+        int characteristicIndex = _pkmActual.Characteristic;
+        var chrs = GameInfo.Strings.characteristics;
+        lblCharacteristic.Text = (characteristicIndex >= 0 && characteristicIndex < chrs.Length)
+            ? chrs[characteristicIndex]
+            : "-";
+
+        // =========================================================
+        // 10. TOTAL STATS
+        // =========================================================
         RecalcularStatsTotal();
     }
 
-    /*  private void RecalcularStatsTotal()
-      {
-          if (_pkmActual == null) return;
 
-          // PKHeX.Core calcula los stats automáticamente
-          int[] stats = _pkmActual.Stats;
 
-          if (lblStatHP != null)
-          {
-              lblStatHP.Text = stats[0].ToString();
-              lblStatAtk.Text = stats[1].ToString();
-              lblStatDef.Text = stats[2].ToString();
-              lblStatSpe.Text = stats[3].ToString(); // Vel
-              lblStatSpa.Text = stats[4].ToString();
-              lblStatSpd.Text = stats[5].ToString();
-          }
-      }*/
+    // ===========================================
+    //   RECALCULAR STATS (COMBATE + TOTALES)
+    // ===========================================
     private void RecalcularStatsTotal()
     {
-        if (_pkmActual == null) return;
+        if (_pkmActual == null)
+            return;
 
-        // 1. Stats de Combate
+        try { ((dynamic)_pkmActual).RefreshStats(); } catch { }
+
         int[] stats = _pkmActual.Stats;
-        if (lblStatHP != null)
-        {
-            lblStatHP.Text = stats[0].ToString();
-            lblStatAtk.Text = stats[1].ToString();
-            lblStatDef.Text = stats[2].ToString();
-            lblStatSpe.Text = stats[3].ToString();
-            lblStatSpa.Text = stats[4].ToString();
-            lblStatSpd.Text = stats[5].ToString();
-        }
 
-        // 2. NUEVO: Calcular Totales (IV / EV / Contest)
-        int totalIVs = _pkmActual.IV_HP + _pkmActual.IV_ATK + _pkmActual.IV_DEF + _pkmActual.IV_SPA + _pkmActual.IV_SPD + _pkmActual.IV_SPE;
-        int totalEVs = _pkmActual.EV_HP + _pkmActual.EV_ATK + _pkmActual.EV_DEF + _pkmActual.EV_SPA + _pkmActual.EV_SPD + _pkmActual.EV_SPE;
+        lblStatHP.Text = stats[0].ToString();
+        lblStatAtk.Text = stats[1].ToString();
+        lblStatDef.Text = stats[2].ToString();
+        lblStatSpe.Text = stats[3].ToString();
+        lblStatSpa.Text = stats[4].ToString();
+        lblStatSpd.Text = stats[5].ToString();
 
-        if (lblTotalIVs != null) lblTotalIVs.Text = $"IV Total: {totalIVs}/186";
-        if (lblTotalEVs != null) lblTotalEVs.Text = $"EV Total: {totalEVs}/510";
+        // Totales IV / EV
+        int tIV = _pkmActual.IV_HP + _pkmActual.IV_ATK + _pkmActual.IV_DEF +
+                  _pkmActual.IV_SPA + _pkmActual.IV_SPD + _pkmActual.IV_SPE;
 
-        // Calcular total de concursos (usando dynamic por seguridad)
+        int tEV = _pkmActual.EV_HP + _pkmActual.EV_ATK + _pkmActual.EV_DEF +
+                  _pkmActual.EV_SPA + _pkmActual.EV_SPD + _pkmActual.EV_SPE;
+
+        lblTotalIVs.Text = $"IV Total: {tIV}/186";
+        lblTotalEVs.Text = $"EV Total: {tEV}/510";
+
+        // Totales concursos
         try
         {
             dynamic p = _pkmActual;
-            int totalContest = p.ContestCool + p.ContestBeauty + p.ContestCute + p.ContestSmart + p.ContestTough;
-            // El máximo depende de la gen, PKHeX usa un valor alto de referencia.
-            if (lblTotalContest != null) lblTotalContest.Text = $"Contest Total: {totalContest}";
+            int tC = p.ContestCool + p.ContestBeauty + p.ContestCute +
+                     p.ContestSmart + p.ContestTough;
+
+            lblTotalContest.Text = $"Contest Total: {tC}";
         }
-        catch { if (lblTotalContest != null) lblTotalContest.Text = "Contest Total: 0"; }
+        catch
+        {
+            lblTotalContest.Text = "Contest Total: 0";
+        }
     }
 
+
+    // ===========================================
+    //   EVENTOS
+    // ===========================================
     private void OnStatChanged(object sender, TextChangedEventArgs e)
     {
-        if (_pkmActual == null) return;
+        if (_pkmActual == null)
+            return;
 
-        // Guardamos valores al vuelo
-        if (int.TryParse(txtIVHP?.Text, out int ivhp)) _pkmActual.IV_HP = ivhp;
-        if (int.TryParse(txtIVAtk?.Text, out int ivatk)) _pkmActual.IV_ATK = ivatk;
-        if (int.TryParse(txtIVDef?.Text, out int ivdef)) _pkmActual.IV_DEF = ivdef;
-        if (int.TryParse(txtIVSpa?.Text, out int ivspa)) _pkmActual.IV_SPA = ivspa;
-        if (int.TryParse(txtIVSpd?.Text, out int ivspd)) _pkmActual.IV_SPD = ivspd;
-        if (int.TryParse(txtIVSpe?.Text, out int ivspe)) _pkmActual.IV_SPE = ivspe;
+        // ---- IVs ----
+        if (int.TryParse(txtIVHP.Text, out int ivhp)) _pkmActual.IV_HP = ivhp;
+        if (int.TryParse(txtIVAtk.Text, out int ivatk)) _pkmActual.IV_ATK = ivatk;
+        if (int.TryParse(txtIVDef.Text, out int ivdef)) _pkmActual.IV_DEF = ivdef;
+        if (int.TryParse(txtIVSpa.Text, out int ivspa)) _pkmActual.IV_SPA = ivspa;
+        if (int.TryParse(txtIVSpd.Text, out int ivspd)) _pkmActual.IV_SPD = ivspd;
+        if (int.TryParse(txtIVSpe.Text, out int ivspe)) _pkmActual.IV_SPE = ivspe;
 
-        if (int.TryParse(txtEVHP?.Text, out int evhp)) _pkmActual.EV_HP = evhp;
-        if (int.TryParse(txtEVAtk?.Text, out int evatk)) _pkmActual.EV_ATK = evatk;
-        if (int.TryParse(txtEVDef?.Text, out int evdef)) _pkmActual.EV_DEF = evdef;
-        if (int.TryParse(txtEVSpa?.Text, out int evspa)) _pkmActual.EV_SPA = evspa;
-        if (int.TryParse(txtEVSpd?.Text, out int evspd)) _pkmActual.EV_SPD = evspd;
-        if (int.TryParse(txtEVSpe?.Text, out int evspe)) _pkmActual.EV_SPE = evspe;
+        // ---- EVs ----
+        if (int.TryParse(txtEVHP.Text, out int evhp)) _pkmActual.EV_HP = evhp;
+        if (int.TryParse(txtEVAtk.Text, out int evatk)) _pkmActual.EV_ATK = evatk;
+        if (int.TryParse(txtEVDef.Text, out int evdef)) _pkmActual.EV_DEF = evdef;
+        if (int.TryParse(txtEVSpa.Text, out int evspa)) _pkmActual.EV_SPA = evspa;
+        if (int.TryParse(txtEVSpd.Text, out int evspd)) _pkmActual.EV_SPD = evspd;
+        if (int.TryParse(txtEVSpe.Text, out int evspe)) _pkmActual.EV_SPE = evspe;
 
+        // ---- CONCURSOS ----
+        try
+        {
+            dynamic p = _pkmActual;
+
+            if (int.TryParse(txtContestCool.Text, out int ct1)) p.ContestCool = ct1;
+            if (int.TryParse(txtContestBeauty.Text, out int ct2)) p.ContestBeauty = ct2;
+            if (int.TryParse(txtContestCute.Text, out int ct3)) p.ContestCute = ct3;
+            if (int.TryParse(txtContestSmart.Text, out int ct4)) p.ContestSmart = ct4;
+            if (int.TryParse(txtContestTough.Text, out int ct5)) p.ContestTough = ct5;
+            if (int.TryParse(txtContestSheen.Text, out int ct6)) p.ContestSheen = ct6;
+        }
+        catch { }
+
+        // Recalcular todo
         RecalcularStatsTotal();
     }
 
+
+
+
+    // ===========================================
+    //   RANDOMIZADORES
+    // ===========================================
     private void OnRandomizeIVs(object sender, EventArgs e)
     {
         if (_pkmActual == null) return;
-        var rnd = new Random();
-        _pkmActual.IV_HP = rnd.Next(0, 32); _pkmActual.IV_ATK = rnd.Next(0, 32);
-        _pkmActual.IV_DEF = rnd.Next(0, 32); _pkmActual.IV_SPA = rnd.Next(0, 32);
-        _pkmActual.IV_SPD = rnd.Next(0, 32); _pkmActual.IV_SPE = rnd.Next(0, 32);
+
+        Random r = new Random();
+        _pkmActual.IV_HP = r.Next(32);
+        _pkmActual.IV_ATK = r.Next(32);
+        _pkmActual.IV_DEF = r.Next(32);
+        _pkmActual.IV_SPA = r.Next(32);
+        _pkmActual.IV_SPD = r.Next(32);
+        _pkmActual.IV_SPE = r.Next(32);
+
         CargarDatosStats();
     }
 
     private void OnRandomizeEVs(object sender, EventArgs e)
     {
         if (_pkmActual == null) return;
-        var rnd = new Random();
-        _pkmActual.EV_HP = rnd.Next(0, 86); _pkmActual.EV_ATK = rnd.Next(0, 86);
-        _pkmActual.EV_DEF = rnd.Next(0, 86); _pkmActual.EV_SPA = rnd.Next(0, 86);
-        _pkmActual.EV_SPD = rnd.Next(0, 86); _pkmActual.EV_SPE = rnd.Next(0, 86);
+
+        Random r = new Random();
+        _pkmActual.EV_HP = r.Next(86);
+        _pkmActual.EV_ATK = r.Next(86);
+        _pkmActual.EV_DEF = r.Next(86);
+        _pkmActual.EV_SPA = r.Next(86);
+        _pkmActual.EV_SPD = r.Next(86);
+        _pkmActual.EV_SPE = r.Next(86);
+
         CargarDatosStats();
     }
 
-    // TU CÓDIGO (Dynamic) para eventos específicos
+
+
+    // ===========================================
+    //   GIMMICKS
+    // ===========================================
     private void OnDynamaxLevelChanged(object sender, TextChangedEventArgs e)
     {
-        if (_pkmActual != null && int.TryParse(e.NewTextValue, out int val))
+        if (_pkmActual == null) return;
+        if (int.TryParse(e.NewTextValue, out int val))
         {
             try { ((dynamic)_pkmActual).DynamaxLevel = val; } catch { }
         }
@@ -431,19 +625,26 @@ public partial class PkmEditor : ContentPage
 
     private void OnGigantamaxChanged(object sender, CheckedChangedEventArgs e)
     {
-        if (_pkmActual != null)
-        {
-            try { ((dynamic)_pkmActual).CanGigantamax = e.Value; } catch { }
-        }
+        if (_pkmActual == null) return;
+        try { ((dynamic)_pkmActual).CanGigantamax = e.Value; } catch { }
     }
 
     private void OnTeraTypeChanged(object sender, EventArgs e)
     {
-        if (_pkmActual != null && TeraTypePicker != null && TeraTypePicker.SelectedIndex >= 0)
+        if (_pkmActual == null) return;
+        if (TeraTypePicker.SelectedIndex >= 0)
         {
             try { ((dynamic)_pkmActual).TeraType = (byte)TeraTypePicker.SelectedIndex; } catch { }
         }
     }
+
+
+
+
+
+
+
+
 
     #endregion
 

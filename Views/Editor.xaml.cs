@@ -283,12 +283,33 @@ public partial class Editor : ContentPage
 
     private async void OnAddPokemonClicked(object sender, EventArgs e)
     {
+        /*  var save = GlobalService.ACTUAL_FILE;
+          if (save == null) return;
+
+          PKM nuevoPkm = save.BlankPKM;
+          var editorPage = new PkmEditor();
+          editorPage.CargarDatos(nuevoPkm);
+          await Navigation.PushModalAsync(editorPage);*/
+        // 1. Validar que se haya seleccionado un espacio (aunque esté vacío)
+        if (_pkmSeleccionado == null)
+        {
+            await GlobalService.ShowAlertAsync(LanguageService.Get("alertSelSpace"));
+            return;
+        }
+
         var save = GlobalService.ACTUAL_FILE;
         if (save == null) return;
 
+        // 2. Crear el nuevo Pokémon
         PKM nuevoPkm = save.BlankPKM;
+
+        // 3. Abrir editor
         var editorPage = new PkmEditor();
         editorPage.CargarDatos(nuevoPkm);
+
+        // 4. IMPORTANTE: Aquí deberás implementar la lógica para que, al guardar en el editor,(PENDIENTE)
+        // se sobrescriba el '_pkmSeleccionado' o el slot correspondiente en el SaveFile.
+
         await Navigation.PushModalAsync(editorPage);
     }
 

@@ -5,6 +5,7 @@
     "lblConfiguracion": "Configuración",
 
     "alertNewTitle": "Nuevo archivo",
+    "alertSelSpace": "Por favor, selecciona un espacio vacío en la caja primero.",
     "alertNewMessage": "Aquí podrías crear un nuevo archivo de guardado Pokémon.",
     "alertOk": "Aceptar",
     "alertCancel": "Cancelar",
