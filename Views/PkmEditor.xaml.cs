@@ -263,6 +263,106 @@ public partial class PkmEditor : ContentPage
     // ===========================================
     //   CARGA COMPLETA DE DATOS DEL PKM
     // ===========================================
+
+
+    // MÉTODO DE VISIBILIDAD POR VERSIÓN DE JUEGO (SAVE)
+    // =========================================================
+
+    private void ActualizarVisibilidadPorGeneracionEstadisticas()
+    {
+        var save = GlobalService.ACTUAL_FILE;
+        if (save == null || _pkmActual == null) return;
+
+        GameVersion game = save.Version;
+        int gen = save.Generation;
+
+        // ========================================================================
+        // 1. DETECCIÓN DE Z-A (CRÍTICO)
+        // ========================================================================
+        // PKHeX aún no tiene 'GameVersion.ZA'. Si abres un save de ZA ahora, 
+        // seguramente lo detecta como SV (Gen 9) o corrupto.
+        // NECESITAS una forma de saber si es ZA. 
+        // Si no tienes una, descomenta la línea de abajo para forzarlo manualmente si lo sabes.
+
+        bool esZA = false;
+        // bool esZA = Path.GetExtension(save.FileName).ToLower() == ".zas" || save.Context == EntityContext.Gen9; // <--- AJUSTA ESTO SEGÚN TU PROYECTO
+
+        // ========================================================================
+        // 2. PODER OCULTO (Hidden Power)
+        // ========================================================================
+        // Regla: Existe desde Gen 2 hasta Gen 7.
+        // Excepción: Regresa en Gen 8 solo para BDSP.
+        // Exclusión: NO existe en Gen 1, ni en SwSh, PLA, SV, ni ZA.
+
+        bool esBDSP = (game == GameVersion.BD || game == GameVersion.SP);
+        bool rangoGen2a7 = (gen >= 2 && gen <= 7);
+
+        // Es visible si: (Es Gen 2-7 O es BDSP) Y (NO es Legends Arceus, que es Gen 8 raro)
+        bool tieneHiddenPower = (rangoGen2a7 || esBDSP) && game != GameVersion.PLA;
+
+        if (esZA) tieneHiddenPower = false; // Z-A no tendrá Hidden Power antiguo.
+
+        if (LayoutHiddenPower != null)
+            LayoutHiddenPower.IsVisible = tieneHiddenPower;
+
+        // ========================================================================
+        // 3. CARACTERÍSTICA (Characteristic)
+        // ========================================================================
+        // Regla: Se muestra visualmente desde Gen 4 en adelante.
+        // Gen 1, 2 y 3 calculan stats, pero no muestran la frase "Le gusta relajarse".
+
+        bool tieneCaracteristica = gen >= 4;
+
+        if (LayoutCharacteristic != null)
+            LayoutCharacteristic.IsVisible = tieneCaracteristica;
+
+        // ========================================================================
+        // 4. CONCURSOS (Contests)
+        // ========================================================================
+        bool tieneConcursos =
+               (game == GameVersion.R || game == GameVersion.S || game == GameVersion.E) // Gen 3 (FRLG no tienen stats visibles)
+            || (gen == 4) // DPPt, HGSS
+            || (game == GameVersion.OR || game == GameVersion.AS) // ORAS
+            || esBDSP; // BDSP
+
+        if (BorderContests != null) BorderContests.IsVisible = tieneConcursos;
+        if (lblTotalContest != null) lblTotalContest.IsVisible = tieneConcursos;
+
+        // ========================================================================
+        // 5. GIMMICKS (La parte conflictiva)
+        // ========================================================================
+
+        // Definimos banderas estrictas
+        bool esSwSh = (game == GameVersion.SW || game == GameVersion.SH);
+        bool esPLA = (game == GameVersion.PLA);
+
+        // IMPORTANTE: SV son solo Scarlet y Violet. 
+        // Si PKHeX detecta ZA como 'SL', esto se activará a menos que uses 'esZA' para bloquearlo.
+        bool esSV = (game == GameVersion.SL || game == GameVersion.VL);
+
+        // Si detectamos ZA, forzamos apagado de mecánicas anteriores
+        if (esZA)
+        {
+            esSwSh = false;
+            esPLA = false;
+            esSV = false;
+        }
+
+        // Configurar Visibilidad
+        if (LayoutDynamax != null) LayoutDynamax.IsVisible = esSwSh;
+        if (LayoutAlphaNoble != null) LayoutAlphaNoble.IsVisible = esPLA;
+
+        if (LayoutTera != null) LayoutTera.IsVisible = esSV;
+        if (LayoutTeraOriginal != null) LayoutTeraOriginal.IsVisible = esSV;
+
+        // El Borde Gimmicks solo aparece si ALGUNO de los 3 juegos específicos está activo.
+        // Si es ZA, los 3 son false, y el borde desaparece (Correcto).
+        if (BorderGimmicks != null)
+            BorderGimmicks.IsVisible = esSwSh || esPLA || esSV;
+    }
+
+
+
     private void CargarDatosStats()
     {
         if (_pkmActual == null)
@@ -306,177 +406,7 @@ public partial class PkmEditor : ContentPage
         // 4. ACTIVAR / DESACTIVAR SECCIONES SEGÚN EL SAVE FILE (JUEGO)
         // =========================================================
 
-
-
-
-        // =========================================================
-        // 3. OBTENER SAVE PARA DECIDIR QUE SE MUESTRA
-        // =========================================================
-        var save = GlobalService.ACTUAL_FILE;
-
-        bool esLA = false;           // Legends Arceus
-        bool esZA = false;           // Leyendas ZA
-        bool esGen8_SW = false;      // Sw/Sh
-        bool esGen9 = false;         // Scarlet/Violet
-        bool usaConcursos = false;   // Concursos
-
-        if (save != null)
-        {
-            var game = save.Version;
-            int gen = save.Generation;
-
-            // Legends Arceus
-            esLA = (game == GameVersion.PLA);
-
-            // Leyendas ZA (nuevo en PKHeX)
-            esZA = (game == GameVersion.ZA);
-
-            // Dynamax (solo Sw/Sh)
-            esGen8_SW = (game == GameVersion.SW || game == GameVersion.SH);
-
-            // Scarlet / Violet
-            esGen9 = (gen == 9 && game != GameVersion.ZA);
-
-            // Concursos Gen3 / Gen4 / ORAS / BDSP
-            usaConcursos =
-                gen == 3 ||
-                gen == 4 ||
-                game == GameVersion.OR || game == GameVersion.AS ||
-                game == GameVersion.BD || game == GameVersion.SP;
-        }
-
-        // =========================================================
-        // 4. APLICAR VISIBILIDAD SEGÚN EL JUEGO
-        // =========================================================
-
-        // ● Concursos
-        BorderContests.IsVisible = usaConcursos;
-        lblTotalContest.IsVisible = usaConcursos;
-
-        // ● Tera Type
-        LayoutTera.IsVisible = esGen9;
-        LayoutTeraOriginal.IsVisible = esGen9;
-
-        // ● Dynamax (solo Sw/Sh)
-        LayoutDynamax.IsVisible = esGen8_SW;
-
-        // ● Alpha / Noble (solo PLA)
-        LayoutAlphaNoble.IsVisible = esLA;
-
-        // ● Gimmicks contenedor
-        BorderGimmicks.IsVisible = esGen8_SW || esGen9 || esLA;
-
-        // ● Hidden Power / Characteristic
-        // No existen en Leyendas (PLA) ni ZA
-        bool mostrarHidden = !(esLA || esZA);
-        LayoutHiddenPower.IsVisible = mostrarHidden;
-        LayoutCharacteristic.IsVisible = mostrarHidden;
-
-        // ● Leyendas ZA → no muestra NADA de gimmicks ni HP info
-        // ZA (Leyendas Z-A)
-        if (esZA)
-        {
-            // Ocultar completamente los gimmicks
-            LayoutTera.IsVisible = false;
-            LayoutTeraOriginal.IsVisible = false;
-            LayoutDynamax.IsVisible = false;
-
-            BorderGimmicks.IsVisible = false;
-
-            // Mostrar solo Alpha
-            LayoutAlphaNoble.IsVisible = true; // mostrar la fila
-            chkAlpha.IsVisible = true;         // SOLO Alpha
-            chkNoble.IsVisible = false;        // NO Noble
-
-            // Mostrar characteristic
-            LayoutCharacteristic.IsVisible = true;
-
-            // Ocultar hidden power
-            LayoutHiddenPower.IsVisible = false;
-
-            // NO concursos en ZA
-            BorderContests.IsVisible = false;
-            lblTotalContest.IsVisible = false;
-
-            
-        }
-
-
-
-
-        // =========================================================
-        // 5. DYNAMAX & GIGANTAMAX (GEN 8)
-        // =========================================================
-        if (LayoutDynamax.IsVisible)
-        {
-            try { txtDynamaxLevel.Text = pkm.DynamaxLevel.ToString(); }
-            catch { txtDynamaxLevel.Text = "0"; }
-
-            try { chkGigantamax.IsChecked = pkm.CanGigantamax; }
-            catch { chkGigantamax.IsChecked = false; }
-        }
-
-        // =========================================================
-        // 6. TERA TYPES (GEN 9)
-        // =========================================================
-        if (LayoutTera.IsVisible)
-        {
-            if (TeraTypePicker.ItemsSource == null)
-            {
-                TeraTypePicker.ItemsSource = GameInfo.Strings.types;
-                TeraTypeOriginalPicker.ItemsSource = GameInfo.Strings.types;
-            }
-
-            try
-            {
-                TeraTypePicker.SelectedIndex = (int)pkm.TeraType;
-                TeraTypeOriginalPicker.SelectedIndex = (int)pkm.OriginalTeraType;
-            }
-            catch
-            {
-                TeraTypePicker.SelectedIndex = -1;
-                TeraTypeOriginalPicker.SelectedIndex = -1;
-            }
-        }
-
-        // =========================================================
-        // 7. ALPHA / NOBLE (LA)
-        // =========================================================
-        if (LayoutAlphaNoble.IsVisible)
-        {
-            try { chkAlpha.IsChecked = pkm.IsAlpha; } catch { chkAlpha.IsChecked = false; }
-            try { chkNoble.IsChecked = pkm.IsNoble; } catch { chkNoble.IsChecked = false; }
-        }
-
-        // =========================================================
-        // 8. CONCURSOS (GEN 3/4/6/8)
-        // =========================================================
-        if (BorderContests.IsVisible)
-        {
-            try
-            {
-                txtContestCool.Text = pkm.ContestCool.ToString();
-                txtContestBeauty.Text = pkm.ContestBeauty.ToString();
-                txtContestCute.Text = pkm.ContestCute.ToString();
-                txtContestSmart.Text = pkm.ContestSmart.ToString();
-                txtContestTough.Text = pkm.ContestTough.ToString();
-                txtContestSheen.Text = pkm.ContestSheen.ToString();
-            }
-            catch { }
-        }
-
-        // =========================================================
-        // 9. HIDDEN POWER & CHARACTERISTIC
-        // =========================================================
-        int hpType = _pkmActual.HPType;
-        var types = GameInfo.Strings.types;
-        lblHiddenPowerType.Text = (hpType >= 0 && hpType < types.Length) ? types[hpType] : "-";
-
-        int characteristicIndex = _pkmActual.Characteristic;
-        var chrs = GameInfo.Strings.characteristics;
-        lblCharacteristic.Text = (characteristicIndex >= 0 && characteristicIndex < chrs.Length)
-            ? chrs[characteristicIndex]
-            : "-";
+        ActualizarVisibilidadPorGeneracionEstadisticas();
 
         // =========================================================
         // 10. TOTAL STATS

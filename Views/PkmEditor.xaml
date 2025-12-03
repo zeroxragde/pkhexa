@@ -468,14 +468,27 @@
                             </VerticalStackLayout>
                         </Border>
 
+                        <HorizontalStackLayout x:Name="LayoutHiddenPower" Spacing="10" Margin="0,15,0,0">
+                            <Label Text="Hidden Power:" TextColor="Gray" FontSize="12"/>
+                            <Label x:Name="lblHiddenPowerType" Text="-" TextColor="White" FontAttributes="Bold"/>
+                            <Label Text="(60)" TextColor="Gray" FontSize="12"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout x:Name="LayoutCharacteristic" Spacing="10" Margin="0,5,0,10">
+                            <Label Text="Characteristic:" TextColor="Gray" FontSize="12"/>
+                            <Label x:Name="lblCharacteristic" Text="-" TextColor="White"/>
+                        </HorizontalStackLayout>
+
                         <Border x:Name="BorderGimmicks" Stroke="#333" StrokeThickness="1" BackgroundColor="#151515" StrokeShape="RoundRectangle 10" Padding="15" IsVisible="False">
                             <VerticalStackLayout Spacing="15">
+
                                 <HorizontalStackLayout x:Name="LayoutTera" Spacing="15" IsVisible="False">
                                     <Label Text="Tera Type:" TextColor="White" WidthRequest="80" VerticalOptions="Center" FontAttributes="Bold"/>
                                     <Border Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5" BackgroundColor="#303030" Padding="0" HeightRequest="40" HorizontalOptions="FillAndExpand">
                                         <Picker x:Name="TeraTypePicker" TextColor="White" TitleColor="Gray" BackgroundColor="Transparent" SelectedIndexChanged="OnTeraTypeChanged"/>
                                     </Border>
                                 </HorizontalStackLayout>
+
                                 <Grid x:Name="LayoutDynamax" ColumnDefinitions="Auto, Auto, *" IsVisible="False">
                                     <HorizontalStackLayout Grid.Column="0" Spacing="10" VerticalOptions="Center">
                                         <Label Text="D-Level:" TextColor="White" VerticalOptions="Center"/>
@@ -486,36 +499,27 @@
                                         <Label Text="Gigantamax" TextColor="White" VerticalOptions="Center"/>
                                     </HorizontalStackLayout>
                                 </Grid>
+
+                                <HorizontalStackLayout x:Name="LayoutTeraOriginal" Spacing="15" IsVisible="False">
+                                    <Label Text="Tera OG:" TextColor="White" WidthRequest="80" VerticalOptions="Center"/>
+                                    <Border Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5" BackgroundColor="#303030" Padding="0" HeightRequest="40" HorizontalOptions="FillAndExpand">
+                                        <Picker x:Name="TeraTypeOriginalPicker" TextColor="White" TitleColor="Gray" BackgroundColor="Transparent" IsEnabled="False"/>
+                                    </Border>
+                                </HorizontalStackLayout>
+
+                                <HorizontalStackLayout x:Name="LayoutAlphaNoble" Spacing="20" IsVisible="False" Margin="0,10,0,0">
+                                    <HorizontalStackLayout Spacing="5">
+                                        <CheckBox x:Name="chkAlpha" Color="#FF4444"/>
+                                        <Label Text="Alpha" TextColor="White"/>
+                                    </HorizontalStackLayout>
+                                    <HorizontalStackLayout Spacing="5">
+                                        <CheckBox x:Name="chkNoble" Color="Gold"/>
+                                        <Label Text="Noble" TextColor="White"/>
+                                    </HorizontalStackLayout>
+                                </HorizontalStackLayout>
+
                             </VerticalStackLayout>
-                            <HorizontalStackLayout x:Name="LayoutHiddenPower" Spacing="10" Margin="0,10,0,0">
-                                <Label Text="Hidden Power:" TextColor="Gray" FontSize="12"/>
-                                <Label x:Name="lblHiddenPowerType" Text="-" TextColor="White" FontAttributes="Bold"/>
-                                <Label Text="(60)" TextColor="Gray" FontSize="12"/>
-                            </HorizontalStackLayout>
-                            <HorizontalStackLayout x:Name="LayoutCharacteristic" Spacing="10" Margin="0,5,0,0">
-                                <Label Text="Characteristic:" TextColor="Gray" FontSize="12"/>
-                                <Label x:Name="lblCharacteristic" Text="-" TextColor="White"/>
-                            </HorizontalStackLayout>
-                            <HorizontalStackLayout x:Name="LayoutTeraOriginal" Spacing="15" IsVisible="False">
-                                <Label Text="Tera OG:" TextColor="White" WidthRequest="80" VerticalOptions="Center"/>
-                                <Border Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5" BackgroundColor="#303030" Padding="0" HeightRequest="40" HorizontalOptions="FillAndExpand">
-                                    <Picker x:Name="TeraTypeOriginalPicker" TextColor="White" TitleColor="Gray" BackgroundColor="Transparent" IsEnabled="False"/>
-                                </Border>
-                            </HorizontalStackLayout>
-                            <HorizontalStackLayout x:Name="LayoutAlphaNoble" Spacing="20" IsVisible="False" Margin="0,10,0,0">
-                                <HorizontalStackLayout Spacing="5">
-                                    <CheckBox x:Name="chkAlpha" Color="#FF4444"/>
-                                    <Label Text="Alpha" TextColor="White"/>
-                                </HorizontalStackLayout>
-                                <HorizontalStackLayout Spacing="5">
-                                    <CheckBox x:Name="chkNoble" Color="Gold"/>
-                                    <Label Text="Noble" TextColor="White"/>
-                                </HorizontalStackLayout>
-                            </HorizontalStackLayout>
                         </Border>
-
-
-
 
 
                     </VerticalStackLayout>
