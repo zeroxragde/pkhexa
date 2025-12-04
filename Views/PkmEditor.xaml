@@ -385,9 +385,9 @@
 
                         <Border Stroke="#333" StrokeThickness="1" BackgroundColor="#151515" StrokeShape="RoundRectangle 10" Padding="15">
                             <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" 
-              ColumnDefinitions="50, 40, *, *, 50" 
-              ColumnSpacing="10" 
-              RowSpacing="12">
+                                  ColumnDefinitions="50, 40, *, *, 50" 
+                                  ColumnSpacing="10" 
+                                  RowSpacing="12">  
 
                                 <Label Grid.Row="0" Grid.Column="0" Text="Stat" FontAttributes="Bold" TextColor="Gray" FontSize="12" HorizontalOptions="Start" VerticalOptions="End"/>
                                 <Label Grid.Row="0" Grid.Column="1" Text="Base" FontAttributes="Bold" TextColor="Gray" FontSize="12" HorizontalOptions="Center" VerticalOptions="End"/>
@@ -524,6 +524,17 @@
 
                     </VerticalStackLayout>
 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     <!--TAB MOV -->
                     <VerticalStackLayout x:Name="TabMoves" Spacing="15" Padding="10" IsVisible="False">
                         <Label Text="Aquí van los Movimientos" TextColor="Gray" HorizontalOptions="Center"/>

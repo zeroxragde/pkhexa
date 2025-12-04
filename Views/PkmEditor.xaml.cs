@@ -276,92 +276,63 @@ public partial class PkmEditor : ContentPage
         GameVersion game = save.Version;
         int gen = save.Generation;
 
-        // ========================================================================
-        // 1. DETECCIÓN DE Z-A (CRÍTICO)
-        // ========================================================================
-        // PKHeX aún no tiene 'GameVersion.ZA'. Si abres un save de ZA ahora, 
-        // seguramente lo detecta como SV (Gen 9) o corrupto.
-        // NECESITAS una forma de saber si es ZA. 
-        // Si no tienes una, descomenta la línea de abajo para forzarlo manualmente si lo sabes.
+        // --------------------------------------------------------------------
+        // 1. DEFINICIÓN DE VARIABLES (ESTRICTAS POR VERSIÓN)
+        // --------------------------------------------------------------------
 
-        bool esZA = false;
-        // bool esZA = Path.GetExtension(save.FileName).ToLower() == ".zas" || save.Context == EntityContext.Gen9; // <--- AJUSTA ESTO SEGÚN TU PROYECTO
+        // TERA: Solo Scarlet (SL) y Violet (VL).
+        // IMPORTANTE: NO uses 'gen == 9', porque Z-A también es Gen 9.
+        bool esSV = (game == GameVersion.SL || game == GameVersion.VL);
 
-        // ========================================================================
-        // 2. PODER OCULTO (Hidden Power)
-        // ========================================================================
-        // Regla: Existe desde Gen 2 hasta Gen 7.
-        // Excepción: Regresa en Gen 8 solo para BDSP.
-        // Exclusión: NO existe en Gen 1, ni en SwSh, PLA, SV, ni ZA.
+        // DYNAMAX: Solo Sword (SW) y Shield (SH).
+        bool esSwSh = (game == GameVersion.SW || game == GameVersion.SH);
 
+        // ALPHA/NOBLE: Solo Legends Arceus (PLA).
+        bool esPLA = (game == GameVersion.PLA);
+
+        // Z-A: Ya confirmaste que entra aquí.
+        bool esZA = (game == GameVersion.ZA);
+
+        // --------------------------------------------------------------------
+        // 2. CONFIGURACIÓN DE VISIBILIDAD
+        // --------------------------------------------------------------------
+
+        // --- CARACTERÍSTICA (Gen 4 en adelante) ---
+        // Visible en ZA, SV, SwSh, BDSP, PLA...
+        if (LayoutCharacteristic != null)
+            LayoutCharacteristic.IsVisible = (gen >= 4);
+
+        // --- PODER OCULTO (Hidden Power) ---
+        // Regla: Gen 2 a 7, y BDSP.
+        // Excluir explícitamente SV, SwSh, PLA y ZA.
         bool esBDSP = (game == GameVersion.BD || game == GameVersion.SP);
-        bool rangoGen2a7 = (gen >= 2 && gen <= 7);
+        bool rangoClasico = (gen >= 2 && gen <= 7);
 
-        // Es visible si: (Es Gen 2-7 O es BDSP) Y (NO es Legends Arceus, que es Gen 8 raro)
-        bool tieneHiddenPower = (rangoGen2a7 || esBDSP) && game != GameVersion.PLA;
-
-        if (esZA) tieneHiddenPower = false; // Z-A no tendrá Hidden Power antiguo.
+        // Si es ZA, esto será FALSE.
+        bool tieneHiddenPower = (rangoClasico || esBDSP) && !esSV && !esSwSh && !esPLA && !esZA;
 
         if (LayoutHiddenPower != null)
             LayoutHiddenPower.IsVisible = tieneHiddenPower;
 
-        // ========================================================================
-        // 3. CARACTERÍSTICA (Characteristic)
-        // ========================================================================
-        // Regla: Se muestra visualmente desde Gen 4 en adelante.
-        // Gen 1, 2 y 3 calculan stats, pero no muestran la frase "Le gusta relajarse".
+        // --- GIMMICKS ---
 
-        bool tieneCaracteristica = gen >= 4;
-
-        if (LayoutCharacteristic != null)
-            LayoutCharacteristic.IsVisible = tieneCaracteristica;
-
-        // ========================================================================
-        // 4. CONCURSOS (Contests)
-        // ========================================================================
-        bool tieneConcursos =
-               (game == GameVersion.R || game == GameVersion.S || game == GameVersion.E) // Gen 3 (FRLG no tienen stats visibles)
-            || (gen == 4) // DPPt, HGSS
-            || (game == GameVersion.OR || game == GameVersion.AS) // ORAS
-            || esBDSP; // BDSP
-
-        if (BorderContests != null) BorderContests.IsVisible = tieneConcursos;
-        if (lblTotalContest != null) lblTotalContest.IsVisible = tieneConcursos;
-
-        // ========================================================================
-        // 5. GIMMICKS (La parte conflictiva)
-        // ========================================================================
-
-        // Definimos banderas estrictas
-        bool esSwSh = (game == GameVersion.SW || game == GameVersion.SH);
-        bool esPLA = (game == GameVersion.PLA);
-
-        // IMPORTANTE: SV son solo Scarlet y Violet. 
-        // Si PKHeX detecta ZA como 'SL', esto se activará a menos que uses 'esZA' para bloquearlo.
-        bool esSV = (game == GameVersion.SL || game == GameVersion.VL);
-
-        // Si detectamos ZA, forzamos apagado de mecánicas anteriores
-        if (esZA)
-        {
-            esSwSh = false;
-            esPLA = false;
-            esSV = false;
-        }
-
-        // Configurar Visibilidad
-        if (LayoutDynamax != null) LayoutDynamax.IsVisible = esSwSh;
-        if (LayoutAlphaNoble != null) LayoutAlphaNoble.IsVisible = esPLA;
-
+        // Tera (Si game es ZA, esSV es false -> Se oculta)
         if (LayoutTera != null) LayoutTera.IsVisible = esSV;
         if (LayoutTeraOriginal != null) LayoutTeraOriginal.IsVisible = esSV;
 
-        // El Borde Gimmicks solo aparece si ALGUNO de los 3 juegos específicos está activo.
-        // Si es ZA, los 3 son false, y el borde desaparece (Correcto).
+        // Dynamax
+        if (LayoutDynamax != null) LayoutDynamax.IsVisible = esSwSh;
+
+        // Alpha / Noble
+        if (LayoutAlphaNoble != null) LayoutAlphaNoble.IsVisible = esPLA;
+
+        // --- BORDE CONTENEDOR ---
+        // Solo visible si alguno de los Gimmicks está activo.
+        // En Z-A: esSV=false, esSwSh=false, esPLA=false.
+        // Resultado: El borde se oculta.
         if (BorderGimmicks != null)
-            BorderGimmicks.IsVisible = esSwSh || esPLA || esSV;
+            BorderGimmicks.IsVisible = esSV || esSwSh || esPLA;
     }
-
-
 
     private void CargarDatosStats()
     {

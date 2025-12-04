@@ -11,7 +11,9 @@ namespace PkHexA
         {
             InitializeComponent();    // Cargar traducciones después de renderizar
             Loaded += (s, e) => UpdateLanguageUI();
-        
+            LblVersion.Text = GlobalService.version;
+
+
         }
         private void UpdateLanguageUI()
         {

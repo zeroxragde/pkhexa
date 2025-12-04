@@ -11,6 +11,7 @@ namespace PkHexA.Services
     {
         public static SaveFile ACTUAL_FILE = FakeSaveFile.Default;
         public static string? CurrentFilePath;
+        public static string version = "v1.0.1";
 
 
 

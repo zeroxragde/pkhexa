@@ -9,7 +9,6 @@
     <Grid RowDefinitions="Auto,*,Auto"
           Padding="0,24,0,20">
 
-        <!-- LOGO -->
         <Image Grid.Row="0"
                Source="logo_final.png"
                WidthRequest="220"
@@ -18,13 +17,11 @@
                HorizontalOptions="Center"
                VerticalOptions="Center" />
 
-        <!-- MENÚ CENTRADO -->
         <VerticalStackLayout Grid.Row="1"
                              Spacing="40"
                              HorizontalOptions="Center"
                              VerticalOptions="Center">
 
-            <!-- BOTÓN ABRIR -->
             <VerticalStackLayout Spacing="6"
                                  HorizontalOptions="Center">
 
@@ -54,7 +51,6 @@
                        TextColor="White" />
             </VerticalStackLayout>
 
-            <!-- BOTÓN CONFIGURACIÓN -->
             <VerticalStackLayout Spacing="6"
                                  HorizontalOptions="Center">
 
@@ -65,7 +61,7 @@
                              BackgroundColor="Transparent"
                              Clicked="OnSettingsClicked" />
 
-                <Label Text="Configuración2"
+                <Label Text="Configuración"
                        FontSize="18"
                        x:Name="lblConfiguracion"
                        FontAttributes="Bold"
@@ -76,15 +72,23 @@
         </VerticalStackLayout>
 
 
-        <!-- FOOTER -->
-        <Label Grid.Row="2"
-               x:Name="LblCreator"
-               Text="Desarrollado por ZeroXRagde"
-               FontSize="14"
-               TextColor="Gray"
-               HorizontalOptions="Center"
-               VerticalOptions="End"
-               Margin="0,20,0,0" />
+        <VerticalStackLayout Grid.Row="2" 
+                             Spacing="2" 
+                             Margin="0,20,0,50" 
+                             VerticalOptions="End">
+            <Label x:Name="LblCreator"
+                   Text="Desarrollado por ZeroXRagde"
+                   FontSize="14"
+                   TextColor="Gray"
+                   HorizontalOptions="Center" />
+
+            <Label x:Name="LblVersion"
+                   Text="v1.0.0" 
+                   FontSize="12"
+                   TextColor="#505050"
+                   HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
 
     </Grid>
 </ContentPage>
