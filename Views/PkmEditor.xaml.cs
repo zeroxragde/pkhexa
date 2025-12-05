@@ -133,7 +133,7 @@ public partial class PkmEditor : ContentPage
         // --- LLAMADAS A SUB-MÉTODOS ---
         CargarDatosEncuentro();
         CargarDatosStats();                 // <--- NUEVO: Para llenar la pestaña Stats
-        ActualizarVisibilidadPorGeneracion(); // <--- NUEVO: Para ocultar pestañas/campos
+       
     }
 
     public void FijarPokemon(int speciesId)
@@ -317,9 +317,9 @@ public partial class PkmEditor : ContentPage
         // --- GIMMICKS ---
 
         // Tera (Si game es ZA, esSV es false -> Se oculta)
-        if (LayoutTera != null) LayoutTera.IsVisible = esSV;
-        if (LayoutTeraOriginal != null) LayoutTeraOriginal.IsVisible = esSV;
-
+        //if (LayoutTera != null) LayoutTera.IsVisible = esSV;
+        // if (LayoutTeraOriginal != null) LayoutTeraOriginal.IsVisible = esSV;
+        LayoutTera.IsVisible = false;
         // Dynamax
         if (LayoutDynamax != null) LayoutDynamax.IsVisible = esSwSh;
 
@@ -549,74 +549,8 @@ public partial class PkmEditor : ContentPage
 
     #endregion
 
-    #region 6. Visibilidad Lógica (Generaciones)
 
-    private void ActualizarVisibilidadPorGeneracion()
-    {
-        if (_pkmActual == null) return;
-
-        int format = _pkmActual.Format;
-        int gameVersion = (int)_pkmActual.Version;
-
-        // 1. PESTAÑAS (Usando '?' por seguridad para evitar el crash)
-        // Cosmética solo en Gen 3+
-        btnTabCosmetics?.SetValue(IsVisibleProperty, format >= 3);
-        // Encuentro en Gen 2+ (En Gen 1 se oculta)
-        btnTabEncuentro?.SetValue(IsVisibleProperty, format >= 2);
-
-        // 2. EC (Encryption Constant) - Gen 6+
-        if (LayoutEC != null)
-        {
-            LayoutEC.IsVisible = (format >= 6);
-            if (LayoutEC.IsVisible)
-                txtEC.Text = _pkmActual.EncryptionConstant.ToString("X8");
-        }
-
-        // 3. BLOQUE EXTRA (Catch Rate / Shadow)
-        bool esGen1 = (format == 1);
-        bool esGen5 = (format == 5);
-        bool esGameCube = (gameVersion == 15 || gameVersion == 24);
-
-        bool mostrarCatchRate = esGen1 || esGameCube;
-
-        if (GridCatchRate != null)
-        {
-            GridCatchRate.IsVisible = mostrarCatchRate;
-            if (mostrarCatchRate && txtCatchRate != null)
-            {
-                try
-                {
-                    dynamic pkm = _pkmActual;
-                    txtCatchRate.Text = pkm.CatchRate.ToString();
-                }
-                catch { txtCatchRate.Text = "255"; }
-            }
-        }
-
-        if (LayoutNSparkle != null) LayoutNSparkle.IsVisible = esGen5;
-        if (LayoutShadowFields != null) LayoutShadowFields.IsVisible = esGameCube;
-
-        if (BorderExtra != null)
-            BorderExtra.IsVisible = mostrarCatchRate || esGen5 || esGameCube;
-
-        // 4. BLOQUES EN PESTAÑA STATS
-        bool esGen8 = (format == 8);
-        bool esGen9 = (format == 9);
-        // Gens con concursos: 3, 4, 6(ORAS), 8(BDSP)
-        bool tieneConcursos = (format == 3 || format == 4 || format == 6 || format == 8);
-
-        if (BorderGimmicks != null) BorderGimmicks.IsVisible = esGen8 || esGen9;
-        if (LayoutDynamax != null) LayoutDynamax.IsVisible = esGen8;
-        if (LayoutTera != null) LayoutTera.IsVisible = esGen9;
-
-        // Mostrar bloque de concursos Y el label del total
-        if (BorderContests != null) BorderContests.IsVisible = tieneConcursos;
-        if (lblTotalContest != null) lblTotalContest.IsVisible = tieneConcursos;
-    }
-
-    #endregion
-
-    #region 7. Eventos Simples y Buscadores
+    #region 6. Eventos Simples y Buscadores
 
     private void OnGeneratePID(object sender, EventArgs e)
     {
