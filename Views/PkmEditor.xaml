@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PkHexA.Views.Pickers"
              x:Class="PkHexA.Views.PkmEditor"
              BackgroundColor="Black"
              x:Name="winPkmEditor"
@@ -250,8 +251,6 @@
                         </Border>
 
                     </VerticalStackLayout>
-
-
 
 
                     <!--TAB ENCUENTRO -->
@@ -507,15 +506,27 @@
                                     </Border>
                                 </HorizontalStackLayout>
 
-                                <HorizontalStackLayout x:Name="LayoutAlphaNoble" Spacing="20" IsVisible="False" Margin="0,10,0,0">
-                                    <HorizontalStackLayout Spacing="5">
-                                        <CheckBox x:Name="chkAlpha" Color="#FF4444"/>
-                                        <Label Text="Alpha" TextColor="White"/>
+                                <HorizontalStackLayout x:Name="LayoutAlphaNoble" Spacing="20" Margin="0,10,0,0">
+
+                                    <HorizontalStackLayout x:Name="hsAlpha" Spacing="5">
+                                        <CheckBox x:Name="chkAlpha" 
+                                                  Color="#FF4444"
+                                                  VerticalOptions="Center"/>
+                                        <Label Text="Alpha" 
+                                               TextColor="White"
+                                               VerticalOptions="Center"/>           
                                     </HorizontalStackLayout>
-                                    <HorizontalStackLayout Spacing="5">
-                                        <CheckBox x:Name="chkNoble" Color="Gold"/>
-                                        <Label Text="Noble" TextColor="White"/>
+
+                                    <HorizontalStackLayout x:Name="hsNoble" IsVisible="False" Spacing="5">
+                                        <CheckBox x:Name="chkNoble" 
+                                                  Color="Gold"
+                                                  VerticalOptions="Center"/>
+
+                                        <Label Text="Noble" 
+                                               TextColor="White"
+                                               VerticalOptions="Center"/>       
                                     </HorizontalStackLayout>
+
                                 </HorizontalStackLayout>
 
                             </VerticalStackLayout>
@@ -525,20 +536,119 @@
                     </VerticalStackLayout>
 
                     
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
                     <!--TAB MOV -->
-                    <VerticalStackLayout x:Name="TabMoves" Spacing="15" Padding="10" IsVisible="False">
-                        <Label Text="Aquí van los Movimientos" TextColor="Gray" HorizontalOptions="Center"/>
+                    <VerticalStackLayout x:Name="TabMoves" Spacing="15" Padding="15" IsVisible="False">
+
+                        <HorizontalStackLayout x:Name="LayoutAlphaMoves" 
+                           Spacing="10" 
+                           IsVisible="False"
+                           HorizontalOptions="Center">
+                            <CheckBox x:Name="chkAlphaMoves" Color="#FF5555"/>
+                            <Label Text="Alpha / Dominante" TextColor="#FF5555" FontAttributes="Bold" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+
+                        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+              ColumnDefinitions="*, 50, 50, 40" 
+              RowSpacing="8" ColumnSpacing="5">
+
+                            <Label Grid.Row="0" Grid.Column="1" Text="PP" TextColor="Gray" HorizontalOptions="Center" FontSize="12"/>
+                            <Label x:Name="lblHeaderPPUps" Grid.Row="0" Grid.Column="2" Text="Más" TextColor="Gray" HorizontalOptions="Center" FontSize="12"/>
+                            <Label x:Name="lblHeaderMastery" Grid.Row="0" Grid.Column="3" Text="M" TextColor="Gold" FontAttributes="Bold" HorizontalOptions="Center" FontSize="12" IsVisible="False"/>
+
+                            <controls:MoveSelector x:Name="viewMove1" Grid.Row="1" Grid.Column="0" 
+                                   MoveTapped="AbrirBuscadorMovimiento1_Tapped"/>
+
+                            <Entry x:Name="txtPP1" Grid.Row="1" Grid.Column="1" Text="0" TextColor="White" BackgroundColor="#2D2D30" HorizontalTextAlignment="Center"/>
+                            <Picker x:Name="pkPPUp1" Grid.Row="1" Grid.Column="2" TextColor="White" BackgroundColor="#2D2D30">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>0</x:String>
+                                        <x:String>1</x:String>
+                                        <x:String>2</x:String>
+                                        <x:String>3</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                            <CheckBox x:Name="chkMastery1" Grid.Row="1" Grid.Column="3" Color="Gold" IsVisible="False"/>
+
+                            <controls:MoveSelector x:Name="viewMove2" Grid.Row="2" Grid.Column="0" 
+                                   MoveTapped="AbrirBuscadorMovimiento2_Tapped"/>
+
+                            <Entry x:Name="txtPP2" Grid.Row="2" Grid.Column="1" Text="0" TextColor="White" BackgroundColor="#2D2D30" HorizontalTextAlignment="Center"/>
+                            <Picker x:Name="pkPPUp2" Grid.Row="2" Grid.Column="2" TextColor="White" BackgroundColor="#2D2D30">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>0</x:String>
+                                        <x:String>1</x:String>
+                                        <x:String>2</x:String>
+                                        <x:String>3</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                            <CheckBox x:Name="chkMastery2" Grid.Row="2" Grid.Column="3" Color="Gold" IsVisible="False"/>
+
+                            <controls:MoveSelector x:Name="viewMove3" Grid.Row="3" Grid.Column="0" 
+                                   MoveTapped="AbrirBuscadorMovimiento3_Tapped"/>
+
+                            <Entry x:Name="txtPP3" Grid.Row="3" Grid.Column="1" Text="0" TextColor="White" BackgroundColor="#2D2D30" HorizontalTextAlignment="Center"/>
+                            <Picker x:Name="pkPPUp3" Grid.Row="3" Grid.Column="2" TextColor="White" BackgroundColor="#2D2D30">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>0</x:String>
+                                        <x:String>1</x:String>
+                                        <x:String>2</x:String>
+                                        <x:String>3</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                            <CheckBox x:Name="chkMastery3" Grid.Row="3" Grid.Column="3" Color="Gold" IsVisible="False"/>
+
+                            <controls:MoveSelector x:Name="viewMove4" Grid.Row="4" Grid.Column="0" 
+                                   MoveTapped="AbrirBuscadorMovimiento4_Tapped"/>
+
+                            <Entry x:Name="txtPP4" Grid.Row="4" Grid.Column="1" Text="0" TextColor="White" BackgroundColor="#2D2D30" HorizontalTextAlignment="Center"/>
+                            <Picker x:Name="pkPPUp4" Grid.Row="4" Grid.Column="2" TextColor="White" BackgroundColor="#2D2D30">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>0</x:String>
+                                        <x:String>1</x:String>
+                                        <x:String>2</x:String>
+                                        <x:String>3</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                            <CheckBox x:Name="chkMastery4" Grid.Row="4" Grid.Column="3" Color="Gold" IsVisible="False"/>
+
+                        </Grid>
+                        <VerticalStackLayout x:Name="SectionRelearn" Spacing="8">
+                            <Label Text="Recordar movimientos (Relearn)" TextColor="Gray" FontSize="12"/>
+                            <Grid ColumnDefinitions="*, 40" ColumnSpacing="5">
+                                <VerticalStackLayout Grid.Column="0" Spacing="5">
+                                    <Picker x:Name="pkRelearn1" Title="(Ninguno)" TextColor="White" BackgroundColor="#2D2D30"/>
+                                    <Picker x:Name="pkRelearn2" Title="(Ninguno)" TextColor="White" BackgroundColor="#2D2D30"/>
+                                    <Picker x:Name="pkRelearn3" Title="(Ninguno)" TextColor="White" BackgroundColor="#2D2D30"/>
+                                    <Picker x:Name="pkRelearn4" Title="(Ninguno)" TextColor="White" BackgroundColor="#2D2D30"/>
+                                </VerticalStackLayout>
+                                <Button Grid.Column="1" Text="↺" BackgroundColor="#3E3E42" TextColor="White" CornerRadius="4"/>
+                            </Grid>
+                        </VerticalStackLayout>
+
+                        <HorizontalStackLayout Spacing="10">
+                            <Button x:Name="btnRelearnFlags" Text="Marcas recuerdamov." BackgroundColor="#3E3E42" TextColor="White" FontSize="12" HeightRequest="35"/>
+                            <Button x:Name="btnPlusFlags" Text="Plus Flags" BackgroundColor="#3E3E42" TextColor="White" FontSize="12" HeightRequest="35"/>
+                        </HorizontalStackLayout>
+
                     </VerticalStackLayout>
+
+
+
+
+
+
+
+
+
+
                     <!--TAB COSMETICOS -->
                     <VerticalStackLayout x:Name="TabCosmetics" Spacing="15" Padding="10" IsVisible="False">
                         <Label Text="Próximamente: Cintas y Marcas" TextColor="Yellow" HorizontalOptions="Center"/>

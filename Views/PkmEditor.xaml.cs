@@ -317,21 +317,24 @@ public partial class PkmEditor : ContentPage
         // --- GIMMICKS ---
 
         // Tera (Si game es ZA, esSV es false -> Se oculta)
-        //if (LayoutTera != null) LayoutTera.IsVisible = esSV;
-        // if (LayoutTeraOriginal != null) LayoutTeraOriginal.IsVisible = esSV;
-        LayoutTera.IsVisible = false;
+        if (LayoutTera != null) LayoutTera.IsVisible = esSV;
+        if (LayoutTeraOriginal != null) LayoutTeraOriginal.IsVisible = esSV;
+       
         // Dynamax
         if (LayoutDynamax != null) LayoutDynamax.IsVisible = esSwSh;
 
         // Alpha / Noble
-        if (LayoutAlphaNoble != null) LayoutAlphaNoble.IsVisible = esPLA;
+        if (hsAlpha != null) hsAlpha.IsVisible = esPLA || esZA;
+
+        // Alpha / Noble
+        if (hsNoble != null) hsNoble.IsVisible = esPLA;
 
         // --- BORDE CONTENEDOR ---
         // Solo visible si alguno de los Gimmicks está activo.
         // En Z-A: esSV=false, esSwSh=false, esPLA=false.
         // Resultado: El borde se oculta.
         if (BorderGimmicks != null)
-            BorderGimmicks.IsVisible = esSV || esSwSh || esPLA;
+            BorderGimmicks.IsVisible = esSV || esSwSh || esPLA || esZA;
     }
 
     private void CargarDatosStats()
@@ -759,4 +762,210 @@ public partial class PkmEditor : ContentPage
     }
 
     #endregion
+
+
+
+
+    #region 7. Pestaña Movimientos (FINAL)
+    private void CargarDatosMovimientos()
+    {
+        if (_pkmActual == null) return;
+        ConfigurarInterfazMovimientos();
+
+        string[] moveNames = GameInfo.Strings.movelist;
+
+        // --- Movimiento 1 ---
+        int m1 = _pkmActual.Move1;
+        viewMove1.MoveName = (m1 < moveNames.Length) ? moveNames[m1] : $"Move {m1}";
+        ActualizarIconoTipo(viewMove1, m1); // Pasamos el control completo
+
+        txtPP1.Text = _pkmActual.Move1_PP.ToString();
+        pkPPUp1.SelectedIndex = Math.Clamp(_pkmActual.Move1_PPUps, 0, 3);
+        CargarMaestria(chkMastery1, 0);
+
+        // --- Movimiento 2 ---
+        int m2 = _pkmActual.Move2;
+        viewMove2.MoveName = (m2 < moveNames.Length) ? moveNames[m2] : $"Move {m2}";
+        ActualizarIconoTipo(viewMove2, m2);
+
+        txtPP2.Text = _pkmActual.Move2_PP.ToString();
+        pkPPUp2.SelectedIndex = Math.Clamp(_pkmActual.Move2_PPUps, 0, 3);
+        CargarMaestria(chkMastery2, 1);
+
+        // --- Movimiento 3 ---
+        int m3 = _pkmActual.Move3;
+        viewMove3.MoveName = (m3 < moveNames.Length) ? moveNames[m3] : $"Move {m3}";
+        ActualizarIconoTipo(viewMove3, m3);
+
+        txtPP3.Text = _pkmActual.Move3_PP.ToString();
+        pkPPUp3.SelectedIndex = Math.Clamp(_pkmActual.Move3_PPUps, 0, 3);
+        CargarMaestria(chkMastery3, 2);
+
+        // --- Movimiento 4 ---
+        int m4 = _pkmActual.Move4;
+        viewMove4.MoveName = (m4 < moveNames.Length) ? moveNames[m4] : $"Move {m4}";
+        ActualizarIconoTipo(viewMove4, m4);
+
+        txtPP4.Text = _pkmActual.Move4_PP.ToString();
+        pkPPUp4.SelectedIndex = Math.Clamp(_pkmActual.Move4_PPUps, 0, 3);
+        CargarMaestria(chkMastery4, 3);
+    }
+
+    // Método auxiliar actualizado para aceptar tu CustomControl
+    private void ActualizarIconoTipo(PkHexA.Views.Pickers.MoveSelector control, int moveId)
+    {
+        // 1. Validación básica
+        if (moveId <= 0)
+        {
+            control.TypeImage = null;
+            return;
+        }
+
+        // 2. CORRECCIÓN: Usar MoveInfo.GetType
+        // PKHeX necesita saber el contexto (Generación) porque los tipos cambian 
+        // (ej. Clefairy era Normal en Gen1, Hada en Gen6).
+        // Si no tienes el contexto a mano, usa 'EntityContext.Gen9' (o GenLatest) para datos actuales.
+
+        EntityContext contexto = EntityContext.Gen9;
+
+        // Si tu app maneja saves viejos, deberías pasar 'contexto' como argumento a este método.
+
+        int typeId = MoveInfo.GetType((ushort)moveId, contexto);
+
+        // 3. Cargar la imagen
+        // Asegúrate de que tus imágenes se llamen "type_0.png", "type_1.png", etc.
+        // typeId 0 = Normal, 1 = Lucha, etc.
+        control.TypeImage = ImageSource.FromFile($"type_{typeId}.png");
+    }
+
+    private void CargarMaestria(CheckBox chk, int moveIndex)
+    {
+        if (chk == null || !chk.IsVisible) return;
+        try
+        {
+            // Propiedad dinámica para Arceus (Solo existe en PA8)
+            dynamic p = _pkmActual;
+            bool[] masteries = p.MoveMastery;
+            if (masteries != null && moveIndex < masteries.Length)
+                chk.IsChecked = masteries[moveIndex];
+        }
+        catch { chk.IsChecked = false; }
+    }
+
+    private void ConfigurarInterfazMovimientos()
+    {
+        var save = GlobalService.ACTUAL_FILE;
+        if (save == null) return;
+
+        GameVersion game = save.Version;
+
+        // Detectar si es Legends Arceus (PLA) o Z-A (ZA)
+        bool esArceusOZA = (game == GameVersion.PLA || game == GameVersion.ZA);
+        bool esGenAntigua = (save.Generation <= 2);
+
+        // Visibilidad Encabezados
+        if (lblHeaderPPUps != null) lblHeaderPPUps.IsVisible = !esArceusOZA;
+        if (lblHeaderMastery != null) lblHeaderMastery.IsVisible = esArceusOZA;
+
+        // Visibilidad Filas
+        if (pkPPUp1 != null) pkPPUp1.IsVisible = !esArceusOZA;
+        if (chkMastery1 != null) chkMastery1.IsVisible = esArceusOZA;
+
+        if (pkPPUp2 != null) pkPPUp2.IsVisible = !esArceusOZA;
+        if (chkMastery2 != null) chkMastery2.IsVisible = esArceusOZA;
+
+        if (pkPPUp3 != null) pkPPUp3.IsVisible = !esArceusOZA;
+        if (chkMastery3 != null) chkMastery3.IsVisible = esArceusOZA;
+
+        if (pkPPUp4 != null) pkPPUp4.IsVisible = !esArceusOZA;
+        if (chkMastery4 != null) chkMastery4.IsVisible = esArceusOZA;
+
+        // Sección Relearn
+        if (SectionRelearn != null) SectionRelearn.IsVisible = !esGenAntigua;
+
+        // Checkbox Alpha de Movimientos (Asegúrate de usar el nombre que le pusiste)
+        // Suponiendo que lo llamaste 'chkAlphaMoves' para quitar la ambigüedad:
+        if (LayoutAlphaMoves != null)
+        {
+            LayoutAlphaMoves.IsVisible = esArceusOZA;
+
+            if (esArceusOZA && chkAlphaMoves != null)
+            {
+                try { chkAlphaMoves.IsChecked = ((dynamic)_pkmActual).Alpha; } catch { }
+            }
+        }
+    }
+
+    #endregion
+
+    #region 8. Eventos de Buscador de Movimientos (FALTANTES)
+
+
+
+
+    // Evento para el Movimiento 1
+    private async void AbrirBuscadorMovimiento1_Tapped(object sender, TappedEventArgs e)
+    {
+        await AbrirBuscadorMovimiento(1);
+    }
+
+    // Evento para el Movimiento 2
+    private async void AbrirBuscadorMovimiento2_Tapped(object sender, TappedEventArgs e)
+    {
+        await AbrirBuscadorMovimiento(2);
+    }
+
+    // Evento para el Movimiento 3
+    private async void AbrirBuscadorMovimiento3_Tapped(object sender, TappedEventArgs e)
+    {
+        await AbrirBuscadorMovimiento(3);
+    }
+
+    // Evento para el Movimiento 4
+    private async void AbrirBuscadorMovimiento4_Tapped(object sender, TappedEventArgs e)
+    {
+        await AbrirBuscadorMovimiento(4);
+    }
+
+    /// <summary>
+    /// Lógica central para abrir el buscador y asignar el movimiento
+    /// </summary>
+    private async Task AbrirBuscadorMovimiento(int slotIndex)
+    {
+        // 1. Crear la página del buscador (MoveSearchPage)
+        // Asegúrate de tener creada esta página o usar una genérica
+        /*
+        var searchPage = new MoveSearchPage(); 
+        
+        searchPage.AlSeleccionar = (moveId, moveName) => 
+        {
+            // Asignar el movimiento al slot correcto
+            switch(slotIndex)
+            {
+                case 1: _pkmActual.Move1 = moveId; break;
+                case 2: _pkmActual.Move2 = moveId; break;
+                case 3: _pkmActual.Move3 = moveId; break;
+                case 4: _pkmActual.Move4 = moveId; break;
+            }
+            
+            // Recargar la vista para mostrar el nuevo nombre y datos
+            CargarDatosMovimientos(); 
+        };
+        
+        await Navigation.PushModalAsync(searchPage);
+        */
+
+        // MIENTRAS TANTO (Para que no falle y veas que funciona el clic):
+        await DisplayAlert("Buscador", $"Aquí se abrirá el buscador para el Slot {slotIndex}", "OK");
+    }
+
+    #endregion
+
+
+
+
+
+
+
+
 }
