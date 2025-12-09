@@ -138,6 +138,9 @@
     <MauiXaml Update="Views\Pickers\LocationSearchPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
+    <MauiXaml Update="Views\Pickers\MoveSearchPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
     <MauiXaml Update="Views\Pickers\MoveSelector.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>

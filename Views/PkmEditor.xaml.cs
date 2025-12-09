@@ -900,7 +900,29 @@ public partial class PkmEditor : ContentPage
 
     #region 8. Eventos de Buscador de Movimientos (FALTANTES)
 
+    // Evento para el Movimiento 1
+    private async void AbrirBuscadorMovimiento1_Tapped(object sender, EventArgs e)
+    {
+        await AbrirBuscadorMovimiento(1);
+    }
 
+    // Evento para el Movimiento 2
+    private async void AbrirBuscadorMovimiento2_Tapped(object sender, EventArgs e)
+    {
+        await AbrirBuscadorMovimiento(2);
+    }
+
+    // Evento para el Movimiento 3
+    private async void AbrirBuscadorMovimiento3_Tapped(object sender, EventArgs e)
+    {
+        await AbrirBuscadorMovimiento(3);
+    }
+
+    // Evento para el Movimiento 4
+    private async void AbrirBuscadorMovimiento4_Tapped(object sender, EventArgs e)
+    {
+        await AbrirBuscadorMovimiento(4);
+    }
 
 
     // Evento para el Movimiento 1
@@ -930,33 +952,59 @@ public partial class PkmEditor : ContentPage
     /// <summary>
     /// Lógica central para abrir el buscador y asignar el movimiento
     /// </summary>
+    /// <summary>
+    /// Abre el buscador, asigna el ataque y recalcula los PP automáticamente.
+    /// </summary>
     private async Task AbrirBuscadorMovimiento(int slotIndex)
     {
-        // 1. Crear la página del buscador (MoveSearchPage)
-        // Asegúrate de tener creada esta página o usar una genérica
-        /*
-        var searchPage = new MoveSearchPage(); 
-        
-        searchPage.AlSeleccionar = (moveId, moveName) => 
-        {
-            // Asignar el movimiento al slot correcto
-            switch(slotIndex)
-            {
-                case 1: _pkmActual.Move1 = moveId; break;
-                case 2: _pkmActual.Move2 = moveId; break;
-                case 3: _pkmActual.Move3 = moveId; break;
-                case 4: _pkmActual.Move4 = moveId; break;
-            }
-            
-            // Recargar la vista para mostrar el nuevo nombre y datos
-            CargarDatosMovimientos(); 
-        };
-        
-        await Navigation.PushModalAsync(searchPage);
-        */
+        if (_pkmActual == null) return;
 
-        // MIENTRAS TANTO (Para que no falle y veas que funciona el clic):
-        await DisplayAlert("Buscador", $"Aquí se abrirá el buscador para el Slot {slotIndex}", "OK");
+        // 1. Crear la página de búsqueda pasando el contexto (Gen1, Gen9, etc.)
+        // Si _pkmActual.Context es null, usa EntityContext.Gen9 por seguridad.
+        var contexto = _pkmActual.Context;
+        var searchPage = new PkHexA.Views.Pickers.MoveSearchPage(contexto);
+
+        // 2. Definir qué pasa cuando el usuario elige un ataque
+        searchPage.AlSeleccionarMovimiento = (moveId) =>
+        {
+            // A. Asignar el ID del movimiento al slot correspondiente
+            switch (slotIndex)
+            {
+                case 1: _pkmActual.Move1 = (ushort)moveId; break;
+                case 2: _pkmActual.Move2 = (ushort)moveId; break;
+                case 3: _pkmActual.Move3 = (ushort)moveId; break;
+                case 4: _pkmActual.Move4 = (ushort)moveId; break;
+            }
+
+            // B. Recalcular los PP (VITAL para que no sea ilegal)
+            // Obtenemos los 'Más PP' (PPUps) actuales para calcular el máximo real
+            int currentPPUps = 0;
+            switch (slotIndex)
+            {
+                case 1: currentPPUps = _pkmActual.Move1_PPUps; break;
+                case 2: currentPPUps = _pkmActual.Move2_PPUps; break;
+                case 3: currentPPUps = _pkmActual.Move3_PPUps; break;
+                case 4: currentPPUps = _pkmActual.Move4_PPUps; break;
+            }
+
+            // PKHeX calcula los PP correctos (Base + Bonus por PPUps)
+            int newPP = _pkmActual.GetMovePP((ushort)moveId, currentPPUps);
+
+            // Asignamos los nuevos PP al slot
+            switch (slotIndex)
+            {
+                case 1: _pkmActual.Move1_PP = newPP; break;
+                case 2: _pkmActual.Move2_PP = newPP; break;
+                case 3: _pkmActual.Move3_PP = newPP; break;
+                case 4: _pkmActual.Move4_PP = newPP; break;
+            }
+
+            // C. Refrescar la interfaz visual
+            CargarDatosMovimientos();
+        };
+
+        // 3. Abrir la página
+        await Navigation.PushModalAsync(searchPage);
     }
 
     #endregion
