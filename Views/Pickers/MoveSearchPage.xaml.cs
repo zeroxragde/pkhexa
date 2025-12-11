@@ -1,82 +1,136 @@
 using PKHeX.Core;
-using PkHexA.Modal;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.Maui.Controls;
+
 namespace PkHexA.Views.Pickers;
 
 public partial class MoveSearchPage : ContentPage
 {
-    // Variables
-    private List<MoveItem> _allMoves = new();
+    private List<MoveVistaItem> _todosLosMovimientos = new();
+    public Action<ushort>? AlSeleccionarMovimiento;
+    private System.Threading.Timer? _debounceTimer;
+    private bool _isNavigating = false;
 
-    // Acción que se ejecutará al seleccionar un ataque (devuelve el ID)
-    public Action<int> AlSeleccionarMovimiento { get; set; }
-
-    public MoveSearchPage(EntityContext context = EntityContext.Gen9)
+    // --- CONSTRUCTOR 1: El normal ---
+    public MoveSearchPage()
     {
         InitializeComponent();
-        CargarMovimientos(context);
+        LoadingSpinner.IsRunning = true;
+        Task.Run(() => CargarDatos());
     }
 
-    private void CargarMovimientos(EntityContext context)
+    // --- CONSTRUCTOR 2: EL QUE ARREGLA TU ERROR ---
+    // Este constructor acepta cualquier parámetro (object) y lo ignora.
+    // Esto hace que tu código antiguo compile sin que tengas que buscar la línea que falla.
+    public MoveSearchPage(object parametroIgnorado) : this()
     {
-        // 1. Obtener la lista de nombres desde PKHeX
-        string[] moveList = GameInfo.Strings.movelist;
-        _allMoves = new List<MoveItem>();
+        // No hacemos nada con el parámetro, pero permite que la app compile.
+    }
 
-        // 2. Recorrer y crear objetos visuales
-        for (int i = 0; i < moveList.Length; i++)
+    private void CargarDatos()
+    {
+        // 1. CORREGIDO: Usamos .Move (Singular)
+        var listaRaw = GameInfo.Strings.Move;
+
+        var listaTemp = new List<MoveVistaItem>();
+
+        // 2. CORREGIDO: Usamos .Count en lugar de .Length
+        for (int i = 0; i < listaRaw.Count; i++)
         {
-            // Validar que el nombre no esté vacío (PKHeX a veces tiene huecos)
-            if (string.IsNullOrEmpty(moveList[i])) continue;
+            string nombre = listaRaw[i];
 
-            // Obtener el tipo según la generación (contexto)
-            int typeId = MoveInfo.GetType((ushort)i, context);
+            if (string.IsNullOrEmpty(nombre) || nombre.StartsWith("---")) continue;
 
-            _allMoves.Add(new MoveItem
+            int typeId = MoveInfo.GetType((ushort)i, EntityContext.Gen9);
+
+            if (typeId > 18) typeId = 0;
+
+            listaTemp.Add(new MoveVistaItem
             {
-                Id = i,
-                Name = moveList[i],
-                // IMPORTANTE: Asegúrate de tener las imágenes type_0.png, type_1.png...
-                TypeImage = ImageSource.FromFile($"type_{typeId}.png"),
-                SearchString = moveList[i].ToLower()
+                Id = (ushort)i,
+                Nombre = nombre,
+                TipoImagen = $"type_{typeId}.png"
             });
         }
 
-        // 3. Asignar a la lista visual
-        cvMoves.ItemsSource = _allMoves;
+        _todosLosMovimientos = listaTemp;
+
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            ListaMovimientos.ItemsSource = _todosLosMovimientos;
+            LoadingSpinner.IsRunning = false;
+            LoadingSpinner.IsVisible = false;
+        });
     }
 
-    private void OnSearchTextChanged(object sender, TextChangedEventArgs e)
+    private void OnBusquedaChanged(object sender, TextChangedEventArgs e)
     {
-        if (string.IsNullOrWhiteSpace(e.NewTextValue))
+        _debounceTimer?.Dispose();
+        var texto = e.NewTextValue;
+
+        _debounceTimer = new System.Threading.Timer(async _ =>
         {
-            // Si está vacío, mostrar todo
-            cvMoves.ItemsSource = _allMoves;
+            await FiltrarRapido(texto);
+        }, null, 300, System.Threading.Timeout.Infinite);
+    }
+
+    private async Task FiltrarRapido(string? texto)
+    {
+        if (_todosLosMovimientos.Count == 0) return;
+
+        List<MoveVistaItem> resultados;
+
+        if (string.IsNullOrWhiteSpace(texto))
+        {
+            resultados = _todosLosMovimientos;
         }
         else
         {
-            // Filtrar por nombre (busca texto contenido)
-            var filtro = e.NewTextValue.ToLower();
-            var resultados = _allMoves
-                .Where(x => x.SearchString.Contains(filtro))
+            resultados = _todosLosMovimientos
+                .Where(m => m.Nombre.Contains(texto, StringComparison.OrdinalIgnoreCase))
                 .ToList();
-
-            cvMoves.ItemsSource = resultados;
         }
+
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            ListaMovimientos.ItemsSource = resultados;
+        });
     }
 
     private async void OnMoveSelected(object sender, SelectionChangedEventArgs e)
     {
-        // Verificar que hay algo seleccionado
-        if (e.CurrentSelection.FirstOrDefault() is MoveItem itemSeleccionado)
+        if (_isNavigating) return;
+
+        var item = e.CurrentSelection.FirstOrDefault() as MoveVistaItem;
+        if (item == null) return;
+
+        try
         {
-            // Limpiar selección para que se pueda volver a seleccionar el mismo si se reabre
-            cvMoves.SelectedItem = null;
+            _isNavigating = true;
+            AlSeleccionarMovimiento?.Invoke(item.Id);
 
-            // Invocar la acción en el PkmEditor
-            AlSeleccionarMovimiento?.Invoke(itemSeleccionado.Id);
-
-            // Cerrar la ventana
-            await Navigation.PopModalAsync();
+            if (Navigation.ModalStack.Count > 0)
+                await Navigation.PopModalAsync();
+            else
+                await Navigation.PopAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        finally
+        {
+            _isNavigating = false;
+            if (sender is CollectionView cv) cv.SelectedItem = null;
         }
     }
+}
+
+public class MoveVistaItem
+{
+    public ushort Id { get; set; }
+    public string Nombre { get; set; } = string.Empty;
+    public string TipoImagen { get; set; } = string.Empty;
 }

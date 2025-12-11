@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PkHexA.Views.Pickers.MoveSelector"
-             >
-    <Grid ColumnDefinitions="30, 30, *" ColumnSpacing="5" Padding="0,2">
+             x:Class="PkHexA.Views.Pickers.MoveSelector">
+
+    <Grid ColumnDefinitions="Auto, 30, *, 50, 40" 
+          ColumnSpacing="5" 
+          Padding="0,2"
+          HeightRequest="40">
 
         <Label x:Name="lblAlert" 
-               Text="⚠️" TextColor="Red" 
-               VerticalOptions="Center" HorizontalOptions="Center" 
+               Grid.Column="0"
+               Text="⚠️" 
+               TextColor="Red" 
+               FontSize="18"
+               VerticalOptions="Center" 
                IsVisible="False"/>
 
         <Image x:Name="imgType" 
-               WidthRequest="24" HeightRequest="24" 
-               VerticalOptions="Center" HorizontalOptions="Center"/>
+               Grid.Column="1"
+               WidthRequest="24" 
+               HeightRequest="24" 
+               VerticalOptions="Center" 
+               HorizontalOptions="Center"/>
 
         <Border Grid.Column="2" 
                 Stroke="Gray" 
@@ -28,7 +37,40 @@
                    Text="(Ninguno)" 
                    TextColor="White" 
                    VerticalOptions="Center" 
-                   LineBreakMode="TailTruncation"/>
+                   LineBreakMode="TailTruncation"
+                   FontSize="14"/>
+        </Border>
+
+        <Border Grid.Column="3" Stroke="Gray" StrokeShape="RoundRectangle 5" BackgroundColor="#202020">
+            <Entry x:Name="entryPP"
+                   Text="0"
+                   TextColor="White"
+                   FontSize="12"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   Keyboard="Numeric"
+                   MaxLength="3"
+                   Completed="OnStatInputChanged"
+                   Unfocused="OnStatInputChanged"/>
+        </Border>
+
+        <Border Grid.Column="4" Stroke="Gray" StrokeShape="RoundRectangle 5" BackgroundColor="#202020">
+            <Picker x:Name="pickerPPUps"
+                    TextColor="Aqua"
+                    FontSize="12"
+                    HorizontalTextAlignment="Center"
+                    Title=""
+                    SelectedIndexChanged="OnStatInputChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>0</x:String>
+                        <x:String>1</x:String>
+                        <x:String>2</x:String>
+                        <x:String>3</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+                <Picker.SelectedIndex>0</Picker.SelectedIndex>
+            </Picker>
         </Border>
 
     </Grid>

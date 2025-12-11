@@ -281,62 +281,86 @@ public partial class PkmEditor : ContentPage
         // --------------------------------------------------------------------
 
         // TERA: Solo Scarlet (SL) y Violet (VL).
-        // IMPORTANTE: NO uses 'gen == 9', porque Z-A también es Gen 9.
         bool esSV = (game == GameVersion.SL || game == GameVersion.VL);
 
         // DYNAMAX: Solo Sword (SW) y Shield (SH).
         bool esSwSh = (game == GameVersion.SW || game == GameVersion.SH);
 
-        // ALPHA/NOBLE: Solo Legends Arceus (PLA).
+        // LEGENDS: Arceus (PLA) y asumiendo Z-A (ZA).
         bool esPLA = (game == GameVersion.PLA);
-
-        // Z-A: Ya confirmaste que entra aquí.
         bool esZA = (game == GameVersion.ZA);
+        bool esLegends = esPLA || esZA;
+
+        // LET'S GO: Pikachu (GP) y Eevee (GE). 
+        // AJUSTA ESTOS ENUMS si tu código usa otros nombres (ej. LGPE).
+        bool esLetsGo = (game == GameVersion.GP || game == GameVersion.GE);
 
         // --------------------------------------------------------------------
-        // 2. CONFIGURACIÓN DE VISIBILIDAD
+        // 2. CONFIGURACIÓN DE VISIBILIDAD (GIMMICKS Y EXTRAS)
         // --------------------------------------------------------------------
 
-        // --- CARACTERÍSTICA (Gen 4 en adelante) ---
-        // Visible en ZA, SV, SwSh, BDSP, PLA...
+        // --- CARACTERÍSTICA ---
         if (LayoutCharacteristic != null)
             LayoutCharacteristic.IsVisible = (gen >= 4);
 
         // --- PODER OCULTO (Hidden Power) ---
-        // Regla: Gen 2 a 7, y BDSP.
-        // Excluir explícitamente SV, SwSh, PLA y ZA.
+        // Gen 2-7 y BDSP. Excluye SV, SwSh, PLA, ZA, LGPE.
         bool esBDSP = (game == GameVersion.BD || game == GameVersion.SP);
         bool rangoClasico = (gen >= 2 && gen <= 7);
-
-        // Si es ZA, esto será FALSE.
-        bool tieneHiddenPower = (rangoClasico || esBDSP) && !esSV && !esSwSh && !esPLA && !esZA;
+        bool tieneHiddenPower = (rangoClasico || esBDSP) && !esSV && !esSwSh && !esLegends && !esLetsGo;
 
         if (LayoutHiddenPower != null)
             LayoutHiddenPower.IsVisible = tieneHiddenPower;
 
-        // --- GIMMICKS ---
-
-        // Tera (Si game es ZA, esSV es false -> Se oculta)
+        // --- GIMMICKS VISUALES ---
         if (LayoutTera != null) LayoutTera.IsVisible = esSV;
         if (LayoutTeraOriginal != null) LayoutTeraOriginal.IsVisible = esSV;
-       
-        // Dynamax
         if (LayoutDynamax != null) LayoutDynamax.IsVisible = esSwSh;
+        if (hsAlpha != null) hsAlpha.IsVisible = esLegends;
+        if (hsNoble != null) hsNoble.IsVisible = esPLA; // Noble quizás solo en PLA, no ZA
 
-        // Alpha / Noble
-        if (hsAlpha != null) hsAlpha.IsVisible = esPLA || esZA;
-
-        // Alpha / Noble
-        if (hsNoble != null) hsNoble.IsVisible = esPLA;
-
-        // --- BORDE CONTENEDOR ---
-        // Solo visible si alguno de los Gimmicks está activo.
-        // En Z-A: esSV=false, esSwSh=false, esPLA=false.
-        // Resultado: El borde se oculta.
         if (BorderGimmicks != null)
-            BorderGimmicks.IsVisible = esSV || esSwSh || esPLA || esZA;
-    }
+            BorderGimmicks.IsVisible = esSV || esSwSh || esLegends;
 
+        // --------------------------------------------------------------------
+        // 3. CONFIGURACIÓN DE COLUMNAS DE ESTADÍSTICAS (NUEVO)
+        // --------------------------------------------------------------------
+        // Lógica:
+        // - IVs: Siempre visibles (Gen 3+). En Gen 1-2 se calculan desde DVs, pero se suelen mostrar.
+        // - EVs: Visibles en todo MENOS Legends y Let's Go.
+        // - AVs (Legends): Visibles SOLO en PLA/ZA.
+        // - GVs (Let's Go): Visibles SOLO en GP/GE.
+
+        bool mostrarEVs = !esLegends && !esLetsGo;
+        bool mostrarAVs = esLegends;
+        bool mostrarGVs = esLetsGo;
+
+        // Aplicar anchos de columna (GridLength 0 oculta la columna y reajusta la tabla)
+        // ColIV siempre visible (Width = *)
+        if (ColIV != null) ColIV.Width = new GridLength(1, GridUnitType.Star);
+
+        // ColEV
+        if (ColEV != null)
+            ColEV.Width = mostrarEVs ? new GridLength(1, GridUnitType.Star) : new GridLength(0);
+
+        // ColAV (Legends)
+        if (ColAV != null)
+            ColAV.Width = mostrarAVs ? new GridLength(1, GridUnitType.Star) : new GridLength(0);
+
+        // ColGV (Let's Go)
+        if (ColGV != null)
+            ColGV.Width = mostrarGVs ? new GridLength(1, GridUnitType.Star) : new GridLength(0);
+
+        // OPCIONAL: Ocultar también los Headers explícitamente para evitar problemas de "Focus" con Tab
+        if (HeaderEV != null) HeaderEV.IsVisible = mostrarEVs;
+        if (HeaderAV != null) HeaderAV.IsVisible = mostrarAVs;
+        if (HeaderGV != null) HeaderGV.IsVisible = mostrarGVs;
+
+        // NOTA: No necesitamos ocultar los Entry fila por fila (txtEVHP, etc), 
+        // porque al poner el ancho de la columna en 0, visualmente desaparecen.
+        // Sin embargo, si quieres deshabilitar el TAB en ellos, tendrías que recorrerlos.
+        // Por ahora, con el Column Width basta para el diseño.
+    }
     private void CargarDatosStats()
     {
         if (_pkmActual == null)
@@ -514,7 +538,10 @@ public partial class PkmEditor : ContentPage
     }
 
 
+    private void OnRandomizeAll(object sender, EventArgs e)
+    {
 
+    }
     // ===========================================
     //   GIMMICKS
     // ===========================================
@@ -767,83 +794,49 @@ public partial class PkmEditor : ContentPage
 
 
     #region 7. Pestaña Movimientos (FINAL)
+
     private void CargarDatosMovimientos()
     {
         if (_pkmActual == null) return;
+
+        // Configurar visibilidad según juego (Arceus/Standard)
         ConfigurarInterfazMovimientos();
 
-        string[] moveNames = GameInfo.Strings.movelist;
-
         // --- Movimiento 1 ---
-        int m1 = _pkmActual.Move1;
-        viewMove1.MoveName = (m1 < moveNames.Length) ? moveNames[m1] : $"Move {m1}";
-        ActualizarIconoTipo(viewMove1, m1); // Pasamos el control completo
-
-        txtPP1.Text = _pkmActual.Move1_PP.ToString();
-        pkPPUp1.SelectedIndex = Math.Clamp(_pkmActual.Move1_PPUps, 0, 3);
+        // Al asignar MoveId, el control busca automáticamente el Nombre y el Icono
+        viewMove1.MoveId = _pkmActual.Move1;
+        viewMove1.PP = _pkmActual.Move1_PP;
+        viewMove1.PPUps = Math.Clamp(_pkmActual.Move1_PPUps, 0, 3);
         CargarMaestria(chkMastery1, 0);
 
         // --- Movimiento 2 ---
-        int m2 = _pkmActual.Move2;
-        viewMove2.MoveName = (m2 < moveNames.Length) ? moveNames[m2] : $"Move {m2}";
-        ActualizarIconoTipo(viewMove2, m2);
-
-        txtPP2.Text = _pkmActual.Move2_PP.ToString();
-        pkPPUp2.SelectedIndex = Math.Clamp(_pkmActual.Move2_PPUps, 0, 3);
+        viewMove2.MoveId = _pkmActual.Move2;
+        viewMove2.PP = _pkmActual.Move2_PP;
+        viewMove2.PPUps = Math.Clamp(_pkmActual.Move2_PPUps, 0, 3);
         CargarMaestria(chkMastery2, 1);
 
         // --- Movimiento 3 ---
-        int m3 = _pkmActual.Move3;
-        viewMove3.MoveName = (m3 < moveNames.Length) ? moveNames[m3] : $"Move {m3}";
-        ActualizarIconoTipo(viewMove3, m3);
-
-        txtPP3.Text = _pkmActual.Move3_PP.ToString();
-        pkPPUp3.SelectedIndex = Math.Clamp(_pkmActual.Move3_PPUps, 0, 3);
+        viewMove3.MoveId = _pkmActual.Move3;
+        viewMove3.PP = _pkmActual.Move3_PP;
+        viewMove3.PPUps = Math.Clamp(_pkmActual.Move3_PPUps, 0, 3);
         CargarMaestria(chkMastery3, 2);
 
         // --- Movimiento 4 ---
-        int m4 = _pkmActual.Move4;
-        viewMove4.MoveName = (m4 < moveNames.Length) ? moveNames[m4] : $"Move {m4}";
-        ActualizarIconoTipo(viewMove4, m4);
-
-        txtPP4.Text = _pkmActual.Move4_PP.ToString();
-        pkPPUp4.SelectedIndex = Math.Clamp(_pkmActual.Move4_PPUps, 0, 3);
+        viewMove4.MoveId = _pkmActual.Move4;
+        viewMove4.PP = _pkmActual.Move4_PP;
+        viewMove4.PPUps = Math.Clamp(_pkmActual.Move4_PPUps, 0, 3);
         CargarMaestria(chkMastery4, 3);
     }
 
-    // Método auxiliar actualizado para aceptar tu CustomControl
-    private void ActualizarIconoTipo(PkHexA.Views.Pickers.MoveSelector control, int moveId)
-    {
-        // 1. Validación básica
-        if (moveId <= 0)
-        {
-            control.TypeImage = null;
-            return;
-        }
-
-        // 2. CORRECCIÓN: Usar MoveInfo.GetType
-        // PKHeX necesita saber el contexto (Generación) porque los tipos cambian 
-        // (ej. Clefairy era Normal en Gen1, Hada en Gen6).
-        // Si no tienes el contexto a mano, usa 'EntityContext.Gen9' (o GenLatest) para datos actuales.
-
-        EntityContext contexto = EntityContext.Gen9;
-
-        // Si tu app maneja saves viejos, deberías pasar 'contexto' como argumento a este método.
-
-        int typeId = MoveInfo.GetType((ushort)moveId, contexto);
-
-        // 3. Cargar la imagen
-        // Asegúrate de que tus imágenes se llamen "type_0.png", "type_1.png", etc.
-        // typeId 0 = Normal, 1 = Lucha, etc.
-        control.TypeImage = ImageSource.FromFile($"type_{typeId}.png");
-    }
+    // El método 'ActualizarIconoTipo' YA NO ES NECESARIO. 
+    // El control 'MoveSelector' ahora tiene esa lógica dentro.
 
     private void CargarMaestria(CheckBox chk, int moveIndex)
     {
         if (chk == null || !chk.IsVisible) return;
         try
         {
-            // Propiedad dinámica para Arceus (Solo existe en PA8)
+            // Propiedad dinámica para Arceus (PLA)
             dynamic p = _pkmActual;
             bool[] masteries = p.MoveMastery;
             if (masteries != null && moveIndex < masteries.Length)
@@ -858,37 +851,23 @@ public partial class PkmEditor : ContentPage
         if (save == null) return;
 
         GameVersion game = save.Version;
-
-        // Detectar si es Legends Arceus (PLA) o Z-A (ZA)
         bool esArceusOZA = (game == GameVersion.PLA || game == GameVersion.ZA);
         bool esGenAntigua = (save.Generation <= 2);
 
-        // Visibilidad Encabezados
-        if (lblHeaderPPUps != null) lblHeaderPPUps.IsVisible = !esArceusOZA;
+        // Visibilidad de Maestrías (Solo Arceus)
         if (lblHeaderMastery != null) lblHeaderMastery.IsVisible = esArceusOZA;
-
-        // Visibilidad Filas
-        if (pkPPUp1 != null) pkPPUp1.IsVisible = !esArceusOZA;
         if (chkMastery1 != null) chkMastery1.IsVisible = esArceusOZA;
-
-        if (pkPPUp2 != null) pkPPUp2.IsVisible = !esArceusOZA;
         if (chkMastery2 != null) chkMastery2.IsVisible = esArceusOZA;
-
-        if (pkPPUp3 != null) pkPPUp3.IsVisible = !esArceusOZA;
         if (chkMastery3 != null) chkMastery3.IsVisible = esArceusOZA;
-
-        if (pkPPUp4 != null) pkPPUp4.IsVisible = !esArceusOZA;
         if (chkMastery4 != null) chkMastery4.IsVisible = esArceusOZA;
 
-        // Sección Relearn
+        // Sección Relearn (Gen 3+)
         if (SectionRelearn != null) SectionRelearn.IsVisible = !esGenAntigua;
 
-        // Checkbox Alpha de Movimientos (Asegúrate de usar el nombre que le pusiste)
-        // Suponiendo que lo llamaste 'chkAlphaMoves' para quitar la ambigüedad:
+        // Layout Alpha
         if (LayoutAlphaMoves != null)
         {
             LayoutAlphaMoves.IsVisible = esArceusOZA;
-
             if (esArceusOZA && chkAlphaMoves != null)
             {
                 try { chkAlphaMoves.IsChecked = ((dynamic)_pkmActual).Alpha; } catch { }
@@ -898,122 +877,83 @@ public partial class PkmEditor : ContentPage
 
     #endregion
 
-    #region 8. Eventos de Buscador de Movimientos (FALTANTES)
+    #region 8. Eventos de Buscador de Movimientos (CORREGIDO FINAL)
 
-    // Evento para el Movimiento 1
+    // Evento: Click en Movimiento 1
     private async void AbrirBuscadorMovimiento1_Tapped(object sender, EventArgs e)
     {
         await AbrirBuscadorMovimiento(1);
     }
 
-    // Evento para el Movimiento 2
+    // Evento: Click en Movimiento 2
     private async void AbrirBuscadorMovimiento2_Tapped(object sender, EventArgs e)
     {
         await AbrirBuscadorMovimiento(2);
     }
 
-    // Evento para el Movimiento 3
+    // Evento: Click en Movimiento 3
     private async void AbrirBuscadorMovimiento3_Tapped(object sender, EventArgs e)
     {
         await AbrirBuscadorMovimiento(3);
     }
 
-    // Evento para el Movimiento 4
+    // Evento: Click en Movimiento 4
     private async void AbrirBuscadorMovimiento4_Tapped(object sender, EventArgs e)
     {
         await AbrirBuscadorMovimiento(4);
     }
 
-
-    // Evento para el Movimiento 1
-    private async void AbrirBuscadorMovimiento1_Tapped(object sender, TappedEventArgs e)
-    {
-        await AbrirBuscadorMovimiento(1);
-    }
-
-    // Evento para el Movimiento 2
-    private async void AbrirBuscadorMovimiento2_Tapped(object sender, TappedEventArgs e)
-    {
-        await AbrirBuscadorMovimiento(2);
-    }
-
-    // Evento para el Movimiento 3
-    private async void AbrirBuscadorMovimiento3_Tapped(object sender, TappedEventArgs e)
-    {
-        await AbrirBuscadorMovimiento(3);
-    }
-
-    // Evento para el Movimiento 4
-    private async void AbrirBuscadorMovimiento4_Tapped(object sender, TappedEventArgs e)
-    {
-        await AbrirBuscadorMovimiento(4);
-    }
-
     /// <summary>
-    /// Lógica central para abrir el buscador y asignar el movimiento
-    /// </summary>
-    /// <summary>
-    /// Abre el buscador, asigna el ataque y recalcula los PP automáticamente.
+    /// Lógica central para abrir el buscador y asignar el movimiento sin errores
     /// </summary>
     private async Task AbrirBuscadorMovimiento(int slotIndex)
     {
         if (_pkmActual == null) return;
 
-        // 1. Crear la página de búsqueda pasando el contexto (Gen1, Gen9, etc.)
-        // Si _pkmActual.Context es null, usa EntityContext.Gen9 por seguridad.
-        var contexto = _pkmActual.Context;
-        var searchPage = new PkHexA.Views.Pickers.MoveSearchPage(contexto);
+        // 1. Abrir buscador (Gen9 por defecto si Context falla)
+        var searchPage = new PkHexA.Views.Pickers.MoveSearchPage(_pkmActual.Context);
 
-        // 2. Definir qué pasa cuando el usuario elige un ataque
+        // 2. Al seleccionar
         searchPage.AlSeleccionarMovimiento = (moveId) =>
         {
-            // A. Asignar el ID del movimiento al slot correspondiente
+            ushort id = (ushort)moveId;
+
+            // CÁLCULO MANUAL DE PP (Esto arregla el error de HealMoves)
+            // Obtenemos cuánto PP base tiene ese ataque
+            int nuevosPP = _pkmActual.GetMovePP(id, 0);
+
+            // Asignamos según el slot
             switch (slotIndex)
             {
-                case 1: _pkmActual.Move1 = (ushort)moveId; break;
-                case 2: _pkmActual.Move2 = (ushort)moveId; break;
-                case 3: _pkmActual.Move3 = (ushort)moveId; break;
-                case 4: _pkmActual.Move4 = (ushort)moveId; break;
+                case 1:
+                    _pkmActual.Move1 = id;
+                    _pkmActual.Move1_PPUps = 0; // Reseteamos vitaminas
+                    _pkmActual.Move1_PP = nuevosPP; // Asignamos PP correctos
+                    break;
+                case 2:
+                    _pkmActual.Move2 = id;
+                    _pkmActual.Move2_PPUps = 0;
+                    _pkmActual.Move2_PP = nuevosPP;
+                    break;
+                case 3:
+                    _pkmActual.Move3 = id;
+                    _pkmActual.Move3_PPUps = 0;
+                    _pkmActual.Move3_PP = nuevosPP;
+                    break;
+                case 4:
+                    _pkmActual.Move4 = id;
+                    _pkmActual.Move4_PPUps = 0;
+                    _pkmActual.Move4_PP = nuevosPP;
+                    break;
             }
 
-            // B. Recalcular los PP (VITAL para que no sea ilegal)
-            // Obtenemos los 'Más PP' (PPUps) actuales para calcular el máximo real
-            int currentPPUps = 0;
-            switch (slotIndex)
-            {
-                case 1: currentPPUps = _pkmActual.Move1_PPUps; break;
-                case 2: currentPPUps = _pkmActual.Move2_PPUps; break;
-                case 3: currentPPUps = _pkmActual.Move3_PPUps; break;
-                case 4: currentPPUps = _pkmActual.Move4_PPUps; break;
-            }
-
-            // PKHeX calcula los PP correctos (Base + Bonus por PPUps)
-            int newPP = _pkmActual.GetMovePP((ushort)moveId, currentPPUps);
-
-            // Asignamos los nuevos PP al slot
-            switch (slotIndex)
-            {
-                case 1: _pkmActual.Move1_PP = newPP; break;
-                case 2: _pkmActual.Move2_PP = newPP; break;
-                case 3: _pkmActual.Move3_PP = newPP; break;
-                case 4: _pkmActual.Move4_PP = newPP; break;
-            }
-
-            // C. Refrescar la interfaz visual
+            // Refrescar pantalla
             CargarDatosMovimientos();
         };
 
-        // 3. Abrir la página
+        // 3. Mostrar ventana
         await Navigation.PushModalAsync(searchPage);
     }
 
     #endregion
-
-
-
-
-
-
-
-
 }

@@ -3,50 +3,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PkHexA.Views.Pickers.MoveSearchPage"
              BackgroundColor="Black"
-             Title="MoveSearchPage">
+             Title="Seleccionar Movimiento">
 
-    <Grid RowDefinitions="Auto, *">
+    <Grid RowDefinitions="Auto, *" Padding="20" RowSpacing="10">
 
-            <Border StrokeThickness="0" BackgroundColor="#202020" Margin="10" StrokeShape="RoundRectangle 10">
-                <SearchBar x:Name="txtSearch" 
-                       Placeholder="Buscar ataque..." 
-                       PlaceholderColor="Gray"
-                       TextColor="White"
-                       BackgroundColor="Transparent"
-                       TextChanged="OnSearchTextChanged"/>
-            </Border>
+        <SearchBar Grid.Row="0"
+                   Placeholder="Buscar movimiento..."
+                   PlaceholderColor="Gray"
+                   TextColor="White"
+                   BackgroundColor="#202020"
+                   CancelButtonColor="Aqua"
+                   TextChanged="OnBusquedaChanged"/>
 
-            <CollectionView x:Name="cvMoves" Grid.Row="1" SelectionMode="Single" SelectionChanged="OnMoveSelected">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Padding="15,10" ColumnDefinitions="40, *" ColumnSpacing="10">
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroupList>
-                                    <VisualStateGroup x:Name="CommonStates">
-                                        <VisualState x:Name="Normal">
-                                            <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="Transparent" />
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                        <VisualState x:Name="Selected">
-                                            <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="#303030" />
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                    </VisualStateGroup>
-                                </VisualStateGroupList>
-                            </VisualStateManager.VisualStateGroups>
+        <CollectionView Grid.Row="1"
+                        x:Name="ListaMovimientos"
+                        SelectionMode="Single"
+                        SelectionChanged="OnMoveSelected">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Stroke="Transparent" Margin="0,5" Padding="5">
+                        <Grid ColumnDefinitions="40, *">
+                            <Image Grid.Column="0"
+                                   Source="{Binding TipoImagen}"
+                                   HeightRequest="30"
+                                   WidthRequest="30"
+                                   Aspect="AspectFit"/>
 
-                            <Image Grid.Column="0" Source="{Binding TypeImage}" 
-                               HeightRequest="24" WidthRequest="24" 
-                               VerticalOptions="Center" HorizontalOptions="Center"/>
-
-                            <Label Grid.Column="1" Text="{Binding Name}" 
-                               TextColor="White" FontSize="16" 
-                               VerticalOptions="Center"/>
+                            <Label Grid.Column="1"
+                                   Text="{Binding Nombre}"
+                                   TextColor="White"
+                                   FontSize="16"
+                                   VerticalOptions="Center"
+                                   Margin="10,0,0,0"/>
                         </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Grid>
-    </ContentPage>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <ActivityIndicator x:Name="LoadingSpinner"
+                           Grid.Row="1"
+                           IsRunning="False"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Color="Aqua"/>
+    </Grid>
+</ContentPage>
