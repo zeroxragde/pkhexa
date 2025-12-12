@@ -1,16 +1,17 @@
-using PKHeX.Core;
+using Android.Content;
 using Microsoft.Maui.Controls;
+using PKHeX.Core;
+using PkHexA.Helper;          // TU LIBRERÍA: Para SpriteHelper
+using PkHexA.LibSprites.Util; // TU LIBRERÍA: Para SpriteImgLoader
+using SkiaSharp;              // Necesario para manejar SKBitmap
 
 namespace PkHexA.Views.Pickers;
 
 public partial class MoveSelector : ContentView
 {
-    // Evento para cuando tocan el nombre (abrir buscador)
     public event EventHandler<EventArgs>? MoveTapped;
-
-    // Evento para cuando cambian los PP o PP Ups manualmente
     public event EventHandler? OnStatsChanged;
-
+    private EntityContext _context = EntityContext.Gen9; // Valor por defecto
     private int _moveId;
 
     public MoveSelector()
@@ -20,12 +21,6 @@ public partial class MoveSelector : ContentView
     }
 
     // --- PROPIEDADES ---
-
-    public ImageSource TypeImage
-    {
-        get => imgType.Source;
-        set => imgType.Source = value;
-    }
 
     public int MoveId
     {
@@ -40,7 +35,8 @@ public partial class MoveSelector : ContentView
                 lblMoveName.Text = "(Ninguno)";
                 entryPP.Text = "0";
                 pickerPPUps.SelectedIndex = 0;
-                TypeImage = null;
+                chkMastery.IsChecked = false;
+                imgType.Source = null;
             }
         }
     }
@@ -53,32 +49,46 @@ public partial class MoveSelector : ContentView
 
     public int PP
     {
-        get
-        {
-            if (int.TryParse(entryPP.Text, out int val)) return val;
-            return 0;
-        }
+        get => int.TryParse(entryPP.Text, out int val) ? val : 0;
         set => entryPP.Text = value.ToString();
     }
 
     public int PPUps
     {
-        get => pickerPPUps.SelectedIndex == -1 ? 0 : pickerPPUps.SelectedIndex;
+        get => pickerPPUps.SelectedIndex < 0 ? 0 : pickerPPUps.SelectedIndex;
         set
         {
-            if (value < 0) value = 0;
-            if (value > 3) value = 3;
-            pickerPPUps.SelectedIndex = value;
+            int safeVal = Math.Clamp(value, 0, 3);
+            pickerPPUps.SelectedIndex = safeVal;
         }
     }
 
-    public bool IsIllegal
+    public bool IsMastery
     {
-        get => lblAlert.IsVisible;
-        set => lblAlert.IsVisible = value;
+        get => chkMastery.IsChecked;
+        set => chkMastery.IsChecked = value;
     }
 
-    // --- MÉTODOS LÓGICOS ---
+    public bool ShowMastery
+    {
+        get => chkMastery.IsVisible;
+        set => chkMastery.IsVisible = value;
+    }
+    // Nueva Propiedad: Contexto (Gen1, Gen3, Gen9, etc.)
+    public EntityContext Context
+    {
+        get => _context;
+        set
+        {
+            if (_context != value)
+            {
+                _context = value;
+                // Si cambia el contexto, hay que refrescar el icono (ej: Curse)
+                UpdateTypeSprite(_moveId);
+            }
+        }
+    }
+    // --- MÉTODOS ---
 
     private void UpdateTypeSprite(int moveId)
     {
@@ -88,40 +98,28 @@ public partial class MoveSelector : ContentView
             return;
         }
 
-        // Obtener ID del tipo usando PKHeX (Gen 9 por defecto)
-        int typeId = MoveInfo.GetType((ushort)moveId, EntityContext.Gen9);
+        // 1. Obtener el ID del Tipo usando el CONTEXTO real
+        // Esto devuelve el entero del tipo (0=Normal, 1=Lucha, 9=Fuego, etc.)
+        int typeId = MoveInfo.GetType((ushort)moveId, _context);
 
-        // SEGURIDAD: Si el tipo es mayor a 18 (Estelar), forzamos 0 para evitar error de Glide
-        // Asegúrate de tener type_0.png hasta type_18.png en Resources/Images
-        if (typeId > 18 || typeId < 0) typeId = 0;
+        // 2. Mapeo para tus archivos (Astral 18 -> 99)
+        if (typeId == 18) typeId = 99;
+        else if (typeId > 18 || typeId < 0) typeId = 0;
 
-        imgType.Source = $"type_{typeId}.png";
+        // 3. Formato exacto de tus archivos: type_icon_01.png
+        string resourceName = $"type_icon_{typeId:00}";
+
+        // 4. Cargar con tu librería
+        var skBitmap = SpriteImgLoader.LoadSprite(resourceName);
+
+        if (skBitmap != null)
+            imgType.Source = SpriteHelper.SafeImageSourceFromSKBitmap(skBitmap);
+        else
+            imgType.Source = null;
     }
+    private void OnTapped(object sender, TappedEventArgs e) => MoveTapped?.Invoke(this, EventArgs.Empty);
 
-    public void HealPP(PKM pk)
-    {
-        if (MoveId == 0)
-        {
-            PP = 0;
-            PPUps = 0;
-            return;
-        }
+    private void OnStatInputChanged(object sender, object e) => OnStatsChanged?.Invoke(this, EventArgs.Empty);
 
-        // Calcula los PP máximos legales
-        int maxPP = pk.GetMovePP((ushort)MoveId, PPUps);
-        PP = maxPP;
-    }
 
-    // --- MANEJADORES DE EVENTOS ---
-
-    private void OnTapped(object sender, TappedEventArgs e)
-    {
-        MoveTapped?.Invoke(this, EventArgs.Empty);
-    }
-
-    private void OnStatInputChanged(object sender, EventArgs e)
-    {
-        // Disparar evento para que la página principal actualice el PKM
-        OnStatsChanged?.Invoke(this, EventArgs.Empty);
-    }
 }

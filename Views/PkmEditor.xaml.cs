@@ -792,125 +792,75 @@ public partial class PkmEditor : ContentPage
 
 
 
+    #region Lógica de Movimientos (Carga, Edición y Búsqueda) - CORREGIDO (MoveX_PP)
 
-    #region 7. Pestaña Movimientos (FINAL)
-
+    /// <summary>
+    /// Pasa los datos del Pokémon a los controles visuales usando las propiedades estándar MoveX_PP.
+    /// </summary>
     private void CargarDatosMovimientos()
     {
         if (_pkmActual == null) return;
 
-        // Configurar visibilidad según juego (Arceus/Standard)
-        ConfigurarInterfazMovimientos();
-
-        // --- Movimiento 1 ---
-        // Al asignar MoveId, el control busca automáticamente el Nombre y el Icono
+        // --- MOVIMIENTO 1 ---
         viewMove1.MoveId = _pkmActual.Move1;
-        viewMove1.PP = _pkmActual.Move1_PP;
-        viewMove1.PPUps = Math.Clamp(_pkmActual.Move1_PPUps, 0, 3);
-        CargarMaestria(chkMastery1, 0);
+        viewMove1.PPUps = _pkmActual.Move1_PPUps; // Propiedad Correcta: Move1_PPUps
+        viewMove1.PP = _pkmActual.Move1_PP;       // Propiedad Correcta: Move1_PP
 
-        // --- Movimiento 2 ---
+        // --- MOVIMIENTO 2 ---
         viewMove2.MoveId = _pkmActual.Move2;
+        viewMove2.PPUps = _pkmActual.Move2_PPUps;
         viewMove2.PP = _pkmActual.Move2_PP;
-        viewMove2.PPUps = Math.Clamp(_pkmActual.Move2_PPUps, 0, 3);
-        CargarMaestria(chkMastery2, 1);
 
-        // --- Movimiento 3 ---
+        // --- MOVIMIENTO 3 ---
         viewMove3.MoveId = _pkmActual.Move3;
+        viewMove3.PPUps = _pkmActual.Move3_PPUps;
         viewMove3.PP = _pkmActual.Move3_PP;
-        viewMove3.PPUps = Math.Clamp(_pkmActual.Move3_PPUps, 0, 3);
-        CargarMaestria(chkMastery3, 2);
 
-        // --- Movimiento 4 ---
+        // --- MOVIMIENTO 4 ---
         viewMove4.MoveId = _pkmActual.Move4;
+        viewMove4.PPUps = _pkmActual.Move4_PPUps;
         viewMove4.PP = _pkmActual.Move4_PP;
-        viewMove4.PPUps = Math.Clamp(_pkmActual.Move4_PPUps, 0, 3);
-        CargarMaestria(chkMastery4, 3);
-    }
-
-    // El método 'ActualizarIconoTipo' YA NO ES NECESARIO. 
-    // El control 'MoveSelector' ahora tiene esa lógica dentro.
-
-    private void CargarMaestria(CheckBox chk, int moveIndex)
-    {
-        if (chk == null || !chk.IsVisible) return;
-        try
-        {
-            // Propiedad dinámica para Arceus (PLA)
-            dynamic p = _pkmActual;
-            bool[] masteries = p.MoveMastery;
-            if (masteries != null && moveIndex < masteries.Length)
-                chk.IsChecked = masteries[moveIndex];
-        }
-        catch { chk.IsChecked = false; }
-    }
-
-    private void ConfigurarInterfazMovimientos()
-    {
-        var save = GlobalService.ACTUAL_FILE;
-        if (save == null) return;
-
-        GameVersion game = save.Version;
-        bool esArceusOZA = (game == GameVersion.PLA || game == GameVersion.ZA);
-        bool esGenAntigua = (save.Generation <= 2);
-
-        // Visibilidad de Maestrías (Solo Arceus)
-        if (lblHeaderMastery != null) lblHeaderMastery.IsVisible = esArceusOZA;
-        if (chkMastery1 != null) chkMastery1.IsVisible = esArceusOZA;
-        if (chkMastery2 != null) chkMastery2.IsVisible = esArceusOZA;
-        if (chkMastery3 != null) chkMastery3.IsVisible = esArceusOZA;
-        if (chkMastery4 != null) chkMastery4.IsVisible = esArceusOZA;
-
-        // Sección Relearn (Gen 3+)
-        if (SectionRelearn != null) SectionRelearn.IsVisible = !esGenAntigua;
-
-        // Layout Alpha
-        if (LayoutAlphaMoves != null)
-        {
-            LayoutAlphaMoves.IsVisible = esArceusOZA;
-            if (esArceusOZA && chkAlphaMoves != null)
-            {
-                try { chkAlphaMoves.IsChecked = ((dynamic)_pkmActual).Alpha; } catch { }
-            }
-        }
-    }
-
-    #endregion
-
-    #region 8. Eventos de Buscador de Movimientos (CORREGIDO FINAL)
-
-    // Evento: Click en Movimiento 1
-    private async void AbrirBuscadorMovimiento1_Tapped(object sender, EventArgs e)
-    {
-        await AbrirBuscadorMovimiento(1);
-    }
-
-    // Evento: Click en Movimiento 2
-    private async void AbrirBuscadorMovimiento2_Tapped(object sender, EventArgs e)
-    {
-        await AbrirBuscadorMovimiento(2);
-    }
-
-    // Evento: Click en Movimiento 3
-    private async void AbrirBuscadorMovimiento3_Tapped(object sender, EventArgs e)
-    {
-        await AbrirBuscadorMovimiento(3);
-    }
-
-    // Evento: Click en Movimiento 4
-    private async void AbrirBuscadorMovimiento4_Tapped(object sender, EventArgs e)
-    {
-        await AbrirBuscadorMovimiento(4);
     }
 
     /// <summary>
-    /// Lógica central para abrir el buscador y asignar el movimiento sin errores
+    /// Guarda los cambios manuales (PP/Más) usando las propiedades MoveX_PP.
+    /// </summary>
+    private void GuardarStats_Changed(object sender, EventArgs e)
+    {
+        if (_pkmActual == null) return;
+
+        // Movimiento 1
+        _pkmActual.Move1_PP = viewMove1.PP;
+        _pkmActual.Move1_PPUps = viewMove1.PPUps;
+
+        // Movimiento 2
+        _pkmActual.Move2_PP = viewMove2.PP;
+        _pkmActual.Move2_PPUps = viewMove2.PPUps;
+
+        // Movimiento 3
+        _pkmActual.Move3_PP = viewMove3.PP;
+        _pkmActual.Move3_PPUps = viewMove3.PPUps;
+
+        // Movimiento 4
+        _pkmActual.Move4_PP = viewMove4.PP;
+        _pkmActual.Move4_PPUps = viewMove4.PPUps;
+    }
+
+    // --- EVENTOS DE APERTURA DEL BUSCADOR ---
+
+    private async void AbrirBuscadorMovimiento1_Tapped(object sender, EventArgs e) => await AbrirBuscadorMovimiento(1);
+    private async void AbrirBuscadorMovimiento2_Tapped(object sender, EventArgs e) => await AbrirBuscadorMovimiento(2);
+    private async void AbrirBuscadorMovimiento3_Tapped(object sender, EventArgs e) => await AbrirBuscadorMovimiento(3);
+    private async void AbrirBuscadorMovimiento4_Tapped(object sender, EventArgs e) => await AbrirBuscadorMovimiento(4);
+
+    /// <summary>
+    /// Lógica central para asignar movimiento.
     /// </summary>
     private async Task AbrirBuscadorMovimiento(int slotIndex)
     {
         if (_pkmActual == null) return;
 
-        // 1. Abrir buscador (Gen9 por defecto si Context falla)
+        // 1. Abrir buscador
         var searchPage = new PkHexA.Views.Pickers.MoveSearchPage(_pkmActual.Context);
 
         // 2. Al seleccionar
@@ -918,17 +868,16 @@ public partial class PkmEditor : ContentPage
         {
             ushort id = (ushort)moveId;
 
-            // CÁLCULO MANUAL DE PP (Esto arregla el error de HealMoves)
-            // Obtenemos cuánto PP base tiene ese ataque
+            // Calculamos los PP base (sin PP Ups inicialmente)
             int nuevosPP = _pkmActual.GetMovePP(id, 0);
 
-            // Asignamos según el slot
+            // Asignamos usando las propiedades MoveX_...
             switch (slotIndex)
             {
                 case 1:
                     _pkmActual.Move1 = id;
-                    _pkmActual.Move1_PPUps = 0; // Reseteamos vitaminas
-                    _pkmActual.Move1_PP = nuevosPP; // Asignamos PP correctos
+                    _pkmActual.Move1_PPUps = 0;      // Reset Vitaminas
+                    _pkmActual.Move1_PP = nuevosPP;  // Asignar PP Base
                     break;
                 case 2:
                     _pkmActual.Move2 = id;
@@ -947,13 +896,14 @@ public partial class PkmEditor : ContentPage
                     break;
             }
 
-            // Refrescar pantalla
+            // 3. Refrescar la pantalla
             CargarDatosMovimientos();
         };
 
-        // 3. Mostrar ventana
         await Navigation.PushModalAsync(searchPage);
     }
 
     #endregion
+
+
 }

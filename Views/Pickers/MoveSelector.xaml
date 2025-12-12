@@ -3,63 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PkHexA.Views.Pickers.MoveSelector">
 
-    <Grid ColumnDefinitions="Auto, 30, *, 50, 40" 
-          ColumnSpacing="5" 
-          Padding="0,2"
-          HeightRequest="40">
+    <Grid ColumnDefinitions="Auto, *, 60, 60, 40" 
+          ColumnSpacing="8" 
+          Padding="0,4"
+          HeightRequest="55">
 
-        <Label x:Name="lblAlert" 
-               Grid.Column="0"
-               Text="⚠️" 
-               TextColor="Red" 
-               FontSize="18"
-               VerticalOptions="Center" 
-               IsVisible="False"/>
+        <Label x:Name="lblAlert" Grid.Column="0" Text="⚠️" TextColor="Red" FontSize="18" VerticalOptions="Center" IsVisible="False"/>
 
-        <Image x:Name="imgType" 
-               Grid.Column="1"
-               WidthRequest="24" 
-               HeightRequest="24" 
-               VerticalOptions="Center" 
-               HorizontalOptions="Center"/>
-
-        <Border Grid.Column="2" 
-                Stroke="Gray" 
-                StrokeShape="RoundRectangle 5"
-                BackgroundColor="#2D2D30" 
-                Padding="10,5">
-
+        <Border Grid.Column="1" Stroke="Gray" StrokeShape="RoundRectangle 8" BackgroundColor="#2D2D30" Padding="10,0">
             <Border.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnTapped"/>
             </Border.GestureRecognizers>
-
-            <Label x:Name="lblMoveName" 
-                   Text="(Ninguno)" 
-                   TextColor="White" 
-                   VerticalOptions="Center" 
-                   LineBreakMode="TailTruncation"
-                   FontSize="14"/>
+            <Grid ColumnDefinitions="Auto, *" ColumnSpacing="10" VerticalOptions="Center">
+                <Image x:Name="imgType" Grid.Column="0" WidthRequest="30" HeightRequest="30" VerticalOptions="Center"/>
+                <Label x:Name="lblMoveName" Grid.Column="1" Text="(Ninguno)" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center" LineBreakMode="TailTruncation"/>
+            </Grid>
         </Border>
 
-        <Border Grid.Column="3" Stroke="Gray" StrokeShape="RoundRectangle 5" BackgroundColor="#202020">
-            <Entry x:Name="entryPP"
-                   Text="0"
-                   TextColor="White"
-                   FontSize="12"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   Keyboard="Numeric"
-                   MaxLength="3"
-                   Completed="OnStatInputChanged"
+        <Border Grid.Column="2" Stroke="#505050" StrokeShape="RoundRectangle 5" BackgroundColor="#151515" Padding="0">
+            <Entry x:Name="entryPP" 
+                   Text="0" 
+                   TextColor="White" 
+                   FontSize="14" 
+                   HorizontalTextAlignment="Center" 
+                   VerticalTextAlignment="Center" 
+                   Keyboard="Numeric" 
+                   MaxLength="3" 
+                   Completed="OnStatInputChanged" 
                    Unfocused="OnStatInputChanged"/>
         </Border>
 
-        <Border Grid.Column="4" Stroke="Gray" StrokeShape="RoundRectangle 5" BackgroundColor="#202020">
-            <Picker x:Name="pickerPPUps"
-                    TextColor="Aqua"
-                    FontSize="12"
-                    HorizontalTextAlignment="Center"
-                    Title=""
+        <Border Grid.Column="3" Stroke="#505050" StrokeShape="RoundRectangle 5" BackgroundColor="#151515" Padding="0">
+            <Picker x:Name="pickerPPUps" 
+                    TextColor="Aqua" 
+                    FontSize="14" 
+                    HorizontalTextAlignment="Center" 
+                    Title="" 
                     SelectedIndexChanged="OnStatInputChanged">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
@@ -69,9 +48,10 @@
                         <x:String>3</x:String>
                     </x:Array>
                 </Picker.ItemsSource>
-                <Picker.SelectedIndex>0</Picker.SelectedIndex>
             </Picker>
         </Border>
+
+        <CheckBox x:Name="chkMastery" Grid.Column="4" Color="Gold" VerticalOptions="Center" HorizontalOptions="Center" CheckedChanged="OnStatInputChanged"/>
 
     </Grid>
 </ContentView>

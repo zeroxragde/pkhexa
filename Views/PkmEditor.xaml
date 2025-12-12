@@ -564,7 +564,7 @@
 
                     
                     <!--TAB MOV -->
-                    <VerticalStackLayout x:Name="TabMoves" Spacing="15" Padding="15" IsVisible="False">
+                    <VerticalStackLayout x:Name="TabMoves" Spacing="15" Padding="10" IsVisible="False">
 
                         <HorizontalStackLayout x:Name="LayoutAlphaMoves" 
                            Spacing="10" 
@@ -574,100 +574,58 @@
                             <Label Text="Alpha / Dominante" TextColor="#FF5555" FontAttributes="Bold" VerticalOptions="Center"/>
                         </HorizontalStackLayout>
 
-                        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto"
-              ColumnDefinitions="*, 50, 50, 40" 
-              RowSpacing="8" ColumnSpacing="5">
+                        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" RowSpacing="5">
 
-                            <Label Grid.Row="0" Grid.Column="1" Text="PP" TextColor="Gray" HorizontalOptions="Center" FontSize="12"/>
-                            <Label x:Name="lblHeaderPPUps" Grid.Row="0" Grid.Column="2" Text="Más" TextColor="Gray" HorizontalOptions="Center" FontSize="12"/>
-                            <Label x:Name="lblHeaderMastery" Grid.Row="0" Grid.Column="3" Text="M" TextColor="Gold" FontAttributes="Bold" HorizontalOptions="Center" FontSize="12" IsVisible="False"/>
+                            <Grid Grid.Row="0" ColumnDefinitions="Auto, *, 60, 60, 40" ColumnSpacing="8" Padding="0,4">
+                                <Label Grid.Column="2" Text="PP" TextColor="Gray" HorizontalOptions="Center" FontSize="12"/>
+                                <Label Grid.Column="3" Text="Más" TextColor="Gray" HorizontalOptions="Center" FontSize="12"/>
+                                <Label x:Name="lblHeaderMastery" Grid.Column="4" Text="M" TextColor="Gold" FontAttributes="Bold" HorizontalOptions="Center" FontSize="12" IsVisible="False"/>
+                            </Grid>
 
-                            <controls:MoveSelector x:Name="viewMove1" Grid.Row="1" Grid.Column="0" 
-                                   MoveTapped="AbrirBuscadorMovimiento1_Tapped"/>
+                            <controls:MoveSelector x:Name="viewMove1" 
+                           Grid.Row="1" 
+                           OnStatsChanged="GuardarStats_Changed"
+                           MoveTapped="AbrirBuscadorMovimiento1_Tapped"/>
 
-                            <Entry x:Name="txtPP1" Grid.Row="1" Grid.Column="1" Text="0" TextColor="White" BackgroundColor="#2D2D30" HorizontalTextAlignment="Center"/>
-                            <Picker x:Name="pkPPUp1" Grid.Row="1" Grid.Column="2" TextColor="White" BackgroundColor="#2D2D30">
-                                <Picker.ItemsSource>
-                                    <x:Array Type="{x:Type x:String}">
-                                        <x:String>0</x:String>
-                                        <x:String>1</x:String>
-                                        <x:String>2</x:String>
-                                        <x:String>3</x:String>
-                                    </x:Array>
-                                </Picker.ItemsSource>
-                            </Picker>
-                            <CheckBox x:Name="chkMastery1" Grid.Row="1" Grid.Column="3" Color="Gold" IsVisible="False"/>
+                            <controls:MoveSelector x:Name="viewMove2" 
+                           Grid.Row="2" 
+                           MoveTapped="AbrirBuscadorMovimiento2_Tapped"/>
 
-                            <controls:MoveSelector x:Name="viewMove2" Grid.Row="2" Grid.Column="0" 
-                                   MoveTapped="AbrirBuscadorMovimiento2_Tapped"/>
+                            <controls:MoveSelector x:Name="viewMove3" 
+                           Grid.Row="3" 
+                           MoveTapped="AbrirBuscadorMovimiento3_Tapped"/>
 
-                            <Entry x:Name="txtPP2" Grid.Row="2" Grid.Column="1" Text="0" TextColor="White" BackgroundColor="#2D2D30" HorizontalTextAlignment="Center"/>
-                            <Picker x:Name="pkPPUp2" Grid.Row="2" Grid.Column="2" TextColor="White" BackgroundColor="#2D2D30">
-                                <Picker.ItemsSource>
-                                    <x:Array Type="{x:Type x:String}">
-                                        <x:String>0</x:String>
-                                        <x:String>1</x:String>
-                                        <x:String>2</x:String>
-                                        <x:String>3</x:String>
-                                    </x:Array>
-                                </Picker.ItemsSource>
-                            </Picker>
-                            <CheckBox x:Name="chkMastery2" Grid.Row="2" Grid.Column="3" Color="Gold" IsVisible="False"/>
-
-                            <controls:MoveSelector x:Name="viewMove3" Grid.Row="3" Grid.Column="0" 
-                                   MoveTapped="AbrirBuscadorMovimiento3_Tapped"/>
-
-                            <Entry x:Name="txtPP3" Grid.Row="3" Grid.Column="1" Text="0" TextColor="White" BackgroundColor="#2D2D30" HorizontalTextAlignment="Center"/>
-                            <Picker x:Name="pkPPUp3" Grid.Row="3" Grid.Column="2" TextColor="White" BackgroundColor="#2D2D30">
-                                <Picker.ItemsSource>
-                                    <x:Array Type="{x:Type x:String}">
-                                        <x:String>0</x:String>
-                                        <x:String>1</x:String>
-                                        <x:String>2</x:String>
-                                        <x:String>3</x:String>
-                                    </x:Array>
-                                </Picker.ItemsSource>
-                            </Picker>
-                            <CheckBox x:Name="chkMastery3" Grid.Row="3" Grid.Column="3" Color="Gold" IsVisible="False"/>
-
-                            <controls:MoveSelector x:Name="viewMove4" Grid.Row="4" Grid.Column="0" 
-                                   MoveTapped="AbrirBuscadorMovimiento4_Tapped"/>
-
-                            <Entry x:Name="txtPP4" Grid.Row="4" Grid.Column="1" Text="0" TextColor="White" BackgroundColor="#2D2D30" HorizontalTextAlignment="Center"/>
-                            <Picker x:Name="pkPPUp4" Grid.Row="4" Grid.Column="2" TextColor="White" BackgroundColor="#2D2D30">
-                                <Picker.ItemsSource>
-                                    <x:Array Type="{x:Type x:String}">
-                                        <x:String>0</x:String>
-                                        <x:String>1</x:String>
-                                        <x:String>2</x:String>
-                                        <x:String>3</x:String>
-                                    </x:Array>
-                                </Picker.ItemsSource>
-                            </Picker>
-                            <CheckBox x:Name="chkMastery4" Grid.Row="4" Grid.Column="3" Color="Gold" IsVisible="False"/>
+                            <controls:MoveSelector x:Name="viewMove4" 
+                           Grid.Row="4" 
+                           MoveTapped="AbrirBuscadorMovimiento4_Tapped"/>
 
                         </Grid>
-                        <VerticalStackLayout x:Name="SectionRelearn" Spacing="8">
+
+                        <VerticalStackLayout x:Name="SectionRelearn" Spacing="8" Margin="0,10,0,0">
                             <Label Text="Recordar movimientos (Relearn)" TextColor="Gray" FontSize="12"/>
                             <Grid ColumnDefinitions="*, 40" ColumnSpacing="5">
-                                <VerticalStackLayout Grid.Column="0" Spacing="5">
-                                    <Picker x:Name="pkRelearn1" Title="(Ninguno)" TextColor="White" BackgroundColor="#2D2D30"/>
-                                    <Picker x:Name="pkRelearn2" Title="(Ninguno)" TextColor="White" BackgroundColor="#2D2D30"/>
-                                    <Picker x:Name="pkRelearn3" Title="(Ninguno)" TextColor="White" BackgroundColor="#2D2D30"/>
-                                    <Picker x:Name="pkRelearn4" Title="(Ninguno)" TextColor="White" BackgroundColor="#2D2D30"/>
-                                </VerticalStackLayout>
-                                <Button Grid.Column="1" Text="↺" BackgroundColor="#3E3E42" TextColor="White" CornerRadius="4"/>
+                                <Border Grid.Column="0" Stroke="#333" StrokeThickness="1" BackgroundColor="#151515" Padding="10" StrokeShape="RoundRectangle 5">
+                                    <VerticalStackLayout Spacing="5">
+                                        <Picker x:Name="pkRelearn1" Title="(Ninguno)" TextColor="White" BackgroundColor="Transparent"/>
+                                        <BoxView HeightRequest="1" Color="#333"/>
+                                        <Picker x:Name="pkRelearn2" Title="(Ninguno)" TextColor="White" BackgroundColor="Transparent"/>
+                                        <BoxView HeightRequest="1" Color="#333"/>
+                                        <Picker x:Name="pkRelearn3" Title="(Ninguno)" TextColor="White" BackgroundColor="Transparent"/>
+                                        <BoxView HeightRequest="1" Color="#333"/>
+                                        <Picker x:Name="pkRelearn4" Title="(Ninguno)" TextColor="White" BackgroundColor="Transparent"/>
+                                    </VerticalStackLayout>
+                                </Border>
+
+                                <Button Grid.Column="1" Text="↺" BackgroundColor="#3E3E42" TextColor="White" CornerRadius="5" VerticalOptions="Fill"/>
                             </Grid>
                         </VerticalStackLayout>
 
-                        <HorizontalStackLayout Spacing="10">
-                            <Button x:Name="btnRelearnFlags" Text="Marcas recuerdamov." BackgroundColor="#3E3E42" TextColor="White" FontSize="12" HeightRequest="35"/>
-                            <Button x:Name="btnPlusFlags" Text="Plus Flags" BackgroundColor="#3E3E42" TextColor="White" FontSize="12" HeightRequest="35"/>
-                        </HorizontalStackLayout>
+                        <Grid ColumnDefinitions="*, *" ColumnSpacing="10" Margin="0,5,0,0">
+                            <Button x:Name="btnRelearnFlags" Grid.Column="0" Text="Marcas recuerdamov." BackgroundColor="#3E3E42" TextColor="White" FontSize="11" HeightRequest="40" CornerRadius="5"/>
+                            <Button x:Name="btnPlusFlags" Grid.Column="1" Text="Plus Flags" BackgroundColor="#3E3E42" TextColor="White" FontSize="11" HeightRequest="40" CornerRadius="5"/>
+                        </Grid>
 
                     </VerticalStackLayout>
-
-
 
 
 
