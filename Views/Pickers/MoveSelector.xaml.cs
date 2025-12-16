@@ -1,4 +1,3 @@
-using Android.Content;
 using Microsoft.Maui.Controls;
 using PKHeX.Core;
 using PkHexA.Helper;          // TU LIBRERÍA: Para SpriteHelper
@@ -37,6 +36,10 @@ public partial class MoveSelector : ContentView
                 pickerPPUps.SelectedIndex = 0;
                 chkMastery.IsChecked = false;
                 imgType.Source = null;
+            }
+            else {
+                var listaRaw = GameInfo.Strings.Move;
+                lblMoveName.Text = listaRaw[value];
             }
         }
     }

@@ -24,6 +24,7 @@
                     <Border Stroke="Transparent" Margin="0,5" Padding="5">
                         <Grid ColumnDefinitions="40, *">
                             <Image Grid.Column="0"
+                                   x:Name="imgTipo"
                                    Source="{Binding TipoImagen}"
                                    HeightRequest="30"
                                    WidthRequest="30"

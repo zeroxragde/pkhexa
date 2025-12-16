@@ -276,7 +276,7 @@ public partial class Editor : ContentPage
             return;
         }
 
-        var editorPage = new PkmEditor();
+        var editorPage = new pkmEditorPro();
         editorPage.CargarDatos(_pkmSeleccionado);
         await Navigation.PushModalAsync(editorPage);
     }
@@ -304,7 +304,7 @@ public partial class Editor : ContentPage
         PKM nuevoPkm = save.BlankPKM;
 
         // 3. Abrir editor
-        var editorPage = new PkmEditor();
+        var editorPage = new pkmEditorPro();
         editorPage.CargarDatos(nuevoPkm);
 
         // 4. IMPORTANTE: Aquí deberás implementar la lógica para que, al guardar en el editor,(PENDIENTE)

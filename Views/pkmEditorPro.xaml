@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tabs="clr-namespace:PkHexA.Views.Tabs"
+             x:Class="PkHexA.Views.pkmEditorPro"
+             BackgroundColor="Black"
+             Title="">
+    <Grid RowDefinitions="Auto,Auto,*" Padding="15">
+
+        <ScrollView Orientation="Horizontal" Grid.Row="0">
+            <HorizontalStackLayout x:Name="StackBotones">
+                <Button Text="Inicio" Clicked="OnTabClicked" CommandParameter="{x:Reference ViewTabInicio}"/>
+                <Button Text="Encuentro" Clicked="OnTabClicked" CommandParameter="{x:Reference ViewTabEncuentro}"/>
+                <Button Text="Estad." Clicked="OnTabClicked" CommandParameter="{x:Reference ViewTabStats}"/>
+                <Button Text="Mov." Clicked="OnTabClicked" CommandParameter="{x:Reference ViewTabMoves}"/>
+                <Button Text="Cosmeticos" Clicked="OnTabClicked" CommandParameter="{x:Reference ViewTabCosmetic}"/>
+            </HorizontalStackLayout>
+        </ScrollView>
+
+        <Label Grid.Row="1" Text="Editor de Pokémon"  />
+
+        <ScrollView Grid.Row="2">
+            <Grid>
+                <tabs:TabInicioView x:Name="ViewTabInicio" IsVisible="True" />
+                <tabs:TabEncuentroView x:Name="ViewTabEncuentro" IsVisible="False" />
+                <tabs:TabStatsView x:Name="ViewTabStats" IsVisible="False" />
+                <tabs:TabMovesView x:Name="ViewTabMoves" IsVisible="False" />
+                <tabs:TabCosmeticsView x:Name="ViewTabCosmetic" IsVisible="False" />
+
+
+                <!--tabs:TabEncuentroView x:Name="ViewTabEncuentro" IsVisible="False" />
+
+                <tabs:TabStatsView x:Name="ViewTabStats" IsVisible="False" />
+
+                <tabs:TabMovesView x:Name="ViewTabMoves" IsVisible="False" /-->
+
+            </Grid>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

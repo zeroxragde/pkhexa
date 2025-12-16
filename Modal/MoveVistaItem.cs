@@ -8,6 +8,6 @@ namespace PkHexA.Modal
     {
         public ushort Id { get; set; }
         public string Nombre { get; set; } = string.Empty;
-        public string TipoImagen { get; set; } = string.Empty;
+        public ImageSource TipoImagen { get; set; } = null;
     }
 }

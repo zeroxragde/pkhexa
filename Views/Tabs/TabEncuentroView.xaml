@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PkHexA.Views.Tabs.TabEncuentroView">
+    <VerticalStackLayout Spacing="15" Padding="10">
+
+        <Border Stroke="#333" StrokeThickness="1" BackgroundColor="#151515" Padding="10" StrokeShape="RoundRectangle 10">
+            <VerticalStackLayout Spacing="10">
+
+                <Grid ColumnDefinitions="120, *">
+                    <Label Text="Juego original:" TextColor="White" VerticalOptions="Center" FontSize="13"/>
+                    <Border Grid.Column="1" Stroke="Gray" StrokeThickness="1" BackgroundColor="Black" Padding="10,8" StrokeShape="RoundRectangle 5">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AbrirBuscadorJuego_Tapped"/>
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="*, Auto">
+                            <Label x:Name="lblJuegoOrigen" Text="Seleccionar..." TextColor="White" LineBreakMode="TailTruncation" VerticalOptions="Center"/>
+                            <Label Grid.Column="1" Text="▼" TextColor="Gray" VerticalOptions="Center"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <Grid ColumnDefinitions="120, *">
+                    <Label Text="Versión de Batalla:" TextColor="White" VerticalOptions="Center" FontSize="13"/>
+                    <Border Grid.Column="1" Stroke="Gray" StrokeThickness="1" BackgroundColor="Black" Padding="10,8" StrokeShape="RoundRectangle 5">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AbrirBuscadorBatalla_Tapped"/>
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="*, Auto">
+                            <Label x:Name="lblVersionBatalla" Text="(Ninguno)" TextColor="White" LineBreakMode="TailTruncation" VerticalOptions="Center"/>
+                            <Label Grid.Column="1" Text="▼" TextColor="Gray" VerticalOptions="Center"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </VerticalStackLayout>
+        </Border>
+
+        <Border Stroke="#333" StrokeThickness="1" BackgroundColor="#151515" Padding="10" StrokeShape="RoundRectangle 10">
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Datos de Encuentro" FontAttributes="Bold" TextColor="#AAAAAA" FontSize="12"/>
+
+                <Grid ColumnDefinitions="120, *">
+                    <Label Text="Lugar:" TextColor="White" VerticalOptions="Center" FontSize="13"/>
+                    <Border Grid.Column="1" Stroke="Gray" StrokeThickness="1" BackgroundColor="Black" Padding="10,8" StrokeShape="RoundRectangle 5">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AbrirBuscadorLugar_Tapped"/>
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="*, Auto">
+                            <Label x:Name="lblLugarEncuentro" Text="-(00000)" TextColor="White" LineBreakMode="TailTruncation" VerticalOptions="Center"/>
+                            <Label Grid.Column="1" Text="▼" TextColor="Gray" VerticalOptions="Center"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <Grid ColumnDefinitions="120, *">
+                    <Label Text="Ball:" TextColor="White" VerticalOptions="Center" FontSize="13"/>
+                    <Border Grid.Column="1" Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 5" BackgroundColor="Black" Padding="10,8">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AbrirBuscadorBall_Tapped"/>
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="10">
+                            <Image x:Name="imgPokeBall" Grid.Column="0" WidthRequest="24" HeightRequest="24" VerticalOptions="Center" Aspect="AspectFit"/>
+                            <Label x:Name="lblPokeBall" Grid.Column="1" Text="Poké Ball" TextColor="White" LineBreakMode="TailTruncation" VerticalOptions="Center"/>
+                            <Label Grid.Column="2" Text="▼" TextColor="Gray" VerticalOptions="Center"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <Grid ColumnDefinitions="120, *">
+                    <Label Text="Fecha:" TextColor="White" VerticalOptions="Center" FontSize="13"/>
+                    <DatePicker Grid.Column="1" x:Name="dateEncuentro" TextColor="White" BackgroundColor="#202020" Format="dd/MM/yyyy" DateSelected="OnMetDateSelected"/>
+                </Grid>
+
+                <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
+                    <HorizontalStackLayout Grid.Column="0" Spacing="5">
+                        <Label Text="Nivel:" TextColor="White" VerticalOptions="Center" FontSize="13"/>
+                        <Entry x:Name="txtMetLevel" Text="1" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" WidthRequest="50" HorizontalTextAlignment="Center" TextChanged="OnMetLevelChanged"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Grid.Column="1" Spacing="5">
+                        <Label Text="Obed.:" TextColor="White" VerticalOptions="Center" FontSize="13"/>
+                        <Entry x:Name="txtObedienceLevel" Text="0" Keyboard="Numeric" BackgroundColor="#202020" TextColor="White" WidthRequest="50" HorizontalTextAlignment="Center" TextChanged="OnObedienceLevelChanged"/>
+                    </HorizontalStackLayout>
+                </Grid>
+
+                <HorizontalStackLayout Spacing="10">
+                    <CheckBox x:Name="chkFateful" Color="White" CheckedChanged="OnFatefulCheckedChanged"/>
+                    <Label Text="Encuentro Fatídico" TextColor="White" VerticalOptions="Center" FontSize="13"/>
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+        </Border>
+
+        <Border Stroke="#333" StrokeThickness="1" BackgroundColor="#151515" Padding="10" StrokeShape="RoundRectangle 10">
+            <VerticalStackLayout Spacing="10">
+
+                <HorizontalStackLayout Spacing="10">
+                    <CheckBox x:Name="chkIsEgg" Color="White" CheckedChanged="OnEggCheckedChanged"/>
+                    <Label Text="Como huevo" TextColor="White" VerticalOptions="Center" FontAttributes="Bold"/>
+                </HorizontalStackLayout>
+
+                <VerticalStackLayout x:Name="LayoutHuevo" Spacing="10" IsVisible="False">
+                    <Grid ColumnDefinitions="120, *">
+                        <Label Text="Lugar (Huevo):" TextColor="White" VerticalOptions="Center" FontSize="12"/>
+                        <Border Grid.Column="1" Stroke="Gray" StrokeThickness="1" BackgroundColor="Black" Padding="10,8" StrokeShape="RoundRectangle 5">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="AbrirBuscadorLugarHuevo_Tapped"/>
+                            </Border.GestureRecognizers>
+                            <Grid ColumnDefinitions="*, Auto">
+                                <Label x:Name="lblLugarHuevo" Text="-(00000)" TextColor="White" LineBreakMode="TailTruncation" VerticalOptions="Center"/>
+                                <Label Grid.Column="1" Text="▼" TextColor="Gray" VerticalOptions="Center"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="120, *">
+                        <Label Text="Fecha:" TextColor="White" VerticalOptions="Center" FontSize="13"/>
+                        <DatePicker Grid.Column="1" x:Name="dateHuevo" TextColor="White" BackgroundColor="#202020" Format="dd/MM/yyyy" DateSelected="OnEggDateSelected"/>
+                    </Grid>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </Border>
+
+    </VerticalStackLayout>
+</ContentView>

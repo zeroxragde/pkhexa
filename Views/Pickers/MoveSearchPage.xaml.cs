@@ -1,10 +1,12 @@
+using Microsoft.Maui.Controls;
 using PKHeX.Core;
+using PkHexA.Helper;
+using PkHexA.LibSprites.Util;
+using PkHexA.Modal;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Maui.Controls;
-using PkHexA.Modal;
 
 namespace PkHexA.Views.Pickers;
 
@@ -20,7 +22,7 @@ public partial class MoveSearchPage : ContentPage
     private bool _isNavigating = false;
 
     // Acción para devolver el resultado
-    public Action<ushort>? AlSeleccionarMovimiento;
+    public Action<ushort,string>? AlSeleccionarMovimiento;
 
     // --- CONSTRUCTOR PRINCIPAL ---
     public MoveSearchPage()
@@ -40,6 +42,8 @@ public partial class MoveSearchPage : ContentPage
     private void CargarDatos()
     {
         var listaRaw = GameInfo.Strings.Move;
+        //var source = GameInfo.FilteredSources; //otra forma de obtener datod
+       
         var listaTemp = new List<MoveVistaItem>();
 
         // Usamos Count para listas, Length para arrays. PKHeX suele usar Lists o Arrays.
@@ -55,12 +59,22 @@ public partial class MoveSearchPage : ContentPage
             // Obtenemos el tipo para la imagen (Gen9 es el estándar actual)
             int typeId = MoveInfo.GetType((ushort)i, EntityContext.Gen9);
             if (typeId > 18) typeId = 0; // Seguridad para tipos desconocidos
+                                         // 3. Formato exacto de tus archivos: type_icon_01.png
+            string resourceName = $"type_icon_{typeId:00}";
+
+            // 4. Cargar con tu librería
+
+            var skBitmap = SpriteImgLoader.LoadSprite(resourceName);
+            ImageSource? imgTipo = null;
+
+            if (skBitmap != null)
+                imgTipo = SpriteHelper.SafeImageSourceFromSKBitmap(skBitmap);
 
             listaTemp.Add(new MoveVistaItem
             {
                 Id = (ushort)i,
                 Nombre = nombre,
-                TipoImagen = $"type_{typeId}.png"
+                TipoImagen = imgTipo
             });
         }
 
@@ -137,7 +151,7 @@ public partial class MoveSearchPage : ContentPage
             _isNavigating = true;
 
             // Invocamos el evento de retorno
-            AlSeleccionarMovimiento?.Invoke(item.Id);
+            AlSeleccionarMovimiento?.Invoke(item.Id,item.Nombre);
 
             // Cerramos la ventana de forma segura
             if (Navigation.ModalStack.Count > 0)
