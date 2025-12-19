@@ -1,119 +1,104 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PkHexA.Views.Tabs.TabCosmeticsView">
-
-
-
+             x:Class="PkHexA.Views.Tabs.TabCosmeticsView"
+             BackgroundColor="#121212">
 
     <ScrollView>
-        <VerticalStackLayout Spacing="15" Padding="15">
+        <VerticalStackLayout Spacing="20" Padding="20">
 
-            <Grid ColumnDefinitions="*, Auto" ColumnSpacing="15">
+            <Border Stroke="#444" StrokeThickness="1" BackgroundColor="#1E1E1E" StrokeShape="RoundRectangle 5" 
+                    HorizontalOptions="Center" WidthRequest="300" Padding="15">
+                <VerticalStackLayout Spacing="10">
 
-                <Border Grid.Column="0" Stroke="#444" StrokeThickness="1" BackgroundColor="#151515" StrokeShape="RoundRectangle 10" Padding="10">
-                    <VerticalStackLayout Spacing="5">
-                        <Label Text="Marcas (Markings)" TextColor="#888" FontSize="10" HorizontalOptions="Center"/>
+                    <Label Text="Marcas" TextColor="#888" FontSize="10" HorizontalOptions="Center"/>
 
-                        <Grid ColumnDefinitions="*,*,*,*,*,*" ColumnSpacing="0">
-                            <Button x:Name="btnMarkCircle" Text="●" Clicked="ToggleMarking_Clicked" TextColor="Gray" BackgroundColor="Transparent" FontSize="20" Padding="0"/>
-                            <Button x:Name="btnMarkTriangle" Text="▲" Clicked="ToggleMarking_Clicked" TextColor="Gray" BackgroundColor="Transparent" FontSize="20" Padding="0" Grid.Column="1"/>
-                            <Button x:Name="btnMarkSquare" Text="■" Clicked="ToggleMarking_Clicked" TextColor="Gray" BackgroundColor="Transparent" FontSize="20" Padding="0" Grid.Column="2"/>
-                            <Button x:Name="btnMarkHeart" Text="♥" Clicked="ToggleMarking_Clicked" TextColor="Gray" BackgroundColor="Transparent" FontSize="20" Padding="0" Grid.Column="3"/>
-                            <Button x:Name="btnMarkStar" Text="★" Clicked="ToggleMarking_Clicked" TextColor="Gray" BackgroundColor="Transparent" FontSize="20" Padding="0" Grid.Column="4"/>
-                            <Button x:Name="btnMarkDiamond" Text="♦" Clicked="ToggleMarking_Clicked" TextColor="Gray" BackgroundColor="Transparent" FontSize="20" Padding="0" Grid.Column="5"/>
-                        </Grid>
-                    </VerticalStackLayout>
+                    <Grid ColumnDefinitions="*, Auto, Auto, *" ColumnSpacing="20" HeightRequest="30">
+                        <Label Grid.Column="1" x:Name="lblShinyIcon" Text="✨" FontSize="22" TextColor="Gold" HorizontalOptions="Center" Opacity="0.1"/>
+                        <Label Grid.Column="2" x:Name="lblPokerusIcon" Text="🦠" FontSize="22" TextColor="Magenta" HorizontalOptions="Center" Opacity="0.1"/>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*,*,*,*,*" ColumnSpacing="5" Margin="0,5,0,0">
+                        <Button x:Name="btnMarkCircle" Text="●" Clicked="ToggleMarking_Clicked" TextColor="Gray" BackgroundColor="Transparent" FontSize="28" Padding="0"/>
+                        <Button x:Name="btnMarkTriangle" Text="▲" Clicked="ToggleMarking_Clicked" TextColor="Gray" BackgroundColor="Transparent" FontSize="28" Padding="0" Grid.Column="1"/>
+                        <Button x:Name="btnMarkSquare" Text="■" Clicked="ToggleMarking_Clicked" TextColor="Gray" BackgroundColor="Transparent" FontSize="28" Padding="0" Grid.Column="2"/>
+                        <Button x:Name="btnMarkHeart" Text="❤" Clicked="ToggleMarking_Clicked" TextColor="Gray" BackgroundColor="Transparent" FontSize="28" Padding="0" Grid.Column="3"/>
+                        <Button x:Name="btnMarkStar" Text="★" Clicked="ToggleMarking_Clicked" TextColor="Gray" BackgroundColor="Transparent" FontSize="28" Padding="0" Grid.Column="4"/>
+                        <Button x:Name="btnMarkDiamond" Text="◆" Clicked="ToggleMarking_Clicked" TextColor="Gray" BackgroundColor="Transparent" FontSize="28" Padding="0" Grid.Column="5"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Grid ColumnDefinitions="80, 80, 80" ColumnSpacing="20" HorizontalOptions="Center" HeightRequest="70">
+
+                <Border x:Name="boxTera" Stroke="#444" BackgroundColor="#1E1E1E" StrokeShape="RoundRectangle 10" IsVisible="False">
+                    <Grid>
+                        <Label Text="💎" HorizontalOptions="Center" VerticalOptions="Center" FontSize="36"/>
+                        <Picker x:Name="pickerTeraType" Opacity="0.01" Title="Tera Type" SelectedIndexChanged="OnTeraTypeChanged"/>
+                    </Grid>
                 </Border>
 
-                <Grid Grid.Column="1" WidthRequest="60" HeightRequest="60">
-
-                    <Border x:Name="boxTera" Stroke="#444" BackgroundColor="#151515" StrokeShape="RoundRectangle 10" IsVisible="False">
-                        <Grid>
-                            <Label Text="💎" HorizontalOptions="Center" VerticalOptions="Center" FontSize="24"/>
-                            <Picker x:Name="pickerTeraType" Opacity="0.01" Title="Tera Type" SelectedIndexChanged="OnTeraTypeChanged"/>
-                        </Grid>
-                    </Border>
-
-                    <Border x:Name="boxAlpha" Stroke="#444" BackgroundColor="#151515" StrokeShape="RoundRectangle 10" IsVisible="False">
-                        <Label Text="💀" HorizontalOptions="Center" VerticalOptions="Center" FontSize="24" TextColor="#FF4444"/>
-                        <Border.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="ToggleAlpha_Tapped"/>
-                        </Border.GestureRecognizers>
-                    </Border>
-
-                </Grid>
-            </Grid>
-
-            <Grid ColumnDefinitions="Auto, Auto, Auto, *" ColumnSpacing="15">
-                <Border Stroke="#333" WidthRequest="45" HeightRequest="45" StrokeShape="RoundRectangle 25" BackgroundColor="#202020">
+                <Border x:Name="boxAlpha" Grid.Column="1" Stroke="#444" BackgroundColor="#1E1E1E" StrokeShape="RoundRectangle 10" IsVisible="False">
                     <Border.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ToggleFavorite_Tapped"/>
+                        <TapGestureRecognizer Tapped="ToggleAlpha_Tapped"/>
                     </Border.GestureRecognizers>
-                    <Label x:Name="lblFavorite" Text="❤" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Gray"/>
+                    <Label Text="▲" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" FontSize="44" TextColor="#CC0000" TranslationY="-4"/>
                 </Border>
 
-                <HorizontalStackLayout Grid.Column="3" HorizontalOptions="End" Spacing="10" VerticalOptions="Center">
-                    <Label x:Name="lblShinyIcon" Text="✨" FontSize="18" Opacity="0.1" TextColor="Gold"/>
-                    <Label x:Name="lblPokerusIcon" Text="🦠" FontSize="18" Opacity="0.1" TextColor="Magenta"/>
-                </HorizontalStackLayout>
+                <Border x:Name="boxGmax" Grid.Column="2" Stroke="#444" BackgroundColor="#1E1E1E" StrokeShape="RoundRectangle 10" IsVisible="False">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ToggleGmax_Tapped"/>
+                    </Border.GestureRecognizers>
+                    <Label Text="💥" HorizontalOptions="Center" VerticalOptions="Center" FontSize="36" TextColor="White"/>
+                </Border>
+
             </Grid>
 
-            <Border Stroke="#333" BackgroundColor="#121212" StrokeShape="RoundRectangle 10" Padding="15">
-                <VerticalStackLayout Spacing="15">
-                    <Label Text="Propiedades (Amistad/Afecto)" TextColor="#AAA" FontSize="12" FontAttributes="Bold"/>
+            <Border x:Name="grpDimensions" StrokeThickness="0" BackgroundColor="Transparent" Padding="0" IsVisible="False">
+                <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, 80, 50" HorizontalOptions="Center" RowSpacing="10" ColumnSpacing="10">
 
-                    <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*, *" RowSpacing="10" ColumnSpacing="15">
-                        <VerticalStackLayout>
-                            <Label Text="Amistad (Spirit)" TextColor="Gray" FontSize="10"/>
-                            <Entry x:Name="nudSpirit" Text="0" Keyboard="Numeric" BackgroundColor="#222" TextColor="White" HorizontalTextAlignment="Center" HeightRequest="40" TextChanged="OnStatInputChanged"/>
-                        </VerticalStackLayout>
-                        <VerticalStackLayout Grid.Column="1">
-                            <Label Text="Afecto (Mood)" TextColor="Gray" FontSize="10"/>
-                            <Entry x:Name="nudMood" Text="0" Keyboard="Numeric" BackgroundColor="#222" TextColor="White" HorizontalTextAlignment="Center" HeightRequest="40" TextChanged="OnStatInputChanged"/>
-                        </VerticalStackLayout>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Altura:" TextColor="#AAA" VerticalOptions="Center" HorizontalOptions="End" FontSize="14"/>
+                    <Entry Grid.Row="0" Grid.Column="1" x:Name="txtHeight" Text="0" Keyboard="Numeric" BackgroundColor="#222" TextColor="White" HorizontalTextAlignment="Center" HeightRequest="35" TextChanged="OnStatInputChanged"/>
+                    <Label Grid.Row="0" Grid.Column="2" x:Name="lblHeightSize" Text="-" TextColor="Gray" FontSize="12" VerticalOptions="Center" FontAttributes="Bold"/>
 
-                        <VerticalStackLayout Grid.Row="1">
-                            <Label Text="Saciedad (Walk)" TextColor="Gray" FontSize="10"/>
-                            <Entry x:Name="nudWalkingMood" Text="0" Keyboard="Numeric" BackgroundColor="#222" TextColor="White" HorizontalTextAlignment="Center" HeightRequest="40"/>
-                        </VerticalStackLayout>
-                        <VerticalStackLayout Grid.Row="1" Grid.Column="1">
-                            <Label Text="Fama (PokéStar)" TextColor="Gray" FontSize="10"/>
-                            <Entry x:Name="nudFame" Text="0" Keyboard="Numeric" BackgroundColor="#222" TextColor="White" HorizontalTextAlignment="Center" HeightRequest="40"/>
-                        </VerticalStackLayout>
+                    <Label Grid.Row="1" Grid.Column="0" Text="Peso:" TextColor="#AAA" VerticalOptions="Center" HorizontalOptions="End" FontSize="14"/>
+                    <Entry Grid.Row="1" Grid.Column="1" x:Name="txtWeight" Text="0" Keyboard="Numeric" BackgroundColor="#222" TextColor="White" HorizontalTextAlignment="Center" HeightRequest="35" TextChanged="OnStatInputChanged"/>
+                    <Label Grid.Row="1" Grid.Column="2" x:Name="lblWeightSize" Text="-" TextColor="Gray" FontSize="12" VerticalOptions="Center" FontAttributes="Bold"/>
+                </Grid>
+            </Border>
+
+            <Grid ColumnDefinitions="120, 120" ColumnSpacing="15" HorizontalOptions="Center">
+                <Button Text="Cintas" BackgroundColor="#333" TextColor="#DDD" HeightRequest="40" FontSize="12" CornerRadius="5" Clicked="OpenRibbons_Clicked"/>
+                <Button Text="Memorias" BackgroundColor="#333" TextColor="#DDD" HeightRequest="40" FontSize="12" CornerRadius="5"/>
+            </Grid>
+
+            <Border x:Name="grpContest" Stroke="#333" BackgroundColor="#1E1E1E" StrokeShape="RoundRectangle 5" Padding="10" HorizontalOptions="Center" IsVisible="False">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Estadísticas de concurso" TextColor="#AAA" FontSize="11" HorizontalOptions="Center" Margin="0,0,0,5"/>
+
+                    <Grid ColumnDefinitions="50,50,50,50,50,50" RowDefinitions="Auto,Auto" ColumnSpacing="5">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Carism" TextColor="Gray" FontSize="10" HorizontalOptions="Center"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="Belleza" TextColor="Gray" FontSize="10" HorizontalOptions="Center"/>
+                        <Label Grid.Row="0" Grid.Column="2" Text="Dulzura" TextColor="Gray" FontSize="10" HorizontalOptions="Center"/>
+                        <Label Grid.Row="0" Grid.Column="3" Text="Ingenio" TextColor="Gray" FontSize="10" HorizontalOptions="Center"/>
+                        <Label Grid.Row="0" Grid.Column="4" Text="Dureza" TextColor="Gray" FontSize="10" HorizontalOptions="Center"/>
+                        <Label Grid.Row="0" Grid.Column="5" Text="Brillo" TextColor="Gray" FontSize="10" HorizontalOptions="Center"/>
+
+                        <Entry Grid.Row="1" Grid.Column="0" x:Name="cntCool" Text="0" Keyboard="Numeric" BackgroundColor="#252525" TextColor="White" HorizontalTextAlignment="Center" FontSize="11" HeightRequest="30" TextChanged="OnStatInputChanged"/>
+                        <Entry Grid.Row="1" Grid.Column="1" x:Name="cntBeauty" Text="0" Keyboard="Numeric" BackgroundColor="#252525" TextColor="White" HorizontalTextAlignment="Center" FontSize="11" HeightRequest="30" TextChanged="OnStatInputChanged"/>
+                        <Entry Grid.Row="1" Grid.Column="2" x:Name="cntCute" Text="0" Keyboard="Numeric" BackgroundColor="#252525" TextColor="White" HorizontalTextAlignment="Center" FontSize="11" HeightRequest="30" TextChanged="OnStatInputChanged"/>
+                        <Entry Grid.Row="1" Grid.Column="3" x:Name="cntSmart" Text="0" Keyboard="Numeric" BackgroundColor="#252525" TextColor="White" HorizontalTextAlignment="Center" FontSize="11" HeightRequest="30" TextChanged="OnStatInputChanged"/>
+                        <Entry Grid.Row="1" Grid.Column="4" x:Name="cntTough" Text="0" Keyboard="Numeric" BackgroundColor="#252525" TextColor="White" HorizontalTextAlignment="Center" FontSize="11" HeightRequest="30" TextChanged="OnStatInputChanged"/>
+                        <Entry Grid.Row="1" Grid.Column="5" x:Name="cntSheen" Text="0" Keyboard="Numeric" BackgroundColor="#252525" TextColor="White" HorizontalTextAlignment="Center" FontSize="11" HeightRequest="30" TextChanged="OnStatInputChanged"/>
                     </Grid>
                 </VerticalStackLayout>
             </Border>
 
-            <Border Stroke="#333" BackgroundColor="#121212" StrokeShape="RoundRectangle 10" Padding="15">
-                <VerticalStackLayout Spacing="15">
-                    <Label Text="Dimensiones y CP" TextColor="#AAA" FontSize="12" FontAttributes="Bold"/>
-
-                    <Grid ColumnDefinitions="*, 80" RowDefinitions="Auto, Auto">
-                        <VerticalStackLayout Spacing="2">
-                            <Label Text="Escala (0-255)" TextColor="Gray" FontSize="10"/>
-                            <Entry x:Name="txtScale" Text="0" Keyboard="Numeric" BackgroundColor="#222" TextColor="White" HorizontalTextAlignment="Center" HeightRequest="40" TextChanged="OnStatInputChanged"/>
-                        </VerticalStackLayout>
-
-                        <VerticalStackLayout Grid.Column="1" Margin="10,0,0,0">
-                            <Label Text="CP" TextColor="Gray" FontSize="10"/>
-                            <Entry x:Name="txtCP" Text="0" Keyboard="Numeric" BackgroundColor="#222" TextColor="White" HorizontalTextAlignment="Center" HeightRequest="40" TextChanged="OnStatInputChanged"/>
-                        </VerticalStackLayout>
-                    </Grid>
-                </VerticalStackLayout>
-            </Border>
-
-            <Button Text="RECUERDOS / CINTAS" BackgroundColor="#444" TextColor="White" HeightRequest="45" CornerRadius="8" Margin="0,10,0,0" Clicked="OpenRibbons_Clicked"/>
+            <VerticalStackLayout IsVisible="False">
+                <Entry x:Name="nudSpirit"/>
+                <Entry x:Name="nudMood"/>
+            </VerticalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>
-
-
-
-
-
-
-
-
-
 </ContentView>
